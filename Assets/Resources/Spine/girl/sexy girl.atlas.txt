@@ -1,0 +1,300 @@
+
+sexy girl.png
+size: 456,266
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+ban_chan_phai
+  rotate: true
+  xy: 321, 70
+  size: 11, 17
+  orig: 13, 19
+  offset: 1, 1
+  index: -1
+ban_chan_trai
+  rotate: true
+  xy: 321, 70
+  size: 11, 17
+  orig: 13, 19
+  offset: 1, 1
+  index: -1
+ban_tay_phai
+  rotate: false
+  xy: 421, 211
+  size: 24, 25
+  orig: 26, 28
+  offset: 1, 1
+  index: -1
+ban_tay_trai
+  rotate: true
+  xy: 421, 186
+  size: 23, 26
+  orig: 26, 28
+  offset: 1, 1
+  index: -1
+bap_tay_phai
+  rotate: true
+  xy: 391, 99
+  size: 21, 35
+  orig: 23, 37
+  offset: 1, 1
+  index: -1
+bap_tay_trai
+  rotate: false
+  xy: 391, 122
+  size: 23, 39
+  orig: 25, 41
+  offset: 1, 1
+  index: -1
+cang_chan_phai
+  rotate: true
+  xy: 403, 164
+  size: 17, 37
+  orig: 19, 39
+  offset: 1, 1
+  index: -1
+cang_chan_trai
+  rotate: false
+  xy: 403, 183
+  size: 16, 38
+  orig: 18, 40
+  offset: 1, 1
+  index: -1
+canh_tay_phai
+  rotate: true
+  xy: 348, 2
+  size: 21, 30
+  orig: 23, 32
+  offset: 1, 1
+  index: -1
+canh_tay_trai
+  rotate: false
+  xy: 365, 192
+  size: 21, 29
+  orig: 23, 31
+  offset: 1, 1
+  index: -1
+con_nguoi1
+  rotate: false
+  xy: 340, 71
+  size: 10, 10
+  orig: 14, 14
+  offset: 2, 2
+  index: -1
+con_nguoi2
+  rotate: false
+  xy: 352, 71
+  size: 10, 10
+  orig: 14, 13
+  offset: 2, 2
+  index: -1
+cong1
+  rotate: true
+  xy: 416, 132
+  size: 30, 28
+  orig: 33, 30
+  offset: 1, 1
+  index: -1
+cong2
+  rotate: true
+  xy: 428, 100
+  size: 30, 26
+  orig: 32, 28
+  offset: 1, 1
+  index: -1
+cuoi2
+  rotate: true
+  xy: 437, 74
+  size: 24, 14
+  orig: 33, 22
+  offset: 6, 4
+  index: -1
+dau
+  rotate: false
+  xy: 120, 45
+  size: 68, 86
+  orig: 70, 88
+  offset: 1, 1
+  index: -1
+dui_phai
+  rotate: true
+  xy: 395, 238
+  size: 26, 52
+  orig: 28, 54
+  offset: 1, 1
+  index: -1
+dui_trai
+  rotate: false
+  xy: 168, 4
+  size: 29, 39
+  orig: 31, 41
+  offset: 1, 1
+  index: -1
+giot
+  rotate: false
+  xy: 375, 73
+  size: 4, 8
+  orig: 13, 10
+  offset: 5, 1
+  index: -1
+khoc
+  rotate: true
+  xy: 391, 163
+  size: 58, 10
+  orig: 60, 10
+  offset: 1, 0
+  index: -1
+khoc1
+  rotate: false
+  xy: 321, 83
+  size: 60, 12
+  orig: 60, 12
+  offset: 0, 0
+  index: -1
+light
+  rotate: true
+  xy: 120, 2
+  size: 41, 46
+  orig: 50, 54
+  offset: 4, 4
+  index: -1
+lips
+  rotate: false
+  xy: 68, 6
+  size: 50, 31
+  orig: 64, 58
+  offset: 9, 14
+  index: -1
+long_may3
+  rotate: true
+  xy: 190, 75
+  size: 22, 7
+  orig: 24, 9
+  offset: 1, 1
+  index: -1
+long_may4
+  rotate: true
+  xy: 190, 51
+  size: 22, 7
+  orig: 24, 9
+  offset: 1, 1
+  index: -1
+ma
+  rotate: false
+  xy: 380, 2
+  size: 63, 11
+  orig: 63, 11
+  offset: 0, 0
+  index: -1
+mai
+  rotate: false
+  xy: 365, 223
+  size: 28, 41
+  orig: 30, 43
+  offset: 1, 1
+  index: -1
+mai2
+  rotate: false
+  xy: 348, 25
+  size: 28, 44
+  orig: 29, 44
+  offset: 0, 0
+  index: -1
+mai_toc
+  rotate: false
+  xy: 2, 39
+  size: 116, 92
+  orig: 116, 92
+  offset: 0, 0
+  index: -1
+mat1
+  rotate: true
+  xy: 365, 163
+  size: 27, 19
+  orig: 29, 21
+  offset: 1, 1
+  index: -1
+mat2
+  rotate: true
+  xy: 365, 139
+  size: 22, 19
+  orig: 24, 21
+  offset: 1, 1
+  index: -1
+meu
+  rotate: true
+  xy: 190, 118
+  size: 13, 9
+  orig: 15, 11
+  offset: 1, 1
+  index: -1
+moi_cuoi
+  rotate: true
+  xy: 190, 99
+  size: 17, 8
+  orig: 19, 10
+  offset: 1, 1
+  index: -1
+mui
+  rotate: false
+  xy: 364, 75
+  size: 9, 6
+  orig: 11, 8
+  offset: 1, 1
+  index: -1
+nham
+  rotate: false
+  xy: 321, 97
+  size: 68, 15
+  orig: 68, 15
+  offset: 0, 0
+  index: -1
+nhay_mat
+  rotate: false
+  xy: 395, 223
+  size: 24, 13
+  orig: 33, 22
+  offset: 4, 7
+  index: -1
+soi1
+  rotate: false
+  xy: 201, 69
+  size: 118, 195
+  orig: 118, 195
+  offset: 0, 0
+  index: -1
+soi2
+  rotate: false
+  xy: 321, 114
+  size: 42, 150
+  orig: 42, 150
+  offset: 0, 0
+  index: -1
+ta_sau
+  rotate: false
+  xy: 383, 15
+  size: 52, 80
+  orig: 53, 80
+  offset: 1, 0
+  index: -1
+than
+  rotate: true
+  xy: 199, 8
+  size: 59, 147
+  orig: 59, 147
+  offset: 0, 0
+  index: -1
+toc_sau
+  rotate: true
+  xy: 2, 133
+  size: 131, 197
+  orig: 131, 197
+  offset: 0, 0
+  index: -1
+xich
+  rotate: false
+  xy: 2, 2
+  size: 64, 35
+  orig: 64, 35
+  offset: 0, 0
+  index: -1
