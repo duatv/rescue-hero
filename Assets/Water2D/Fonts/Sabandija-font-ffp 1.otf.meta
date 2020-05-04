@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 55b4bb8ba0357054ba39c20c9e3cf8e0
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Sabandija ffp
+  fontNames:
+  - Sabandija ffp
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 9fe31d42928b57b4b84a0d271eff1907, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
