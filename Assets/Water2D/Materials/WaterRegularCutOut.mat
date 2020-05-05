@@ -70,7 +70,7 @@ Material:
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
-    - _botmcut: 0.15
+    - _botmcut: 0.4
     - _constant: 4
     m_Colors:
     - _BaseColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}

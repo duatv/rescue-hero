@@ -11,7 +11,9 @@ GameObject:
   - component: {fileID: 2792697067004873771}
   - component: {fileID: 6555511519871192306}
   - component: {fileID: 5119404018181584342}
-  m_Layer: 0
+  - component: {fileID: 360150832557463478}
+  - component: {fileID: 3115096989556330170}
+  m_Layer: 10
   m_Name: Play Moc4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,6 +48,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -57,6 +60,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -110,7 +114,8 @@ PolygonCollider2D:
       - {x: 0.026059648, y: 1.3550003}
       - {x: -0.030226711, y: 1.3550003}
       - {x: -0.07804127, y: 1.3133343}
-      - {x: -0.082744524, y: -0.63254905}
+      - {x: -0.25672713, y: 1.3028239}
+      - {x: -0.2529309, y: -0.640851}
       - {x: -0.25338286, y: -0.7357697}
       - {x: -0.30583206, y: -0.9680157}
       - {x: -0.2717188, y: -1.06668}
@@ -124,6 +129,41 @@ PolygonCollider2D:
       - {x: -0.044999998, y: -0.755}
       - {x: 0.16499999, y: -0.865}
       - {x: 0.044999998, y: -1.0849999}
+--- !u!114 &360150832557463478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4105256230520295356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db75b6c7a7d2daa48b022d29c415d3e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _moveType: 1
+  _rig2D: {fileID: 3115096989556330170}
+--- !u!50 &3115096989556330170
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4105256230520295356}
+  m_BodyType: 0
+  m_Simulated: 0
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &6946110268828160182
 GameObject:
   m_ObjectHideFlags: 0
@@ -134,7 +174,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7917187945325412198}
   - component: {fileID: 8167951736585420265}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Play Moc5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -170,6 +210,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -181,6 +222,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0

@@ -7,8 +7,6 @@ using UnityEditor;
 [ExecuteInEditMode]
 public class MetaballParticleClass : MonoBehaviour
 {
-
-
     public GameObject MObject;
     public float LifeTime;
     public Water2D.Water2D_Spawner SpawnerParent;
@@ -24,7 +22,6 @@ public class MetaballParticleClass : MonoBehaviour
 
                 if (tr)
                     tr.Clear();
-
             }
 
             if (value)
@@ -43,10 +40,8 @@ public class MetaballParticleClass : MonoBehaviour
                     rb.velocity *= 0f;
 
                 delta *= 0;
-
             }
             ScaleDownIsPerforming = false;
-
         }
     }
     public bool witinTarget;
@@ -71,19 +66,25 @@ public class MetaballParticleClass : MonoBehaviour
     float fixedDeltaSimul = 0f;
     float wakeUpTime;
 
-#if UNITY_EDITOR
+
 
     private void OnEnable()
     {
+#if UNITY_EDITOR
         EditorApplication.update += Update;
+#endif
+        if (SpawnerParent)
+        {
+            gameObject.name = SpawnerParent.name + "_" + SpawnerParent.DropsUsed;
+        }
     }
 
     private void OnDisable()
     {
+#if UNITY_EDITOR
         EditorApplication.update -= Update;
-    }
-
 #endif
+    }
 
     void Start()
     {
@@ -98,9 +99,6 @@ public class MetaballParticleClass : MonoBehaviour
 
     void Update()
     {
-
-       
-
         if (Active == true)
         {
             if(ScaleDown)
@@ -129,8 +127,6 @@ public class MetaballParticleClass : MonoBehaviour
                 delta += Time.deltaTime;
             }
 
-
-
             // Handle collisions in fixedtime only editor
             if (deltaSimul > fixedDeltaSimul)
             {
@@ -141,11 +137,7 @@ public class MetaballParticleClass : MonoBehaviour
             {
                 deltaSimul += Time.deltaTime;
             }
-
-           
-
         }
-
     }
 
     Vector3 pos_aux;
@@ -192,8 +184,6 @@ public class MetaballParticleClass : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-
-
         SpawnerParent.InvokeOnCollisionEnter2D(gameObject, collision.contacts[0].collider.gameObject);
     }
 
@@ -213,7 +203,6 @@ public class MetaballParticleClass : MonoBehaviour
         if (Contacts == null)
             return;
 
-
         int i = Physics2D.OverlapCircleNonAlloc(rb.position, cc.radius * .9f, Contacts);
 
         if (i > 0)
@@ -228,10 +217,7 @@ public class MetaballParticleClass : MonoBehaviour
 
                 SpawnerParent.InvokeOnCollisionEnter2D(gameObject, Contacts[j].gameObject);
             }
-           
         }
-
-        
     }
 
     bool ScaleDownIsPerforming = false;
@@ -264,7 +250,6 @@ public class MetaballParticleClass : MonoBehaviour
     {
         if (true)
         {
-           
             if (cc == null)
                 return;
 
@@ -290,8 +275,6 @@ public class MetaballParticleClass : MonoBehaviour
 
             if (i > 0)
             {
-
-
                 for (int j = 0; j < Contacts.Length; j++)
                 {
                     if (Contacts[j] == null)
@@ -317,13 +300,9 @@ public class MetaballParticleClass : MonoBehaviour
                     sr.color = Color.Lerp(sr.color, c2, .025f);
                     if (Contacts[j].GetComponent<MetaballParticleClass>().SpawnerParent.Blending) {
                         Contacts[j].GetComponent<SpriteRenderer>().color = Color.Lerp(c2, sr.color, .025f);
-                    }
-                    
+                    }   
                 }
-
             }
-
-
         }
     }
 
@@ -334,8 +313,6 @@ public class MetaballParticleClass : MonoBehaviour
 
             if (cc == null)
                 return;
-
-           
 
             if (framesCount < breathFrames)
             {
@@ -352,9 +329,7 @@ public class MetaballParticleClass : MonoBehaviour
 
             int c = 0;
             int ContactsMax = 60;
-            MetaballParticleClass []_contacts = new MetaballParticleClass[ContactsMax] ;
-
-           
+            MetaballParticleClass []_contacts = new MetaballParticleClass[ContactsMax];
 
             if (Water2D.MultiColorManager.instance == null)
                 Water2D.MultiColorManager.GetAllParticles();
@@ -362,7 +337,6 @@ public class MetaballParticleClass : MonoBehaviour
 
             if (Water2D.MultiColorManager.instance._allparticles == null)
                 return;
-            
 
             for (int i = 0; i < Water2D.MultiColorManager.instance._allparticles.Length; i++)
             {
@@ -383,7 +357,6 @@ public class MetaballParticleClass : MonoBehaviour
                     // Contact!
                     _contacts[c] = Water2D.MultiColorManager.instance._allparticles[i];
                     c++;
-                   
                 }
             }
             
@@ -392,29 +365,20 @@ public class MetaballParticleClass : MonoBehaviour
 
             if (c > 0)
             {
-
                 for (int j = 0; j < _contacts.Length; j++)
                 {
                     if (_contacts[j] == null)
                         continue;
-
                     
                     Color c2 = _contacts[j].gameObject.GetComponent<SpriteRenderer>().color;
 
                     if (c2 == sr.color)
                         return;
 
-
-
                     sr.color = Color.LerpUnclamped(sr.color, c2, .02f);
                    // print(sr.color + " " + c2);
                 }
-
             }
-
-
         }
     }
-
-
 }

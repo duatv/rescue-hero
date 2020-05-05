@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Metaball_liquid
   layers:
   - Default
   - TransparentFX
@@ -14,9 +15,9 @@ TagManager:
   - 
   - 
   - PostProcessing
-  - 
-  - 
-  - 
+  - LavaStone
+  - MapObject
+  - Gems
   - 
   - 
   - 

@@ -49,8 +49,6 @@
         {
             if (instance == null)
                 instance = this;
-
-
         }
 
         /// <summary>
@@ -338,8 +336,6 @@
         public Water2DEvents OnSpawnerEmitingParticle;
 
 
-
-
         private IEnumerator Start()
         {
             yield return new WaitForSeconds(.5f);
@@ -353,28 +349,18 @@
                 yield return new WaitForEndOfFrame();
                 StartCoroutine(UpdateQuietParticleProperties());
             }
-
-           
             yield return null;
-
         }
 
         static void RunSpawner()
 		{
             instance.Spawn();
-
         }
        
         static void StopSpawner()
         {
             instance.Restore();
-
         }
-
-      
-       
-
-
 
 		public int AllBallsCount{ get; private set;}
 		public bool IsSpawning{ get; private set;}
@@ -402,23 +388,16 @@
             if(_parent != null){
                
                 DestroyImmediate(_parent);
-
             }
             _parent = new GameObject(_parentNameID + gameObject.GetInstanceID());
             _parent.transform.hideFlags = HideFlags.HideInHierarchy;
 
             WaterDropsObjects = new GameObject[DropCount];
 
-            
-
-                
-           
-
-
-
             for (int i = 0; i < WaterDropsObjects.Length; i++)
             {
                 WaterDropsObjects[i] = Instantiate(DropObject, gameObject.transform.position, new Quaternion(0, 0, 0, 0)) as GameObject;
+                
                 WaterDropsObjects[i].GetComponent<MetaballParticleClass>().Active = false;
                 WaterDropsObjects[i].GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                 WaterDropsObjects[i].transform.SetParent(_parent.transform);
@@ -461,11 +440,8 @@
                     tr.endWidth = TrailEndSize;
                     tr.time = TrailDelay;
                 }
-
                 WaterDropsObjects[i].GetComponent<MetaballParticleClass>().SpawnerParent = this;
             }
-
-           
 
             AllBallsCount = WaterDropsObjects.Length;
 
@@ -475,13 +451,8 @@
                 _spawnedDrops *= 0;
             }
 
-
-
             RestoreCheckingFillShape(); // restore events
-
         }
-
-
 
 #if UNITY_EDITOR
 
@@ -522,7 +493,6 @@
 
                 if (Selection.activeGameObject == gameObject)
                 {
-
                     //print("change color");
                     //CHANGE COLOR
                     if (Water2DType == "Refracting")
@@ -538,12 +508,11 @@
                         SetRegularWaterparams(FillColor, StrokeColor, AlphaCutOff, AlphaStroke);
                     }
                 }
-
             }
-            else
-            {
+            //else
+            //{
                
-            }
+            //}
 
            
             //Check ShapeFill events
@@ -551,20 +520,15 @@
             {
                 StartCheckingFillShape();
             }
-
         }
 #endif
 
-       
-
 
 		public void Spawn(){
-
 			Spawn (DefaultCount);
 		}
 
 		public void Spawn(int count){
-			
             if (DelayBetweenParticles == 0f)
             {
                 DropsUsed *= 0;
@@ -574,7 +538,6 @@
                 DropsUsed *= 0;
                 StartCoroutine(loop(gameObject.transform.position, initSpeed, count));
             }
-			
 		}
 
         public void SpawnAll() {
@@ -600,14 +563,10 @@
 
 		public void Restore()
 		{
-
 			IsSpawning = false;
 			_breakLoop = true;
             DropsUsed *= 0;
-
-			
-
-
+            
 			for (int i = 0; i < WaterDropsObjects.Length; i++) {
 
                 if (WaterDropsObjects[i] != null) {
@@ -617,12 +576,7 @@
                     }
                     WaterDropsObjects[i].GetComponent<MetaballParticleClass>().witinTarget = false;
                 }
-
-                		
 			}
-
-
-
 
 			//gameObject.transform.localEulerAngles = Vector3.zero;
 			//initSpeed = new Vector2 (0, -2f);
@@ -664,7 +618,6 @@
                 //CHANGE COLOR
                 if (Water2DType == "Refracting")
                 {
-                   
                     if (MetaBall.Active == false)
                         MetaBall.gameObject.GetComponent<SpriteRenderer>().color = FillColor;
 
@@ -681,8 +634,6 @@
 
                     SetRegularWaterparams(FillColor, StrokeColor, AlphaCutOff, AlphaStroke);
                 }
-
-
 
                 if (MetaBall.Active == true)
                     continue;
@@ -707,9 +658,6 @@
                 {
                     _initSpeed = initSpeed;
                     MetaBall.transform.localScale = new Vector3(size, size, 1f);
-
-                   
-                    
 
                     TrailRenderer tr = WaterDropsObjects[i].GetComponent<TrailRenderer>();
                     if (TrailStartSize <= 0f)
@@ -755,20 +703,17 @@
                     }
                     else if (Water2DType == "Regular")
                     {
-                      
                         _lastFillColor = FillColor;
                         if (MetaBall.Active == false)
                             MetaBall.gameObject.GetComponent<SpriteRenderer>().color = FillColor;
 
                         SetRegularWaterparams(FillColor, StrokeColor, AlphaCutOff, AlphaStroke);
                     }
-
                 }
 
                 Vector2 dir = transform.localRotation * Vector2.down;
                 MetaBall.GetComponent<Rigidbody2D>().velocity = dir * Speed;
                
-
                 DropsUsed++;
                 _spawnedDrops++;
 
@@ -777,7 +722,6 @@
 
                 if (_spawnedDrops >= DropCount)
                 {
-
                     if(!Loop)
                         SimulateInEditor = false;
 
@@ -787,18 +731,10 @@
                         InvokeOnSpawnerEnd(gameObject);
                         _canInvokeAttheEnd = false;
                     }
-
-
                     _spawnedDrops *= 0;
                 }
-
-
                 return;
             }
-
-           
-
-           
         }
 
         bool _canInvokeAttheEnd = true;
@@ -826,7 +762,6 @@
 
             while (true) {
 				for (int i = 0; i < WaterDropsObjects.Length; i++) {
-
 					if (_breakLoop)
 						yield break;
 
@@ -848,7 +783,6 @@
 
                     WaterDropsObjects [i].transform.position = transform.position;
 					
-
 					if (_initSpeed == Vector2.zero)
 						_initSpeed = initSpeed;
 
@@ -870,14 +804,12 @@
                         }
                         else if (Water2DType == "Regular")
                         {
-                            
                             _lastFillColor = FillColor;
                             if (MetaBall.Active == false)
                                 MetaBall.gameObject.GetComponent<SpriteRenderer>().color = FillColor;
 
                             SetRegularWaterparams(FillColor, StrokeColor, AlphaCutOff, AlphaStroke);
                         }
-
 
                         TrailRenderer tr = WaterDropsObjects[i].GetComponent<TrailRenderer>();
                         if (TrailStartSize <= 0f)
@@ -891,8 +823,7 @@
                             tr.endWidth = TrailEndSize;
                             tr.time = TrailDelay;
                         }
-
-
+                        
                         MetaBall.Velocity_Limiter_X = SpeedLimiterX;
                         MetaBall.Velocity_Limiter_Y = SpeedLimiterY;
 
@@ -908,14 +839,11 @@
                         MetaBall.GetComponent<CircleCollider2D>().sharedMaterial = PhysicMat;
                         MetaBall.GetComponent<CircleCollider2D>().radius = ColliderSize;
                         MetaBall.ScaleDown = ScaleDown;
-
-
                     }
 
                     MetaBall.Active = true;
                     MetaBall.witinTarget = false; 
-
-
+                    
                     //WaterDropsObjects [i].GetComponent<Rigidbody2D> ().velocity = _initSpeed;
                     Vector2 dir = transform.localRotation * Vector2.down;
                     MetaBall.GetComponent<Rigidbody2D>().velocity = dir * Speed;
@@ -941,7 +869,6 @@
 
                     //Invoke event
                     InvokeOnSpawnerEmittinEachParticle(gameObject);
-
                 }
 				yield return new WaitForEndOfFrame ();
 
@@ -959,8 +886,6 @@
                     if (!Loop)
                         yield break;
                 }
-
-
 			}
 		}
 
@@ -973,8 +898,6 @@
         /// <param name="delay"></param>
         void SpawnAllParticles(Vector3 _pos, Vector2 _initSpeed, int count = -1, float delay = 0f)
         {
-           
-
             IsSpawning = true;
 
             int auxCount = 0;
@@ -982,8 +905,6 @@
             //{
                 for (int i = 0; i < WaterDropsObjects.Length; i++)
                 {
-
-
                     MetaballParticleClass MetaBall = WaterDropsObjects[i].GetComponent<MetaballParticleClass>();
 
                     if (MetaBall.Active == true)
@@ -1015,19 +936,16 @@
                     }
                     else if (Water2DType == "Regular")
                     {
-
                         //_lastFillColor = FillColor;
                         if (MetaBall.Active == false)
                             MetaBall.gameObject.GetComponent<SpriteRenderer>().color = FillColor;
 
                         SetRegularWaterparams(FillColor, StrokeColor, AlphaCutOff, AlphaStroke);
                     }
-
                 }
 
                 WaterDropsObjects[i].GetComponent<Rigidbody2D>().velocity = _initSpeed;
-
-
+                
                     // Count limiter
                     if (count > -1)
                     {
@@ -1037,14 +955,8 @@
                             break;
                         }
                     }
-
-                    
-
                 }
-               
                 //alreadySpawned = true;
-
-             
            // }
         }
 
@@ -1056,26 +968,22 @@
         public void InvokeOnCollisionEnter2D(GameObject obj, GameObject other)
         {
             OnCollisionEnterList.Invoke(obj, other);
-
         }
 
         public void InvokeOnSpawnerStart(GameObject obj)
         {
             if(OnSpawnerAboutStart != null)
                 OnSpawnerAboutStart.Invoke(obj, null);
-
         }
 
         public void InvokeOnSpawnerEnd(GameObject obj)
         {
             OnSpawnerAboutEnd.Invoke(obj, null);
-
         }
 
         public void InvokeOnSpawnerEmittinEachParticle(GameObject obj)
         {
             OnSpawnerEmitingParticle.Invoke(obj, null);
-
         }
 
 
@@ -1084,8 +992,6 @@
         int _lastSorting;
         public void SetRegularWaterparams(Color fill, Color fresnel, float alphaCutoff, float multiplier)
         {
-           
-            
             //WaterMaterial.SetColor("_StrokeColor", stroke);
             WaterMaterial.SetFloat("_constant", multiplier);
             WaterMaterial.SetFloat("_botmcut", alphaCutoff);
@@ -1102,11 +1008,6 @@
                 _lastSorting = Sorting;
                 MultiColorManager.SetSorting(Sorting);
             }
-
-
-
-
-
         }
 
         public void SetToonWaterparams(Color fill, Color stroke, float alphaCutoff, float alphaStroke)
@@ -1116,9 +1017,7 @@
             WaterMaterial.SetFloat("_Cutoff", alphaCutoff);
             WaterMaterial.SetFloat("__Cutoff", alphaCutoff);
             WaterMaterial.SetFloat("_Stroke", alphaStroke);
-
-
-
+            
             MultiColorManager.SetColorScheme(ColorScheme, WaterMaterial, fill,stroke, alphaCutoff, alphaStroke);
 
             if (_lastSorting != Sorting)
@@ -1126,12 +1025,10 @@
                 _lastSorting = Sorting;
                 MultiColorManager.SetSorting(Sorting);
             }
-
         }
 
         public void SetRefractingWaterparams(float intensity, float mag, float speed)
         {
-            
             //WaterMaterial.SetColor("_TintColor", tint);
             WaterMaterial.SetFloat("_AmountOfTintColor", intensity);
             WaterMaterial.SetFloat("_Mag", mag*10f);
@@ -1150,7 +1047,6 @@
                 _lastSorting = Sorting;
                 MultiColorManager.SetSorting(Sorting);
             }
-
         }
 
         IEnumerator UpdateQuietParticleProperties()
@@ -1159,11 +1055,7 @@
             {
                 for (int i = 0; i < WaterDropsObjects.Length; i++)
                 {
-
                     MetaballParticleClass MetaBall = WaterDropsObjects[i].GetComponent<MetaballParticleClass>();
-
-                  
-
                     //CHANGE COLOR
                     if (Water2DType == "Refracting")
                     {
@@ -1178,7 +1070,6 @@
                     }
                     else if (Water2DType == "Regular")
                     {
-
                         _lastFillColor = FillColor;
                         if (MetaBall.Active == false)
                             MetaBall.gameObject.GetComponent<SpriteRenderer>().color = FillColor;
@@ -1186,13 +1077,9 @@
                         SetRegularWaterparams(FillColor, StrokeColor, AlphaCutOff, AlphaStroke);
                     }
 
-
-
                     MetaBall.Velocity_Limiter_X = SpeedLimiterX;
                     MetaBall.Velocity_Limiter_Y = SpeedLimiterY;
-
-                   
-
+                    
                     Rigidbody2D rb = MetaBall.GetComponent<Rigidbody2D>();
                     rb.sharedMaterial = PhysicMat;
                     rb.drag = LinearDrag;
@@ -1204,9 +1091,6 @@
 
                     MetaBall.GetComponent<CircleCollider2D>().sharedMaterial = PhysicMat;
                     MetaBall.GetComponent<CircleCollider2D>().radius = ColliderSize;
-
-
-
                 }
                 yield return null;
             }
@@ -1230,7 +1114,6 @@
                 */
 
             return WaterMaterial;
-
         }
 
         void StartCheckingFillShape()
@@ -1243,9 +1126,7 @@
 
         void RestoreCheckingFillShape()
         {
-
-            StartCoroutine(_restoreCheckingFillShapeEnum());
-            
+            StartCoroutine(_restoreCheckingFillShapeEnum());   
         }
         IEnumerator _restoreCheckingFillShapeEnum()
         {
@@ -1268,8 +1149,7 @@
             cf.useLayerMask = true;
 
             Collider2D[] allOverlappingColliders = new Collider2D[DropCount];
-
-           
+            
             int result = 0;
             
             while (true)
@@ -1279,7 +1159,6 @@
                     _checkOnFillRunning = false;
                     _breakCheckOnFill = false;
                     yield break;
-
                 }
 
                 yield return new WaitForFixedUpdate();
@@ -1297,7 +1176,6 @@
                 {
                     _trigged = (result >= DropCount * accuracy);
                 }
-               
 
                 if (_trigged) {
 
@@ -1306,9 +1184,6 @@
                     _checkOnFillComplete = true;
                     _breakCheckOnFill = true;
                 }
-
-                
-
             }
         }
 
@@ -1317,7 +1192,5 @@
         {
             DestroyImmediate(_parent);
         }
-
     }
-
 }
