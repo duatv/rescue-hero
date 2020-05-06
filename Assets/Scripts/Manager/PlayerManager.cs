@@ -81,7 +81,7 @@ public class PlayerManager : MonoBehaviour
     {
         if (pState == P_STATE.PLAYING)
         {
-            if (isContinueDetect && collision.gameObject.name.Contains("Lava_Pr") && collision.gameObject.tag.Contains(Utils.TAG_TRAP))
+            if ((isContinueDetect && collision.gameObject.name.Contains("Lava_Pr") && collision.gameObject.tag.Contains(Utils.TAG_TRAP)) || (isContinueDetect && collision.gameObject.tag.Contains(Utils.TAG_TRAP)))
             {
                 Debug.LogError(collision.gameObject.name + " ------> Tao die roi nhe.");
                 isContinueDetect = false;
