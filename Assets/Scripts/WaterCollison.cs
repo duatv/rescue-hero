@@ -10,14 +10,10 @@ public class WaterCollison : MonoBehaviour
     public bool isLava;
     public bool isStone = false;
     private Sprite sprCur;
+
     private void Awake()
     {
         sprCur = GetComponent<SpriteRenderer>().sprite;
-    }
-
-    void Start()
-    {
-        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -26,7 +22,6 @@ public class WaterCollison : MonoBehaviour
         {
             collision.gameObject.SetActive(false);
             isStone = true;
-            sprCur = sprLavaStone;
             GetComponent<SpriteRenderer>().sprite = sprLavaStone;
             MapLevelManager.Instance.dAllStone[id].transform.position = transform.position;
             gameObject.SetActive(false);

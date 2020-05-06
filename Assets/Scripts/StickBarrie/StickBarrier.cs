@@ -12,7 +12,8 @@ public class StickBarrier : MonoBehaviour
     [DrawIf("_moveType", MOVETYPE.FREE, ComparisonType.Equals, DisablingType.DontDraw)]
     public Vector3 vEndPos, vStartPos;
     
-    private bool beginMove;
+    [HideInInspector]
+    public bool beginMove;
     private bool moveBack;
 
     void Start()
@@ -27,6 +28,10 @@ public class StickBarrier : MonoBehaviour
             vStartPos = vEndPos;
         }
         transform.localPosition = vStartPos;
+    }
+    private void OnBecameInvisible()
+    {
+        gameObject.SetActive(false);
     }
     public void SaveStartPos()
     {
@@ -52,7 +57,7 @@ public class StickBarrier : MonoBehaviour
                 break;
             case MOVETYPE.FREE:
                 if (beginMove && !moveBack) {
-                    if (Vector3.Distance(transform.localPosition, vEndPos) > 0.001f)
+                    if (Vector3.Distance(transform.localPosition, vEndPos) > 0.003f)
                     {
                         transform.localPosition = Vector3.Lerp(transform.localPosition, vEndPos, Time.deltaTime * moveSpeed);
                     }
@@ -65,7 +70,7 @@ public class StickBarrier : MonoBehaviour
 
                 if (moveBack && beginMove)
                 {
-                    if (Vector3.Distance(transform.localPosition, vStartPos) > 0.001f)
+                    if (Vector3.Distance(transform.localPosition, vStartPos) > 0.003f)
                     {
                         transform.localPosition = Vector3.Lerp(transform.localPosition, vStartPos, Time.deltaTime * moveSpeed);
                     }

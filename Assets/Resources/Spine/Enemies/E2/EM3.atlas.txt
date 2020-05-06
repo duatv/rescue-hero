@@ -1,0 +1,104 @@
+
+EM3.png
+size: 176,176
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Group 10
+  rotate: false
+  xy: 2, 36
+  size: 61, 61
+  orig: 61, 61
+  offset: 0, 0
+  index: -1
+Group 5
+  rotate: false
+  xy: 76, 7
+  size: 29, 29
+  orig: 29, 29
+  offset: 0, 0
+  index: -1
+Group 8
+  rotate: false
+  xy: 2, 9
+  size: 72, 25
+  orig: 72, 25
+  offset: 0, 0
+  index: -1
+Group 9
+  rotate: true
+  xy: 130, 107
+  size: 66, 37
+  orig: 66, 37
+  offset: 0, 0
+  index: -1
+Shadow
+  rotate: true
+  xy: 113, 53
+  size: 59, 9
+  orig: 59, 9
+  offset: 0, 0
+  index: -1
+body
+  rotate: false
+  xy: 65, 114
+  size: 63, 59
+  orig: 63, 59
+  offset: 0, 0
+  index: -1
+dan 
+  rotate: true
+  xy: 151, 63
+  size: 13, 12
+  orig: 13, 12
+  offset: 0, 0
+  index: -1
+hand L1
+  rotate: true
+  xy: 65, 68
+  size: 44, 46
+  orig: 44, 46
+  offset: 0, 0
+  index: -1
+hand L2
+  rotate: true
+  xy: 65, 38
+  size: 28, 42
+  orig: 28, 42
+  offset: 0, 0
+  index: -1
+hand R1
+  rotate: false
+  xy: 109, 11
+  size: 37, 40
+  orig: 37, 40
+  offset: 0, 0
+  index: -1
+hand R2
+  rotate: true
+  xy: 124, 78
+  size: 27, 38
+  orig: 27, 38
+  offset: 0, 0
+  index: -1
+head
+  rotate: false
+  xy: 2, 99
+  size: 61, 74
+  orig: 61, 74
+  offset: 0, 0
+  index: -1
+leg L
+  rotate: false
+  xy: 124, 56
+  size: 25, 20
+  orig: 25, 20
+  offset: 0, 0
+  index: -1
+leg R
+  rotate: false
+  xy: 148, 34
+  size: 25, 20
+  orig: 25, 20
+  offset: 0, 0
+  index: -1

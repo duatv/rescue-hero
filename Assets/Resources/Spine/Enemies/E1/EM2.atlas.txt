@@ -1,0 +1,118 @@
+
+EM2.png
+size: 156,156
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Group 9
+  rotate: true
+  xy: 68, 11
+  size: 41, 40
+  orig: 41, 40
+  offset: 0, 0
+  index: -1
+Shadow
+  rotate: true
+  xy: 58, 2
+  size: 52, 8
+  orig: 52, 8
+  offset: 0, 0
+  index: -1
+body
+  rotate: false
+  xy: 2, 91
+  size: 72, 61
+  orig: 72, 61
+  offset: 0, 0
+  index: -1
+dao
+  rotate: true
+  xy: 76, 54
+  size: 98, 26
+  orig: 98, 26
+  offset: 0, 0
+  index: -1
+hand L2
+  rotate: false
+  xy: 110, 21
+  size: 17, 32
+  orig: 17, 32
+  offset: 0, 0
+  index: -1
+hand L3
+  rotate: false
+  xy: 58, 56
+  size: 15, 33
+  orig: 15, 33
+  offset: 0, 0
+  index: -1
+hand R1
+  rotate: false
+  xy: 130, 85
+  size: 19, 20
+  orig: 19, 20
+  offset: 0, 0
+  index: -1
+hand R2
+  rotate: false
+  xy: 133, 107
+  size: 15, 24
+  orig: 15, 24
+  offset: 0, 0
+  index: -1
+hand R3
+  rotate: false
+  xy: 134, 52
+  size: 18, 31
+  orig: 18, 31
+  offset: 0, 0
+  index: -1
+hat
+  rotate: false
+  xy: 2, 53
+  size: 54, 36
+  orig: 54, 36
+  offset: 0, 0
+  index: -1
+head
+  rotate: true
+  xy: 2, 12
+  size: 39, 48
+  orig: 39, 48
+  offset: 0, 0
+  index: -1
+hip
+  rotate: false
+  xy: 104, 133
+  size: 41, 19
+  orig: 41, 19
+  offset: 0, 0
+  index: -1
+leg L1
+  rotate: true
+  xy: 104, 107
+  size: 24, 27
+  orig: 24, 27
+  offset: 0, 0
+  index: -1
+leg L2
+  rotate: true
+  xy: 104, 55
+  size: 21, 28
+  orig: 21, 28
+  offset: 0, 0
+  index: -1
+leg R2
+  rotate: true
+  xy: 104, 55
+  size: 21, 28
+  orig: 21, 28
+  offset: 0, 0
+  index: -1
+leg R1
+  rotate: false
+  xy: 104, 78
+  size: 24, 27
+  orig: 24, 27
+  offset: 0, 0
+  index: -1

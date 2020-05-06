@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Metaball_liquid
+  - StickBarrie
+  - Trap_Lava
+  - Tag_Win
   layers:
   - Default
   - TransparentFX
@@ -18,11 +21,11 @@ TagManager:
   - LavaStone
   - MapObject
   - Gems
-  - 
-  - 
-  - 
-  - 
-  - 
+  - StickBarrie
+  - Player
+  - Lava
+  - Enemy
+  - Hostage
   - 
   - 
   - 
