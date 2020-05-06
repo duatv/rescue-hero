@@ -8,6 +8,9 @@ using UnityEditor;
 
 public class PlayerManager : MonoBehaviour
 {
+    public static PlayerManager Instance;
+
+
     public enum P_STATE { PLAYING, DIE, WIN , RUNNING}
     [HideInInspector]
     public bool isReadOnly = true;
@@ -23,11 +26,17 @@ public class PlayerManager : MonoBehaviour
 
     public P_STATE pState;
 
-
-    private bool isContinueDetect = true;
+    [HideInInspector]
+    public bool isContinueDetect = true;
     private bool beginMove = false;
     private bool isMoveLeft = false;
     private bool isMoveRight = false;
+
+
+    private void Awake()
+    {
+        Instance = this;
+    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.LeftArrow))
@@ -77,6 +86,10 @@ public class PlayerManager : MonoBehaviour
     }
     #endregion
 
+    public void OnPlayerDie() {
+        pState = P_STATE.DIE;
+        PlayAnim(str_Lose, false);
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (pState == P_STATE.PLAYING)
@@ -85,8 +98,7 @@ public class PlayerManager : MonoBehaviour
             {
                 Debug.LogError(collision.gameObject.name + " ------> Tao die roi nhe.");
                 isContinueDetect = false;
-                pState = P_STATE.DIE;
-                PlayAnim(str_Lose, false);
+                OnPlayerDie();
             }
             if (isContinueDetect && collision.gameObject.tag.Contains(Utils.TAG_WIN)) {
                 Debug.LogError("Tao win roi");
@@ -131,8 +143,6 @@ public class MyPlayerEditor : Editor
     {
         myScript = (PlayerManager)target;
     }
-    int selected = 0;
-    public static string[] opsChoosePosition = new string[] { "Male", "Female" };
 
     public override void OnInspectorGUI()
     {

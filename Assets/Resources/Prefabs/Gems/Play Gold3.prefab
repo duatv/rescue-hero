@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3916923304283204477}
   - component: {fileID: 5121266014640558974}
   - component: {fileID: 50250496001774972}
+  - component: {fileID: -4180170204890933566}
   m_Layer: 11
   m_Name: Play Gold3
   m_TagString: Tag_Win
@@ -134,3 +135,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-4180170204890933566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3916923304283204479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8dfb3221b99fe34e94cccd085487525, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

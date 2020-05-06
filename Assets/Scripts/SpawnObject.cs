@@ -42,11 +42,11 @@ public class SpawnObject : MonoBehaviour
         }
     }
 
-    int DefaultCount;
+    //int DefaultCount;
     bool _breakLoop = false;
     private void Spawn(List<GameObject> lst)
     {
-        Spawn(DefaultCount, lst);
+        Spawn(/*DefaultCount*/0, lst);
     }
     public void Spawn(int count, List<GameObject> lst)
     {
