@@ -66,8 +66,7 @@ public class MapLevelEditor : Editor
             {
                 myScript.OnSaveMap();
                 prefabPath = "Assets/" + myScript.gameObject.name + ".prefab";
-                PrefabUtility.InstantiatePrefab(myScript.gameObject);
-                //PrefabUtility.CreatePrefab(prefabPath, myScript.gameObject);
+                PrefabUtility.SaveAsPrefabAsset(myScript.gameObject, prefabPath);
 
                 //EditorUtility.SetDirty(myScript);
             }

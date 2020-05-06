@@ -6,6 +6,13 @@ public class Gems : MonoBehaviour
 {
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.tag.Contains(Utils.TAG_STICKBARRIE)) {
+            if (collision.gameObject.GetComponent<StickBarrier>() != null) {
+                if (!collision.gameObject.GetComponent<StickBarrier>().hasBlockGems) {
+                    collision.gameObject.GetComponent<StickBarrier>().hasBlockGems = true;
+                }
+            }
+        }
         if (collision.gameObject.name.Contains("Lava_Pr"))
         {
             if (PlayerManager.Instance != null) {

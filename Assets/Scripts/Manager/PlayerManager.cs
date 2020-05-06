@@ -106,6 +106,21 @@ public class PlayerManager : MonoBehaviour
             }
         }
     }
+
+    public void OnBeginRun() {
+        StartCoroutine(IEWaitToRun());
+    }
+    IEnumerator IEWaitToRun()
+    {
+        yield return new WaitForSeconds(2.0f);
+        pState = P_STATE.RUNNING;
+
+        beginMove = true;
+        saPlayer.skeleton.ScaleX = 1;
+        isMoveLeft = false;
+        isMoveRight = true;
+        PlayAnim(str_Move, true);
+    }
     IEnumerator IEWin() {
         pState = P_STATE.WIN;
         yield return new WaitForSeconds(1.0f);

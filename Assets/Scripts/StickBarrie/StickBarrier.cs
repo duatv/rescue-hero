@@ -8,6 +8,7 @@ public class StickBarrier : MonoBehaviour
     public MOVETYPE _moveType;
     public Rigidbody2D _rig2D;
     public float moveSpeed = 2;
+    public bool hasBlockGems;
 
     [DrawIf("_moveType", MOVETYPE.FREE, ComparisonType.Equals, DisablingType.DontDraw)]
     public Vector3 vEndPos, vStartPos;
@@ -47,19 +48,30 @@ public class StickBarrier : MonoBehaviour
     {
         beginMove = true;
     }
-
+    bool playerBeginMove = false;
+    private void PlayerBeginMove() {
+        if (PlayerManager.Instance != null) {
+            if (!playerBeginMove)
+            {
+                PlayerManager.Instance.OnBeginRun();
+                playerBeginMove = true;
+            }
+        }
+    }
     private void MoveStickBarrie()
     {
         switch (_moveType)
         {
             case MOVETYPE.DOWN:
                 _rig2D.velocity = Vector2.down;
+                PlayerBeginMove();
                 break;
             case MOVETYPE.FREE:
                 if (beginMove && !moveBack) {
                     if (Vector3.Distance(transform.localPosition, vEndPos) > 0.003f)
                     {
                         transform.localPosition = Vector3.Lerp(transform.localPosition, vEndPos, Time.deltaTime * moveSpeed);
+                        PlayerBeginMove();
                     }
                     else
                     {
@@ -73,6 +85,7 @@ public class StickBarrier : MonoBehaviour
                     if (Vector3.Distance(transform.localPosition, vStartPos) > 0.003f)
                     {
                         transform.localPosition = Vector3.Lerp(transform.localPosition, vStartPos, Time.deltaTime * moveSpeed);
+                        PlayerBeginMove();
                     }
                     else
                     {
@@ -82,13 +95,16 @@ public class StickBarrier : MonoBehaviour
                 }
                 break;
             case MOVETYPE.LEFT:
-                _rig2D.velocity = Vector2.left * moveSpeed ;
+                _rig2D.velocity = Vector2.left * moveSpeed;
+                PlayerBeginMove();
                 break;
             case MOVETYPE.RIGHT:
-                _rig2D.velocity = Vector2.right *  moveSpeed ;
+                _rig2D.velocity = Vector2.right *  moveSpeed;
+                PlayerBeginMove();
                 break;
             case MOVETYPE.UP:
                 _rig2D.velocity = Vector2.up *  moveSpeed;
+                PlayerBeginMove();
                 break;
         }
     }
