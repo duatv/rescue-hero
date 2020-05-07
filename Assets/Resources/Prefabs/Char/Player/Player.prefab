@@ -52,8 +52,9 @@ MonoBehaviour:
   sdaP2: {fileID: 11400000, guid: 9c34bc50b6f872342aa6325acf5b18b8, type: 2}
   str_idle: idle
   str_Win: win 2
-  str_Lose: die
+  str_Lose: sit
   str_Move: run
+  sEvent: 
   saPlayer: {fileID: 4785156957416898561}
   _rig2D: {fileID: 4785156955821841587}
   moveSpeed: 1.1

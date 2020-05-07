@@ -37,7 +37,7 @@ public class CharsBase : MonoBehaviour
                 break;
         }
     }
-    private void PlayAnim(string anim_, bool isLoop)
+    protected void PlayAnim(string anim_, bool isLoop)
     {
         saPlayer.AnimationState.SetAnimation(0, anim_, isLoop);
     }
@@ -46,6 +46,7 @@ public class CharsBase : MonoBehaviour
             Debug.LogError(_charType + " ------> bon tao die roi nhe.");
             isContinueDetect = false;
             PlayAnim(str_Lose, false);
+            PlayerManager.Instance.OnPlayerDie();
             _charStage = CHAR_STATE.DIE;
             if (_charType == CHAR_TYPE.HOSTAGE)
             {

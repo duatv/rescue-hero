@@ -20,6 +20,7 @@ public class PlayerManager : MonoBehaviour
     [SpineAnimation]
     public string str_idle, str_Win, str_Lose, str_Move;
 
+
     public SkeletonAnimation saPlayer;
     public Rigidbody2D _rig2D;
     public float moveSpeed;
@@ -39,7 +40,6 @@ public class PlayerManager : MonoBehaviour
     }
     private void PrepareMoveLeft()
     {
-        Debug.LogError("2");
         if (pState != P_STATE.DIE)
         {
             beginMove = true;
@@ -51,7 +51,6 @@ public class PlayerManager : MonoBehaviour
     }
     private void PrepareMoveRight()
     {
-        Debug.LogError("3");
         if (pState != P_STATE.DIE)
         {
             beginMove = true;
@@ -113,6 +112,11 @@ public class PlayerManager : MonoBehaviour
     {
         pState = P_STATE.DIE;
         _rig2D.velocity = Vector2.zero;
+        Physics2D.IgnoreLayerCollision(13, 11);
+        Physics2D.IgnoreLayerCollision(13, 14);
+        Physics2D.IgnoreLayerCollision(13, 9);
+        Physics2D.IgnoreLayerCollision(13, 4);
+
         MapLevelManager.Instance.OnLose();
         PlayAnim(str_Lose, false);
     }
@@ -122,13 +126,13 @@ public class PlayerManager : MonoBehaviour
         {
             if ((isContinueDetect && collision.gameObject.name.Contains("Lava_Pr") && collision.gameObject.tag.Contains(Utils.TAG_TRAP)) || (isContinueDetect && collision.gameObject.tag.Contains(Utils.TAG_TRAP)))
             {
-                Debug.LogError(collision.gameObject.name + " ------> Tao die roi nhe.");
                 isContinueDetect = false;
                 OnPlayerDie();
             }
             if (isContinueDetect && collision.gameObject.tag.Contains(Utils.TAG_WIN))
             {
-                Debug.LogError("Tao win roi");
+                _rig2D.velocity = Vector2.zero;
+                beginMove = false;
                 StartCoroutine(IEWin());
             }
         }
@@ -142,6 +146,16 @@ public class PlayerManager : MonoBehaviour
                 beginMove = false;
                 PlayAnim(str_idle, true);
             }
+            if (MapLevelManager.Instance.questType == MapLevelManager.QUEST_TYPE.SAVE_HOSTAGE)
+            {
+                if (collision.gameObject.GetComponent<HostageManager>() != null)
+                {
+                    _rig2D.velocity = Vector2.zero;
+                    beginMove = false;
+                    collision.gameObject.GetComponent<HostageManager>().PlayWin();
+                    StartCoroutine(IEWin());
+                }
+            }
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -150,7 +164,6 @@ public class PlayerManager : MonoBehaviour
         {
             if (collision.gameObject.tag.Contains(Utils.TAG_STICKBARRIE))
             {
-                Debug.LogError("OnBeginRun");
                 OnBeginRun();
             }
         }
@@ -161,7 +174,6 @@ public class PlayerManager : MonoBehaviour
         {
             if (collision.gameObject.tag.Contains(Utils.TAG_STICKBARRIE))
             {
-                Debug.LogError("OnCollisionExit2D");
                 OnBeginRun();
             }
         }
@@ -204,7 +216,6 @@ public class PlayerManager : MonoBehaviour
     {
         pState = P_STATE.WIN;
         yield return new WaitForSeconds(1.0f);
-        Debug.LogError("Real Win");
         MapLevelManager.Instance.OnWin();
         PlayAnim(str_Win, true);
     }

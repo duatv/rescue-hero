@@ -18,7 +18,9 @@ public class HostageManager : CharsBase
             else saPlayer.skeleton.ScaleX = 1;
         }
     }
-    
+    public void PlayWin() {
+        PlayAnim(str_Win, true);
+    }
 }
 #region Editor Mode
 #if UNITY_EDITOR

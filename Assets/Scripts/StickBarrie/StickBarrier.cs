@@ -52,7 +52,6 @@ public class StickBarrier : MonoBehaviour
     }
     bool playerBeginMove = false;
     private void PlayerBeginMove() {
-        Debug.LogError("1");
         if (PlayerManager.Instance != null) {
             if (!playerBeginMove)
             {
@@ -66,7 +65,7 @@ public class StickBarrier : MonoBehaviour
         switch (_moveType)
         {
             case MOVETYPE.DOWN:
-                _rig2D.velocity = Vector2.down;
+                _rig2D.velocity = Vector2.down * moveSpeed * speedAdd;
                 if(hasBlockGems)
                     PlayerBeginMove();
                 break;
@@ -101,23 +100,23 @@ public class StickBarrier : MonoBehaviour
                 }
                 break;
             case MOVETYPE.LEFT:
-                _rig2D.velocity = Vector2.left * moveSpeed;
+                _rig2D.velocity = Vector2.left * moveSpeed * speedAdd;
                 if (hasBlockGems)
                     PlayerBeginMove();
                 break;
             case MOVETYPE.RIGHT:
-                _rig2D.velocity = Vector2.right *  moveSpeed;
+                _rig2D.velocity = Vector2.right *  moveSpeed * speedAdd;
                 if (hasBlockGems)
                     PlayerBeginMove();
                 break;
             case MOVETYPE.UP:
-                _rig2D.velocity = Vector2.up *  moveSpeed;
+                _rig2D.velocity = Vector2.up *  moveSpeed * speedAdd;
                 if (hasBlockGems)
                     PlayerBeginMove();
                 break;
         }
     }
-
+    const float speedAdd = 2;
     private void /*Fixed*/Update()
     {
         PrepareBlockGem();
