@@ -38,19 +38,25 @@ public class PlayerManager : MonoBehaviour
         Instance = this;
     }
     private void PrepareMoveLeft() {
-        beginMove = true;
-        saPlayer.skeleton.ScaleX = -1;
-        isMoveLeft = true;
-        isMoveRight = false;
-        PlayAnim(str_Move, true);
+        if (pState != P_STATE.DIE)
+        {
+            beginMove = true;
+            saPlayer.skeleton.ScaleX = -1;
+            isMoveLeft = true;
+            isMoveRight = false;
+            PlayAnim(str_Move, true);
+        }
     }
     private void PrepareMoveRight()
     {
-        beginMove = true;
-        saPlayer.skeleton.ScaleX = 1;
-        isMoveLeft = false;
-        isMoveRight = true;
-        PlayAnim(str_Move, true);
+        if (pState != P_STATE.DIE)
+        {
+            beginMove = true;
+            saPlayer.skeleton.ScaleX = 1;
+            isMoveLeft = false;
+            isMoveRight = true;
+            PlayAnim(str_Move, true);
+        }
     }
     private void Update()
     {
@@ -86,10 +92,14 @@ public class PlayerManager : MonoBehaviour
     #region Player movement
     private void MoveLeft()
     {
-        _rig2D.velocity = Vector2.left * moveSpeed;
+        if (pState != P_STATE.DIE)
+            _rig2D.velocity = Vector2.left * moveSpeed;
+        else _rig2D.velocity = Vector2.zero;
     }
     public void MoveRight() {
-        _rig2D.velocity = Vector2.right * moveSpeed;
+        if (pState != P_STATE.DIE)
+            _rig2D.velocity = Vector2.right * moveSpeed;
+        else _rig2D.velocity = Vector2.zero;
     }
     #endregion
 

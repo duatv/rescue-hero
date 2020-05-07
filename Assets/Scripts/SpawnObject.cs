@@ -12,6 +12,10 @@ public class SpawnObject : MonoBehaviour
     private List<GameObject> lstLavaDrops = new List<GameObject>();
     private void OnEnable()
     {
+        //SpawnAllGems();
+    }
+    private void Start()
+    {
         SpawnAllGems();
     }
     private GameObject gInstantiate;
