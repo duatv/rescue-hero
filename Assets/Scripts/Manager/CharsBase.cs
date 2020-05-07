@@ -41,6 +41,16 @@ public class CharsBase : MonoBehaviour
     {
         saPlayer.AnimationState.SetAnimation(0, anim_, isLoop);
     }
+    public void OnDie_() {
+        _charStage = CHAR_STATE.DIE;
+        isContinueDetect = false;
+        PlayAnim(str_Lose, false);
+        if (_charType == CHAR_TYPE.HOSTAGE)
+        {
+            PlayerManager.Instance.OnPlayerDie();
+            MapLevelManager.Instance.OnLose();
+        }
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (isContinueDetect && collision.gameObject.name.Contains("Lava_Pr") && collision.gameObject.tag.Contains(Utils.TAG_TRAP))
