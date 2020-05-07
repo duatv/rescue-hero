@@ -5,13 +5,21 @@ using UnityEngine;
 using UnityEditor;
 #endif
 
-
 public class MapLevelManager : MonoBehaviour
 {
     public enum SPAWNTYPE { WATER, LAVA, STONE, GEMS }
     public enum QUEST_TYPE {NONE, COLLECT, KILL, SAVE_HOSTAGE, ALL}
     public static MapLevelManager Instance;
+
+    [HideInInspector]
+    public bool isReadOnly;
+    [DrawIf("isReadOnly", true, ComparisonType.Equals, DisablingType.ReadOnly)]
+    public Transform trHostage, trGems;
+
     public QUEST_TYPE questType;
+    [HideInInspector]
+    public Transform trTarget;
+
     public Dictionary<string, GameObject> dAllStone = new Dictionary<string, GameObject>();
     public List<StickBarrier> lstAllStick = new List<StickBarrier>();
 
@@ -19,16 +27,23 @@ public class MapLevelManager : MonoBehaviour
     {
         Instance = this;
     }
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-
+        switch (questType) {
+            case QUEST_TYPE.COLLECT:
+                trTarget = trGems;
+                break;
+            case QUEST_TYPE.SAVE_HOSTAGE:
+                trTarget = trHostage;
+                break;
+        }
     }
-
-    // Update is called once per frame
-    void Update()
+    public void OnWin()
     {
-
+        Debug.LogError("WINNNNNNNNNNN");
+    }
+    public void OnLose() {
+        Debug.LogError("LOSEEEEEEEEEEEEE");
     }
 
     public void OnSaveMap()

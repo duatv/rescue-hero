@@ -11,7 +11,7 @@ public class PlayerManager : MonoBehaviour
     public static PlayerManager Instance;
 
 
-    public enum P_STATE { PLAYING, DIE, WIN , RUNNING}
+    public enum P_STATE { PLAYING, DIE, WIN, RUNNING }
     [HideInInspector]
     public bool isReadOnly = true;
     [DrawIf("isReadOnly", true, ComparisonType.Equals, DisablingType.ReadOnly)]
@@ -37,7 +37,9 @@ public class PlayerManager : MonoBehaviour
     {
         Instance = this;
     }
-    private void PrepareMoveLeft() {
+    private void PrepareMoveLeft()
+    {
+        Debug.LogError("2");
         if (pState != P_STATE.DIE)
         {
             beginMove = true;
@@ -49,6 +51,7 @@ public class PlayerManager : MonoBehaviour
     }
     private void PrepareMoveRight()
     {
+        Debug.LogError("3");
         if (pState != P_STATE.DIE)
         {
             beginMove = true;
@@ -68,17 +71,18 @@ public class PlayerManager : MonoBehaviour
         {
             PrepareMoveRight();
         }
-        if (Input.GetKeyDown(KeyCode.Space)) {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
             beginMove = false;
             PlayAnim(str_idle, true);
-            //saPlayer.skeleton.ScaleX *= -1;
         }
     }
 
     private void FixedUpdate()
     {
         if (!IsCanMove()) _rig2D.velocity = Vector2.zero;
-        else {
+        else
+        {
             if (beginMove)
             {
                 if (isMoveLeft) MoveLeft();
@@ -86,7 +90,8 @@ public class PlayerManager : MonoBehaviour
             }
         }
     }
-    private bool IsCanMove() {
+    private bool IsCanMove()
+    {
         return pState != P_STATE.DIE || pState != P_STATE.WIN;
     }
     #region Player movement
@@ -96,16 +101,19 @@ public class PlayerManager : MonoBehaviour
             _rig2D.velocity = Vector2.left * moveSpeed;
         else _rig2D.velocity = Vector2.zero;
     }
-    public void MoveRight() {
+    public void MoveRight()
+    {
         if (pState != P_STATE.DIE)
             _rig2D.velocity = Vector2.right * moveSpeed;
         else _rig2D.velocity = Vector2.zero;
     }
     #endregion
 
-    public void OnPlayerDie() {
+    public void OnPlayerDie()
+    {
         pState = P_STATE.DIE;
         _rig2D.velocity = Vector2.zero;
+        MapLevelManager.Instance.OnLose();
         PlayAnim(str_Lose, false);
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -118,7 +126,8 @@ public class PlayerManager : MonoBehaviour
                 isContinueDetect = false;
                 OnPlayerDie();
             }
-            if (isContinueDetect && collision.gameObject.tag.Contains(Utils.TAG_WIN)) {
+            if (isContinueDetect && collision.gameObject.tag.Contains(Utils.TAG_WIN))
+            {
                 Debug.LogError("Tao win roi");
                 StartCoroutine(IEWin());
             }
@@ -126,8 +135,10 @@ public class PlayerManager : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (pState == P_STATE.PLAYING || pState == P_STATE.RUNNING) {
-            if (collision.gameObject.tag.Contains(Utils.TAG_STICKBARRIE)){
+        if (pState == P_STATE.PLAYING || pState == P_STATE.RUNNING)
+        {
+            if (collision.gameObject.tag.Contains(Utils.TAG_STICKBARRIE))
+            {
                 beginMove = false;
                 PlayAnim(str_idle, true);
             }
@@ -139,13 +150,26 @@ public class PlayerManager : MonoBehaviour
         {
             if (collision.gameObject.tag.Contains(Utils.TAG_STICKBARRIE))
             {
+                Debug.LogError("OnBeginRun");
+                OnBeginRun();
+            }
+        }
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (pState == P_STATE.PLAYING || pState == P_STATE.RUNNING)
+        {
+            if (collision.gameObject.tag.Contains(Utils.TAG_STICKBARRIE))
+            {
+                Debug.LogError("OnCollisionExit2D");
                 OnBeginRun();
             }
         }
     }
 
-    public void OnBeginRun() {
-            StartCoroutine(IEWaitToRun());
+    public void OnBeginRun()
+    {
+        StartCoroutine(IEWaitToRun());
     }
     IEnumerator IEWaitToRun()
     {
@@ -153,13 +177,35 @@ public class PlayerManager : MonoBehaviour
         if (pState != P_STATE.DIE)
         {
             pState = P_STATE.RUNNING;
-            PrepareMoveLeft();
+            if (MapLevelManager.Instance != null)
+            {
+                if (MapLevelManager.Instance.trTarget != null && MapLevelManager.Instance.trTarget.gameObject.activeSelf)
+                {
+                    PrepareRotate(MapLevelManager.Instance.trTarget);
+                }
+            }
         }
     }
-    IEnumerator IEWin() {
+
+    private void PrepareRotate(Transform _trTarget)
+    {
+        if (transform.localPosition.x > _trTarget.localPosition.x)
+        {
+            saPlayer.skeleton.ScaleX = -1;
+            PrepareMoveLeft();
+        }
+        else
+        {
+            saPlayer.skeleton.ScaleX = 1;
+            PrepareMoveRight();
+        }
+    }
+    IEnumerator IEWin()
+    {
         pState = P_STATE.WIN;
         yield return new WaitForSeconds(1.0f);
         Debug.LogError("Real Win");
+        MapLevelManager.Instance.OnWin();
         PlayAnim(str_Win, true);
     }
 
@@ -179,7 +225,8 @@ public class PlayerManager : MonoBehaviour
                 break;
         }
     }
-    private void PlayAnim(string anim_, bool isLoop) {
+    private void PlayAnim(string anim_, bool isLoop)
+    {
         saPlayer.AnimationState.SetAnimation(0, anim_, isLoop);
     }
 }

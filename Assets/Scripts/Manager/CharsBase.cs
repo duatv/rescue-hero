@@ -6,6 +6,8 @@ using Spine.Unity;
 public class CharsBase : MonoBehaviour
 {
     public enum CHAR_TYPE { ENEMY, HOSTAGE}
+    public enum CHAR_STATE { PLAYING, DIE, WIN, RUNNING }
+    public CHAR_STATE _charStage;
     public CHAR_TYPE _charType;
     [HideInInspector]
     public bool isReadOnly = true;
@@ -14,7 +16,9 @@ public class CharsBase : MonoBehaviour
     public SkeletonAnimation saPlayer;
     [DrawIf("isReadOnly", true, ComparisonType.Equals, DisablingType.ReadOnly)]
     [SpineAnimation]
-    public string str_idle, str_Win, str_Lose;
+    public string str_idle, str_Win, str_Lose, strAtt;
+
+
 
     private bool isContinueDetect = true;
     public void ChoosePlayer(int i)
@@ -39,9 +43,14 @@ public class CharsBase : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision) {
         if (isContinueDetect && collision.gameObject.name.Contains("Lava_Pr") && collision.gameObject.tag.Contains(Utils.TAG_TRAP)) {
-            Debug.LogError(collision.gameObject.name + " ------> bon tao die roi nhe.");
+            Debug.LogError(_charType + " ------> bon tao die roi nhe.");
             isContinueDetect = false;
             PlayAnim(str_Lose, false);
+            _charStage = CHAR_STATE.DIE;
+            if (_charType == CHAR_TYPE.HOSTAGE)
+            {
+                MapLevelManager.Instance.OnLose();
+            }
         }
     }
 }

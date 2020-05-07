@@ -7,17 +7,18 @@ using UnityEditor;
 #endif
 public class HostageManager : CharsBase
 {
-    // Start is called before the first frame update
     void Start()
     {
-
+        if (PlayerManager.Instance != null)
+        {
+            if (transform.localPosition.x > PlayerManager.Instance.transform.localPosition.x)
+            {
+                saPlayer.skeleton.ScaleX = -1;
+            }
+            else saPlayer.skeleton.ScaleX = 1;
+        }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    
 }
 #region Editor Mode
 #if UNITY_EDITOR

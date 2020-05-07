@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: be534ac1782787a469ed657017689bbc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -93,13 +93,13 @@ PolygonCollider2D:
   m_GameObject: {fileID: 4105256230520295356}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 369d025b6b8cf4a4da23d3cfa84d5376, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0.72999996, z: 0, w: 0.26}
+    border: {x: 0, y: 0.87, z: 0, w: 0.26}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 0.61, y: 2.71}
     newSize: {x: 0.61, y: 2.71}
@@ -134,9 +134,11 @@ MonoBehaviour:
   _moveType: 1
   _rig2D: {fileID: 3115096989556330170}
   moveSpeed: 2
+  hasBlockGems: 0
   vEndPos: {x: 0, y: 0, z: 0}
   vStartPos: {x: 0, y: 0, z: 0}
   beginMove: 0
+  time_: 2
 --- !u!50 &3115096989556330170
 Rigidbody2D:
   serializedVersion: 4
@@ -145,7 +147,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4105256230520295356}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 0
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -153,7 +155,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 369d025b6b8cf4a4da23d3cfa84d5376, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -228,7 +230,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 610ee490b55ce7d4aa18a8ab97b12e07, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -23,11 +23,11 @@ public class StickBarrier : MonoBehaviour
     void Start()
     {
         _rig2D = GetComponent<Rigidbody2D>();
-        if (MapLevelManager.Instance != null) {
-            if (MapLevelManager.Instance.lstAllStick.Contains(this)) {
-                MapLevelManager.Instance.lstAllStick.Add(this);
-            }
-        }
+        //if (MapLevelManager.Instance != null) {
+        //    if (MapLevelManager.Instance.lstAllStick.Contains(this)) {
+        //        MapLevelManager.Instance.lstAllStick.Add(this);
+        //    }
+        //}
     }
 
     private void PrepareBlockGem() {
@@ -52,6 +52,7 @@ public class StickBarrier : MonoBehaviour
     }
     bool playerBeginMove = false;
     private void PlayerBeginMove() {
+        Debug.LogError("1");
         if (PlayerManager.Instance != null) {
             if (!playerBeginMove)
             {
