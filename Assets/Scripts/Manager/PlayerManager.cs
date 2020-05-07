@@ -37,23 +37,30 @@ public class PlayerManager : MonoBehaviour
     {
         Instance = this;
     }
+    private void PrepareMoveLeft() {
+        beginMove = true;
+        saPlayer.skeleton.ScaleX = -1;
+        isMoveLeft = true;
+        isMoveRight = false;
+        PlayAnim(str_Move, true);
+    }
+    private void PrepareMoveRight()
+    {
+        beginMove = true;
+        saPlayer.skeleton.ScaleX = 1;
+        isMoveLeft = false;
+        isMoveRight = true;
+        PlayAnim(str_Move, true);
+    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            beginMove = true;
-            saPlayer.skeleton.ScaleX = -1;
-            isMoveLeft = true;
-            isMoveRight = false;
-            PlayAnim(str_Move, true);
+            PrepareMoveLeft();
         }
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            beginMove = true;
-            saPlayer.skeleton.ScaleX = 1;
-            isMoveLeft = false;
-            isMoveRight = true;
-            PlayAnim(str_Move, true);
+            PrepareMoveRight();
         }
         if (Input.GetKeyDown(KeyCode.Space)) {
             beginMove = false;
@@ -92,7 +99,7 @@ public class PlayerManager : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (pState == P_STATE.PLAYING)
+        if (pState == P_STATE.PLAYING || pState == P_STATE.RUNNING)
         {
             if ((isContinueDetect && collision.gameObject.name.Contains("Lava_Pr") && collision.gameObject.tag.Contains(Utils.TAG_TRAP)) || (isContinueDetect && collision.gameObject.tag.Contains(Utils.TAG_TRAP)))
             {
@@ -106,6 +113,25 @@ public class PlayerManager : MonoBehaviour
             }
         }
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (pState == P_STATE.PLAYING || pState == P_STATE.RUNNING) {
+            if (collision.gameObject.tag.Contains(Utils.TAG_STICKBARRIE)){
+                beginMove = false;
+                PlayAnim(str_idle, true);
+            }
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (pState == P_STATE.PLAYING || pState == P_STATE.RUNNING)
+        {
+            if (collision.gameObject.tag.Contains(Utils.TAG_STICKBARRIE))
+            {
+                OnBeginRun();
+            }
+        }
+    }
 
     public void OnBeginRun() {
         StartCoroutine(IEWaitToRun());
@@ -114,12 +140,7 @@ public class PlayerManager : MonoBehaviour
     {
         yield return new WaitForSeconds(2.0f);
         pState = P_STATE.RUNNING;
-
-        beginMove = true;
-        saPlayer.skeleton.ScaleX = 1;
-        isMoveLeft = false;
-        isMoveRight = true;
-        PlayAnim(str_Move, true);
+        PrepareMoveLeft();
     }
     IEnumerator IEWin() {
         pState = P_STATE.WIN;

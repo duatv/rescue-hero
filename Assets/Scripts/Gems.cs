@@ -8,7 +8,7 @@ public class Gems : MonoBehaviour
     {
         if (collision.gameObject.tag.Contains(Utils.TAG_STICKBARRIE)) {
             if (collision.gameObject.GetComponent<StickBarrier>() != null) {
-                if (!collision.gameObject.GetComponent<StickBarrier>().hasBlockGems) {
+                if (!collision.gameObject.GetComponent<StickBarrier>().hasBlockGems&& collision.gameObject.GetComponent<StickBarrier>().time_> 0) {
                     collision.gameObject.GetComponent<StickBarrier>().hasBlockGems = true;
                 }
             }

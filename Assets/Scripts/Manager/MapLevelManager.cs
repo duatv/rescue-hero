@@ -13,6 +13,7 @@ public class MapLevelManager : MonoBehaviour
     public static MapLevelManager Instance;
     public QUEST_TYPE questType;
     public Dictionary<string, GameObject> dAllStone = new Dictionary<string, GameObject>();
+    public List<StickBarrier> lstAllStick = new List<StickBarrier>();
 
     private void Awake()
     {
