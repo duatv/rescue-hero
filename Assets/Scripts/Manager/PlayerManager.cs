@@ -95,6 +95,7 @@ public class PlayerManager : MonoBehaviour
 
     public void OnPlayerDie() {
         pState = P_STATE.DIE;
+        _rig2D.velocity = Vector2.zero;
         PlayAnim(str_Lose, false);
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -134,13 +135,16 @@ public class PlayerManager : MonoBehaviour
     }
 
     public void OnBeginRun() {
-        StartCoroutine(IEWaitToRun());
+            StartCoroutine(IEWaitToRun());
     }
     IEnumerator IEWaitToRun()
     {
         yield return new WaitForSeconds(2.0f);
-        pState = P_STATE.RUNNING;
-        PrepareMoveLeft();
+        if (pState != P_STATE.DIE)
+        {
+            pState = P_STATE.RUNNING;
+            PrepareMoveLeft();
+        }
     }
     IEnumerator IEWin() {
         pState = P_STATE.WIN;
