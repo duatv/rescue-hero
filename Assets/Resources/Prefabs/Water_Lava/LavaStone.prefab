@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4942912116112305861}
   m_Layer: 9
   m_Name: LavaStone
-  m_TagString: Untagged
+  m_TagString: Tag_Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

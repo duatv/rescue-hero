@@ -7,4 +7,5 @@ public class Utils
     public const string TAG_STICKBARRIE = "StickBarrie";
     public const string TAG_TRAP = "Trap_Lava";
     public const string TAG_WIN = "Tag_Win";
+    public const string TAG_STONE = "Tag_Stone";
 }

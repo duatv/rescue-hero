@@ -8,7 +8,7 @@ using UnityEditor;
 public class MapLevelManager : MonoBehaviour
 {
     public enum SPAWNTYPE { WATER, LAVA, STONE, GEMS }
-    public enum QUEST_TYPE {NONE, COLLECT, KILL, SAVE_HOSTAGE, ALL}
+    public enum QUEST_TYPE {NONE, COLLECT, KILL, SAVE_HOSTAGE,OPEN_CHEST, ALL}
     public static MapLevelManager Instance;
 
     [HideInInspector]

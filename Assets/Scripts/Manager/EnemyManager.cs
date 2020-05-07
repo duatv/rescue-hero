@@ -7,6 +7,7 @@ using UnityEditor;
 
 public class EnemyManager : CharsBase
 {
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,7 +15,7 @@ public class EnemyManager : CharsBase
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         
     }

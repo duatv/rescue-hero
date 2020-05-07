@@ -8,6 +8,7 @@ TagManager:
   - StickBarrie
   - Trap_Lava
   - Tag_Win
+  - Tag_Stone
   layers:
   - Default
   - TransparentFX

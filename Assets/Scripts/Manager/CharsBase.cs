@@ -5,7 +5,7 @@ using Spine.Unity;
 
 public class CharsBase : MonoBehaviour
 {
-    public enum CHAR_TYPE { ENEMY, HOSTAGE}
+    public enum CHAR_TYPE { ENEMY, HOSTAGE }
     public enum CHAR_STATE { PLAYING, DIE, WIN, RUNNING }
     public CHAR_STATE _charStage;
     public CHAR_TYPE _charType;
@@ -41,15 +41,23 @@ public class CharsBase : MonoBehaviour
     {
         saPlayer.AnimationState.SetAnimation(0, anim_, isLoop);
     }
-    private void OnCollisionEnter2D(Collision2D collision) {
-        if (isContinueDetect && collision.gameObject.name.Contains("Lava_Pr") && collision.gameObject.tag.Contains(Utils.TAG_TRAP)) {
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (isContinueDetect && collision.gameObject.name.Contains("Lava_Pr") && collision.gameObject.tag.Contains(Utils.TAG_TRAP))
+        {
             Debug.LogError(_charType + " ------> bon tao die roi nhe.");
             isContinueDetect = false;
             PlayAnim(str_Lose, false);
-            PlayerManager.Instance.OnPlayerDie();
             _charStage = CHAR_STATE.DIE;
+
+            Physics2D.IgnoreLayerCollision(_charType == CHAR_TYPE.HOSTAGE ? 16 : 15, 11);
+            Physics2D.IgnoreLayerCollision(_charType == CHAR_TYPE.HOSTAGE ? 16 : 15, 14);
+            Physics2D.IgnoreLayerCollision(_charType == CHAR_TYPE.HOSTAGE ? 16 : 15, 9);
+            Physics2D.IgnoreLayerCollision(_charType == CHAR_TYPE.HOSTAGE ? 16 : 15, 4);
+
             if (_charType == CHAR_TYPE.HOSTAGE)
             {
+                PlayerManager.Instance.OnPlayerDie();
                 MapLevelManager.Instance.OnLose();
             }
         }
