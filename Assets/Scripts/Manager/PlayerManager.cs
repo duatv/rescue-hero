@@ -20,7 +20,7 @@ public class PlayerManager : MonoBehaviour
     [SpineAnimation]
     public string str_idle, str_Win, str_Lose, str_Move;
 
-
+    public LayerMask lmColl;
     public SkeletonAnimation saPlayer;
     public Rigidbody2D _rig2D;
     public float moveSpeed;
@@ -33,6 +33,8 @@ public class PlayerManager : MonoBehaviour
     private bool isMoveLeft = false;
     private bool isMoveRight = false;
 
+    private RaycastHit2D hit2D;
+    private Vector3 vEnd, vStart;
 
     private void Awake()
     {
@@ -76,9 +78,41 @@ public class PlayerManager : MonoBehaviour
             PlayAnim(str_idle, true);
         }
     }
+    private bool _isCanMoveToTarget;
+    private void CheckHitAhead()
+    {
+        vStart = new Vector3(transform.localPosition.x + saPlayer.skeleton.ScaleX * 0.35f, transform.localPosition.y - 1.5f, transform.localPosition.z);
+        vEnd = new Vector3(vStart.x + saPlayer.skeleton.ScaleX * 2f, vStart.y, vStart.z);
+        Debug.DrawLine(vStart, vEnd, Color.red);
+
+        hit2D = Physics2D.Linecast(vStart, vEnd, lmColl);
+        if (hit2D.collider != null)
+        {
+            if (hit2D.collider.gameObject.GetComponent<HostageManager>() != null)
+            {
+                HostageManager _hm = hit2D.collider.gameObject.GetComponent<HostageManager>();
+
+                if (_hm._charStage == CharsBase.CHAR_STATE.DIE) _isCanMoveToTarget = false;
+                else
+                {
+                    _isCanMoveToTarget = true;
+                }
+            }else _isCanMoveToTarget = false;
+        }
+    }
+    private void MoveToTarget()
+    {
+        Debug.LogError(gameObject.name + " <<<<<<<<<< ");
+        _rig2D.velocity = moveSpeed * (saPlayer.skeleton.ScaleX > 0 ? Vector2.right : Vector2.left);
+    }
 
     private void FixedUpdate()
     {
+        CheckHitAhead();
+
+        if (_isCanMoveToTarget) MoveToTarget();
+
+
         if (!IsCanMove()) _rig2D.velocity = Vector2.zero;
         else
         {
@@ -215,6 +249,7 @@ public class PlayerManager : MonoBehaviour
     IEnumerator IEWin()
     {
         pState = P_STATE.WIN;
+        _rig2D.velocity = Vector2.zero;
         yield return new WaitForSeconds(1.0f);
         MapLevelManager.Instance.OnWin();
         PlayAnim(str_Win, true);
