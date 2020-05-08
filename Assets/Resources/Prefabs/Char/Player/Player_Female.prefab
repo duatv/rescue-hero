@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2292742666827711795}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.004, y: 0.841, z: 0}
+  m_LocalPosition: {x: -0.004, y: 0.781, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4785156955821841584}
@@ -84,7 +84,7 @@ GameObject:
   - component: {fileID: 4785156955821841586}
   - component: {fileID: 4785156955821841587}
   m_Layer: 13
-  m_Name: Player
+  m_Name: Player_Female
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -144,7 +144,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.012573153, y: 0.66593325}
+  m_Offset: {x: 0.0017176569, y: 0.6030536}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -155,7 +155,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5948221, y: 0.8191755}
+  m_Size: {x: 0.5662405, y: 0.69341624}
   m_EdgeRadius: 0
 --- !u!50 &4785156955821841587
 Rigidbody2D:
@@ -311,7 +311,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0d6448dbe6cfe0c4f81d4d0416622647, type: 2}
+  - {fileID: 2100000, guid: ae1b3b0b550fd984b919dd80dbdb1390, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -344,7 +344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: 7a4457f805c5b274aae94b9255f6a545, type: 2}
+  skeletonDataAsset: {fileID: 11400000, guid: 9c34bc50b6f872342aa6325acf5b18b8, type: 2}
   initialSkinName: 
   initialFlipX: 0
   initialFlipY: 0

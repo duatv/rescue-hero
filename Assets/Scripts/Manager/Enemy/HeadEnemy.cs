@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HeadChar : MonoBehaviour
+public class HeadEnemy : MonoBehaviour
 {
-    public CharsBase pPlayer;
+    public EnemyBase enemyBase;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag.Contains(Utils.TAG_STONE))
         {
-            pPlayer.OnDie_();
+            enemyBase.OnDie_();
         }
     }
 }

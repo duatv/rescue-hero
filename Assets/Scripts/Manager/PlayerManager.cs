@@ -241,44 +241,46 @@ public class PlayerManager : MonoBehaviour
         saPlayer.AnimationState.SetAnimation(0, anim_, isLoop);
     }
 }
-#region Editor Mode
-#if UNITY_EDITOR
-[CustomEditor(typeof(PlayerManager))]
-public class MyPlayerEditor : Editor
-{
-    private PlayerManager myScript;
-    private void OnSceneGUI()
-    {
-        myScript = (PlayerManager)target;
-    }
+//#region Editor Mode
+//#if UNITY_EDITOR
+//[CustomEditor(typeof(PlayerManager))]
+//public class MyPlayerEditor : Editor
+//{
+//    private PlayerManager myScript;
+//    private void OnSceneGUI()
+//    {
+//        myScript = (PlayerManager)target;
+//    }
 
-    public override void OnInspectorGUI()
-    {
-        DrawDefaultInspector();
+//    public override void OnInspectorGUI()
+//    {
+//        DrawDefaultInspector();
 
-        GUIStyle SectionNameStyle = new GUIStyle();
-        SectionNameStyle.fontSize = 16;
-        SectionNameStyle.normal.textColor = Color.blue;
-        if (myScript == null) return;
-        EditorGUILayout.LabelField("\t        Choose Player", SectionNameStyle);
-        EditorGUILayout.BeginVertical(GUI.skin.box);
-        {
-            if (GUILayout.Button("Male", GUILayout.Height(50)))
-            {
-                myScript.ChoosePlayer(0);
-            }
-            if (GUILayout.Button("Female", GUILayout.Height(50)))
-            {
-                myScript.ChoosePlayer(1);
-            }
-        }
-        EditorGUILayout.EndVertical();
-    }
-    private void OnDisable()
-    {
-        if (!myScript) return;
-        EditorUtility.SetDirty(myScript);
-    }
-}
-#endif
-#endregion
+//        GUIStyle SectionNameStyle = new GUIStyle();
+//        SectionNameStyle.fontSize = 16;
+//        SectionNameStyle.normal.textColor = Color.blue;
+//        if (myScript == null) return;
+//        EditorGUILayout.LabelField("\t        Choose Player", SectionNameStyle);
+//        EditorGUILayout.BeginVertical(GUI.skin.box);
+//        {
+//            if (GUILayout.Button("Male", GUILayout.Height(50)))
+//            {
+//                myScript.ChoosePlayer(0);
+//                EditorUtility.SetDirty(myScript);
+//            }
+//            if (GUILayout.Button("Female", GUILayout.Height(50)))
+//            {
+//                myScript.ChoosePlayer(1);
+//                EditorUtility.SetDirty(myScript);
+//            }
+//        }
+//        EditorGUILayout.EndVertical();
+//    }
+//    private void OnDisable()
+//    {
+//        if (!myScript) return;
+//        EditorUtility.SetDirty(myScript);
+//    }
+//}
+//#endif
+//#endregion

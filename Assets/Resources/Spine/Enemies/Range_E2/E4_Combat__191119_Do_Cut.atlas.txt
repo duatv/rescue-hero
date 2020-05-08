@@ -1,0 +1,146 @@
+
+E4_Combat__191119_Do_Cut.png
+size: 176,176
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Body
+  rotate: false
+  xy: 2, 96
+  size: 62, 78
+  orig: 62, 78
+  offset: 0, 0
+  index: -1
+Boom
+  rotate: true
+  xy: 101, 135
+  size: 39, 37
+  orig: 39, 37
+  offset: 0, 0
+  index: -1
+Boom copy 3
+  rotate: true
+  xy: 134, 101
+  size: 32, 24
+  orig: 32, 24
+  offset: 0, 0
+  index: -1
+Enemy2
+  rotate: false
+  xy: 85, 36
+  size: 7, 6
+  orig: 7, 6
+  offset: 0, 0
+  index: -1
+Head
+  rotate: false
+  xy: 2, 32
+  size: 44, 62
+  orig: 44, 62
+  offset: 0, 0
+  index: -1
+Hip
+  rotate: false
+  xy: 103, 7
+  size: 42, 35
+  orig: 42, 35
+  offset: 0, 0
+  index: -1
+L_Hand_1
+  rotate: false
+  xy: 66, 118
+  size: 33, 56
+  orig: 33, 56
+  offset: 0, 0
+  index: -1
+L_Hand_2
+  rotate: true
+  xy: 48, 36
+  size: 58, 35
+  orig: 58, 35
+  offset: 0, 0
+  index: -1
+L_Leg_1
+  rotate: false
+  xy: 72, 2
+  size: 29, 32
+  orig: 29, 32
+  offset: 0, 0
+  index: -1
+L_Leg_2
+  rotate: true
+  xy: 121, 46
+  size: 16, 7
+  orig: 16, 7
+  offset: 0, 0
+  index: -1
+L_Leg_3
+  rotate: false
+  xy: 66, 98
+  size: 25, 18
+  orig: 25, 18
+  offset: 0, 0
+  index: -1
+Layer 1
+  rotate: true
+  xy: 115, 98
+  size: 18, 13
+  orig: 18, 13
+  offset: 0, 0
+  index: -1
+Layer 2
+  rotate: false
+  xy: 93, 101
+  size: 20, 15
+  orig: 20, 15
+  offset: 0, 0
+  index: -1
+R-Leg_2
+  rotate: false
+  xy: 121, 122
+  size: 11, 11
+  orig: 11, 11
+  offset: 0, 0
+  index: -1
+R_Hand_1
+  rotate: false
+  xy: 85, 44
+  size: 34, 52
+  orig: 34, 52
+  offset: 0, 0
+  index: -1
+R_Hand_2
+  rotate: true
+  xy: 39, 3
+  size: 27, 31
+  orig: 27, 31
+  offset: 0, 0
+  index: -1
+R_Hand_4
+  rotate: false
+  xy: 2, 2
+  size: 35, 28
+  orig: 35, 28
+  offset: 0, 0
+  index: -1
+R_Leg_1
+  rotate: false
+  xy: 121, 64
+  size: 25, 32
+  orig: 25, 32
+  offset: 0, 0
+  index: -1
+R_Leg_3
+  rotate: true
+  xy: 101, 118
+  size: 15, 18
+  orig: 15, 18
+  offset: 0, 0
+  index: -1
+Shadow
+  rotate: false
+  xy: 48, 32
+  size: 15, 2
+  orig: 15, 2
+  offset: 0, 0
+  index: -1

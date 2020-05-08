@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6b194f808b1af6499c93410e504af42, type: 3}
+  m_Name: E1_Thu1__191113_Do_Color_Atlas
+  m_EditorClassIdentifier: 
+  atlasFile: {fileID: 4900000, guid: fb1b1176043dece4aba56b498b4220c3, type: 3}
+  materials:
+  - {fileID: 2100000, guid: 7447334287cb1fe4f86de9ff01e7c179, type: 2}
