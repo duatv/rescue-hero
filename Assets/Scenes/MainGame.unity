@@ -381,12 +381,12 @@ PrefabInstance:
     - target: {fileID: 447227860025940806, guid: ac1bb9e81a579b245830d31eb7553807,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.959
+      value: 0.657
       objectReference: {fileID: 0}
     - target: {fileID: 447227860025940806, guid: ac1bb9e81a579b245830d31eb7553807,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.194
+      value: -1.329
       objectReference: {fileID: 0}
     - target: {fileID: 447227860025940806, guid: ac1bb9e81a579b245830d31eb7553807,
         type: 3}
@@ -437,6 +437,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EnemyRanger_E2
+      objectReference: {fileID: 0}
+    - target: {fileID: 447227860025940807, guid: ac1bb9e81a579b245830d31eb7553807,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 447227862102556836, guid: ac1bb9e81a579b245830d31eb7553807,
         type: 3}
@@ -21785,7 +21790,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &624887066
 Transform:
   m_ObjectHideFlags: 0
@@ -29900,12 +29905,12 @@ PrefabInstance:
     - target: {fileID: 4785156955821841584, guid: 71fda4c35e75926449050e53ebde1a78,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.758
+      value: -0.833
       objectReference: {fileID: 0}
     - target: {fileID: 4785156955821841584, guid: 71fda4c35e75926449050e53ebde1a78,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.18
+      value: 1.323
       objectReference: {fileID: 0}
     - target: {fileID: 4785156955821841584, guid: 71fda4c35e75926449050e53ebde1a78,
         type: 3}
@@ -29956,6 +29961,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player_Male
+      objectReference: {fileID: 0}
+    - target: {fileID: 4785156955821841585, guid: 71fda4c35e75926449050e53ebde1a78,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4785156957416898563, guid: 71fda4c35e75926449050e53ebde1a78,
         type: 3}
@@ -31176,7 +31186,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &846943654
 Transform:
   m_ObjectHideFlags: 0
@@ -55318,12 +55328,12 @@ PrefabInstance:
     - target: {fileID: 447227860025940806, guid: ed0c36ca39b808649bc3c90bf717b75c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.891
+      value: 1.106
       objectReference: {fileID: 0}
     - target: {fileID: 447227860025940806, guid: ed0c36ca39b808649bc3c90bf717b75c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.272
+      value: -1.264
       objectReference: {fileID: 0}
     - target: {fileID: 447227860025940806, guid: ed0c36ca39b808649bc3c90bf717b75c,
         type: 3}
@@ -55374,6 +55384,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EnemyMonster_E2
+      objectReference: {fileID: 0}
+    - target: {fileID: 447227860025940807, guid: ed0c36ca39b808649bc3c90bf717b75c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 447227862102556836, guid: ed0c36ca39b808649bc3c90bf717b75c,
         type: 3}
@@ -64221,6 +64236,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EnemyMelee_E1
+      objectReference: {fileID: 0}
+    - target: {fileID: 447227860025940807, guid: e9bd682b6b6c2214a8aaa1cd8d58b107,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 447227862102556836, guid: e9bd682b6b6c2214a8aaa1cd8d58b107,
         type: 3}

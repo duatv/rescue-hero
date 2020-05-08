@@ -61,7 +61,7 @@ public class EnemyBase : MonoBehaviour
         if (hit2D.collider != null) {
             if (!hit2D.collider.gameObject.tag.Contains(Utils.TAG_STICKBARRIE)&& !isBeginAtt)
             {
-                Debug.LogError("Begin Attack-----> " + hit2D.collider.name);
+                Debug.LogError(gameObject.name+ " --> Begin Attack-----> " + hit2D.collider.transform.parent.gameObject.name);
                 targetName = hit2D.collider.name;
                 OnAttack();
                 isBeginAtt = true;

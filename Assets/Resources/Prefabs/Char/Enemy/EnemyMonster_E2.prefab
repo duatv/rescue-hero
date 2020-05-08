@@ -373,4 +373,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fa716e232e555b48ad8b4d91e09e565, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyBase: {fileID: 0}
+  enemyBase: {fileID: 5027129451218940303}
