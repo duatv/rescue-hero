@@ -9,7 +9,8 @@ public class HeadPlayer : MonoBehaviour
     {
         if (collision.gameObject.tag.Contains(Utils.TAG_STONE))
         {
-            pPlayer.OnPlayerDie();
+            if(GameManager.Instance.gameState != GameManager.GAMESTATE.WIN)
+                pPlayer.OnPlayerDie();
         }
     }
 }

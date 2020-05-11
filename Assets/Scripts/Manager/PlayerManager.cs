@@ -19,7 +19,7 @@ public class PlayerManager : MonoBehaviour
     [DrawIf("isReadOnly", true, ComparisonType.Equals, DisablingType.ReadOnly)]
     [SpineAnimation]
     public string str_idle, str_Win, str_Lose, str_Move;
-
+    public PlayerDetectGems _detectGems;
     public LayerMask lmColl;
     public SkeletonAnimation saPlayer;
     public Rigidbody2D _rig2D;
@@ -44,6 +44,7 @@ public class PlayerManager : MonoBehaviour
     {
         GameManager.Instance.gTargetFollow = gameObject;
     }
+
     private void PrepareMoveLeft()
     {
         if (pState != P_STATE.DIE)
@@ -95,8 +96,8 @@ public class PlayerManager : MonoBehaviour
             if (hit2D.collider.gameObject.GetComponent<HostageManager>() != null)
             {
                 HostageManager _hm = hit2D.collider.gameObject.GetComponent<HostageManager>();
-
                 if (_hm._charStage == CharsBase.CHAR_STATE.DIE) _isCanMoveToTarget = false;
+
                 else
                 {
                     _isCanMoveToTarget = true;
@@ -151,10 +152,10 @@ public class PlayerManager : MonoBehaviour
         pState = P_STATE.DIE;
         GameManager.Instance.gameState = GameManager.GAMESTATE.LOSE;
         _rig2D.velocity = Vector2.zero;
-        Physics2D.IgnoreLayerCollision(13, 11);
-        Physics2D.IgnoreLayerCollision(13, 14);
-        Physics2D.IgnoreLayerCollision(13, 9);
-        Physics2D.IgnoreLayerCollision(13, 4);
+        Physics2D.IgnoreLayerCollision(13, 11, false);
+        Physics2D.IgnoreLayerCollision(13, 14, false);
+        Physics2D.IgnoreLayerCollision(13, 9, false);
+        Physics2D.IgnoreLayerCollision(13, 4, false);
 
         if(GameManager.Instance.gameState != GameManager.GAMESTATE.WIN)
             MapLevelManager.Instance.OnLose();
@@ -166,8 +167,11 @@ public class PlayerManager : MonoBehaviour
         {
             if ((isContinueDetect && collision.gameObject.name.Contains("Lava_Pr") && collision.gameObject.tag.Contains(Utils.TAG_TRAP)) || (isContinueDetect && collision.gameObject.tag.Contains(Utils.TAG_TRAP)))
             {
-                isContinueDetect = false;
-                OnPlayerDie();
+                if (GameManager.Instance.gameState != GameManager.GAMESTATE.WIN)
+                {
+                    isContinueDetect = false;
+                    OnPlayerDie();
+                }
             }
             if (isContinueDetect && collision.gameObject.tag.Contains(Utils.TAG_WIN))
             {
@@ -193,10 +197,22 @@ public class PlayerManager : MonoBehaviour
                 {
                     _rig2D.velocity = Vector2.zero;
                     beginMove = false;
+                    GameManager.Instance.gameState = GameManager.GAMESTATE.WIN;
                     if (GameManager.Instance.gameState != GameManager.GAMESTATE.LOSE) {
                         collision.gameObject.GetComponent<HostageManager>().PlayWin();
                         StartCoroutine(IEWin());
                     }
+                }
+            }
+            if (collision.gameObject.tag.Contains(Utils.TAG_WIN))
+            {
+                Debug.LogError("!!");
+                _rig2D.velocity = Vector2.zero;
+                GameManager.Instance.gameState = GameManager.GAMESTATE.WIN;
+                beginMove = false;
+                if (GameManager.Instance.gameState != GameManager.GAMESTATE.LOSE)
+                {
+                    StartCoroutine(IEWin());
                 }
             }
         }

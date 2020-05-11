@@ -58,17 +58,16 @@ public class CharsBase : MonoBehaviour
     {
         if (isContinueDetect && collision.gameObject.name.Contains("Lava_Pr") && collision.gameObject.tag.Contains(Utils.TAG_TRAP))
         {
-            Debug.LogError(_charType + " ------> bon tao die roi nhe.");
             isContinueDetect = false;
             PlayAnim(str_Lose, false);
             _charStage = CHAR_STATE.DIE;
             GameManager.Instance.gameState = GameManager.GAMESTATE.LOSE;
 
 
-            Physics2D.IgnoreLayerCollision(_charType == CHAR_TYPE.HOSTAGE ? 16 : 15, 11);
-            Physics2D.IgnoreLayerCollision(_charType == CHAR_TYPE.HOSTAGE ? 16 : 15, 14);
-            Physics2D.IgnoreLayerCollision(_charType == CHAR_TYPE.HOSTAGE ? 16 : 15, 9);
-            Physics2D.IgnoreLayerCollision(_charType == CHAR_TYPE.HOSTAGE ? 16 : 15, 4);
+            Physics2D.IgnoreLayerCollision(_charType == CHAR_TYPE.HOSTAGE ? 16 : 15, 11,false);
+            Physics2D.IgnoreLayerCollision(_charType == CHAR_TYPE.HOSTAGE ? 16 : 15, 14, false);
+            Physics2D.IgnoreLayerCollision(_charType == CHAR_TYPE.HOSTAGE ? 16 : 15, 9, false);
+            Physics2D.IgnoreLayerCollision(_charType == CHAR_TYPE.HOSTAGE ? 16 : 15, 4, false);
 
             if (_charType == CHAR_TYPE.HOSTAGE)
             {

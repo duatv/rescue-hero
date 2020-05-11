@@ -24,11 +24,7 @@ public class StickBarrier : MonoBehaviour
     void Start()
     {
         _rig2D = GetComponent<Rigidbody2D>();
-        //if (MapLevelManager.Instance != null) {
-        //    if (MapLevelManager.Instance.lstAllStick.Contains(this)) {
-        //        MapLevelManager.Instance.lstAllStick.Add(this);
-        //    }
-        //}
+        MapLevelManager.Instance.lstAllStick.Add(this);
     }
 
     private void PrepareBlockGem() {
@@ -53,7 +49,14 @@ public class StickBarrier : MonoBehaviour
     }
     bool playerBeginMove = false;
     private void PlayerBeginMove() {
-        if (PlayerManager.Instance != null) {
+        //bool b = false;
+        //foreach (StickBarrier sb in MapLevelManager.Instance.lstAllStick) {
+        //    if (sb.hasBlockGems) b = true;
+        //}
+        //Debug.LogError("------> " + b);
+
+        if (PlayerManager.Instance != null)
+        {
             if (!playerBeginMove)
             {
                 PlayerManager.Instance.OnBeginRun();
@@ -72,10 +75,9 @@ public class StickBarrier : MonoBehaviour
                 if (beginMove && !moveBack) {
                     if (Vector3.Distance(transform.localPosition, vEndPos) > 0.003f)
                     {
-                        //transform.localPosition = Vector3.Lerp(transform.localPosition, vEndPos, Time.deltaTime * moveSpeed);
                         MoveStick(vEndPos);
-                        if (hasBlockGems)
-                            PlayerBeginMove();
+                        //if (hasBlockGems)
+                        //    PlayerBeginMove();
                     }
                     else
                     {
@@ -88,10 +90,9 @@ public class StickBarrier : MonoBehaviour
                 {
                     if (Vector3.Distance(transform.localPosition, vStartPos) > 0.003f)
                     {
-                        //transform.localPosition = Vector3.Lerp(transform.localPosition, vStartPos, Time.deltaTime * moveSpeed);
                         MoveStick(vStartPos);
-                        if (hasBlockGems)
-                            PlayerBeginMove();
+                        //if (hasBlockGems)
+                        //    PlayerBeginMove();
                     }
                     else
                     {
@@ -102,46 +103,42 @@ public class StickBarrier : MonoBehaviour
                 break;
             case MOVETYPE.LEFT:
                 _rig2D.velocity = Vector2.left * moveSpeed * speedAdd;
-                //vDownPos = new Vector3(transform.localPosition.x - 5, transform.localPosition.y, transform.localPosition.z);
-                //MoveStick(vDownPos);
-
-                if (hasBlockGems)
-                    PlayerBeginMove();
+                //if (hasBlockGems)
+                //    PlayerBeginMove();
                 break;
             case MOVETYPE.RIGHT:
                 _rig2D.velocity = Vector2.right *  moveSpeed * speedAdd;
-                //vDownPos = new Vector3(transform.localPosition.x + 5, transform.localPosition.y, transform.localPosition.z);
-                //MoveStick(vDownPos);
-                if (hasBlockGems)
-                    PlayerBeginMove();
+                //if (hasBlockGems)
+                //    PlayerBeginMove();
                 break;
             case MOVETYPE.UP:
                 _rig2D.velocity = Vector2.up *  moveSpeed * speedAdd;
-
-                //vUpPos = new Vector3(transform.localPosition.x+5, transform.localPosition.y, transform.localPosition.z);
-                //MoveStick(vUpPos);
-
-                if (hasBlockGems)
-                    PlayerBeginMove();
+                //if (hasBlockGems)
+                //    PlayerBeginMove();
                 break;
             case MOVETYPE.DOWN:
                 _rig2D.velocity = Vector2.down * moveSpeed * speedAdd;
-                //vDownPos = new Vector3(transform.localPosition.x+5, transform.localPosition.y, transform.localPosition.z);
-                //MoveStick(vDownPos);
-
-                if (hasBlockGems)
-                    PlayerBeginMove();
+                //if (hasBlockGems)
+                //    PlayerBeginMove();
                 break;
         }
     }
     const float speedAdd = 2;
-    private void /*Fixed*/Update()
+    private void Update()
     {
         PrepareBlockGem();
 
         if (beginMove)
             MoveStickBarrie();
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag.Contains(Utils.TAG_WIN))
+        {
+            if (!hasBlockGems) hasBlockGems = true;
+        }
+    }
+
     #region Editor
     public void SaveEndPos()
     {

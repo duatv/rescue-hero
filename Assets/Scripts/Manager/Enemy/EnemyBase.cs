@@ -150,11 +150,6 @@ public class EnemyBase : MonoBehaviour
             PlayAnim(str_Lose, false);
             _charStage = CHAR_STATE.DIE;
         }
-
-        //Physics2D.IgnoreLayerCollision(15, 11);
-        //Physics2D.IgnoreLayerCollision(15, 14);
-        //Physics2D.IgnoreLayerCollision(15, 9);
-        //Physics2D.IgnoreLayerCollision(15, 4);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

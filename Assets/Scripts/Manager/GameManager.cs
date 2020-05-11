@@ -17,17 +17,10 @@ public class GameManager : MonoBehaviour
     public GameObject gPanelLose;
 
     [HideInInspector] public GameObject gTargetFollow;
-
-    private GameObject gLevelClone;
-    private List<GameObject> lstAllLevel = new List<GameObject>();
     
     private void Awake()
     {
         Instance = this;
-    }
-    private void OnEnable()
-    {
-        //InitAllLevel();
     }
     // Start is called before the first frame update
     void Start()
@@ -35,26 +28,13 @@ public class GameManager : MonoBehaviour
         if(!isTest)
             LoadLevelToPlay(Utils.LEVEL_INDEX);
     }
-
-    private void InitAllLevel() {
-        foreach(MapLevelManager mMap in levelConfig.lstAllLevel)
-        {
-            gLevelClone = Instantiate(mMap.gameObject, Vector3.zero, Quaternion.identity);
-            gLevelClone.SetActive(false);
-            if (!lstAllLevel.Contains(gLevelClone))
-            {
-                lstAllLevel.Add(gLevelClone);
-            }
-        }
-    }
     private void LoadLevelToPlay(int levelIndex) {
         mapLevel = levelConfig.lstAllLevel[levelIndex];
         Instantiate(mapLevel.gameObject, Vector3.zero, Quaternion.identity);
     }
 
     private void ActiveCamEff() {
-        PlayerManager _p = FindObjectOfType<PlayerManager>();
-        _camFollow.objectToFollow = /*_p.gameObject;*/gTargetFollow;
+        _camFollow.objectToFollow = gTargetFollow;
         _camFollow.beginFollow = true;
     }
     public void ShowWinPanel()
@@ -70,7 +50,7 @@ public class GameManager : MonoBehaviour
     public void OnNextLevel()
     {
         Debug.LogError(Utils.LEVEL_INDEX + " vs " + levelConfig.lstAllLevel.Count);
-        /*if (Utils.LEVEL_INDEX < lstAllLevel.Count)*/ {
+        if (Utils.LEVEL_INDEX < levelConfig.lstAllLevel.Count-1) {
             Utils.LEVEL_INDEX += 1;
             SceneManager.LoadSceneAsync("MainGame");
         }

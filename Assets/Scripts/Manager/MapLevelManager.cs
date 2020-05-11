@@ -40,7 +40,7 @@ public class MapLevelManager : MonoBehaviour
     }
     public void OnWin()
     {
-        Debug.LogError("WINNNNNNNNNNN");
+        //Debug.LogError("WINNNNNNNNNNN");
         GameManager.Instance.ShowWinPanel();
     }
     public void OnLose() {
@@ -57,6 +57,7 @@ public class MapLevelManager : MonoBehaviour
     }
 }
 #region Editor Mode
+#if UNITY_EDITOR
 [CustomEditor(typeof(MapLevelManager))]
 public class MapLevelEditor : Editor
 {
@@ -103,4 +104,5 @@ public class MapLevelEditor : Editor
     //    EditorUtility.SetDirty(myScript);
     //}
 }
+#endif
 #endregion
