@@ -10,7 +10,7 @@ public class HostageManager : CharsBase
     void Start()
     {
         if (MapLevelManager.Instance != null) {
-            MapLevelManager.Instance.trHostage = transform;
+            MapLevelManager.Instance.trTarget = transform;
         }
         if (PlayerManager.Instance != null)
         {

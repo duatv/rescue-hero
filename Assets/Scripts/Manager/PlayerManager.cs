@@ -133,7 +133,6 @@ public class PlayerManager : MonoBehaviour
         {
             if (beginMove)
             {
-                Debug.LogError("1");
                 if (isMoveLeft) MoveLeft();
                 else if (isMoveRight) MoveRight();
             }
@@ -159,7 +158,6 @@ public class PlayerManager : MonoBehaviour
 
     public void PrepareMoveLeft()
     {
-        Debug.LogError("2");
         if (pState != P_STATE.DIE)
         {
             beginMove = true;
@@ -171,7 +169,6 @@ public class PlayerManager : MonoBehaviour
     }
     public void PrepareMoveRight()
     {
-        Debug.LogError("3");
         if (pState != P_STATE.DIE)
         {
             beginMove = true;
@@ -183,7 +180,6 @@ public class PlayerManager : MonoBehaviour
     }
     public void PrepareRotate(Transform _trTarget, bool rotateOnly)
     {
-        Debug.LogError("4");
         if (transform.localPosition.x > _trTarget.localPosition.x)
         {
             saPlayer.skeleton.ScaleX = -1;
@@ -274,7 +270,9 @@ public class PlayerManager : MonoBehaviour
         {
             if (collision.gameObject.tag.Contains(Utils.TAG_STICKBARRIE))
             {
-                OnBeginRun();
+                if (hitDown.collider != null)
+                    if (hitDown.collider.gameObject.tag.Contains(Utils.TAG_WALL_BOTTOM))
+                        OnBeginRun();
             }
         }
     }
@@ -304,7 +302,6 @@ public class PlayerManager : MonoBehaviour
                 if (MapLevelManager.Instance.trTarget != null && MapLevelManager.Instance.trTarget.gameObject.activeSelf)
                 {
                     PrepareRotate(MapLevelManager.Instance.trTarget,false);
-                    Debug.LogError("6");
                 }
             }
         }
@@ -313,7 +310,6 @@ public class PlayerManager : MonoBehaviour
 
     public IEnumerator IEWin()
     {
-        Debug.LogError("IEWin");
         GameManager.Instance.gameState = GameManager.GAMESTATE.WIN;
         pState = P_STATE.WIN;
         _rig2D.velocity = Vector2.zero;
