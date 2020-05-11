@@ -12,6 +12,7 @@ public class StickBarrier : MonoBehaviour
 
     [DrawIf("_moveType", MOVETYPE.FREE, ComparisonType.Equals, DisablingType.DontDraw)]
     public Vector3 vEndPos, vStartPos;
+    private Vector3 vUpPos, vDownPos, vLeftPos, vRightPos;
     
     [HideInInspector]
     public bool beginMove;
@@ -60,20 +61,19 @@ public class StickBarrier : MonoBehaviour
             }
         }
     }
+    private void MoveStick(Vector3 endPos) {
+        transform.localPosition = Vector3.Lerp(transform.localPosition, endPos, Time.deltaTime * moveSpeed);
+    }
     private void MoveStickBarrie()
     {
         switch (_moveType)
         {
-            case MOVETYPE.DOWN:
-                _rig2D.velocity = Vector2.down * moveSpeed * speedAdd;
-                if(hasBlockGems)
-                    PlayerBeginMove();
-                break;
             case MOVETYPE.FREE:
                 if (beginMove && !moveBack) {
                     if (Vector3.Distance(transform.localPosition, vEndPos) > 0.003f)
                     {
-                        transform.localPosition = Vector3.Lerp(transform.localPosition, vEndPos, Time.deltaTime * moveSpeed);
+                        //transform.localPosition = Vector3.Lerp(transform.localPosition, vEndPos, Time.deltaTime * moveSpeed);
+                        MoveStick(vEndPos);
                         if (hasBlockGems)
                             PlayerBeginMove();
                     }
@@ -88,7 +88,8 @@ public class StickBarrier : MonoBehaviour
                 {
                     if (Vector3.Distance(transform.localPosition, vStartPos) > 0.003f)
                     {
-                        transform.localPosition = Vector3.Lerp(transform.localPosition, vStartPos, Time.deltaTime * moveSpeed);
+                        //transform.localPosition = Vector3.Lerp(transform.localPosition, vStartPos, Time.deltaTime * moveSpeed);
+                        MoveStick(vStartPos);
                         if (hasBlockGems)
                             PlayerBeginMove();
                     }
@@ -101,16 +102,33 @@ public class StickBarrier : MonoBehaviour
                 break;
             case MOVETYPE.LEFT:
                 _rig2D.velocity = Vector2.left * moveSpeed * speedAdd;
+                //vDownPos = new Vector3(transform.localPosition.x - 5, transform.localPosition.y, transform.localPosition.z);
+                //MoveStick(vDownPos);
+
                 if (hasBlockGems)
                     PlayerBeginMove();
                 break;
             case MOVETYPE.RIGHT:
                 _rig2D.velocity = Vector2.right *  moveSpeed * speedAdd;
+                //vDownPos = new Vector3(transform.localPosition.x + 5, transform.localPosition.y, transform.localPosition.z);
+                //MoveStick(vDownPos);
                 if (hasBlockGems)
                     PlayerBeginMove();
                 break;
             case MOVETYPE.UP:
                 _rig2D.velocity = Vector2.up *  moveSpeed * speedAdd;
+
+                //vUpPos = new Vector3(transform.localPosition.x+5, transform.localPosition.y, transform.localPosition.z);
+                //MoveStick(vUpPos);
+
+                if (hasBlockGems)
+                    PlayerBeginMove();
+                break;
+            case MOVETYPE.DOWN:
+                _rig2D.velocity = Vector2.down * moveSpeed * speedAdd;
+                //vDownPos = new Vector3(transform.localPosition.x+5, transform.localPosition.y, transform.localPosition.z);
+                //MoveStick(vDownPos);
+
                 if (hasBlockGems)
                     PlayerBeginMove();
                 break;

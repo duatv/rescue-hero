@@ -43,12 +43,15 @@ public class CharsBase : MonoBehaviour
     }
     public void OnDie_() {
         _charStage = CHAR_STATE.DIE;
+        GameManager.Instance.gameState = GameManager.GAMESTATE.LOSE;
         isContinueDetect = false;
         PlayAnim(str_Lose, false);
         if (_charType == CHAR_TYPE.HOSTAGE)
         {
-            PlayerManager.Instance.OnPlayerDie();
-            MapLevelManager.Instance.OnLose();
+            if (GameManager.Instance.gameState != GameManager.GAMESTATE.WIN) {
+                PlayerManager.Instance.OnPlayerDie();
+                MapLevelManager.Instance.OnLose();
+            }
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -59,6 +62,8 @@ public class CharsBase : MonoBehaviour
             isContinueDetect = false;
             PlayAnim(str_Lose, false);
             _charStage = CHAR_STATE.DIE;
+            GameManager.Instance.gameState = GameManager.GAMESTATE.LOSE;
+
 
             Physics2D.IgnoreLayerCollision(_charType == CHAR_TYPE.HOSTAGE ? 16 : 15, 11);
             Physics2D.IgnoreLayerCollision(_charType == CHAR_TYPE.HOSTAGE ? 16 : 15, 14);
@@ -67,8 +72,10 @@ public class CharsBase : MonoBehaviour
 
             if (_charType == CHAR_TYPE.HOSTAGE)
             {
-                PlayerManager.Instance.OnPlayerDie();
-                MapLevelManager.Instance.OnLose();
+                if (GameManager.Instance.gameState != GameManager.GAMESTATE.WIN) {
+                    PlayerManager.Instance.OnPlayerDie();
+                    MapLevelManager.Instance.OnLose();
+                }
             }
         }
     }

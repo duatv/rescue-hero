@@ -40,6 +40,10 @@ public class PlayerManager : MonoBehaviour
     {
         Instance = this;
     }
+    private void Start()
+    {
+        GameManager.Instance.gTargetFollow = gameObject;
+    }
     private void PrepareMoveLeft()
     {
         if (pState != P_STATE.DIE)
@@ -145,13 +149,15 @@ public class PlayerManager : MonoBehaviour
     public void OnPlayerDie()
     {
         pState = P_STATE.DIE;
+        GameManager.Instance.gameState = GameManager.GAMESTATE.LOSE;
         _rig2D.velocity = Vector2.zero;
         Physics2D.IgnoreLayerCollision(13, 11);
         Physics2D.IgnoreLayerCollision(13, 14);
         Physics2D.IgnoreLayerCollision(13, 9);
         Physics2D.IgnoreLayerCollision(13, 4);
 
-        MapLevelManager.Instance.OnLose();
+        if(GameManager.Instance.gameState != GameManager.GAMESTATE.WIN)
+            MapLevelManager.Instance.OnLose();
         PlayAnim(str_Lose, false);
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -167,7 +173,8 @@ public class PlayerManager : MonoBehaviour
             {
                 _rig2D.velocity = Vector2.zero;
                 beginMove = false;
-                StartCoroutine(IEWin());
+                if(GameManager.Instance.gameState != GameManager.GAMESTATE.LOSE)
+                    StartCoroutine(IEWin());
             }
         }
     }
@@ -186,8 +193,10 @@ public class PlayerManager : MonoBehaviour
                 {
                     _rig2D.velocity = Vector2.zero;
                     beginMove = false;
-                    collision.gameObject.GetComponent<HostageManager>().PlayWin();
-                    StartCoroutine(IEWin());
+                    if (GameManager.Instance.gameState != GameManager.GAMESTATE.LOSE) {
+                        collision.gameObject.GetComponent<HostageManager>().PlayWin();
+                        StartCoroutine(IEWin());
+                    }
                 }
             }
         }
@@ -248,6 +257,7 @@ public class PlayerManager : MonoBehaviour
     }
     IEnumerator IEWin()
     {
+        GameManager.Instance.gameState = GameManager.GAMESTATE.WIN;
         pState = P_STATE.WIN;
         _rig2D.velocity = Vector2.zero;
         yield return new WaitForSeconds(1.0f);
