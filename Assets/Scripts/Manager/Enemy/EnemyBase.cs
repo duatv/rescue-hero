@@ -22,12 +22,12 @@ public class EnemyBase : MonoBehaviour
     public string str_idle, str_Win, str_Lose, strAtt, strRun;
     public float moveSpeed;
     [SerializeField] public Rigidbody2D rig;
-    public LayerMask lmColl;
+    public LayerMask lmColl, lmPlayer;
 
     [SerializeField]
-    private RaycastHit2D hit2D;
+    private RaycastHit2D hit2D, hitPlayer;
     private bool isContinueDetect = true;
-    private Vector3 vEnd, vStart;
+    private Vector3 vEnd, vStart, _vEnd, _vStart;
     private bool isBeginAtt, isBeginMove;
     private string targetName;
     private EnemyBase ebTarget;
@@ -64,9 +64,9 @@ public class EnemyBase : MonoBehaviour
     {
         if (_charStage == CHAR_STATE.PLAYING)
         {
+            #region Check Hit Ahead
             vStart = new Vector3(transform.localPosition.x - saPlayer.skeleton.ScaleX * 0.35f, transform.localPosition.y - 1.2f, transform.localPosition.z);
             vEnd = new Vector3(vStart.x - saPlayer.skeleton.ScaleX * 2f, vStart.y, vStart.z);
-            Debug.DrawLine(vStart, vEnd, Color.green);
             hit2D = Physics2D.Linecast(vStart, vEnd, lmColl);
             if (hit2D.collider != null)
             {
@@ -97,6 +97,15 @@ public class EnemyBase : MonoBehaviour
                     }
                 }
             }
+            #endregion
+            _vStart = new Vector3(transform.localPosition.x - saPlayer.skeleton.ScaleX * 0.35f, transform.localPosition.y - 1.2f, transform.localPosition.z);
+            _vEnd = new Vector3(_vStart.x - saPlayer.skeleton.ScaleX * 0.1f, _vStart.y, vStart.z);
+            Debug.DrawLine(_vStart, _vEnd, Color.red);
+            hitPlayer = Physics2D.Linecast(_vStart, _vEnd, lmPlayer);
+            if (hitPlayer.collider != null) {
+                OnPrepareAttack();
+            }
+
 
             if (isBeginMove && _isCanMoveToTarget)
             {
@@ -166,9 +175,9 @@ public class EnemyBase : MonoBehaviour
             {
                 OnDie_();
             }
-            if (isContinueDetect && collision.gameObject.GetComponent<PlayerManager>()!= null) {
-                OnPrepareAttack();
-            }
+            //if (isContinueDetect && collision.gameObject.GetComponent<PlayerManager>()!= null) {
+            //    OnPrepareAttack();
+            //}
         }
     }
 }

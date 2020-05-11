@@ -64,6 +64,9 @@ MonoBehaviour:
   lmColl:
     serializedVersion: 2
     m_Bits: 110592
+  lmPlayer:
+    serializedVersion: 2
+    m_Bits: 73728
 --- !u!61 &447227860025940804
 BoxCollider2D:
   m_ObjectHideFlags: 0
