@@ -458,7 +458,7 @@ GameObject:
   - component: {fileID: 1341071658}
   - component: {fileID: 1341071657}
   m_Layer: 0
-  m_Name: MapObject
+  m_Name: Level1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4964,6 +4964,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 644532152}
     m_Modifications:
+    - target: {fileID: 360150832557463478, guid: 8eea6eff2c4b9b34dbfe6f3070739266,
+        type: 3}
+      propertyPath: _moveType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2792697067004873771, guid: 8eea6eff2c4b9b34dbfe6f3070739266,
         type: 3}
       propertyPath: m_LocalPosition.x
