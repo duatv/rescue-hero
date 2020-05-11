@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3474126372252385795}
   - component: {fileID: 8994594585726917716}
   - component: {fileID: 3156097628687361388}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: DetectGems
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -203,11 +203,15 @@ MonoBehaviour:
   lmColl:
     serializedVersion: 2
     m_Bits: 69632
+  lmMapObject:
+    serializedVersion: 2
+    m_Bits: 1024
   saPlayer: {fileID: 4785156957416898561}
   _rig2D: {fileID: 4785156955821841587}
   moveSpeed: 1.1
   pState: 0
   isContinueDetect: 1
+  beginMove: 0
 --- !u!61 &4785156955821841586
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -296,7 +300,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 4785156957147608500}
   m_Enabled: 0
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 8a86371d2a7e1004fad0d95eb9425013, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -322,7 +326,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 4785156957147608500}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 8a86371d2a7e1004fad0d95eb9425013, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0

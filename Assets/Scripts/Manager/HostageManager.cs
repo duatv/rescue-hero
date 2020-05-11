@@ -9,6 +9,9 @@ public class HostageManager : CharsBase
 {
     void Start()
     {
+        if (MapLevelManager.Instance != null) {
+            MapLevelManager.Instance.trHostage = transform;
+        }
         if (PlayerManager.Instance != null)
         {
             if (transform.localPosition.x > PlayerManager.Instance.transform.localPosition.x)
@@ -18,8 +21,23 @@ public class HostageManager : CharsBase
             else saPlayer.skeleton.ScaleX = 1;
         }
     }
-    public void PlayWin() {
+    public void PlayWin()
+    {
         PlayAnim(str_Win, true);
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.GetComponent<PlayerManager>() != null)
+        {
+            if (GameManager.Instance.gameState != GameManager.GAMESTATE.LOSE) {
+                GameManager.Instance.gameState = GameManager.GAMESTATE.WIN;
+                PlayWin();
+                //collision.gameObject.GetComponent<PlayerManager>().pState = PlayerManager.P_STATE.WIN;
+                //collision.gameObject.GetComponent<PlayerManager>()._rig2D.velocity = Vector2.zero;
+                //collision.gameObject.GetComponent<PlayerManager>().beginMove = false;
+                StartCoroutine(collision.gameObject.GetComponent<PlayerManager>().IEWin());
+            }
+        }
     }
 }
 #region Editor Mode

@@ -9,6 +9,7 @@ TagManager:
   - Trap_Lava
   - Tag_Win
   - Tag_Stone
+  - Wall_Bottom
   layers:
   - Default
   - TransparentFX

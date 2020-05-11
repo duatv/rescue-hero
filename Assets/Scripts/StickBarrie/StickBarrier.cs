@@ -55,14 +55,14 @@ public class StickBarrier : MonoBehaviour
         //}
         //Debug.LogError("------> " + b);
 
-        if (PlayerManager.Instance != null)
-        {
-            if (!playerBeginMove)
-            {
-                PlayerManager.Instance.OnBeginRun();
-                playerBeginMove = true;
-            }
-        }
+        //if (PlayerManager.Instance != null)
+        //{
+        //    if (!playerBeginMove)
+        //    {
+        //        PlayerManager.Instance.OnBeginRun();
+        //        playerBeginMove = true;
+        //    }
+        //}
     }
     private void MoveStick(Vector3 endPos) {
         transform.localPosition = Vector3.Lerp(transform.localPosition, endPos, Time.deltaTime * moveSpeed);

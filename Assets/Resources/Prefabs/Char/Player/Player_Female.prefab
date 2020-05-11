@@ -82,7 +82,7 @@ GameObject:
   - component: {fileID: 6381065393312463892}
   - component: {fileID: 2854185000564661807}
   - component: {fileID: 7513898865183334175}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: DetectGems
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -203,6 +203,9 @@ MonoBehaviour:
   lmColl:
     serializedVersion: 2
     m_Bits: 69632
+  lmMapObject:
+    serializedVersion: 2
+    m_Bits: 1024
   saPlayer: {fileID: 4785156957416898561}
   _rig2D: {fileID: 4785156955821841587}
   moveSpeed: 1.1
