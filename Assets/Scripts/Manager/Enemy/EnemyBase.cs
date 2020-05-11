@@ -52,7 +52,8 @@ public class EnemyBase : MonoBehaviour
     }
     protected void PlayAnim(string anim_, bool isLoop)
     {
-        saPlayer.AnimationState.SetAnimation(0, anim_, isLoop);
+        if (!saPlayer.AnimationName.Equals(anim_))
+            saPlayer.AnimationState.SetAnimation(0, anim_, isLoop);
     }
 
     public virtual void OnEnable()
@@ -63,7 +64,7 @@ public class EnemyBase : MonoBehaviour
     {
         if (_charStage == CHAR_STATE.PLAYING)
         {
-            vStart = new Vector3(transform.localPosition.x - saPlayer.skeleton.ScaleX * 0.35f, transform.localPosition.y - 1.5f, transform.localPosition.z);
+            vStart = new Vector3(transform.localPosition.x - saPlayer.skeleton.ScaleX * 0.35f, transform.localPosition.y - 1.2f, transform.localPosition.z);
             vEnd = new Vector3(vStart.x - saPlayer.skeleton.ScaleX * 2f, vStart.y, vStart.z);
             Debug.DrawLine(vStart, vEnd, Color.green);
             hit2D = Physics2D.Linecast(vStart, vEnd, lmColl);
@@ -91,7 +92,7 @@ public class EnemyBase : MonoBehaviour
                     targetName = hit2D.collider.name;
                     if (_isCanMoveToTarget)
                     {
-                        OnAttack();
+                        OnMoveToTarget();
                         isBeginAtt = true;
                     }
                 }
@@ -120,9 +121,8 @@ public class EnemyBase : MonoBehaviour
             }
         }
     }
-    public virtual void OnAttack()
+    public virtual void OnMoveToTarget()
     {
-        Debug.LogError(gameObject.name);
         switch (enemyType)
         {
             case ENEMY_TYPE.MELEE:
@@ -138,9 +138,15 @@ public class EnemyBase : MonoBehaviour
                 break;
         }
     }
+    public virtual void OnPrepareAttack()
+    {
+        isContinueDetect = false;
+        isBeginMove = false;
+        rig.velocity = Vector2.zero;
+        PlayAnim(strAtt, true);
+    }
     protected void MoveToTarget()
     {
-        Debug.LogError(gameObject.name + " <<<<<<<<<< " + _charStage);
         rig.velocity = moveSpeed * (saPlayer.skeleton.ScaleX > 0 ? Vector2.left : Vector2.right);
     }
     public void OnDie_()
@@ -159,6 +165,9 @@ public class EnemyBase : MonoBehaviour
             if (isContinueDetect && collision.gameObject.name.Contains("Lava_Pr") && collision.gameObject.tag.Contains(Utils.TAG_TRAP))
             {
                 OnDie_();
+            }
+            if (isContinueDetect && collision.gameObject.GetComponent<PlayerManager>()!= null) {
+                OnPrepareAttack();
             }
         }
     }

@@ -211,6 +211,7 @@ MonoBehaviour:
   moveSpeed: 1.1
   pState: 0
   isContinueDetect: 1
+  beginMove: 0
 --- !u!61 &4785156955821841586
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -252,7 +253,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0
-  m_GravityScale: 10
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_Interpolate: 1
   m_SleepingMode: 1
