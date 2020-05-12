@@ -41,28 +41,11 @@ public class StickBarrier : MonoBehaviour
 
     private void OnMouseDown()
     {
-        beginMove = true;
+        //beginMove = true;
     }
     public void OnMouseDrag()
     {
-        beginMove = true;
-    }
-    bool playerBeginMove = false;
-    private void PlayerBeginMove() {
-        //bool b = false;
-        //foreach (StickBarrier sb in MapLevelManager.Instance.lstAllStick) {
-        //    if (sb.hasBlockGems) b = true;
-        //}
-        //Debug.LogError("------> " + b);
-
-        //if (PlayerManager.Instance != null)
-        //{
-        //    if (!playerBeginMove)
-        //    {
-        //        PlayerManager.Instance.OnBeginRun();
-        //        playerBeginMove = true;
-        //    }
-        //}
+        //beginMove = true;
     }
     private void MoveStick(Vector3 endPos) {
         transform.localPosition = Vector3.Lerp(transform.localPosition, endPos, Time.deltaTime * moveSpeed);
@@ -76,8 +59,6 @@ public class StickBarrier : MonoBehaviour
                     if (Vector3.Distance(transform.localPosition, vEndPos) > 0.003f)
                     {
                         MoveStick(vEndPos);
-                        //if (hasBlockGems)
-                        //    PlayerBeginMove();
                     }
                     else
                     {
@@ -91,8 +72,6 @@ public class StickBarrier : MonoBehaviour
                     if (Vector3.Distance(transform.localPosition, vStartPos) > 0.003f)
                     {
                         MoveStick(vStartPos);
-                        //if (hasBlockGems)
-                        //    PlayerBeginMove();
                     }
                     else
                     {
@@ -103,23 +82,15 @@ public class StickBarrier : MonoBehaviour
                 break;
             case MOVETYPE.LEFT:
                 _rig2D.velocity = Vector2.left * moveSpeed * speedAdd;
-                //if (hasBlockGems)
-                //    PlayerBeginMove();
                 break;
             case MOVETYPE.RIGHT:
                 _rig2D.velocity = Vector2.right *  moveSpeed * speedAdd;
-                //if (hasBlockGems)
-                //    PlayerBeginMove();
                 break;
             case MOVETYPE.UP:
                 _rig2D.velocity = Vector2.up *  moveSpeed * speedAdd;
-                //if (hasBlockGems)
-                //    PlayerBeginMove();
                 break;
             case MOVETYPE.DOWN:
                 _rig2D.velocity = Vector2.down * moveSpeed * speedAdd;
-                //if (hasBlockGems)
-                //    PlayerBeginMove();
                 break;
         }
     }

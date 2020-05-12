@@ -18,8 +18,12 @@ public class Chest : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<PlayerManager>() != null) {
             Debug.LogError("1111");
-            if (!hasDetect) {
-                collision.gameObject.GetComponent<PlayerManager>().OnWin();
+            if (GameManager.Instance.gameState != GameManager.GAMESTATE.LOSE)
+            {
+                if (!hasDetect)
+                {
+                    collision.gameObject.GetComponent<PlayerManager>().OnWin();
+                }
             }
             hasDetect = true;
         }
