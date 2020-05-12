@@ -1,0 +1,120 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!58 &1916313227
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5428276460107560281}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.4
+--- !u!1001 &7449552157912563355
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3186081892794555216, guid: fe4f7c46214db5a4e918c70d8ee0fcfd,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a61c49cfb0d52014ca052a888cdbd52d,
+        type: 3}
+    - target: {fileID: 3186081892794555218, guid: fe4f7c46214db5a4e918c70d8ee0fcfd,
+        type: 3}
+      propertyPath: m_Name
+      value: FallingStone
+      objectReference: {fileID: 0}
+    - target: {fileID: 3186081892794555219, guid: fe4f7c46214db5a4e918c70d8ee0fcfd,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3186081892794555219, guid: fe4f7c46214db5a4e918c70d8ee0fcfd,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3186081892794555219, guid: fe4f7c46214db5a4e918c70d8ee0fcfd,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3186081893498751938, guid: fe4f7c46214db5a4e918c70d8ee0fcfd,
+        type: 3}
+      propertyPath: m_Name
+      value: FallingStone Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 3186081893498751939, guid: fe4f7c46214db5a4e918c70d8ee0fcfd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 3186081893498751939, guid: fe4f7c46214db5a4e918c70d8ee0fcfd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.61
+      objectReference: {fileID: 0}
+    - target: {fileID: 3186081893498751939, guid: fe4f7c46214db5a4e918c70d8ee0fcfd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3186081893498751939, guid: fe4f7c46214db5a4e918c70d8ee0fcfd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3186081893498751939, guid: fe4f7c46214db5a4e918c70d8ee0fcfd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3186081893498751939, guid: fe4f7c46214db5a4e918c70d8ee0fcfd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3186081893498751939, guid: fe4f7c46214db5a4e918c70d8ee0fcfd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3186081893498751939, guid: fe4f7c46214db5a4e918c70d8ee0fcfd,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3186081893498751939, guid: fe4f7c46214db5a4e918c70d8ee0fcfd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3186081893498751939, guid: fe4f7c46214db5a4e918c70d8ee0fcfd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3186081893498751939, guid: fe4f7c46214db5a4e918c70d8ee0fcfd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 3186081893498751936, guid: fe4f7c46214db5a4e918c70d8ee0fcfd, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: fe4f7c46214db5a4e918c70d8ee0fcfd, type: 3}
+--- !u!1 &5428276460107560281 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3186081893498751938, guid: fe4f7c46214db5a4e918c70d8ee0fcfd,
+    type: 3}
+  m_PrefabInstance: {fileID: 7449552157912563355}
+  m_PrefabAsset: {fileID: 0}

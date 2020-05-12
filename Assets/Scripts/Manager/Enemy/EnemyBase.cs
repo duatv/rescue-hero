@@ -23,6 +23,7 @@ public class EnemyBase : MonoBehaviour
     public float moveSpeed;
     [SerializeField] public Rigidbody2D rig;
     public LayerMask lmColl, lmPlayer;
+    public bool isRangerAtt;
 
     [SerializeField]
     private RaycastHit2D hit2D, hitPlayer;
@@ -59,6 +60,12 @@ public class EnemyBase : MonoBehaviour
     public virtual void OnEnable()
     {
     }
+    private void Start()
+    {
+        if (MapLevelManager.Instance != null) {
+            MapLevelManager.Instance.lstAllEnemies.Add(this);
+        }
+    }
     private bool _isCanMoveToTarget;
     public virtual void FixedUpdate()
     {
@@ -74,9 +81,11 @@ public class EnemyBase : MonoBehaviour
                 {
                     if (hit2D.collider.gameObject.GetComponent<EnemyBase>() != null)
                     {
-                        _isCanMoveToTarget = hit2D.collider.gameObject.GetComponent<EnemyBase>()._charStage == CHAR_STATE.DIE ? false : true;
+                        if(hit2D.collider.gameObject.GetComponent<EnemyBase>().isRangerAtt)
+                            _isCanMoveToTarget = hit2D.collider.gameObject.GetComponent<EnemyBase>()._charStage == CHAR_STATE.DIE ? false : true;
                     }
-                    else if (hit2D.collider.gameObject.GetComponent<HostageManager>() != null)
+                    else 
+                    if (hit2D.collider.gameObject.GetComponent<HostageManager>() != null)
                     {
                         _isCanMoveToTarget = hit2D.collider.gameObject.GetComponent<HostageManager>()._charStage == CharsBase.CHAR_STATE.DIE ? false : true;
                     }
@@ -164,6 +173,7 @@ public class EnemyBase : MonoBehaviour
             isContinueDetect = false;
             PlayAnim(str_Lose, false);
             _charStage = CHAR_STATE.DIE;
+            MapLevelManager.Instance.lstAllEnemies.Remove(this);
         }
     }
 

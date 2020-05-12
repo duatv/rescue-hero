@@ -58,24 +58,28 @@ public class CharsBase : MonoBehaviour
     {
         if (isContinueDetect && collision.gameObject.name.Contains("Lava_Pr") && collision.gameObject.tag.Contains(Utils.TAG_TRAP))
         {
-            isContinueDetect = false;
-            PlayAnim(str_Lose, false);
-            _charStage = CHAR_STATE.DIE;
-            GameManager.Instance.gameState = GameManager.GAMESTATE.LOSE;
+            OnDie_();
+            //isContinueDetect = false;
+            //PlayAnim(str_Lose, false);
+            //_charStage = CHAR_STATE.DIE;
+            //GameManager.Instance.gameState = GameManager.GAMESTATE.LOSE;
 
 
-            Physics2D.IgnoreLayerCollision(_charType == CHAR_TYPE.HOSTAGE ? 16 : 15, 11,false);
-            Physics2D.IgnoreLayerCollision(_charType == CHAR_TYPE.HOSTAGE ? 16 : 15, 14, false);
-            Physics2D.IgnoreLayerCollision(_charType == CHAR_TYPE.HOSTAGE ? 16 : 15, 9, false);
-            Physics2D.IgnoreLayerCollision(_charType == CHAR_TYPE.HOSTAGE ? 16 : 15, 4, false);
+            //Physics2D.IgnoreLayerCollision(_charType == CHAR_TYPE.HOSTAGE ? 16 : 15, 11,false);
+            //Physics2D.IgnoreLayerCollision(_charType == CHAR_TYPE.HOSTAGE ? 16 : 15, 14, false);
+            //Physics2D.IgnoreLayerCollision(_charType == CHAR_TYPE.HOSTAGE ? 16 : 15, 9, false);
+            //Physics2D.IgnoreLayerCollision(_charType == CHAR_TYPE.HOSTAGE ? 16 : 15, 4, false);
 
-            if (_charType == CHAR_TYPE.HOSTAGE)
-            {
-                if (GameManager.Instance.gameState != GameManager.GAMESTATE.WIN) {
-                    PlayerManager.Instance.OnPlayerDie();
-                    MapLevelManager.Instance.OnLose();
-                }
-            }
+            //if (_charType == CHAR_TYPE.HOSTAGE)
+            //{
+            //    if (GameManager.Instance.gameState != GameManager.GAMESTATE.WIN) {
+            //        PlayerManager.Instance.OnPlayerDie();
+            //        MapLevelManager.Instance.OnLose();
+            //    }
+            //}
+        }
+        if (isContinueDetect && collision.gameObject.tag.Contains(Utils.TAG_STONE)) {
+            OnDie_();
         }
     }
 }

@@ -83,7 +83,10 @@ public class PlayerManager : MonoBehaviour
         hit2D = Physics2D.Linecast(vStart, vEnd, lmColl);
         if (hit2D.collider != null)
         {
-            if (hit2D.collider.gameObject.GetComponent<HostageManager>() != null)
+            if (hit2D.collider.gameObject.GetComponent<Chest>() != null) {
+                _isCanMoveToTarget = true;
+            }
+            else if (hit2D.collider.gameObject.GetComponent<HostageManager>() != null)
             {
                 HostageManager _hm = hit2D.collider.gameObject.GetComponent<HostageManager>();
                 if (_hm._charStage == CharsBase.CHAR_STATE.DIE) _isCanMoveToTarget = false;
@@ -195,6 +198,38 @@ public class PlayerManager : MonoBehaviour
     }
     #endregion
 
+    #region Player action
+    public void OnBeginRun()
+    {
+        StartCoroutine(IEWaitToRun());
+    }
+    IEnumerator IEWaitToRun()
+    {
+        yield return new WaitForSeconds(2.0f);
+        if (pState != P_STATE.DIE)
+        {
+            pState = P_STATE.RUNNING;
+            if (MapLevelManager.Instance != null)
+            {
+                if (MapLevelManager.Instance.trTarget != null && MapLevelManager.Instance.trTarget.gameObject.activeSelf)
+                {
+                    PrepareRotate(MapLevelManager.Instance.trTarget, false);
+                }
+            }
+        }
+    }
+
+
+    public IEnumerator IEWin()
+    {
+        GameManager.Instance.gameState = GameManager.GAMESTATE.WIN;
+        pState = P_STATE.WIN;
+        _rig2D.velocity = Vector2.zero;
+        beginMove = false;
+        yield return new WaitForSeconds(1.0f);
+        MapLevelManager.Instance.OnWin();
+        PlayAnim(str_Win, true);
+    }
     public void OnPlayerDie()
     {
         pState = P_STATE.DIE;
@@ -209,6 +244,9 @@ public class PlayerManager : MonoBehaviour
             MapLevelManager.Instance.OnLose();
         PlayAnim(str_Lose, false);
     }
+    #endregion
+
+    #region Collision
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (pState == P_STATE.PLAYING || pState == P_STATE.RUNNING)
@@ -225,10 +263,14 @@ public class PlayerManager : MonoBehaviour
             {
                 _rig2D.velocity = Vector2.zero;
                 beginMove = false;
-                if(GameManager.Instance.gameState != GameManager.GAMESTATE.LOSE)
-                    StartCoroutine(IEWin());
+                if (GameManager.Instance.gameState != GameManager.GAMESTATE.LOSE)
+                    OnWin();
             }
         }
+    }
+
+    public void OnWin() {
+        StartCoroutine(IEWin());
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -238,29 +280,6 @@ public class PlayerManager : MonoBehaviour
             {
                 beginMove = false;
                 PlayAnim(str_idle, true);
-            }
-            //if (MapLevelManager.Instance.questType == MapLevelManager.QUEST_TYPE.SAVE_HOSTAGE)
-            //{
-            //    if (collision.gameObject.GetComponent<HostageManager>() != null)
-            //    {
-            //        _rig2D.velocity = Vector2.zero;
-            //        beginMove = false;
-            //        GameManager.Instance.gameState = GameManager.GAMESTATE.WIN;
-            //        if (GameManager.Instance.gameState != GameManager.GAMESTATE.LOSE) {
-            //            collision.gameObject.GetComponent<HostageManager>().PlayWin();
-            //            StartCoroutine(IEWin());
-            //        }
-            //    }
-            //}
-            if (collision.gameObject.tag.Contains(Utils.TAG_WIN))
-            {
-                //_rig2D.velocity = Vector2.zero;
-                //GameManager.Instance.gameState = GameManager.GAMESTATE.WIN;
-                //beginMove = false;
-                //if (GameManager.Instance.gameState != GameManager.GAMESTATE.LOSE)
-                //{
-                //    StartCoroutine(IEWin());
-                //}
             }
         }
     }
@@ -286,38 +305,10 @@ public class PlayerManager : MonoBehaviour
             }
         }
     }
-
-    public void OnBeginRun()
-    {
-        StartCoroutine(IEWaitToRun());
-    }
-    IEnumerator IEWaitToRun()
-    {
-        yield return new WaitForSeconds(2.0f);
-        if (pState != P_STATE.DIE)
-        {
-            pState = P_STATE.RUNNING;
-            if (MapLevelManager.Instance != null)
-            {
-                if (MapLevelManager.Instance.trTarget != null && MapLevelManager.Instance.trTarget.gameObject.activeSelf)
-                {
-                    PrepareRotate(MapLevelManager.Instance.trTarget,false);
-                }
-            }
-        }
-    }
+#endregion
 
 
-    public IEnumerator IEWin()
-    {
-        GameManager.Instance.gameState = GameManager.GAMESTATE.WIN;
-        pState = P_STATE.WIN;
-        _rig2D.velocity = Vector2.zero;
-        beginMove = false;
-        yield return new WaitForSeconds(1.0f);
-        MapLevelManager.Instance.OnWin();
-        PlayAnim(str_Win, true);
-    }
+
 
     public void ChoosePlayer(int i)
     {

@@ -21,6 +21,7 @@ public class MapLevelManager : MonoBehaviour
     public Transform trTarget;
 
     public Dictionary<string, GameObject> dAllStone = new Dictionary<string, GameObject>();
+    public List<EnemyBase> lstAllEnemies = new List<EnemyBase>();
     public List<StickBarrier> lstAllStick = new List<StickBarrier>();
 
     private void Awake()
