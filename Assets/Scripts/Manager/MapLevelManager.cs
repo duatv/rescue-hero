@@ -48,11 +48,8 @@ public class MapLevelManager : MonoBehaviour
         Debug.LogError("LOSEEEEEEEEEEEEE");
         GameManager.Instance.ShowLosePanel();
     }
+    
 
-    public void OnSaveMap()
-    {
-
-    }
     public void OnClearMap()
     {
     }
@@ -84,17 +81,16 @@ public class MapLevelEditor : Editor
         {
             if (GUILayout.Button("Save MapLevel", GUILayout.Height(50)))
             {
-                myScript.OnSaveMap();
                 prefabPath = "Assets/" + myScript.gameObject.name + ".prefab";
                 PrefabUtility.SaveAsPrefabAsset(myScript.gameObject, prefabPath);
 
                 //EditorUtility.SetDirty(myScript);
             }
-            if (GUILayout.Button("Clear MapLevel", GUILayout.Height(50)))
-            {
-                myScript.OnClearMap();
-                //EditorUtility.SetDirty(myScript);
-            }
+            //if (GUILayout.Button("Clear MapLevel", GUILayout.Height(50)))
+            //{
+            //    myScript.OnClearMap();
+            //    //EditorUtility.SetDirty(myScript);
+            //}
         }
         EditorGUILayout.EndVertical();
     }
