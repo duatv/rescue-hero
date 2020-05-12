@@ -51185,7 +51185,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1341071657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79238,7 +79238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 861767d2f6362664486709c93996caf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isTest: 1
+  isTest: 0
   gameState: 0
   levelConfig: {fileID: 11400000, guid: 545dfe20f6a848048be655bb1e39f1ee, type: 2}
   mapLevel: {fileID: 0}
