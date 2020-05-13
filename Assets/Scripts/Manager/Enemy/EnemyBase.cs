@@ -70,13 +70,22 @@ public class EnemyBase : MonoBehaviour
         saPlayer.AnimationState.End += delegate {
             if (saPlayer.AnimationName.Equals(strAtt)) {
                 if (hitPlayer.collider != null) {
-                    GameManager.Instance.gameState = GameManager.GAMESTATE.LOSE;
+                    isContinueDetect = false;
                     if (hitPlayer.collider.gameObject.GetComponent<PlayerManager>())
                     {
-                        hitPlayer.collider.gameObject.GetComponent<PlayerManager>().OnPlayerDie();
+                        if (hitPlayer.collider.gameObject.GetComponent<PlayerManager>().isTakeSword)
+                        {
+                            hitPlayer.collider.gameObject.GetComponent<PlayerManager>().OnAttackEnemy(this);
+                        }
+                        else
+                        {
+                            hitPlayer.collider.gameObject.GetComponent<PlayerManager>().OnPlayerDie();
+                            GameManager.Instance.gameState = GameManager.GAMESTATE.LOSE;
+                        }
                     }
                     else if (hitPlayer.collider.gameObject.GetComponent<HostageManager>()) {
                         hitPlayer.collider.gameObject.GetComponent<HostageManager>().OnDie_();
+                        GameManager.Instance.gameState = GameManager.GAMESTATE.LOSE;
                     }
                 }
             }

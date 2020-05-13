@@ -9,6 +9,7 @@ public class Utils
     public const string TAG_WIN = "Tag_Win";
     public const string TAG_STONE = "Tag_Stone";
     public const string TAG_WALL_BOTTOM = "Wall_Bottom";
+    public const string TAG_SWORD = "Sword";
 
 
     public static int LEVEL_INDEX = 0;

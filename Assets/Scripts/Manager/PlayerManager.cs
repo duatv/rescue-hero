@@ -18,9 +18,10 @@ public class PlayerManager : MonoBehaviour
     public SkeletonDataAsset sdaP1, sdaP2;
     [DrawIf("isReadOnly", true, ComparisonType.Equals, DisablingType.ReadOnly)]
     [SpineAnimation]
-    public string str_idle, str_Win, str_Lose, str_Move;
+    public string str_idle, str_Win, str_Lose, str_Move, str_Att;
     public PlayerDetectGems _detectGems;
-
+    public Transform trSword, trSwordPos;
+    public bool isTakeSword;
     public LayerMask lmColl, lmMapObject;
     public SkeletonAnimation saPlayer;
     public Rigidbody2D _rig2D;
@@ -33,9 +34,10 @@ public class PlayerManager : MonoBehaviour
     [HideInInspector]public bool beginMove = false;
     private bool isMoveLeft = false;
     private bool isMoveRight = false;
-
     private RaycastHit2D hit2D, hitDown;
     private Vector3 vEnd, vStart;
+    private EnemyBase enBase;
+
 
     private void Awake()
     {
@@ -231,8 +233,27 @@ public class PlayerManager : MonoBehaviour
         MapLevelManager.Instance.OnWin();
         PlayAnim(str_Win, true);
     }
+    public void OnIdleState() {
+        pState = P_STATE.PLAYING;
+        _rig2D.velocity = Vector2.zero;
+        beginMove = false;
+        PlayAnim(str_idle, true);
+    }
+    public void OnAttackEnemy(EnemyBase _enBase) {
+        Debug.LogError("KILL HIMMMMMMMMMMM");
+        enBase = _enBase;
+        PlayAnim(str_Att, true);
+        trSword.SetParent(trSwordPos, true);
+    }
+    public void OnTakeSword(Transform _tr) {
+        Debug.LogError("Take Sword");
+        isTakeSword = true;
+        OnIdleState();
+        trSword = _tr;
+    }
     public void OnPlayerDie()
     {
+        Debug.LogError("1");
         pState = P_STATE.DIE;
         GameManager.Instance.gameState = GameManager.GAMESTATE.LOSE;
         _rig2D.velocity = Vector2.zero;

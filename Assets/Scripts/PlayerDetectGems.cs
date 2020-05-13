@@ -9,11 +9,18 @@ public class PlayerDetectGems : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.tag.Contains(Utils.TAG_SWORD))
+        {
+            if(!pManager.isTakeSword)
+                pManager.PrepareRotate(collision.transform, false);
+        }
+
         if (collision.gameObject.tag.Contains(Utils.TAG_WIN)) {
             if (gTarget == null)
             {
                 gTarget = collision.gameObject;
-                pManager.PrepareRotate(transform, false);
+                pManager.PrepareRotate(collision.transform, false);
+
                 //if (pManager.gameObject.transform.localPosition.x < transform.localPosition.x)
                 //{
                 //    pManager.saPlayer.skeleton.ScaleX = -1;

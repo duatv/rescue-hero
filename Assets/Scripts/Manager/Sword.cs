@@ -6,8 +6,12 @@ public class Sword : MonoBehaviour
 {
     public LayerMask lmMapObject;
     public Rigidbody2D rig2d;
+
     private RaycastHit2D hitDown;
 
+    private PlayerManager _pPLayer;
+    private HostageManager _hHostage;
+    private EnemyBase _eEnemy;
     Vector3 _vStartHitDown, _vEndHitDown;
     private void HitDownMapObject()
     {
@@ -22,10 +26,42 @@ public class Sword : MonoBehaviour
     {
         
     }
-
+    public bool IsCanKilling() {
+        return hitDown.collider != null ? false : true;
+    }
     // Update is called once per frame
     void FixedUpdate()
     {
         HitDownMapObject();
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.GetComponent<PlayerManager>() != null) {
+            _pPLayer = collision.gameObject.GetComponent<PlayerManager>();
+            if (IsCanKilling()) {
+                _pPLayer.OnPlayerDie();
+            }
+            else
+            {
+                rig2d.bodyType = RigidbodyType2D.Kinematic;
+                _pPLayer.OnTakeSword(transform);
+            }
+        }
+        if (collision.gameObject.GetComponent<HostageManager>() != null)
+        {
+            _hHostage = collision.gameObject.GetComponent<HostageManager>();
+            if (IsCanKilling())
+            {
+                _hHostage.OnDie_();
+            }
+        }
+        if (collision.gameObject.GetComponent<EnemyBase>() != null)
+        {
+            _eEnemy = collision.gameObject.GetComponent<EnemyBase>();
+            if (IsCanKilling())
+            {
+                _eEnemy.OnDie_();
+            }
+        }
     }
 }
