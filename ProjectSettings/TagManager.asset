@@ -10,6 +10,7 @@ TagManager:
   - Tag_Win
   - Tag_Stone
   - Wall_Bottom
+  - Water
   layers:
   - Default
   - TransparentFX

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2747999264892075429}
   m_Layer: 4
   m_Name: Water_Pr
-  m_TagString: Metaball_liquid
+  m_TagString: Water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
