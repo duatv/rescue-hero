@@ -222,6 +222,7 @@ public class PlayerManager : MonoBehaviour
 
     public IEnumerator IEWin()
     {
+        Debug.LogError("IEWin()");
         GameManager.Instance.gameState = GameManager.GAMESTATE.WIN;
         pState = P_STATE.WIN;
         _rig2D.velocity = Vector2.zero;

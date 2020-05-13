@@ -13,7 +13,7 @@ public class EnemyRange : EnemyBase
     }
 
     // Update is called once per frame
-    void Update()
+    override public void Update()
     {
         base.Update();
     }

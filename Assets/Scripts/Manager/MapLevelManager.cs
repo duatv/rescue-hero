@@ -45,7 +45,7 @@ public class MapLevelManager : MonoBehaviour
         GameManager.Instance.ShowWinPanel();
     }
     public void OnLose() {
-        Debug.LogError("LOSEEEEEEEEEEEEE");
+        //Debug.LogError("LOSEEEEEEEEEEEEE");
         GameManager.Instance.ShowLosePanel();
     }
     

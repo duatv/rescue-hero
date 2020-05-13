@@ -64,12 +64,16 @@ public class TouchManager : MonoBehaviour
             }
 
 
-            trailTransform.gameObject.SetActive(true);
-            MoveTrailToCursor(mousePos);
+            if (GameManager.Instance.canUseTrail) {
+                trailTransform.gameObject.SetActive(true);
+                MoveTrailToCursor(mousePos);
+            }
+            
             //SliceTo(Input.mousePosition);
         }
         if (Input.GetMouseButtonUp(0)) {
-            trailTransform.gameObject.SetActive(false);
+            if (GameManager.Instance.canUseTrail)
+                trailTransform.gameObject.SetActive(false);
         }
     }
     void MoveTrailToCursor(Vector3 screenPosition)

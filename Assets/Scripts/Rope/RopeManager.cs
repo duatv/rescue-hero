@@ -29,7 +29,9 @@ public class RopeManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (GameManager.Instance != null) {
+            GameManager.Instance.canUseTrail = true;
+        }
     }
 
     // Update is called once per frame

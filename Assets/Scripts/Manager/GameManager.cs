@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     public bool isTest;
+    [HideInInspector]public bool canUseTrail;
     public GAMESTATE gameState;
     [SerializeField]public LevelConfig levelConfig;
     [HideInInspector]public MapLevelManager mapLevel;

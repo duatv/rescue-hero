@@ -32,10 +32,9 @@ public class HostageManager : CharsBase
             if (GameManager.Instance.gameState != GameManager.GAMESTATE.LOSE) {
                 GameManager.Instance.gameState = GameManager.GAMESTATE.WIN;
                 PlayWin();
-                //collision.gameObject.GetComponent<PlayerManager>().pState = PlayerManager.P_STATE.WIN;
-                //collision.gameObject.GetComponent<PlayerManager>()._rig2D.velocity = Vector2.zero;
-                //collision.gameObject.GetComponent<PlayerManager>().beginMove = false;
-                StartCoroutine(collision.gameObject.GetComponent<PlayerManager>().IEWin());
+                Debug.LogError("PlayWin");
+                collision.gameObject.GetComponent<PlayerManager>().OnWin();
+                //StartCoroutine(collision.gameObject.GetComponent<PlayerManager>().IEWin());
             }
         }
     }

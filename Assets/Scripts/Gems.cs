@@ -29,10 +29,12 @@ public class Gems : MonoBehaviour
             gameObject.layer = 0;
         }
         if(collision.gameObject.GetComponent<PlayerManager>() != null){
-            GameManager.Instance.gameState = GameManager.GAMESTATE.WIN;
+            
             if (GameManager.Instance.gameState != GameManager.GAMESTATE.LOSE)
             {
-                StartCoroutine(collision.gameObject.GetComponent<PlayerManager>().IEWin());
+                GameManager.Instance.gameState = GameManager.GAMESTATE.WIN;
+                collision.gameObject.GetComponent<PlayerManager>().OnWin();
+                //StartCoroutine(collision.gameObject.GetComponent<PlayerManager>().IEWin());
             }
         }
     }
