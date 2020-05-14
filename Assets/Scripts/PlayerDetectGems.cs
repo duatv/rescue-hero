@@ -22,8 +22,11 @@ public class PlayerDetectGems : MonoBehaviour
                 pManager.PrepareRotate(collision.transform, false);
             }
         }
-        if (collision.gameObject.name.Contains("FallingChest")) {
+        if (collision.gameObject.GetComponent<HostageManager>() != null) {
             pManager.PrepareRotate(collision.transform, false);
+        }
+        if (collision.gameObject.name.Contains("FallingChest")) {
+            pManager.PrepareRotate_(collision.transform, true);
         }
     }
 }

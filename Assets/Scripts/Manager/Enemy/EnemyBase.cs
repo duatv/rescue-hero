@@ -234,7 +234,7 @@ public class EnemyBase : MonoBehaviour
             PlayAnim(str_Lose, false);
             _charStage = CHAR_STATE.DIE;
             MapLevelManager.Instance.lstAllEnemies.Remove(this);
-            if (MapLevelManager.Instance.questType != MapLevelManager.QUEST_TYPE.COLLECT && MapLevelManager.Instance.lstAllEnemies.Count == 0)
+            if (MapLevelManager.Instance.questType == MapLevelManager.QUEST_TYPE.KILL && MapLevelManager.Instance.lstAllEnemies.Count == 0)
             {
                 PlayerManager.Instance.OnWin();
             }

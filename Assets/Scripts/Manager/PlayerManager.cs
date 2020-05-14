@@ -183,6 +183,22 @@ public class PlayerManager : MonoBehaviour
             PlayAnim(str_Move, true);
         }
     }
+    public void PrepareRotate_(Transform _trTarget, bool rotateOnly)
+    {
+        if (transform.localPosition.x > _trTarget.localPosition.x)
+        {
+            saPlayer.skeleton.ScaleX = -1;
+            //PrepareMoveLeft();
+            PrepareMoveRight();
+        }
+        else
+        {
+            saPlayer.skeleton.ScaleX = 1;
+            PrepareMoveLeft();
+            //PrepareMoveRight();
+        }
+    }
+
     public void PrepareRotate(Transform _trTarget, bool rotateOnly)
     {
         if (transform.localPosition.x > _trTarget.localPosition.x)
