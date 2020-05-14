@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class Chest : MonoBehaviour
 {
+    public bool fallingChest;
     private bool hasDetect;
     // Start is called before the first frame update
     void Start()
     {
         if(MapLevelManager.Instance.questType == MapLevelManager.QUEST_TYPE.OPEN_CHEST)
         {
-            MapLevelManager.Instance.trTarget = transform;
+            if(!fallingChest)
+                MapLevelManager.Instance.trTarget = transform;
         }
     }
 
