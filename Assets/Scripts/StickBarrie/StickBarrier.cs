@@ -16,9 +16,8 @@ public class StickBarrier : MonoBehaviour
     public Vector3 vEndPos, vStartPos;
     private Vector3 vUpPos, vDownPos, vLeftPos, vRightPos;
 
-    [HideInInspector]
-    public bool beginMove;
-    private bool moveBack;
+    [HideInInspector] public bool beginMove;
+    [HideInInspector] public bool moveBack;
 
     [HideInInspector]
     public float time_ = 2;
@@ -27,6 +26,9 @@ public class StickBarrier : MonoBehaviour
     {
         _rig2D = GetComponent<Rigidbody2D>();
         MapLevelManager.Instance.lstAllStick.Add(this);
+        if (_moveType != MOVETYPE.FREE) {
+            vStartPos = transform.localPosition;
+        }
     }
 
     private void PrepareBlockGem() {
@@ -75,16 +77,84 @@ public class StickBarrier : MonoBehaviour
                 }
                 break;
             case MOVETYPE.LEFT:
-                _rig2D.velocity = Vector2.left * moveSpeed * speedAdd;
+                if (beginMove && !moveBack)
+                {
+                    _rig2D.velocity = Vector2.left * moveSpeed * speedAdd;
+                }
+
+                if (moveBack && beginMove)
+                {
+                    if (Vector3.Distance(transform.localPosition, vStartPos) > 0.003f)
+                    {
+                        MoveStick(vStartPos);
+                    }
+                    else
+                    {
+                        beginMove = false;
+                        moveBack = false;
+                    }
+                }
+                //_rig2D.velocity = Vector2.left * moveSpeed * speedAdd;
                 break;
             case MOVETYPE.RIGHT:
-                _rig2D.velocity = Vector2.right * moveSpeed * speedAdd;
+                if (beginMove && !moveBack)
+                {
+                    _rig2D.velocity = Vector2.right * moveSpeed * speedAdd;
+                }
+
+                if (moveBack && beginMove)
+                {
+                    if (Vector3.Distance(transform.localPosition, vStartPos) > 0.003f)
+                    {
+                        MoveStick(vStartPos);
+                    }
+                    else
+                    {
+                        beginMove = false;
+                        moveBack = false;
+                    }
+                }
+                //_rig2D.velocity = Vector2.right * moveSpeed * speedAdd;
                 break;
             case MOVETYPE.UP:
-                _rig2D.velocity = Vector2.up * moveSpeed * speedAdd;
+                if (beginMove && !moveBack)
+                {
+                    _rig2D.velocity = Vector2.up * moveSpeed * speedAdd;
+                }
+
+                if (moveBack && beginMove)
+                {
+                    if (Vector3.Distance(transform.localPosition, vStartPos) > 0.003f)
+                    {
+                        MoveStick(vStartPos);
+                    }
+                    else
+                    {
+                        beginMove = false;
+                        moveBack = false;
+                    }
+                }
+                //_rig2D.velocity = Vector2.up * moveSpeed * speedAdd;
                 break;
             case MOVETYPE.DOWN:
-                _rig2D.velocity = Vector2.down * moveSpeed * speedAdd;
+                if (beginMove && !moveBack)
+                {
+                    _rig2D.velocity = Vector2.down * moveSpeed * speedAdd;
+                }
+
+                if (moveBack && beginMove)
+                {
+                    if (Vector3.Distance(transform.localPosition, vStartPos) > 0.003f)
+                    {
+                        MoveStick(vStartPos);
+                    }
+                    else
+                    {
+                        beginMove = false;
+                        moveBack = false;
+                    }
+                }
+                //_rig2D.velocity = Vector2.down * moveSpeed * speedAdd;
                 break;
         }
     }
