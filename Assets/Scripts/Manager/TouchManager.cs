@@ -14,10 +14,6 @@ public class TouchManager : MonoBehaviour
     public Camera thisCamera;
     #endregion
 
-    //public LayerMask ropeLayer;
-    //static RaycastHit2D[] cachedHits = new RaycastHit2D[16];
-    //public float fingerRadius = 0.1f;
-
     private Vector3 mousePos;
 
     void Start()
@@ -39,16 +35,12 @@ public class TouchManager : MonoBehaviour
     void Update()
     {
         mousePos = Input.mousePosition;
-        //if (Input.GetMouseButtonDown(0))
-        //{
-        //}
         if (Input.GetMouseButton(0))
         {
             Vector3 screenPos = Camera.main.ScreenToWorldPoint(mousePos);
             RaycastHit2D[] hit = Physics2D.RaycastAll(screenPos, Vector2.zero, 1000);
             for (int i = 0; i < hit.Length; i++)
             {
-                //Debug.LogError(hit[i].collider.gameObject.name);
                 if (hit[i].collider.gameObject.tag.Contains(Utils.TAG_STICKBARRIE))
                 {
                     hit[i].collider.gameObject.GetComponent<StickBarrier>().beginMove = true;
@@ -68,8 +60,6 @@ public class TouchManager : MonoBehaviour
                 trailTransform.gameObject.SetActive(true);
                 MoveTrailToCursor(mousePos);
             }
-            
-            //SliceTo(Input.mousePosition);
         }
         if (Input.GetMouseButtonUp(0)) {
             if (GameManager.Instance.canUseTrail)

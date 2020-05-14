@@ -34,7 +34,6 @@ public class Gems : MonoBehaviour
             {
                 GameManager.Instance.gameState = GameManager.GAMESTATE.WIN;
                 collision.gameObject.GetComponent<PlayerManager>().OnWin();
-                //StartCoroutine(collision.gameObject.GetComponent<PlayerManager>().IEWin());
             }
         }
     }

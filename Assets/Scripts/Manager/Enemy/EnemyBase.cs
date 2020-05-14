@@ -237,9 +237,6 @@ public class EnemyBase : MonoBehaviour
             {
                 OnDie_();
             }
-            //if (isContinueDetect && collision.gameObject.GetComponent<PlayerManager>()!= null) {
-            //    OnPrepareAttack();
-            //}
         }
     }
 }

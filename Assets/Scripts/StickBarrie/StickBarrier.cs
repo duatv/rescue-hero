@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class StickBarrier : MonoBehaviour
 {
+    const float speedAdd = 2;
+
     public enum MOVETYPE { RIGHT, LEFT, UP, DOWN, FREE }
     public MOVETYPE _moveType;
     public Rigidbody2D _rig2D;
@@ -13,7 +15,7 @@ public class StickBarrier : MonoBehaviour
     [DrawIf("_moveType", MOVETYPE.FREE, ComparisonType.Equals, DisablingType.DontDraw)]
     public Vector3 vEndPos, vStartPos;
     private Vector3 vUpPos, vDownPos, vLeftPos, vRightPos;
-    
+
     [HideInInspector]
     public bool beginMove;
     private bool moveBack;
@@ -39,14 +41,6 @@ public class StickBarrier : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    private void OnMouseDown()
-    {
-        //beginMove = true;
-    }
-    public void OnMouseDrag()
-    {
-        //beginMove = true;
-    }
     private void MoveStick(Vector3 endPos) {
         transform.localPosition = Vector3.Lerp(transform.localPosition, endPos, Time.deltaTime * moveSpeed);
     }
@@ -84,17 +78,17 @@ public class StickBarrier : MonoBehaviour
                 _rig2D.velocity = Vector2.left * moveSpeed * speedAdd;
                 break;
             case MOVETYPE.RIGHT:
-                _rig2D.velocity = Vector2.right *  moveSpeed * speedAdd;
+                _rig2D.velocity = Vector2.right * moveSpeed * speedAdd;
                 break;
             case MOVETYPE.UP:
-                _rig2D.velocity = Vector2.up *  moveSpeed * speedAdd;
+                _rig2D.velocity = Vector2.up * moveSpeed * speedAdd;
                 break;
             case MOVETYPE.DOWN:
                 _rig2D.velocity = Vector2.down * moveSpeed * speedAdd;
                 break;
         }
     }
-    const float speedAdd = 2;
+
     private void Update()
     {
         PrepareBlockGem();
@@ -102,6 +96,8 @@ public class StickBarrier : MonoBehaviour
         if (beginMove)
             MoveStickBarrie();
     }
+
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag.Contains(Utils.TAG_WIN))

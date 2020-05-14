@@ -188,13 +188,11 @@ public class PlayerManager : MonoBehaviour
         if (transform.localPosition.x > _trTarget.localPosition.x)
         {
             saPlayer.skeleton.ScaleX = -1;
-            //if(!rotateOnly)
                 PrepareMoveLeft();
         }
         else
         {
             saPlayer.skeleton.ScaleX = 1;
-            //if (!rotateOnly)
                 PrepareMoveRight();
         }
     }
@@ -224,7 +222,6 @@ public class PlayerManager : MonoBehaviour
 
     public IEnumerator IEWin()
     {
-        Debug.LogError("IEWin()");
         GameManager.Instance.gameState = GameManager.GAMESTATE.WIN;
         pState = P_STATE.WIN;
         _rig2D.velocity = Vector2.zero;
@@ -354,46 +351,3 @@ public class PlayerManager : MonoBehaviour
             saPlayer.AnimationState.SetAnimation(0, anim_, isLoop);
     }
 }
-//#region Editor Mode
-//#if UNITY_EDITOR
-//[CustomEditor(typeof(PlayerManager))]
-//public class MyPlayerEditor : Editor
-//{
-//    private PlayerManager myScript;
-//    private void OnSceneGUI()
-//    {
-//        myScript = (PlayerManager)target;
-//    }
-
-//    public override void OnInspectorGUI()
-//    {
-//        DrawDefaultInspector();
-
-//        GUIStyle SectionNameStyle = new GUIStyle();
-//        SectionNameStyle.fontSize = 16;
-//        SectionNameStyle.normal.textColor = Color.blue;
-//        if (myScript == null) return;
-//        EditorGUILayout.LabelField("\t        Choose Player", SectionNameStyle);
-//        EditorGUILayout.BeginVertical(GUI.skin.box);
-//        {
-//            if (GUILayout.Button("Male", GUILayout.Height(50)))
-//            {
-//                myScript.ChoosePlayer(0);
-//                EditorUtility.SetDirty(myScript);
-//            }
-//            if (GUILayout.Button("Female", GUILayout.Height(50)))
-//            {
-//                myScript.ChoosePlayer(1);
-//                EditorUtility.SetDirty(myScript);
-//            }
-//        }
-//        EditorGUILayout.EndVertical();
-//    }
-//    private void OnDisable()
-//    {
-//        if (!myScript) return;
-//        EditorUtility.SetDirty(myScript);
-//    }
-//}
-//#endif
-//#endregion

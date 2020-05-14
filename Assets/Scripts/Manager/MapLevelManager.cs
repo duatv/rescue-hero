@@ -41,11 +41,9 @@ public class MapLevelManager : MonoBehaviour
     }
     public void OnWin()
     {
-        //Debug.LogError("WINNNNNNNNNNN");
         GameManager.Instance.ShowWinPanel();
     }
     public void OnLose() {
-        //Debug.LogError("LOSEEEEEEEEEEEEE");
         GameManager.Instance.ShowLosePanel();
     }
     
@@ -83,23 +81,10 @@ public class MapLevelEditor : Editor
             {
                 prefabPath = "Assets/" + myScript.gameObject.name + ".prefab";
                 PrefabUtility.SaveAsPrefabAsset(myScript.gameObject, prefabPath);
-
-                //EditorUtility.SetDirty(myScript);
             }
-            //if (GUILayout.Button("Clear MapLevel", GUILayout.Height(50)))
-            //{
-            //    myScript.OnClearMap();
-            //    //EditorUtility.SetDirty(myScript);
-            //}
         }
         EditorGUILayout.EndVertical();
     }
-
-    //private void OnDisable()
-    //{
-    //    if (!myScript) return;
-    //    EditorUtility.SetDirty(myScript);
-    //}
 }
 #endif
 #endregion

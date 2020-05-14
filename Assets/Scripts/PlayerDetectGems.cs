@@ -20,17 +20,6 @@ public class PlayerDetectGems : MonoBehaviour
             {
                 gTarget = collision.gameObject;
                 pManager.PrepareRotate(collision.transform, false);
-
-                //if (pManager.gameObject.transform.localPosition.x < transform.localPosition.x)
-                //{
-                //    pManager.saPlayer.skeleton.ScaleX = -1;
-                //    pManager.PrepareMoveLeft();
-                //}
-                //else
-                //{
-                //    pManager.saPlayer.skeleton.ScaleX = 1;
-                //    pManager.PrepareMoveRight();
-                //}
             }
         }
     }
