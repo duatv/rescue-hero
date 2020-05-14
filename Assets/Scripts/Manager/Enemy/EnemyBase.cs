@@ -157,6 +157,7 @@ public class EnemyBase : MonoBehaviour
                 hitPlayer = Physics2D.Linecast(_vStart, _vEnd, lmPlayer);
                 if (hitPlayer.collider != null)
                 {
+                    pmTarget = hitPlayer.collider.gameObject.GetComponent<PlayerManager>();
                     OnPrepareAttack();
                 }
                 #endregion
@@ -211,6 +212,13 @@ public class EnemyBase : MonoBehaviour
         isBeginMove = false;
         rig.velocity = Vector2.zero;
         PlayAnim(strAtt, true);
+        if (pmTarget != null)
+        {
+            if (!pmTarget.isTakeSword)
+            {
+                pmTarget.OnIdleState();
+            }
+        }
     }
 
 
@@ -226,6 +234,10 @@ public class EnemyBase : MonoBehaviour
             PlayAnim(str_Lose, false);
             _charStage = CHAR_STATE.DIE;
             MapLevelManager.Instance.lstAllEnemies.Remove(this);
+            if (MapLevelManager.Instance.questType != MapLevelManager.QUEST_TYPE.COLLECT && MapLevelManager.Instance.lstAllEnemies.Count == 0)
+            {
+                PlayerManager.Instance.OnWin();
+            }
         }
     }
 

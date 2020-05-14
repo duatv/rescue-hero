@@ -9,13 +9,14 @@ using UnityEditor;
 public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager Instance;
-
-
+    
     public enum P_STATE { PLAYING, DIE, WIN, RUNNING }
-    [HideInInspector]
-    public bool isReadOnly = true;
+
+    [HideInInspector] public bool isReadOnly = true;
+
     [DrawIf("isReadOnly", true, ComparisonType.Equals, DisablingType.ReadOnly)]
     public SkeletonDataAsset sdaP1, sdaP2;
+
     [DrawIf("isReadOnly", true, ComparisonType.Equals, DisablingType.ReadOnly)]
     [SpineAnimation]
     public string str_idle, str_Win, str_Lose, str_Move, str_Att;
@@ -26,18 +27,17 @@ public class PlayerManager : MonoBehaviour
     public SkeletonAnimation saPlayer;
     public Rigidbody2D _rig2D;
     public float moveSpeed;
-
     public P_STATE pState;
 
-    [HideInInspector]
-    public bool isContinueDetect = true;
-    [HideInInspector]public bool beginMove = false;
+    [HideInInspector] public bool isContinueDetect = true;
+    [HideInInspector] public bool beginMove = false;
     private bool isMoveLeft = false;
     private bool isMoveRight = false;
     private RaycastHit2D hit2D, hitDown;
     private Vector3 vEnd, vStart;
     private EnemyBase enBase;
-
+    private bool _isCanMoveToTarget;
+    Vector3 _vStart, _vEnd;
 
     private void Awake()
     {
@@ -47,7 +47,6 @@ public class PlayerManager : MonoBehaviour
     {
         GameManager.Instance.gTargetFollow = gameObject;
     }
-
 
     private void Update()
     {
@@ -76,7 +75,7 @@ public class PlayerManager : MonoBehaviour
             }
         }
     }
-    private bool _isCanMoveToTarget;
+
     private void CheckHitAhead()
     {
         vStart = new Vector3(transform.localPosition.x + saPlayer.skeleton.ScaleX * 0.35f, transform.localPosition.y - 1.5f, transform.localPosition.z);
@@ -85,7 +84,8 @@ public class PlayerManager : MonoBehaviour
         hit2D = Physics2D.Linecast(vStart, vEnd, lmColl);
         if (hit2D.collider != null)
         {
-            if (hit2D.collider.gameObject.GetComponent<Chest>() != null) {
+            if (hit2D.collider.gameObject.GetComponent<Chest>() != null)
+            {
                 _isCanMoveToTarget = true;
             }
             else if (hit2D.collider.gameObject.GetComponent<HostageManager>() != null)
@@ -98,7 +98,8 @@ public class PlayerManager : MonoBehaviour
                     _isCanMoveToTarget = true;
                 }
             }
-            else if (hit2D.collider.gameObject.GetComponent<StickBarrier>() != null) {
+            else if (hit2D.collider.gameObject.GetComponent<StickBarrier>() != null)
+            {
                 _isCanMoveToTarget = false;
             }
             else _isCanMoveToTarget = false;
@@ -112,13 +113,13 @@ public class PlayerManager : MonoBehaviour
             _rig2D.velocity = moveSpeed * (saPlayer.skeleton.ScaleX > 0 ? Vector2.right : Vector2.left);
         }
     }
-    Vector3 _vStart, _vEnd;
-    private void HitDownMapObject() {
-         _vStart = new Vector3(transform.localPosition.x , transform.localPosition.y - 1.5f, transform.localPosition.z);
-         _vEnd = new Vector3(_vStart.x , _vStart.y - 0.15f, _vStart.z);
+
+    private void HitDownMapObject()
+    {
+        _vStart = new Vector3(transform.localPosition.x, transform.localPosition.y - 1.5f, transform.localPosition.z);
+        _vEnd = new Vector3(_vStart.x, _vStart.y - 0.15f, _vStart.z);
         hitDown = Physics2D.Linecast(_vStart, _vEnd, lmMapObject);
     }
-         
 
     private void FixedUpdate()
     {
@@ -131,7 +132,6 @@ public class PlayerManager : MonoBehaviour
                 if (hitDown.collider.gameObject.tag.Contains(Utils.TAG_WALL_BOTTOM))
                     MoveToTarget();
         }
-
 
         if (!IsCanMove()) _rig2D.velocity = Vector2.zero;
         else
@@ -188,12 +188,12 @@ public class PlayerManager : MonoBehaviour
         if (transform.localPosition.x > _trTarget.localPosition.x)
         {
             saPlayer.skeleton.ScaleX = -1;
-                PrepareMoveLeft();
+            PrepareMoveLeft();
         }
         else
         {
             saPlayer.skeleton.ScaleX = 1;
-                PrepareMoveRight();
+            PrepareMoveRight();
         }
     }
     #endregion
@@ -230,19 +230,22 @@ public class PlayerManager : MonoBehaviour
         MapLevelManager.Instance.OnWin();
         PlayAnim(str_Win, true);
     }
-    public void OnIdleState() {
+    public void OnIdleState()
+    {
         pState = P_STATE.PLAYING;
         _rig2D.velocity = Vector2.zero;
         beginMove = false;
         PlayAnim(str_idle, true);
     }
-    public void OnAttackEnemy(EnemyBase _enBase) {
+    public void OnAttackEnemy(EnemyBase _enBase)
+    {
         Debug.LogError("KILL HIMMMMMMMMMMM");
         enBase = _enBase;
         PlayAnim(str_Att, true);
         trSword.SetParent(trSwordPos, true);
     }
-    public void OnTakeSword(Transform _tr) {
+    public void OnTakeSword(Transform _tr)
+    {
         Debug.LogError("Take Sword");
         isTakeSword = true;
         OnIdleState();
@@ -259,12 +262,11 @@ public class PlayerManager : MonoBehaviour
         Physics2D.IgnoreLayerCollision(13, 9, false);
         Physics2D.IgnoreLayerCollision(13, 4, false);
 
-        if(GameManager.Instance.gameState != GameManager.GAMESTATE.WIN)
+        if (GameManager.Instance.gameState != GameManager.GAMESTATE.WIN)
             MapLevelManager.Instance.OnLose();
         PlayAnim(str_Lose, false);
     }
     #endregion
-
     #region Collision
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -288,7 +290,8 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    public void OnWin() {
+    public void OnWin()
+    {
         StartCoroutine(IEWin());
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -324,10 +327,7 @@ public class PlayerManager : MonoBehaviour
             }
         }
     }
-#endregion
-
-
-
+    #endregion
 
     public void ChoosePlayer(int i)
     {
@@ -347,7 +347,7 @@ public class PlayerManager : MonoBehaviour
     }
     private void PlayAnim(string anim_, bool isLoop)
     {
-        if(!saPlayer.AnimationName.Equals(anim_))
+        if (!saPlayer.AnimationName.Equals(anim_))
             saPlayer.AnimationState.SetAnimation(0, anim_, isLoop);
     }
 }
