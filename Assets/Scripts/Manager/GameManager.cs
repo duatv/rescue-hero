@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public enum GAMESTATE { PLAYING, WIN, LOSE}
     public static GameManager Instance;
 
+    public Text txtLevel;
     public bool isTest;
     [HideInInspector]public bool canUseTrail;
     public GAMESTATE gameState;
@@ -22,6 +24,10 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+    }
+    private void OnEnable()
+    {
+        txtLevel.text = "LEVEL " + (Utils.LEVEL_INDEX + 1).ToString("00,#");
     }
     // Start is called before the first frame update
     void Start()
@@ -62,9 +68,21 @@ public class GameManager : MonoBehaviour
     }
     public void OnSkipByVideo() {
         Debug.LogError("Skip by video");
+        AdsManager.Instance.ShowRewardedVideo((b) =>
+        {
+            if (b) {
+                OnNextLevel();
+            }
+        });
     }
     public void OnReplay()
     {
         SceneManager.LoadSceneAsync("MainGame");
+    }
+    public void GoToMenu() {
+        SceneManager.LoadSceneAsync("MainMenu");
+    }
+    public void BuyRemoveAds() {
+        Debug.LogError("Buy Remove Ads");
     }
 }
