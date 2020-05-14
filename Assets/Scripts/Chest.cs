@@ -17,13 +17,18 @@ public class Chest : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.GetComponent<PlayerManager>() != null) {
-            Debug.LogError("1111");
             if (GameManager.Instance.gameState != GameManager.GAMESTATE.LOSE)
             {
                 if (!hasDetect)
                 {
                     collision.gameObject.GetComponent<PlayerManager>().OnWin();
                 }
+            }
+            hasDetect = true;
+        }
+        if (collision.gameObject.name.Contains("Lava_Pr")) {
+            if (!hasDetect) {
+                PlayerManager.Instance.OnPlayerDie();
             }
             hasDetect = true;
         }
