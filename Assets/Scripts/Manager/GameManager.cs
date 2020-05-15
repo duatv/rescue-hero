@@ -77,23 +77,29 @@ public class GameManager : MonoBehaviour
     public void OnX2Coin()
     {
         Debug.LogError("X2 Coin");
-        AdsManager.Instance.ShowRewardedVideo((b) =>
-        {
-            if (b)
+        if (AdsManager.Instance != null) {
+            AdsManager.Instance.ShowRewardedVideo((b) =>
             {
-                Utils.currentCoin += 3*Utils.BASE_COIN;
-                OnUpdateCoin();
-            }
-        });
+                if (b)
+                {
+                    Utils.currentCoin += 3 * Utils.BASE_COIN;
+                    OnUpdateCoin();
+                }
+            });
+        }
+        
     }
     public void OnSkipByVideo() {
         Debug.LogError("Skip by video");
-        AdsManager.Instance.ShowRewardedVideo((b) =>
-        {
-            if (b) {
-                OnNextLevel();
-            }
-        });
+        if (AdsManager.Instance != null) {
+            AdsManager.Instance.ShowRewardedVideo((b) =>
+            {
+                if (b)
+                {
+                    OnNextLevel();
+                }
+            });
+        }
     }
     public void OnReplay()
     {
