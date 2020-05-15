@@ -84,6 +84,7 @@ public class GameManager : MonoBehaviour
                 {
                     Utils.currentCoin += 3 * Utils.BASE_COIN;
                     OnUpdateCoin();
+                    OnNextLevel();
                 }
             });
         }

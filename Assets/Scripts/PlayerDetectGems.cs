@@ -9,23 +9,49 @@ public class PlayerDetectGems : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //if (collision.gameObject.tag.Contains(Utils.TAG_SWORD))
+        //{
+        //    if(!pManager.isTakeSword)
+        //        pManager.PrepareRotate(collision.transform, false);
+        //}
+
+        //if (collision.gameObject.tag.Contains(Utils.TAG_WIN)) {
+        //    if (gTarget == null)
+        //    {
+        //        gTarget = collision.gameObject;
+        //        pManager.PrepareRotate(collision.transform, false);
+        //    }
+        //}
+        //if (collision.gameObject.GetComponent<HostageManager>() != null) {
+        //    Debug.LogError("11111");
+        //    pManager.PrepareRotate(collision.transform, false);
+        //}
+        //if (collision.gameObject.name.Contains("FallingChest")) {
+        //    pManager.PrepareRotate_(collision.transform, true);
+        //}
+    }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
         if (collision.gameObject.tag.Contains(Utils.TAG_SWORD))
         {
-            if(!pManager.isTakeSword)
+            if (!pManager.isTakeSword)
                 pManager.PrepareRotate(collision.transform, false);
         }
 
-        if (collision.gameObject.tag.Contains(Utils.TAG_WIN)) {
+        if (collision.gameObject.tag.Contains(Utils.TAG_WIN))
+        {
             if (gTarget == null)
             {
                 gTarget = collision.gameObject;
                 pManager.PrepareRotate(collision.transform, false);
             }
         }
-        if (collision.gameObject.GetComponent<HostageManager>() != null) {
+        if (collision.gameObject.GetComponent<HostageManager>() != null)
+        {
             pManager.PrepareRotate(collision.transform, false);
         }
-        if (collision.gameObject.name.Contains("FallingChest")) {
+        if (collision.gameObject.name.Contains("FallingChest"))
+        {
             pManager.PrepareRotate_(collision.transform, true);
         }
     }

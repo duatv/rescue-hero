@@ -119,7 +119,7 @@ public class PlayerManager : MonoBehaviour
         _vStart = new Vector3(transform.localPosition.x, transform.localPosition.y - 1.5f, transform.localPosition.z);
         _vEnd = new Vector3(_vStart.x, _vStart.y - 0.15f, _vStart.z);
         hitDown = Physics2D.Linecast(_vStart, _vEnd, lmMapObject);
-        Debug.DrawLine(_vStart, _vEnd, Color.black);
+        Debug.DrawLine(_vStart, _vEnd, Color.red);
     }
 
     private void FixedUpdate()
@@ -261,7 +261,6 @@ public class PlayerManager : MonoBehaviour
         Debug.LogError("KILL HIMMMMMMMMMMM");
         enBase = _enBase;
         PlayAnim(str_Att, true);
-        trSword.SetParent(trSwordPos, true);
     }
     public void OnTakeSword(Transform _tr)
     {
@@ -269,6 +268,7 @@ public class PlayerManager : MonoBehaviour
         isTakeSword = true;
         OnIdleState();
         trSword = _tr;
+        trSword.SetParent(trSwordPos, true);
     }
     public void OnPlayerDie()
     {
