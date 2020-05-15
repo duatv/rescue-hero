@@ -119,6 +119,7 @@ public class PlayerManager : MonoBehaviour
         _vStart = new Vector3(transform.localPosition.x, transform.localPosition.y - 1.5f, transform.localPosition.z);
         _vEnd = new Vector3(_vStart.x, _vStart.y - 0.15f, _vStart.z);
         hitDown = Physics2D.Linecast(_vStart, _vEnd, lmMapObject);
+        Debug.DrawLine(_vStart, _vEnd, Color.black);
     }
 
     private void FixedUpdate()
@@ -201,15 +202,17 @@ public class PlayerManager : MonoBehaviour
 
     public void PrepareRotate(Transform _trTarget, bool rotateOnly)
     {
-        if (transform.localPosition.x > _trTarget.localPosition.x)
-        {
-            saPlayer.skeleton.ScaleX = -1;
-            PrepareMoveLeft();
-        }
-        else
-        {
-            saPlayer.skeleton.ScaleX = 1;
-            PrepareMoveRight();
+        if (hitDown.collider != null) {
+            if (transform.localPosition.x > _trTarget.localPosition.x)
+            {
+                saPlayer.skeleton.ScaleX = -1;
+                PrepareMoveLeft();
+            }
+            else
+            {
+                saPlayer.skeleton.ScaleX = 1;
+                PrepareMoveRight();
+            }
         }
     }
     #endregion

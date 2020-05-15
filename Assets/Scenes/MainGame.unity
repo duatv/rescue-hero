@@ -81246,7 +81246,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   txtLevel: {fileID: 1519425866}
   txtCoin: {fileID: 1184841995}
-  isTest: 0
+  isTest: 1
   canUseTrail: 0
   gameState: 0
   levelConfig: {fileID: 11400000, guid: 545dfe20f6a848048be655bb1e39f1ee, type: 2}
