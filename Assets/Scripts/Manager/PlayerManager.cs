@@ -270,17 +270,21 @@ public class PlayerManager : MonoBehaviour
     public void OnPlayerDie()
     {
         Debug.LogError("1");
-        pState = P_STATE.DIE;
-        GameManager.Instance.gameState = GameManager.GAMESTATE.LOSE;
-        _rig2D.velocity = Vector2.zero;
-        Physics2D.IgnoreLayerCollision(13, 11, false);
-        Physics2D.IgnoreLayerCollision(13, 14, false);
-        Physics2D.IgnoreLayerCollision(13, 9, false);
-        Physics2D.IgnoreLayerCollision(13, 4, false);
+
 
         if (GameManager.Instance.gameState != GameManager.GAMESTATE.WIN)
+        {
+            pState = P_STATE.DIE;
+            GameManager.Instance.gameState = GameManager.GAMESTATE.LOSE;
+            _rig2D.velocity = Vector2.zero;
+            Physics2D.IgnoreLayerCollision(13, 11, false);
+            Physics2D.IgnoreLayerCollision(13, 14, false);
+            Physics2D.IgnoreLayerCollision(13, 9, false);
+            Physics2D.IgnoreLayerCollision(13, 4, false);
+
             MapLevelManager.Instance.OnLose();
-        PlayAnim(str_Lose, false);
+            PlayAnim(str_Lose, false);
+        }
     }
     #endregion
     #region Collision

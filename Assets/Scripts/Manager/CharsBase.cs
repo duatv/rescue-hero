@@ -42,13 +42,15 @@ public class CharsBase : MonoBehaviour
         saPlayer.AnimationState.SetAnimation(0, anim_, isLoop);
     }
     public void OnDie_() {
-        _charStage = CHAR_STATE.DIE;
-        GameManager.Instance.gameState = GameManager.GAMESTATE.LOSE;
+
         isContinueDetect = false;
-        PlayAnim(str_Lose, false);
         if (_charType == CHAR_TYPE.HOSTAGE)
         {
             if (GameManager.Instance.gameState != GameManager.GAMESTATE.WIN) {
+                _charStage = CHAR_STATE.DIE;
+                GameManager.Instance.gameState = GameManager.GAMESTATE.LOSE;
+                PlayAnim(str_Lose, false);
+
                 PlayerManager.Instance.OnPlayerDie();
                 MapLevelManager.Instance.OnLose();
             }
