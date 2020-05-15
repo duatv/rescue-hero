@@ -46251,7 +46251,7 @@ GameObject:
   - component: {fileID: 1184841996}
   - component: {fileID: 1184841995}
   m_Layer: 18
-  m_Name: Text
+  m_Name: Text-Coin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46307,7 +46307,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 150
+  m_Text: '#0'
 --- !u!222 &1184841996
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -56474,7 +56474,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.79700005, y: 0.8485205}
   m_AnchorMax: {x: 0.97700006, y: 0.8965205}
-  m_AnchoredPosition: {x: 0.1000061, y: 1.5}
+  m_AnchoredPosition: {x: 0.099975586, y: 1.5}
   m_SizeDelta: {x: -3, y: -1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1448947375
@@ -81245,6 +81245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   txtLevel: {fileID: 1519425866}
+  txtCoin: {fileID: 1184841995}
   isTest: 0
   canUseTrail: 0
   gameState: 0

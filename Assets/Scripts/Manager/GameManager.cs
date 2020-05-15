@@ -6,15 +6,16 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public enum GAMESTATE { PLAYING, WIN, LOSE}
+    public enum GAMESTATE { PLAYING, WIN, LOSE }
     public static GameManager Instance;
 
     public Text txtLevel;
+    public Text txtCoin;
     public bool isTest;
-    [HideInInspector]public bool canUseTrail;
+    [HideInInspector] public bool canUseTrail;
     public GAMESTATE gameState;
-    [SerializeField]public LevelConfig levelConfig;
-    [HideInInspector]public MapLevelManager mapLevel;
+    [SerializeField] public LevelConfig levelConfig;
+    [HideInInspector] public MapLevelManager mapLevel;
     public CamFollow _camFollow;
     public GameObject gPanelWin;
     public GameObject gPanelLose;
@@ -25,14 +26,18 @@ public class GameManager : MonoBehaviour
     {
         Instance = this;
     }
-    private void OnEnable()
-    {
-        txtLevel.text = "LEVEL " + (Utils.LEVEL_INDEX + 1).ToString("00,#");
+    private void OnUpdateCoin() {
+        txtCoin.text = Utils.currentCoin + "";
+        Utils.SaveCoin();
     }
     // Start is called before the first frame update
     void Start()
     {
-        if(!isTest)
+
+        txtLevel.text = "LEVEL " + (Utils.LEVEL_INDEX + 1).ToString("00,#");
+        OnUpdateCoin();
+
+        if (!isTest)
             LoadLevelToPlay(Utils.LEVEL_INDEX);
     }
     private void LoadLevelToPlay(int levelIndex) {
@@ -47,7 +52,13 @@ public class GameManager : MonoBehaviour
     public void ShowWinPanel()
     {
         ActiveCamEff();
-        if (!gPanelWin.activeSelf) gPanelWin.SetActive(true);
+        
+        if (!gPanelWin.activeSelf)
+        {
+            Utils.currentCoin += Utils.BASE_COIN;
+            OnUpdateCoin();
+            gPanelWin.SetActive(true);
+        }
     }
     public void ShowLosePanel()
     {
@@ -59,12 +70,21 @@ public class GameManager : MonoBehaviour
         Debug.LogError(Utils.LEVEL_INDEX + " vs " + levelConfig.lstAllLevel.Count);
         if (Utils.LEVEL_INDEX < levelConfig.lstAllLevel.Count-1) {
             Utils.LEVEL_INDEX += 1;
+            Utils.SaveLevel();
             SceneManager.LoadSceneAsync("MainGame");
         }
     }
     public void OnX2Coin()
     {
         Debug.LogError("X2 Coin");
+        AdsManager.Instance.ShowRewardedVideo((b) =>
+        {
+            if (b)
+            {
+                Utils.currentCoin += 3*Utils.BASE_COIN;
+                OnUpdateCoin();
+            }
+        });
     }
     public void OnSkipByVideo() {
         Debug.LogError("Skip by video");
@@ -84,5 +104,12 @@ public class GameManager : MonoBehaviour
     }
     public void BuyRemoveAds() {
         Debug.LogError("Buy Remove Ads");
+    }
+
+
+    private void OnApplicationFocus(bool focus)
+    {
+        //if (!focus)
+        //    Utils.SaveGameData();
     }
 }
