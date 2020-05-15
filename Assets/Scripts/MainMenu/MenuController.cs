@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public class MenuController : MonoBehaviour
 {
     [SerializeField] public LevelConfig levelConfig;
+    public SettingPanel _settingPanel;
+
     public Text txtCurLevel;
     // Start is called before the first frame update
     void Start()
@@ -22,6 +24,7 @@ public class MenuController : MonoBehaviour
     }
     public void ShowSetting() {
         Debug.LogError("Show Setting Panel");
+        _settingPanel.gameObject.SetActive(true);
     }
     public void LoadScenePlay() {
         SceneManager.LoadSceneAsync("MainGame");
