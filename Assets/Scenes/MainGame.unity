@@ -54662,6 +54662,7 @@ GameObject:
   - component: {fileID: 1448947377}
   - component: {fileID: 1448947376}
   - component: {fileID: 1448947375}
+  - component: {fileID: 1448947378}
   m_Layer: 18
   m_Name: Button-RemoveAds
   m_TagString: Untagged
@@ -54731,18 +54732,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1448947376}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2140005905}
-        m_MethodName: BuyRemoveAds
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1448947376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54779,6 +54769,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1448947373}
   m_CullTransparentMesh: 0
+--- !u!114 &1448947378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1448947373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36a5f511b0d8142cba0aeb92d0b264c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  productId: com.ohze.game.rescuehero
+  buttonType: 0
+  consumePurchase: 1
+  onPurchaseComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  onPurchaseFailed:
+    m_PersistentCalls:
+      m_Calls: []
+  titleText: {fileID: 0}
+  descriptionText: {fileID: 0}
+  priceText: {fileID: 0}
 --- !u!1 &1455211318
 GameObject:
   m_ObjectHideFlags: 0

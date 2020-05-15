@@ -80,16 +80,18 @@ public class AdsManager : MonoBehaviour
     }
     public void ShowInterstitial(Action<bool> _ac)
     {
-        if (IsIntersLoaded())
-        {
-            acInterClosed = _ac;
-            interstitial.Show();
-        }
-        else
-        {
-            interstitial.LoadAd(CreateRequest());
-            if (acInterClosed != null)
-                acInterClosed(true);
+        if (!Utils.isRemoveAds) {
+            if (IsIntersLoaded())
+            {
+                acInterClosed = _ac;
+                interstitial.Show();
+            }
+            else
+            {
+                interstitial.LoadAd(CreateRequest());
+                if (acInterClosed != null)
+                    acInterClosed(true);
+            }
         }
     }
 

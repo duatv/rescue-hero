@@ -11,6 +11,7 @@ public class Utils
     public const string QUAL_MEDIUM = "Medium";
     public const string QUAL_LOW = "Low";
 
+    public const string INAPP_REMOVE_ADS = "com.ohze.game.rescuehero";
     public const string APP_ID = "ca-app-pub-3940256099942544~3347511713";
     public const string BANNER_ID = "ca-app-pub-3940256099942544/6300978111";
     public const string INTERS_ID = "ca-app-pub-3940256099942544/1033173712";
@@ -23,6 +24,7 @@ public class Utils
     public const string CHANGE_SOUND = GAME_KEY + ".change.sound";
     public const string CHANGE_MUSIC = GAME_KEY + ".change.music";
     public const string CHANGE_VIBRATE = GAME_KEY + ".change.vibrate";
+    public const string HAS_REMOVE_ADS = GAME_KEY + ".removeads";
 
     public const string TAG_STICKBARRIE = "StickBarrie";
     public const string TAG_TRAP = "Trap_Lava";
@@ -60,6 +62,7 @@ public class Utils
         isSoundOn = PlayerPrefs.GetInt(CHANGE_SOUND, 0) == 0 ? false : true;
         isMusicOn = PlayerPrefs.GetInt(CHANGE_MUSIC, 0) == 0 ? false : true;
         isVibrateOn = PlayerPrefs.GetInt(CHANGE_VIBRATE, 0) == 0 ? false : true;
+        isRemoveAds = PlayerPrefs.GetInt(HAS_REMOVE_ADS, 0) == 0 ? false : true;
     }
 
 
@@ -86,6 +89,13 @@ public class Utils
     public static void ChangeVibrate()
     {
         PlayerPrefs.SetInt(CHANGE_VIBRATE, isVibrateOn ? 1 : 0);
+        PlayerPrefs.Save();
+    }
+
+
+    public static bool isRemoveAds;
+    public static void SaveRemoveAds() {
+        PlayerPrefs.SetInt(HAS_REMOVE_ADS, isRemoveAds ? 1 : 0);
         PlayerPrefs.Save();
     }
 }
