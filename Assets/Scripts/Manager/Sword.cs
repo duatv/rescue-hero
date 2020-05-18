@@ -52,7 +52,8 @@ public class Sword : MonoBehaviour
             _hHostage = collision.gameObject.GetComponent<HostageManager>();
             if (IsCanKilling())
             {
-                _hHostage.OnDie_();
+                if(!PlayerManager.Instance.isTakeSword)
+                    _hHostage.OnDie_();
             }
         }
         if (collision.gameObject.GetComponent<EnemyBase>() != null)

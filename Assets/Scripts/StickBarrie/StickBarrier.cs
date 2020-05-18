@@ -10,8 +10,7 @@ public class StickBarrier : MonoBehaviour
     public enum MOVETYPE { RIGHT, LEFT, UP, DOWN, FREE }
     [SerializeField] public MOVETYPE _moveType;
     [SerializeField] public Rigidbody2D _rig2D;
-    [Range(0,4)]
-    [SerializeField] public float moveSpeed = 2;
+    [Range(0, 4)] [SerializeField] public float moveSpeed = 2;
     [SerializeField] public bool hasBlockGems;
 
     [HideInInspector]
@@ -34,7 +33,6 @@ public class StickBarrier : MonoBehaviour
         if (_moveType != MOVETYPE.FREE) {
             vStartPos = transform.localPosition;
         }
-        Debug.LogError("-----> "+Vector3.Distance(vStartPos, vEndPos));
     }
 
     private void PrepareBlockGem() {

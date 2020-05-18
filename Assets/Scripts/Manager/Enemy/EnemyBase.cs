@@ -26,7 +26,7 @@ public class EnemyBase : MonoBehaviour
     public bool isRangerAtt;
 
     [SerializeField]
-    private RaycastHit2D hit2D, hitPlayer, hitDown;
+    private RaycastHit2D hit2D, hit2D_1, hitPlayer, hitDown;
     private bool isContinueDetect = true;
     private Vector3 vEnd, vStart, _vEnd, _vStart;
     private bool isBeginAtt, isBeginMove;
@@ -34,6 +34,7 @@ public class EnemyBase : MonoBehaviour
     private EnemyBase ebTarget;
     private HostageManager hmTarget;
     private PlayerManager pmTarget;
+    private Transform trTargetAttack;
 
     public void ChoosePlayer(int i)
     {
@@ -103,6 +104,9 @@ public class EnemyBase : MonoBehaviour
         Debug.DrawLine(_vStartHitDown, _vEndHitDown, Color.red);
     }
 
+
+
+    private Vector3 vStartForward, vEndForward;
     public virtual void FixedUpdate()
     {
         if (_charStage == CHAR_STATE.PLAYING)
@@ -115,9 +119,16 @@ public class EnemyBase : MonoBehaviour
             if (hitDown.collider != null)
             {
                 #region Check Hit Ahead
-                vStart = new Vector3(transform.localPosition.x - saPlayer.skeleton.ScaleX * 0.35f, transform.localPosition.y - 1.2f, transform.localPosition.z);
-                vEnd = new Vector3(vStart.x - saPlayer.skeleton.ScaleX * 2f, vStart.y, vStart.z);
+                vStart = new Vector3(transform.localPosition.x - /*saPlayer.skeleton.ScaleX **/ 0.35f, transform.localPosition.y - 1.2f, transform.localPosition.z);
+                vEnd = new Vector3(vStart.x - /*saPlayer.skeleton.ScaleX **/ 2f, vStart.y, vStart.z);
+
+                vStartForward = new Vector3(transform.localPosition.x + 0.35f, transform.localPosition.y - 1.2f, transform.localPosition.z);
+                vEndForward = new Vector3(vStartForward.x + 2f, vStartForward.y, vStartForward.z);
+                Debug.DrawLine(vStart, vEnd, Color.red);
+                Debug.DrawLine(vStartForward, vEndForward, Color.green);
+                hit2D_1 = Physics2D.Linecast(vStartForward, vEndForward, lmColl);
                 hit2D = Physics2D.Linecast(vStart, vEnd, lmColl);
+
                 if (hit2D.collider != null)
                 {
                     if (!hit2D.collider.gameObject.tag.Contains(Utils.TAG_STICKBARRIE) && !isBeginAtt)
@@ -125,16 +136,21 @@ public class EnemyBase : MonoBehaviour
                         if (hit2D.collider.gameObject.GetComponent<EnemyBase>() != null)
                         {
                             if (hit2D.collider.gameObject.GetComponent<EnemyBase>().isRangerAtt)
+                            {
                                 _isCanMoveToTarget = hit2D.collider.gameObject.GetComponent<EnemyBase>()._charStage == CHAR_STATE.DIE ? false : true;
+                                trTargetAttack = hit2D.collider.gameObject.transform;
+                            }
                         }
                         else
                         if (hit2D.collider.gameObject.GetComponent<HostageManager>() != null)
                         {
                             _isCanMoveToTarget = hit2D.collider.gameObject.GetComponent<HostageManager>()._charStage == CharsBase.CHAR_STATE.DIE ? false : true;
+                            trTargetAttack = hit2D.collider.gameObject.transform;
                         }
                         else if (hit2D.collider.gameObject.GetComponent<PlayerManager>() != null)
                         {
                             _isCanMoveToTarget = hit2D.collider.gameObject.GetComponent<PlayerManager>().pState == PlayerManager.P_STATE.DIE ? false : true;
+                            trTargetAttack = hit2D.collider.gameObject.transform;
                         }
                         else
                         {
@@ -142,6 +158,44 @@ public class EnemyBase : MonoBehaviour
                         }
 
                         targetName = hit2D.collider.name;
+                        if (_isCanMoveToTarget)
+                        {
+                            OnMoveToTarget();
+                            isBeginAtt = true;
+                        }
+                    }
+                }
+                else if (hit2D_1.collider != null) {
+                    if (!hit2D_1.collider.gameObject.tag.Contains(Utils.TAG_STICKBARRIE) && !isBeginAtt)
+                    {
+                        if (hit2D_1.collider.gameObject.GetComponent<EnemyBase>() != null)
+                        {
+                            if (hit2D_1.collider.gameObject.GetComponent<EnemyBase>().isRangerAtt)
+                            {
+                                _isCanMoveToTarget = hit2D_1.collider.gameObject.GetComponent<EnemyBase>()._charStage == CHAR_STATE.DIE ? false : true;
+                                trTargetAttack = hit2D_1.collider.gameObject.transform;
+                                PrepareRotate_(trTargetAttack);
+                            }
+                        }
+                        else
+                        if (hit2D_1.collider.gameObject.GetComponent<HostageManager>() != null)
+                        {
+                            _isCanMoveToTarget = hit2D_1.collider.gameObject.GetComponent<HostageManager>()._charStage == CharsBase.CHAR_STATE.DIE ? false : true;
+                            trTargetAttack = hit2D_1.collider.gameObject.transform;
+                            PrepareRotate_(trTargetAttack);
+                        }
+                        else if (hit2D_1.collider.gameObject.GetComponent<PlayerManager>() != null)
+                        {
+                            _isCanMoveToTarget = hit2D_1.collider.gameObject.GetComponent<PlayerManager>().pState == PlayerManager.P_STATE.DIE ? false : true;
+                            trTargetAttack = hit2D_1.collider.gameObject.transform;
+                            PrepareRotate_(trTargetAttack);
+                        }
+                        else
+                        {
+                            _isCanMoveToTarget = false;
+                        }
+
+                        targetName = hit2D_1.collider.name;
                         if (_isCanMoveToTarget)
                         {
                             OnMoveToTarget();
@@ -172,20 +226,38 @@ public class EnemyBase : MonoBehaviour
             }
         }
     }
+
+    public void PrepareRotate_(Transform _trTarget)
+    {
+        if (transform.localPosition.x > _trTarget.localPosition.x)
+        {
+            saPlayer.skeleton.ScaleX = 1;
+        }
+        else
+        {
+            saPlayer.skeleton.ScaleX = -1;
+        }
+    }
+
     public virtual void Update()
     {
         if (_charStage == CHAR_STATE.PLAYING)
         {
             if (!isBeginMove)
             {
-                if (PlayerManager.Instance != null)
-                {
-                    if (transform.localPosition.x > PlayerManager.Instance.transform.localPosition.x)
-                    {
-                        saPlayer.skeleton.ScaleX = 1;
-                    }
-                    else saPlayer.skeleton.ScaleX = -1;
-                }
+                //if (trTargetAttack != null)
+                //{
+                //    PrepareRotate_(trTargetAttack);
+                //}
+
+                //if (PlayerManager.Instance != null)
+                //{
+                //    if (transform.localPosition.x > PlayerManager.Instance.transform.localPosition.x)
+                //    {
+                //        saPlayer.skeleton.ScaleX = 1;
+                //    }
+                //    else saPlayer.skeleton.ScaleX = -1;
+                //}
             }
         }
     }
@@ -224,6 +296,7 @@ public class EnemyBase : MonoBehaviour
 
     protected void MoveToTarget()
     {
+        //if (transform.localPosition.x > trTargetAttack.localPosition.x)
         rig.velocity = moveSpeed * (saPlayer.skeleton.ScaleX > 0 ? Vector2.left : Vector2.right);
     }
     public void OnDie_()
@@ -246,6 +319,16 @@ public class EnemyBase : MonoBehaviour
         if (_charStage == CHAR_STATE.PLAYING)
         {
             if (isContinueDetect && collision.gameObject.name.Contains("Lava_Pr") && collision.gameObject.tag.Contains(Utils.TAG_TRAP))
+            {
+                OnDie_();
+            }
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (_charStage == CHAR_STATE.PLAYING)
+        {
+            if (isContinueDetect && collision.gameObject.tag.Contains(Utils.TAG_TRAP))
             {
                 OnDie_();
             }
