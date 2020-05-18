@@ -150,6 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fallingChest: 1
+  rig2d: {fileID: 0}
 --- !u!50 &4355550990345189182
 Rigidbody2D:
   serializedVersion: 4
@@ -234,7 +235,7 @@ GameObject:
   - component: {fileID: 4355550991026526779}
   - component: {fileID: 4355550991026526776}
   - component: {fileID: 4355550991026526773}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: FallingStone
   m_TagString: Tag_Stone
   m_Icon: {fileID: 0}

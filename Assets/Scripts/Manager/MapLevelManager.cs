@@ -17,8 +17,10 @@ public class MapLevelManager : MonoBehaviour
     public Transform trHostage, trGems;
 
     public QUEST_TYPE questType;
-    [HideInInspector]
-    public Transform trTarget;
+
+    [HideInInspector] public Transform trTarget;
+    //[HideInInspector]
+    public Transform trChest;
 
     public Dictionary<string, GameObject> dAllStone = new Dictionary<string, GameObject>();
     public List<EnemyBase> lstAllEnemies = new List<EnemyBase>();

@@ -9,7 +9,7 @@ using UnityEditor;
 public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager Instance;
-    
+
     public enum P_STATE { PLAYING, DIE, WIN, RUNNING }
 
     [HideInInspector] public bool isReadOnly = true;
@@ -63,17 +63,17 @@ public class PlayerManager : MonoBehaviour
             beginMove = false;
             PlayAnim(str_idle, true);
         }
-        if (MapLevelManager.Instance.trTarget != null)
-        {
-            if (transform.localPosition.x > MapLevelManager.Instance.trTarget.localPosition.x)
-            {
-                saPlayer.skeleton.ScaleX = -1;
-            }
-            else
-            {
-                saPlayer.skeleton.ScaleX = 1;
-            }
-        }
+        //if (MapLevelManager.Instance.trTarget != null)
+        //{
+        //    if (transform.localPosition.x > MapLevelManager.Instance.trTarget.localPosition.x)
+        //    {
+        //        saPlayer.skeleton.ScaleX = -1;
+        //    }
+        //    else
+        //    {
+        //        saPlayer.skeleton.ScaleX = 1;
+        //    }
+        //}
     }
 
     private void CheckHitAhead()
@@ -127,12 +127,24 @@ public class PlayerManager : MonoBehaviour
         CheckHitAhead();
         HitDownMapObject();
 
-        if (_isCanMoveToTarget)
+        //if (_isCanMoveToTarget)
+        //{
+        if (hitDown.collider != null)
         {
-            if (hitDown.collider != null)
+            if (_isCanMoveToTarget)
+            {
                 if (hitDown.collider.gameObject.tag.Contains(Utils.TAG_WALL_BOTTOM))
+                {
+                    beginMove = true;
                     MoveToTarget();
+                }
+            }
         }
+        else
+        {
+            beginMove = false;
+        }
+        //}
 
         if (!IsCanMove()) _rig2D.velocity = Vector2.zero;
         else
@@ -202,7 +214,8 @@ public class PlayerManager : MonoBehaviour
 
     public void PrepareRotate(Transform _trTarget, bool rotateOnly)
     {
-        if (hitDown.collider != null) {
+        if (hitDown.collider != null)
+        {
             if (transform.localPosition.x > _trTarget.localPosition.x)
             {
                 saPlayer.skeleton.ScaleX = -1;
@@ -326,6 +339,12 @@ public class PlayerManager : MonoBehaviour
                 beginMove = false;
                 PlayAnim(str_idle, true);
             }
+            //if(collision.gameObject.GetComponent<Chest>() != null)
+            //{
+            //    if(collision.gameObject.GetComponent<Chest>().GetComponent<Rigidbody2D>().velocity == Vector2.zero)
+            //        OnWin();
+            //    Debug.LogError(collision.gameObject.GetComponent<Chest>().GetComponent<Rigidbody2D>().velocity + " <---");
+            //}
         }
     }
     private void OnTriggerExit2D(Collider2D collision)

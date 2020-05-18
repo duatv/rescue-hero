@@ -9,8 +9,17 @@ public class HeadPlayer : MonoBehaviour
     {
         if (collision.gameObject.tag.Contains(Utils.TAG_STONE))
         {
-            if(GameManager.Instance.gameState != GameManager.GAMESTATE.WIN)
-                pPlayer.OnPlayerDie();
+            if (GameManager.Instance.gameState != GameManager.GAMESTATE.WIN)
+            {
+                if (collision.gameObject.GetComponent<Chest>() != null) {
+                    if (collision.gameObject.GetComponent<Chest>().rig2d.velocity == Vector2.zero)
+                    {
+                        pPlayer.OnWin();
+                    }
+                    else pPlayer.OnPlayerDie();
+                }else
+                    pPlayer.OnPlayerDie();
+            }
         }
     }
 }
