@@ -50,6 +50,10 @@ public class PlayerDetectGems : MonoBehaviour
         {
             pManager.PrepareRotate(collision.transform, false);
         }
+        if (collision.gameObject.GetComponent<Chest>() != null)
+        {
+            pManager.PrepareRotate(collision.transform, false);
+        }
         if (collision.gameObject.name.Contains("FallingChest"))
         {
             pManager.PrepareRotate_(collision.transform, true);
