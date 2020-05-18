@@ -26,13 +26,22 @@ public class StickBarrieEditor : Editor
             {
                 if (GUILayout.Button("Save Start Position", GUILayout.Height(50)))
                 {
-                    myScript.vStartPos = myScript.gameObject.transform.localPosition;
+                    if(myScript.isMove2Pos)
+                        myScript.vStartPos = myScript.gameObject.transform./*localPosition*/position;
+                    else myScript.vStartPos = myScript.gameObject.transform.localPosition;
                     EditorUtility.SetDirty(myScript);
                 }
                 if (GUILayout.Button("Save End Position", GUILayout.Height(50)))
                 {
-                    myScript.vEndPos = myScript.gameObject.transform.localPosition;
-                    myScript.gameObject.transform.localPosition = myScript.vStartPos;
+                    if (myScript.isMove2Pos)
+                    {
+                        myScript.vEndPos = myScript.gameObject.transform./*localPosition*/position;
+                        myScript.gameObject.transform./*localPosition*/position = myScript.vStartPos;
+                    }
+                    else {
+                        myScript.vEndPos = myScript.gameObject.transform.localPosition;
+                        myScript.gameObject.transform.localPosition = myScript.vStartPos;
+                    }
                     EditorUtility.SetDirty(myScript);
                 }
                 if (GUILayout.Button("Move to Start Position", GUILayout.Height(50)))
@@ -40,7 +49,9 @@ public class StickBarrieEditor : Editor
                     Vector3 vSwap = myScript.vStartPos;
                     myScript.vStartPos = myScript.vEndPos;
                     myScript.vEndPos = vSwap;
-                    myScript.gameObject.transform.localPosition = myScript.vStartPos;
+                    if(myScript.isMove2Pos)
+                        myScript.gameObject.transform./*localPosition*/position = myScript.vStartPos;
+                    else myScript.gameObject.transform.localPosition = myScript.vStartPos;
                     EditorUtility.SetDirty(myScript);
                 }
 

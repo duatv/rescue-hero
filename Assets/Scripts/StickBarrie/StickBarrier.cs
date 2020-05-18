@@ -2,19 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[SerializeField]
 public class StickBarrier : MonoBehaviour
 {
     const float speedAdd = 2;
 
     public enum MOVETYPE { RIGHT, LEFT, UP, DOWN, FREE }
-    public MOVETYPE _moveType;
-    public Rigidbody2D _rig2D;
-    public float moveSpeed = 2;
-    public bool hasBlockGems;
+    [SerializeField] public MOVETYPE _moveType;
+    [SerializeField] public Rigidbody2D _rig2D;
+    [Range(0,4)]
+    [SerializeField] public float moveSpeed = 2;
+    [SerializeField] public bool hasBlockGems;
 
+    [HideInInspector]
+    public bool isMove2Pos;
     [DrawIf("_moveType", MOVETYPE.FREE, ComparisonType.Equals, DisablingType.DontDraw)]
-    public Vector3 vEndPos, vStartPos;
-    private Vector3 vUpPos, vDownPos, vLeftPos, vRightPos;
+    [SerializeField] public Vector3 vEndPos;
+    [SerializeField] public Vector3 vStartPos;
+    [SerializeField] private Vector3 vUpPos, vDownPos, vLeftPos, vRightPos;
 
     [HideInInspector] public bool beginMove;
     [HideInInspector] public bool moveBack;
@@ -29,6 +34,7 @@ public class StickBarrier : MonoBehaviour
         if (_moveType != MOVETYPE.FREE) {
             vStartPos = transform.localPosition;
         }
+        Debug.LogError("-----> "+Vector3.Distance(vStartPos, vEndPos));
     }
 
     private void PrepareBlockGem() {
@@ -46,33 +52,65 @@ public class StickBarrier : MonoBehaviour
     private void MoveStick(Vector3 endPos) {
         transform.localPosition = Vector3.Lerp(transform.localPosition, endPos, Time.deltaTime * moveSpeed);
     }
+
+    [SerializeField]Vector3 dir;
+    private void MoveStick2Pos(Vector3 endPos) {
+        dir = (endPos - transform.position).normalized;
+        _rig2D.MovePosition(transform.position + dir * (moveSpeed * Time.fixedDeltaTime));
+    }
     private void MoveStickBarrie()
     {
         switch (_moveType)
         {
             case MOVETYPE.FREE:
-                if (beginMove && !moveBack) {
-                    if (Vector3.Distance(transform.localPosition, vEndPos) > 0.003f)
-                    {
-                        MoveStick(vEndPos);
+                if (isMove2Pos) {
+                    if (beginMove && !moveBack) {
+                        if (Vector3.Distance(transform.position, vEndPos) > 0.03f)
+                            MoveStick2Pos(vEndPos);
+                        else
+                        {
+                            _rig2D.velocity = Vector2.zero;
+                            beginMove = false;
+                            moveBack = true;
+                        }
                     }
-                    else
-                    {
-                        beginMove = false;
-                        moveBack = true;
+                    if (moveBack && beginMove) {
+                        if (Vector3.Distance(transform.position, vStartPos) > 0.03f)
+                            MoveStick2Pos(vStartPos);
+                        else
+                        {
+                            _rig2D.velocity = Vector2.zero;
+                            beginMove = false;
+                            moveBack = false;
+                        }
                     }
                 }
-
-                if (moveBack && beginMove)
+                else
                 {
-                    if (Vector3.Distance(transform.localPosition, vStartPos) > 0.003f)
+                    if (beginMove && !moveBack)
                     {
-                        MoveStick(vStartPos);
+                        if (Vector3.Distance(transform.localPosition, vEndPos) > 0.003f)
+                        {
+                            MoveStick(vEndPos);
+                        }
+                        else
+                        {
+                            beginMove = false;
+                            moveBack = true;
+                        }
                     }
-                    else
+
+                    if (moveBack && beginMove)
                     {
-                        beginMove = false;
-                        moveBack = false;
+                        if (Vector3.Distance(transform.localPosition, vStartPos) > 0.003f)
+                        {
+                            MoveStick(vStartPos);
+                        }
+                        else
+                        {
+                            beginMove = false;
+                            moveBack = false;
+                        }
                     }
                 }
                 break;
@@ -159,12 +197,14 @@ public class StickBarrier : MonoBehaviour
         }
     }
 
+    private void FixedUpdate()
+    {
+        if (beginMove)
+            MoveStickBarrie();
+    }
     private void Update()
     {
         PrepareBlockGem();
-
-        if (beginMove)
-            MoveStickBarrie();
     }
 
 
@@ -179,18 +219,37 @@ public class StickBarrier : MonoBehaviour
     #region Editor
     public void SaveEndPos()
     {
-        vEndPos = transform.localPosition;
-        if (vStartPos == Vector3.zero)
+        if (isMove2Pos)
         {
-            vStartPos = vEndPos;
+            vEndPos = transform./*localPosition*/position;
+            if (vStartPos == Vector3.zero)
+            {
+                vStartPos = vEndPos;
+            }
+            transform./*localPosition*/position = vStartPos;
         }
-        transform.localPosition = vStartPos;
+        else {
+            vEndPos = transform.localPosition;
+            if (vStartPos == Vector3.zero)
+            {
+                vStartPos = vEndPos;
+            }
+            transform.localPosition = vStartPos;
+        }
+
     }
 
     public void SaveStartPos()
     {
-        vStartPos = transform.localPosition;
-        transform.localPosition = vStartPos;
+        if (isMove2Pos)
+        {
+            vStartPos = transform./*localPosition*/position;
+            transform./*localPosition*/position = vStartPos;
+        }
+        else {
+            vStartPos = transform.localPosition;
+            transform.localPosition = vStartPos;
+        }
     }
     #endregion
 }
