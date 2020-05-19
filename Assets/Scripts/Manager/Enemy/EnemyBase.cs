@@ -19,7 +19,7 @@ public class EnemyBase : MonoBehaviour
     public SkeletonAnimation saPlayer;
     [DrawIf("isReadOnly", true, ComparisonType.Equals, DisablingType.ReadOnly)]
     [SpineAnimation]
-    public string str_idle, str_Win, str_Lose, strAtt, strRun;
+    public string str_idle, str_Win, str_Lose, str_Att, str_Run;
     public float moveSpeed;
     [SerializeField] public Rigidbody2D rig;
     public LayerMask lmColl, lmPlayer, lmMapObject;
@@ -69,7 +69,10 @@ public class EnemyBase : MonoBehaviour
         }
 
         saPlayer.AnimationState.End += delegate {
-            if (saPlayer.AnimationName.Equals(strAtt)) {
+            if (saPlayer.AnimationName.Equals(str_Att)) {
+                //Debug.LogError("1111111");
+                //PlayAnim(str_idle, true);
+
                 if (hitPlayer.collider != null) {
                     isContinueDetect = false;
                     if (hitPlayer.collider.gameObject.GetComponent<PlayerManager>())
@@ -88,7 +91,7 @@ public class EnemyBase : MonoBehaviour
                         hitPlayer.collider.gameObject.GetComponent<HostageManager>().OnDie_();
                         GameManager.Instance.gameState = GameManager.GAMESTATE.LOSE;
                     }
-                }
+                }   
             }
         };
     }
@@ -266,15 +269,15 @@ public class EnemyBase : MonoBehaviour
         switch (enemyType)
         {
             case ENEMY_TYPE.MELEE:
-                PlayAnim(strRun, true);
+                PlayAnim(str_Run, true);
                 isBeginMove = true;
                 break;
             case ENEMY_TYPE.MONSTER:
-                PlayAnim(strRun, true);
+                PlayAnim(str_Run, true);
                 isBeginMove = true;
                 break;
             case ENEMY_TYPE.RANGE:
-                PlayAnim(strAtt, true);
+                PlayAnim(str_Att, true);
                 break;
         }
     }
@@ -283,7 +286,7 @@ public class EnemyBase : MonoBehaviour
         isContinueDetect = false;
         isBeginMove = false;
         rig.velocity = Vector2.zero;
-        PlayAnim(strAtt, true);
+        PlayAnim(str_Att, true);
         if (pmTarget != null)
         {
             if (!pmTarget.isTakeSword)

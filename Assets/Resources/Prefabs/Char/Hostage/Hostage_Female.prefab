@@ -133,7 +133,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 04f8621febca79a46a3392654385bfd9, type: 2}
+  - {fileID: 2100000, guid: b187b8d90b5782e4c86a4948627b0eb0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: 74110666b8412744f8a1ea3ea2a90a0c, type: 2}
+  skeletonDataAsset: {fileID: 11400000, guid: 1c71d877975c0b444b6967565dbc80ca, type: 2}
   initialSkinName: 
   initialFlipX: 0
   initialFlipY: 0
@@ -216,7 +216,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3584803599321380111}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -240,13 +240,14 @@ MonoBehaviour:
   _charStage: 0
   _charType: 1
   isReadOnly: 0
-  sdaP1: {fileID: 11400000, guid: 74110666b8412744f8a1ea3ea2a90a0c, type: 2}
+  sdaP1: {fileID: 11400000, guid: 1c71d877975c0b444b6967565dbc80ca, type: 2}
   sdaP2: {fileID: 11400000, guid: 55c47bf0bc5b3094bb94866d61186f85, type: 2}
   saPlayer: {fileID: 3584803599024919363}
   str_idle: idle
-  str_Win: win 2
+  str_Win: win
   str_Lose: die
-  strAtt: shoot
+  strAtt: win 2
+  str_Win2: win 2
 --- !u!61 &3584803599321380106
 BoxCollider2D:
   m_ObjectHideFlags: 0

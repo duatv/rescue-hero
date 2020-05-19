@@ -11,10 +11,10 @@ public class CharsBase : MonoBehaviour
     public CHAR_TYPE _charType;
     [HideInInspector]
     public bool isReadOnly = true;
-    //[DrawIf("isReadOnly", true, ComparisonType.Equals, DisablingType.ReadOnly)]
+    [DrawIf("isReadOnly", true, ComparisonType.Equals, DisablingType.ReadOnly)]
     public SkeletonDataAsset sdaP1, sdaP2;
     public SkeletonAnimation saPlayer;
-    //[DrawIf("isReadOnly", true, ComparisonType.Equals, DisablingType.ReadOnly)]
+    [DrawIf("isReadOnly", true, ComparisonType.Equals, DisablingType.ReadOnly)]
     [SpineAnimation]
     public string str_idle, str_Win, str_Lose, strAtt, str_Win2;
 
