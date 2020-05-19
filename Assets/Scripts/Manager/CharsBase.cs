@@ -11,15 +11,14 @@ public class CharsBase : MonoBehaviour
     public CHAR_TYPE _charType;
     [HideInInspector]
     public bool isReadOnly = true;
-    [DrawIf("isReadOnly", true, ComparisonType.Equals, DisablingType.ReadOnly)]
+    //[DrawIf("isReadOnly", true, ComparisonType.Equals, DisablingType.ReadOnly)]
     public SkeletonDataAsset sdaP1, sdaP2;
     public SkeletonAnimation saPlayer;
-    [DrawIf("isReadOnly", true, ComparisonType.Equals, DisablingType.ReadOnly)]
+    //[DrawIf("isReadOnly", true, ComparisonType.Equals, DisablingType.ReadOnly)]
     [SpineAnimation]
-    public string str_idle, str_Win, str_Lose, strAtt;
+    public string str_idle, str_Win, str_Lose, strAtt, str_Win2;
 
-
-
+   
     private bool isContinueDetect = true;
     public void ChoosePlayer(int i)
     {
@@ -40,6 +39,11 @@ public class CharsBase : MonoBehaviour
     protected void PlayAnim(string anim_, bool isLoop)
     {
         saPlayer.AnimationState.SetAnimation(0, anim_, isLoop);
+        //if (anim_.Equals(str_Win))
+        //{
+        //    saPlayer.AnimationState.SetAnimation(1, str_Win, true);
+        //}
+        //else saPlayer.AnimationState.SetAnimation(0, anim_, isLoop);
     }
     public void OnDie_() {
 
@@ -51,7 +55,8 @@ public class CharsBase : MonoBehaviour
                 GameManager.Instance.gameState = GameManager.GAMESTATE.LOSE;
                 PlayAnim(str_Lose, false);
 
-                PlayerManager.Instance.OnPlayerDie();
+                if(PlayerManager.Instance != null)
+                    PlayerManager.Instance.OnPlayerDie();
                 MapLevelManager.Instance.OnLose();
             }
         }
@@ -61,24 +66,6 @@ public class CharsBase : MonoBehaviour
         if (isContinueDetect && collision.gameObject.name.Contains("Lava_Pr") && collision.gameObject.tag.Contains(Utils.TAG_TRAP))
         {
             OnDie_();
-            //isContinueDetect = false;
-            //PlayAnim(str_Lose, false);
-            //_charStage = CHAR_STATE.DIE;
-            //GameManager.Instance.gameState = GameManager.GAMESTATE.LOSE;
-
-
-            //Physics2D.IgnoreLayerCollision(_charType == CHAR_TYPE.HOSTAGE ? 16 : 15, 11,false);
-            //Physics2D.IgnoreLayerCollision(_charType == CHAR_TYPE.HOSTAGE ? 16 : 15, 14, false);
-            //Physics2D.IgnoreLayerCollision(_charType == CHAR_TYPE.HOSTAGE ? 16 : 15, 9, false);
-            //Physics2D.IgnoreLayerCollision(_charType == CHAR_TYPE.HOSTAGE ? 16 : 15, 4, false);
-
-            //if (_charType == CHAR_TYPE.HOSTAGE)
-            //{
-            //    if (GameManager.Instance.gameState != GameManager.GAMESTATE.WIN) {
-            //        PlayerManager.Instance.OnPlayerDie();
-            //        MapLevelManager.Instance.OnLose();
-            //    }
-            //}
         }
         if (isContinueDetect && collision.gameObject.tag.Contains(Utils.TAG_STONE)) {
             OnDie_();

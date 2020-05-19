@@ -9,9 +9,19 @@ public class HostageManager : CharsBase
 {
     void Start()
     {
-        if (MapLevelManager.Instance != null) {
+        if (MapLevelManager.Instance != null)
+        {
             MapLevelManager.Instance.trTarget = transform;
         }
+        saPlayer.AnimationState.End += delegate
+        {
+            if (saPlayer.AnimationName.Equals(str_Win))
+            {
+                saPlayer.AnimationState.SetAnimation(0, str_Win2, true);
+            }
+        };
+
+
         if (PlayerManager.Instance != null)
         {
             if (transform.localPosition.x > PlayerManager.Instance.transform.localPosition.x)
@@ -20,16 +30,21 @@ public class HostageManager : CharsBase
             }
             else saPlayer.skeleton.ScaleX = 1;
         }
+        else
+        {
+            GameManager.Instance.gTargetFollow = gameObject;
+        }
     }
     public void PlayWin()
     {
-        PlayAnim(str_Win, true);
+        saPlayer.AnimationState.SetAnimation(0, str_Win, false);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.GetComponent<PlayerManager>() != null)
         {
-            if (GameManager.Instance.gameState != GameManager.GAMESTATE.LOSE) {
+            if (GameManager.Instance.gameState != GameManager.GAMESTATE.LOSE)
+            {
                 GameManager.Instance.gameState = GameManager.GAMESTATE.WIN;
                 PlayWin();
                 collision.gameObject.GetComponent<PlayerManager>().OnWin();

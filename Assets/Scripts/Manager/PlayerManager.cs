@@ -14,10 +14,10 @@ public class PlayerManager : MonoBehaviour
 
     [HideInInspector] public bool isReadOnly = true;
 
-    [DrawIf("isReadOnly", true, ComparisonType.Equals, DisablingType.ReadOnly)]
+    //[DrawIf("isReadOnly", true, ComparisonType.Equals, DisablingType.ReadOnly)]
     public SkeletonDataAsset sdaP1, sdaP2;
 
-    [DrawIf("isReadOnly", true, ComparisonType.Equals, DisablingType.ReadOnly)]
+    //[DrawIf("isReadOnly", true, ComparisonType.Equals, DisablingType.ReadOnly)]
     [SpineAnimation]
     public string str_idle, str_Win, str_Lose, str_Move, str_Att;
     public PlayerDetectGems _detectGems;
