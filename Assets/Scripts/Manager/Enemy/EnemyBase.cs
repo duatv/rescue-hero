@@ -71,10 +71,8 @@ public class EnemyBase : MonoBehaviour
 
         saPlayer.AnimationState.End += delegate
         {
-            //str_Lose
             if (saPlayer.AnimationName.Equals(str_Lose))
             {
-                //Debug.LogError("bbbbbbbbb");
                 gGround.layer = 0;
             }
             if (saPlayer.AnimationName.Equals(str_Att))
@@ -130,8 +128,8 @@ public class EnemyBase : MonoBehaviour
             if (hitDown.collider != null)
             {
                 #region Check Hit Ahead
-                vStart = new Vector3(transform.localPosition.x - /*saPlayer.skeleton.ScaleX **/ 0.35f, transform.localPosition.y - 1.2f, transform.localPosition.z);
-                vEnd = new Vector3(vStart.x - /*saPlayer.skeleton.ScaleX **/ 2f, vStart.y, vStart.z);
+                vStart = new Vector3(transform.localPosition.x - 0.35f, transform.localPosition.y - 1.2f, transform.localPosition.z);
+                vEnd = new Vector3(vStart.x - 2f, vStart.y, vStart.z);
 
                 vStartForward = new Vector3(transform.localPosition.x + 0.35f, transform.localPosition.y - 1.2f, transform.localPosition.z);
                 vEndForward = new Vector3(vStartForward.x + 2f, vStartForward.y, vStartForward.z);
@@ -230,8 +228,6 @@ public class EnemyBase : MonoBehaviour
             }
 
 
-
-
             if (isBeginMove && _isCanMoveToTarget)
             {
                 MoveToTarget();
@@ -253,25 +249,6 @@ public class EnemyBase : MonoBehaviour
 
     public virtual void Update()
     {
-        if (_charStage == CHAR_STATE.PLAYING)
-        {
-            if (!isBeginMove)
-            {
-                //if (trTargetAttack != null)
-                //{
-                //    PrepareRotate_(trTargetAttack);
-                //}
-
-                //if (PlayerManager.Instance != null)
-                //{
-                //    if (transform.localPosition.x > PlayerManager.Instance.transform.localPosition.x)
-                //    {
-                //        saPlayer.skeleton.ScaleX = 1;
-                //    }
-                //    else saPlayer.skeleton.ScaleX = -1;
-                //}
-            }
-        }
     }
     public virtual void OnMoveToTarget()
     {
@@ -296,19 +273,11 @@ public class EnemyBase : MonoBehaviour
         isBeginMove = false;
         rig.velocity = Vector2.zero;
         PlayAnim(str_Att, true);
-        //if (pmTarget != null)
-        //{
-        //    if (!pmTarget.isTakeSword)
-        //    {
-        //        pmTarget.OnIdleState();
-        //    }
-        //}
     }
 
 
     protected void MoveToTarget()
     {
-        //if (transform.localPosition.x > trTargetAttack.localPosition.x)
         rig.velocity = moveSpeed * (saPlayer.skeleton.ScaleX > 0 ? Vector2.left : Vector2.right);
     }
     public void OnDie_()

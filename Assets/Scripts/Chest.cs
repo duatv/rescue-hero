@@ -18,8 +18,6 @@ public class Chest : MonoBehaviour
         {
             if(!fallingChest)
                 MapLevelManager.Instance.trTarget = transform;
-
-            //MapLevelManager.Instance.trChest = transform;
         }
     }
 

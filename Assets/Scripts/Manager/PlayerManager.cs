@@ -14,10 +14,10 @@ public class PlayerManager : MonoBehaviour
 
     [HideInInspector] public bool isReadOnly = true;
 
-    //[DrawIf("isReadOnly", true, ComparisonType.Equals, DisablingType.ReadOnly)]
+    [DrawIf("isReadOnly", true, ComparisonType.Equals, DisablingType.ReadOnly)]
     public SkeletonDataAsset sdaP1, sdaP2;
 
-    //[DrawIf("isReadOnly", true, ComparisonType.Equals, DisablingType.ReadOnly)]
+    [DrawIf("isReadOnly", true, ComparisonType.Equals, DisablingType.ReadOnly)]
     [SpineAnimation]
     public string str_idle, str_Win, str_Lose, str_Move, str_Att, str_TakeSword, str_OpenWithoutSword, str_OpenWithSword, str_MoveWithSword;
     [SpineSkin]
@@ -261,22 +261,8 @@ public class PlayerManager : MonoBehaviour
             }
         }
     }
-
-
-    //public IEnumerator IEWin()
-    //{
-    //    GameManager.Instance.gameState = GameManager.GAMESTATE.WIN;
-    //    pState = P_STATE.WIN;
-    //    _rig2D.velocity = Vector2.zero;
-    //    beginMove = false;
-    //    PlayAnim(isTakeSword ? str_OpenWithSword : str_OpenWithoutSword, false);
-    //    yield return new WaitForSeconds(1.0f);
-
-    //    //MapLevelManager.Instance.OnWin();
-    //}
     public void OnIdleState()
     {
-        //Debug.LogError("Idle");
         pState = P_STATE.PLAYING;
         _rig2D.velocity = Vector2.zero;
         beginMove = false;
@@ -296,9 +282,6 @@ public class PlayerManager : MonoBehaviour
         _tr.gameObject.SetActive(false);
         saPlayer.Skeleton.SetSkin(skinSword);
         OnIdleState();
-
-        //trSword = _tr;
-        //trSword.SetParent(trSwordPos, true);
     }
     public void OnPlayerDie()
     {
@@ -358,13 +341,6 @@ public class PlayerManager : MonoBehaviour
                 beginMove = false;
                 PlayAnim(str_idle, true);
             }
-            //if (collision.gameObject.GetComponent<Chest>() != null)
-            //{
-            //    if (collision.gameObject.GetComponent<Chest>().rig2d.velocity == Vector2.zero)
-            //    {
-            //        OnWin();
-            //    }
-            //}
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -409,7 +385,6 @@ public class PlayerManager : MonoBehaviour
     }
     private void PlayAnim(string anim_, bool isLoop)
     {
-        //Debug.LogError("Lose: " + saPlayer.AnimationName.Equals(str_Lose) + " vs " + anim_);
         if (!saPlayer.AnimationName.Equals(anim_))
         {
             saPlayer.AnimationState.SetAnimation(0, anim_, isLoop);
