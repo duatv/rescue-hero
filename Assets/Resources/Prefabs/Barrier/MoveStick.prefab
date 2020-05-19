@@ -343,7 +343,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveType: 4
   _rig2D: {fileID: 5274862688083696870}
-  moveSpeed: 5
+  moveSpeed: 2
   hasBlockGems: 0
   isMove2Pos: 1
   vEndPos: {x: -2.28, y: -0.01, z: 0}
