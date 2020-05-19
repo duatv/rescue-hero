@@ -48,11 +48,19 @@ public class PlayerDetectGems : MonoBehaviour
         }
         if (collision.gameObject.GetComponent<HostageManager>() != null)
         {
-            pManager.PrepareRotate(collision.transform, false);
+            if (!collision.gameObject.GetComponent<HostageManager>().isMeetPlayer)
+            {
+                if (pManager.hitDown.collider != null)
+                {
+                    pManager.PrepareRotate(collision.transform, false);
+                    collision.gameObject.GetComponent<HostageManager>().isMeetPlayer = true;
+                }
+            }
         }
         if (collision.gameObject.GetComponent<Chest>() != null)
         {
             pManager.PrepareRotate(collision.transform, false);
+            Debug.LogError("FOUND chest");
         }
         if (collision.gameObject.name.Contains("FallingChest"))
         {

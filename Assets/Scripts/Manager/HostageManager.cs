@@ -7,6 +7,8 @@ using UnityEditor;
 #endif
 public class HostageManager : CharsBase
 {
+    //PlayerManager _pmManager;
+    public bool isMeetPlayer;
     void Start()
     {
         if (MapLevelManager.Instance != null)
@@ -18,6 +20,10 @@ public class HostageManager : CharsBase
             if (saPlayer.AnimationName.Equals(str_Win))
             {
                 saPlayer.AnimationState.SetAnimation(0, str_Win2, true);
+                PlayerManager.Instance.OnWin();
+            }
+            if (saPlayer.AnimationName.Equals(str_Win2)) {
+                //_pmManager.OnWin();
             }
         };
 
@@ -46,8 +52,9 @@ public class HostageManager : CharsBase
             if (GameManager.Instance.gameState != GameManager.GAMESTATE.LOSE)
             {
                 GameManager.Instance.gameState = GameManager.GAMESTATE.WIN;
+                //_pmManager = collision.gameObject.GetComponent<PlayerManager>();
                 PlayWin();
-                collision.gameObject.GetComponent<PlayerManager>().OnWin();
+                //collision.gameObject.GetComponent<PlayerManager>().OnWin();
             }
         }
     }

@@ -36,7 +36,6 @@ public class Chest : MonoBehaviour
                 }
                 hasDetect = true;
             }
-            
         }
         if (collision.gameObject.name.Contains("Lava_Pr")) {
             if (!hasDetect) {

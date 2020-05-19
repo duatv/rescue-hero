@@ -15,8 +15,8 @@ public class Sword : MonoBehaviour
     Vector3 _vStartHitDown, _vEndHitDown;
     private void HitDownMapObject()
     {
-        _vStartHitDown = new Vector3(transform.localPosition.x, transform.localPosition.y - 2.0f, transform.localPosition.z);
-        _vEndHitDown = new Vector3(_vStartHitDown.x, _vStartHitDown.y - 0.2f, _vStartHitDown.z);
+        _vStartHitDown = new Vector3(transform.localPosition.x, transform.localPosition.y - 2.35f, transform.localPosition.z);
+        _vEndHitDown = new Vector3(_vStartHitDown.x, _vStartHitDown.y - 0.25f, _vStartHitDown.z);
         hitDown = Physics2D.Linecast(_vStartHitDown, _vEndHitDown, lmMapObject);
 
         Debug.DrawLine(_vStartHitDown, _vEndHitDown, Color.red);
@@ -39,7 +39,8 @@ public class Sword : MonoBehaviour
         if (collision.gameObject.GetComponent<PlayerManager>() != null) {
             _pPLayer = collision.gameObject.GetComponent<PlayerManager>();
             if (IsCanKilling()) {
-                _pPLayer.OnPlayerDie();
+                if(!_pPLayer.isTakeSword)
+                    _pPLayer.OnPlayerDie();
             }
             else
             {

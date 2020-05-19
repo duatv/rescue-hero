@@ -19,7 +19,9 @@ public class PlayerManager : MonoBehaviour
 
     //[DrawIf("isReadOnly", true, ComparisonType.Equals, DisablingType.ReadOnly)]
     [SpineAnimation]
-    public string str_idle, str_Win, str_Lose, str_Move, str_Att;
+    public string str_idle, str_Win, str_Lose, str_Move, str_Att, str_TakeSword, str_OpenWithoutSword, str_OpenWithSword, str_MoveWithSword;
+    [SpineSkin]
+    public string skinDefault, skinSword;
     public PlayerDetectGems _detectGems;
     public Transform trSword, trSwordPos;
     public bool isTakeSword;
@@ -33,7 +35,7 @@ public class PlayerManager : MonoBehaviour
     [HideInInspector] public bool beginMove = false;
     private bool isMoveLeft = false;
     private bool isMoveRight = false;
-    private RaycastHit2D hit2D, hitDown;
+    [HideInInspector]public RaycastHit2D hit2D, hitDown;
     private Vector3 vEnd, vStart;
     private EnemyBase enBase;
     private bool _isCanMoveToTarget;
@@ -46,8 +48,26 @@ public class PlayerManager : MonoBehaviour
     private void Start()
     {
         GameManager.Instance.gTargetFollow = gameObject;
-    }
 
+
+        saPlayer.AnimationState.End += delegate {
+            if (saPlayer.AnimationName.Equals(str_Att))
+            {
+                enBase.OnDie_();
+            }
+            if (saPlayer.AnimationName.Equals(str_OpenWithSword) || saPlayer.AnimationName.Equals(str_OpenWithoutSword))
+            {
+                StartCoroutine(ISShowWin());
+            }
+        };
+    }
+    IEnumerator ISShowWin()
+    {
+        yield return new WaitForSeconds(1.2f);
+        PlayAnim(str_Win, true);
+        yield return new WaitForSeconds(1.2f);
+        MapLevelManager.Instance.OnWin();
+    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.LeftArrow))
@@ -98,7 +118,7 @@ public class PlayerManager : MonoBehaviour
     {
         if (GameManager.Instance.gameState == GameManager.GAMESTATE.PLAYING)
         {
-            PlayAnim(str_Move, true);
+            PlayAnim(isTakeSword?str_MoveWithSword: str_Move, true);
             _rig2D.velocity = moveSpeed * (saPlayer.skeleton.ScaleX > 0 ? Vector2.right : Vector2.left);
         }
     }
@@ -167,7 +187,7 @@ public class PlayerManager : MonoBehaviour
             saPlayer.skeleton.ScaleX = -1;
             isMoveLeft = true;
             isMoveRight = false;
-            PlayAnim(str_Move, true);
+            PlayAnim(isTakeSword ? str_MoveWithSword : str_Move, true);
         }
     }
     public void PrepareMoveRight()
@@ -178,7 +198,7 @@ public class PlayerManager : MonoBehaviour
             saPlayer.skeleton.ScaleX = 1;
             isMoveLeft = false;
             isMoveRight = true;
-            PlayAnim(str_Move, true);
+            PlayAnim(isTakeSword ? str_MoveWithSword : str_Move, true);
         }
     }
     public void PrepareRotate_(Transform _trTarget, bool rotateOnly)
@@ -241,9 +261,10 @@ public class PlayerManager : MonoBehaviour
         pState = P_STATE.WIN;
         _rig2D.velocity = Vector2.zero;
         beginMove = false;
+        PlayAnim(isTakeSword ? str_OpenWithSword : str_OpenWithoutSword, false);
         yield return new WaitForSeconds(1.0f);
-        MapLevelManager.Instance.OnWin();
-        PlayAnim(str_Win, true);
+        
+        //MapLevelManager.Instance.OnWin();
     }
     public void OnIdleState()
     {
@@ -256,15 +277,18 @@ public class PlayerManager : MonoBehaviour
     {
         Debug.LogError("KILL HIMMMMMMMMMMM");
         enBase = _enBase;
-        PlayAnim(str_Att, true);
+        PlayAnim(str_Att, false);
     }
     public void OnTakeSword(Transform _tr)
     {
         Debug.LogError("Take Sword");
         isTakeSword = true;
+        _tr.gameObject.SetActive(false);
+        saPlayer.Skeleton.SetSkin(skinSword);
         OnIdleState();
-        trSword = _tr;
-        trSword.SetParent(trSwordPos, true);
+        
+        //trSword = _tr;
+        //trSword.SetParent(trSwordPos, true);
     }
     public void OnPlayerDie()
     {
@@ -311,7 +335,13 @@ public class PlayerManager : MonoBehaviour
 
     public void OnWin()
     {
-        StartCoroutine(IEWin());
+        GameManager.Instance.gameState = GameManager.GAMESTATE.WIN;
+        pState = P_STATE.WIN;
+        _rig2D.velocity = Vector2.zero;
+        beginMove = false;
+        PlayAnim(isTakeSword ? str_OpenWithSword : str_OpenWithoutSword, false);
+
+        //StartCoroutine(IEWin());
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -322,12 +352,6 @@ public class PlayerManager : MonoBehaviour
                 beginMove = false;
                 PlayAnim(str_idle, true);
             }
-            //if(collision.gameObject.GetComponent<Chest>() != null)
-            //{
-            //    if(collision.gameObject.GetComponent<Chest>().GetComponent<Rigidbody2D>().velocity == Vector2.zero)
-            //        OnWin();
-            //    Debug.LogError(collision.gameObject.GetComponent<Chest>().GetComponent<Rigidbody2D>().velocity + " <---");
-            //}
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -373,6 +397,8 @@ public class PlayerManager : MonoBehaviour
     private void PlayAnim(string anim_, bool isLoop)
     {
         if (!saPlayer.AnimationName.Equals(anim_))
+        {
             saPlayer.AnimationState.SetAnimation(0, anim_, isLoop);
+        }
     }
 }

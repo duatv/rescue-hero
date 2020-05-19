@@ -70,9 +70,6 @@ public class EnemyBase : MonoBehaviour
 
         saPlayer.AnimationState.End += delegate {
             if (saPlayer.AnimationName.Equals(str_Att)) {
-                //Debug.LogError("1111111");
-                //PlayAnim(str_idle, true);
-
                 if (hitPlayer.collider != null) {
                     isContinueDetect = false;
                     if (hitPlayer.collider.gameObject.GetComponent<PlayerManager>())

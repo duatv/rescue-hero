@@ -17,8 +17,41 @@ MonoBehaviour:
   scale: 0.0045
   skeletonJSON: {fileID: 4900000, guid: de43e2d8de8e7e54f9e92656d9104d1c, type: 3}
   skeletonDataModifiers: []
-  fromAnimation: []
-  toAnimation: []
-  duration: []
+  fromAnimation:
+  - run
+  - run (kiem)
+  - open (kiem)
+  - open ( k kiem)
+  - attack (kiem)
+  - fall 1
+  - fall 2
+  - fall 1
+  - fall 2
+  - fall 1
+  - fall 2
+  toAnimation:
+  - win
+  - win
+  - idle
+  - idle
+  - idle
+  - idle
+  - idle
+  - run
+  - run
+  - run (kiem)
+  - run (kiem)
+  duration:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
   defaultMix: 0.2
   controller: {fileID: 0}
