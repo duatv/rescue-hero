@@ -1,0 +1,167 @@
+
+Hero.png
+size: 1428,1428
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Group 1 copy
+  rotate: false
+  xy: 1185, 87
+  size: 134, 124
+  orig: 134, 124
+  offset: 0, 0
+  index: -1
+Group 2 copy
+  rotate: true
+  xy: 1166, 443
+  size: 126, 207
+  orig: 126, 207
+  offset: 0, 0
+  index: -1
+Group 3 copy
+  rotate: false
+  xy: 870, 20
+  size: 138, 146
+  orig: 138, 146
+  offset: 0, 0
+  index: -1
+Group 5 copy 2
+  rotate: true
+  xy: 2, 21
+  size: 100, 178
+  orig: 100, 178
+  offset: 0, 0
+  index: -1
+Group 6 copy 2
+  rotate: true
+  xy: 496, 9
+  size: 112, 135
+  orig: 112, 135
+  offset: 0, 0
+  index: -1
+Group 6 copy 3
+  rotate: false
+  xy: 182, 7
+  size: 158, 114
+  orig: 158, 114
+  offset: 0, 0
+  index: -1
+Group 7 copy
+  rotate: false
+  xy: 1010, 40
+  size: 102, 82
+  orig: 102, 82
+  offset: 0, 0
+  index: -1
+Group 8 copy
+  rotate: false
+  xy: 743, 2
+  size: 125, 164
+  orig: 125, 164
+  offset: 0, 0
+  index: -1
+Group 9 copy
+  rotate: false
+  xy: 1185, 291
+  size: 158, 150
+  orig: 158, 150
+  offset: 0, 0
+  index: -1
+Head copy
+  rotate: false
+  xy: 1166, 828
+  size: 240, 258
+  orig: 240, 258
+  offset: 0, 0
+  index: -1
+Hip copy
+  rotate: true
+  xy: 1166, 571
+  size: 255, 190
+  orig: 255, 190
+  offset: 0, 0
+  index: -1
+Layer 45
+  rotate: false
+  xy: 743, 168
+  size: 267, 264
+  orig: 267, 264
+  offset: 0, 0
+  index: -1
+Layer 46
+  rotate: false
+  xy: 633, 22
+  size: 97, 99
+  orig: 97, 99
+  offset: 0, 0
+  index: -1
+Layer 47
+  rotate: true
+  xy: 342, 3
+  size: 118, 152
+  orig: 118, 152
+  offset: 0, 0
+  index: -1
+Layer 52
+  rotate: true
+  xy: 1345, 343
+  size: 98, 72
+  orig: 98, 72
+  offset: 0, 0
+  index: -1
+Layer 54
+  rotate: false
+  xy: 1012, 124
+  size: 155, 70
+  orig: 155, 70
+  offset: 0, 0
+  index: -1
+Layer 57
+  rotate: false
+  xy: 1358, 1367
+  size: 60, 59
+  orig: 60, 59
+  offset: 0, 0
+  index: -1
+Layer 7
+  rotate: false
+  xy: 1012, 196
+  size: 171, 236
+  orig: 171, 236
+  offset: 0, 0
+  index: -1
+eye
+  rotate: false
+  xy: 1185, 213
+  size: 154, 76
+  orig: 154, 76
+  offset: 0, 0
+  index: -1
+hair
+  rotate: true
+  xy: 1166, 1088
+  size: 338, 190
+  orig: 338, 190
+  offset: 0, 0
+  index: -1
+kiem
+  rotate: true
+  xy: 2, 123
+  size: 309, 739
+  orig: 309, 739
+  offset: 0, 0
+  index: -1
+mouth
+  rotate: true
+  xy: 1358, 748
+  size: 78, 34
+  orig: 78, 34
+  offset: 0, 0
+  index: -1
+vet
+  rotate: false
+  xy: 2, 434
+  size: 1162, 992
+  orig: 1162, 992
+  offset: 0, 0
+  index: -1

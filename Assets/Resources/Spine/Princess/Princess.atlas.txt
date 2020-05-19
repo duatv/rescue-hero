@@ -1,0 +1,132 @@
+
+Princess.png
+size: 520,520
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Group 28 copy
+  rotate: false
+  xy: 233, 110
+  size: 224, 191
+  orig: 224, 191
+  offset: 0, 0
+  index: -1
+Group 29 copy
+  rotate: true
+  xy: 2, 2
+  size: 93, 146
+  orig: 93, 146
+  offset: 0, 0
+  index: -1
+Group 31 copy
+  rotate: false
+  xy: 233, 303
+  size: 226, 213
+  orig: 226, 213
+  offset: 0, 0
+  index: -1
+Layer 10
+  rotate: true
+  xy: 461, 407
+  size: 109, 48
+  orig: 109, 48
+  offset: 0, 0
+  index: -1
+Layer 11
+  rotate: true
+  xy: 461, 350
+  size: 55, 45
+  orig: 55, 45
+  offset: 0, 0
+  index: -1
+Layer 12
+  rotate: false
+  xy: 459, 196
+  size: 34, 39
+  orig: 34, 39
+  offset: 0, 0
+  index: -1
+Layer 2
+  rotate: false
+  xy: 150, 4
+  size: 81, 91
+  orig: 81, 91
+  offset: 0, 0
+  index: -1
+Layer 3
+  rotate: false
+  xy: 233, 10
+  size: 45, 21
+  orig: 45, 21
+  offset: 0, 0
+  index: -1
+Layer 4
+  rotate: false
+  xy: 177, 106
+  size: 32, 17
+  orig: 32, 17
+  offset: 0, 0
+  index: -1
+Layer 5
+  rotate: true
+  xy: 461, 277
+  size: 32, 39
+  orig: 32, 39
+  offset: 0, 0
+  index: -1
+Layer 53 copy
+  rotate: true
+  xy: 353, 27
+  size: 81, 91
+  orig: 81, 91
+  offset: 0, 0
+  index: -1
+Layer 56 copy
+  rotate: false
+  xy: 2, 166
+  size: 229, 350
+  orig: 229, 350
+  offset: 0, 0
+  index: -1
+Layer 6
+  rotate: false
+  xy: 177, 125
+  size: 49, 39
+  orig: 49, 39
+  offset: 0, 0
+  index: -1
+Layer 7
+  rotate: false
+  xy: 446, 23
+  size: 66, 85
+  orig: 66, 85
+  offset: 0, 0
+  index: -1
+Layer 8
+  rotate: true
+  xy: 233, 33
+  size: 75, 118
+  orig: 75, 118
+  offset: 0, 0
+  index: -1
+xich/Layer 1
+  rotate: false
+  xy: 2, 97
+  size: 173, 67
+  orig: 173, 67
+  offset: 0, 0
+  index: -1
+xich/Layer 2
+  rotate: false
+  xy: 459, 237
+  size: 36, 38
+  orig: 36, 38
+  offset: 0, 0
+  index: -1
+xich/Layer 3
+  rotate: false
+  xy: 461, 311
+  size: 39, 37
+  orig: 39, 37
+  offset: 0, 0
+  index: -1

@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a6b194f808b1af6499c93410e504af42, type: 3}
-  m_Name: bg-01_Atlas
+  m_Name: Princess_Atlas
   m_EditorClassIdentifier: 
-  atlasFile: {fileID: 4900000, guid: 63259ed29d4b63f48818c1a1863b6182, type: 3}
+  atlasFile: {fileID: 4900000, guid: 4f32dd287ae4d6945877533e9b514171, type: 3}
   materials:
-  - {fileID: 2100000, guid: 42d32ab2bd04da740bcc2f137713884c, type: 2}
+  - {fileID: 2100000, guid: b187b8d90b5782e4c86a4948627b0eb0, type: 2}
