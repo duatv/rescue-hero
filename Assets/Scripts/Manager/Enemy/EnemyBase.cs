@@ -24,6 +24,7 @@ public class EnemyBase : MonoBehaviour
     [SerializeField] public Rigidbody2D rig;
     public LayerMask lmColl, lmPlayer, lmMapObject;
     public bool isRangerAtt;
+    public GameObject gGround;
 
     [SerializeField]
     private RaycastHit2D hit2D, hit2D_1, hitPlayer, hitDown;
@@ -61,16 +62,25 @@ public class EnemyBase : MonoBehaviour
     public virtual void OnEnable()
     {
     }
-    private void Start()
+    public virtual void Start()
     {
         if (MapLevelManager.Instance != null)
         {
             MapLevelManager.Instance.lstAllEnemies.Add(this);
         }
 
-        saPlayer.AnimationState.End += delegate {
-            if (saPlayer.AnimationName.Equals(str_Att)) {
-                if (hitPlayer.collider != null) {
+        saPlayer.AnimationState.End += delegate
+        {
+            //str_Lose
+            if (saPlayer.AnimationName.Equals(str_Lose))
+            {
+                //Debug.LogError("bbbbbbbbb");
+                gGround.layer = 0;
+            }
+            if (saPlayer.AnimationName.Equals(str_Att))
+            {
+                if (hitPlayer.collider != null)
+                {
                     isContinueDetect = false;
                     if (hitPlayer.collider.gameObject.GetComponent<PlayerManager>())
                     {
@@ -84,11 +94,12 @@ public class EnemyBase : MonoBehaviour
                             GameManager.Instance.gameState = GameManager.GAMESTATE.LOSE;
                         }
                     }
-                    else if (hitPlayer.collider.gameObject.GetComponent<HostageManager>()) {
+                    else if (hitPlayer.collider.gameObject.GetComponent<HostageManager>())
+                    {
                         hitPlayer.collider.gameObject.GetComponent<HostageManager>().OnDie_();
                         GameManager.Instance.gameState = GameManager.GAMESTATE.LOSE;
                     }
-                }   
+                }
             }
         };
     }
@@ -165,7 +176,8 @@ public class EnemyBase : MonoBehaviour
                         }
                     }
                 }
-                else if (hit2D_1.collider != null) {
+                else if (hit2D_1.collider != null)
+                {
                     if (!hit2D_1.collider.gameObject.tag.Contains(Utils.TAG_STICKBARRIE) && !isBeginAtt)
                     {
                         if (hit2D_1.collider.gameObject.GetComponent<EnemyBase>() != null)
@@ -284,13 +296,13 @@ public class EnemyBase : MonoBehaviour
         isBeginMove = false;
         rig.velocity = Vector2.zero;
         PlayAnim(str_Att, true);
-        if (pmTarget != null)
-        {
-            if (!pmTarget.isTakeSword)
-            {
-                pmTarget.OnIdleState();
-            }
-        }
+        //if (pmTarget != null)
+        //{
+        //    if (!pmTarget.isTakeSword)
+        //    {
+        //        pmTarget.OnIdleState();
+        //    }
+        //}
     }
 
 

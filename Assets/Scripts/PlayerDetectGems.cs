@@ -60,7 +60,6 @@ public class PlayerDetectGems : MonoBehaviour
         if (collision.gameObject.GetComponent<Chest>() != null)
         {
             pManager.PrepareRotate(collision.transform, false);
-            Debug.LogError("FOUND chest");
         }
         if (collision.gameObject.name.Contains("FallingChest"))
         {

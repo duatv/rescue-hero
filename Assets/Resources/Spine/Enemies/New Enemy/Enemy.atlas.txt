@@ -6,91 +6,91 @@ filter: Linear,Linear
 repeat: none
 1
   rotate: true
-  xy: 388, 311
+  xy: 388, 312
   size: 117, 162
   orig: 117, 162
   offset: 0, 0
   index: -1
 2 copy
-  rotate: true
-  xy: 239, 81
-  size: 48, 112
-  orig: 48, 112
+  rotate: false
+  xy: 486, 83
+  size: 47, 112
+  orig: 47, 112
   offset: 0, 0
   index: -1
 5
   rotate: true
-  xy: 202, 273
+  xy: 202, 274
   size: 155, 184
   orig: 155, 184
   offset: 0, 0
   index: -1
 Group 14
   rotate: true
-  xy: 405, 470
+  xy: 405, 471
   size: 89, 130
   orig: 89, 130
   offset: 0, 0
   index: -1
 Group 15
   rotate: true
-  xy: 411, 196
+  xy: 408, 197
   size: 113, 81
   orig: 113, 81
   offset: 0, 0
   index: -1
 Group 16
-  rotate: false
-  xy: 353, 41
+  rotate: true
+  xy: 387, 29
   size: 54, 88
   orig: 54, 88
   offset: 0, 0
   index: -1
 Group 17
   rotate: true
-  xy: 409, 15
+  xy: 236, 63
   size: 67, 82
   orig: 67, 82
   offset: 0, 0
   index: -1
 Group 18
   rotate: true
-  xy: 202, 234
+  xy: 202, 235
   size: 37, 24
   orig: 37, 24
   offset: 0, 0
   index: -1
 Group 19
-  rotate: false
-  xy: 493, 28
+  rotate: true
+  xy: 477, 32
   size: 49, 83
   orig: 49, 83
   offset: 0, 0
   index: -1
 Group 20
   rotate: false
-  xy: 489, 113
+  xy: 320, 49
   size: 65, 81
   orig: 65, 81
   offset: 0, 0
   index: -1
 Group 21
   rotate: false
-  xy: 449, 446
+  xy: 449, 447
   size: 34, 22
   orig: 34, 22
   offset: 0, 0
   index: -1
 Group 24 copy
   rotate: false
-  xy: 2, 223
+  xy: 2, 224
   size: 198, 336
   orig: 198, 336
   offset: 0, 0
   index: -1
 Group 25 copy
   rotate: true
-  xy: 239, 131
+  xy: 236, 132
   size: 140, 170
   orig: 140, 170
   offset: 0, 0
@@ -98,41 +98,41 @@ Group 25 copy
 Head
   rotate: true
   xy: 2, 2
-  size: 219, 235
-  orig: 219, 235
+  size: 220, 232
+  orig: 220, 232
   offset: 0, 0
   index: -1
 hip/Layer 1
-  rotate: false
-  xy: 239, 15
+  rotate: true
+  xy: 491, 205
   size: 105, 64
   orig: 105, 64
   offset: 0, 0
   index: -1
 hip/Layer 2
   rotate: false
-  xy: 411, 84
+  xy: 408, 85
   size: 76, 110
   orig: 76, 110
   offset: 0, 0
   index: -1
 hip/Layer 3
-  rotate: true
-  xy: 494, 230
+  rotate: false
+  xy: 236, 4
   size: 79, 57
   orig: 79, 57
   offset: 0, 0
   index: -1
 hip/Layer 4
   rotate: false
-  xy: 405, 430
+  xy: 405, 431
   size: 42, 38
   orig: 42, 38
   offset: 0, 0
   index: -1
 vet
   rotate: true
-  xy: 202, 430
+  xy: 202, 431
   size: 129, 201
   orig: 129, 201
   offset: 0, 0

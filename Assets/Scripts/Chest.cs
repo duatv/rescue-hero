@@ -19,14 +19,16 @@ public class Chest : MonoBehaviour
             if(!fallingChest)
                 MapLevelManager.Instance.trTarget = transform;
 
-            MapLevelManager.Instance.trChest = transform;
+            //MapLevelManager.Instance.trChest = transform;
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.GetComponent<PlayerManager>() != null) {
-            if (rig2d.velocity == Vector2.zero) {
+        if (collision.gameObject.GetComponent<PlayerManager>() != null)
+        {
+            if ((int)rig2d.velocity.y == 0)
+            {
                 if (GameManager.Instance.gameState != GameManager.GAMESTATE.LOSE)
                 {
                     if (!hasDetect)
@@ -37,6 +39,7 @@ public class Chest : MonoBehaviour
                 hasDetect = true;
             }
         }
+
         if (collision.gameObject.name.Contains("Lava_Pr")) {
             if (!hasDetect) {
                 PlayerManager.Instance.OnPlayerDie();

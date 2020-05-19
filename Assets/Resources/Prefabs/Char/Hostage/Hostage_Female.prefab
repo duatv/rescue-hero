@@ -248,6 +248,7 @@ MonoBehaviour:
   str_Lose: die
   strAtt: win 2
   str_Win2: win 2
+  isMeetPlayer: 0
 --- !u!61 &3584803599321380106
 BoxCollider2D:
   m_ObjectHideFlags: 0

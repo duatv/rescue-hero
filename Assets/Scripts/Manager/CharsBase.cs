@@ -55,7 +55,7 @@ public class CharsBase : MonoBehaviour
                 GameManager.Instance.gameState = GameManager.GAMESTATE.LOSE;
                 PlayAnim(str_Lose, false);
 
-                if(PlayerManager.Instance != null)
+                if (PlayerManager.Instance != null)
                     PlayerManager.Instance.OnPlayerDie();
                 MapLevelManager.Instance.OnLose();
             }

@@ -11,13 +11,14 @@ public class HeadPlayer : MonoBehaviour
         {
             if (GameManager.Instance.gameState != GameManager.GAMESTATE.WIN)
             {
-                if (collision.gameObject.GetComponent<Chest>() != null) {
-                    if (collision.gameObject.GetComponent<Chest>().rig2d.velocity == Vector2.zero)
-                    {
-                        pPlayer.OnWin();
-                    }
-                    else pPlayer.OnPlayerDie();
-                }else
+                //if (collision.gameObject.GetComponent<Chest>() != null) {
+                //    if (collision.gameObject.GetComponent<Chest>().rig2d.velocity == Vector2.zero)
+                //    {
+                //        pPlayer.OnWin();
+                //    }
+                //    else pPlayer.OnPlayerDie();
+                //}else
+
                     pPlayer.OnPlayerDie();
             }
         }
