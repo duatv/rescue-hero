@@ -63,17 +63,6 @@ public class PlayerManager : MonoBehaviour
             beginMove = false;
             PlayAnim(str_idle, true);
         }
-        //if (MapLevelManager.Instance.trTarget != null)
-        //{
-        //    if (transform.localPosition.x > MapLevelManager.Instance.trTarget.localPosition.x)
-        //    {
-        //        saPlayer.skeleton.ScaleX = -1;
-        //    }
-        //    else
-        //    {
-        //        saPlayer.skeleton.ScaleX = 1;
-        //    }
-        //}
     }
 
     private void CheckHitAhead()
@@ -126,9 +115,6 @@ public class PlayerManager : MonoBehaviour
     {
         CheckHitAhead();
         HitDownMapObject();
-
-        //if (_isCanMoveToTarget)
-        //{
         if (hitDown.collider != null)
         {
             if (_isCanMoveToTarget)
@@ -144,7 +130,6 @@ public class PlayerManager : MonoBehaviour
         {
             beginMove = false;
         }
-        //}
 
         if (!IsCanMove()) _rig2D.velocity = Vector2.zero;
         else
@@ -201,14 +186,12 @@ public class PlayerManager : MonoBehaviour
         if (transform.localPosition.x > _trTarget.localPosition.x)
         {
             saPlayer.skeleton.ScaleX = -1;
-            //PrepareMoveLeft();
             PrepareMoveRight();
         }
         else
         {
             saPlayer.skeleton.ScaleX = 1;
             PrepareMoveLeft();
-            //PrepareMoveRight();
         }
     }
 

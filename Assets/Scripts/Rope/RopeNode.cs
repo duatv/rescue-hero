@@ -5,16 +5,6 @@ using UnityEngine;
 public class RopeNode : MonoBehaviour
 {
     public Rigidbody2D _rig;
-    public HingeJoint2D hingeJoin2D;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [SerializeField]public HingeJoint2D hingeJoin2D;
+    [SerializeField] public int ropeIndex;
 }

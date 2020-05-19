@@ -50,7 +50,7 @@ public class TouchManager : MonoBehaviour
                     if (ropeNode)
                     {
                         ropeNode.hingeJoin2D.enabled = false;
-                        RopeManager.Instance.UnUseRope();
+                        RopeManager.Instance.UnUseRope(ropeNode.ropeIndex);
                     }
                 }
             }
