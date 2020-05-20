@@ -1,131 +1,166 @@
 
 Princess.png
-size: 536,536
+size: 540,540
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
 Group 28 copy
-  rotate: false
-  xy: 304, 343
+  rotate: true
+  xy: 345, 76
   size: 224, 191
   orig: 224, 191
   offset: 0, 0
   index: -1
 Group 29 copy
   rotate: false
-  xy: 71, 36
+  xy: 233, 392
   size: 93, 146
   orig: 93, 146
   offset: 0, 0
   index: -1
 Group 31 copy
-  rotate: false
-  xy: 291, 153
+  rotate: true
+  xy: 345, 302
   size: 236, 188
   orig: 236, 188
   offset: 0, 0
   index: -1
 Layer 10
   rotate: true
-  xy: 233, 291
+  xy: 252, 93
   size: 109, 48
   orig: 109, 48
   offset: 0, 0
   index: -1
 Layer 11
   rotate: false
-  xy: 233, 402
+  xy: 2, 4
   size: 55, 45
   orig: 55, 45
   offset: 0, 0
   index: -1
 Layer 12
   rotate: false
-  xy: 268, 6
+  xy: 187, 10
   size: 34, 39
   orig: 34, 39
   offset: 0, 0
   index: -1
 Layer 2
   rotate: false
-  xy: 166, 47
+  xy: 2, 51
   size: 123, 135
   orig: 123, 135
   offset: 0, 0
   index: -1
 Layer 3
   rotate: false
-  xy: 131, 13
+  xy: 264, 14
   size: 45, 21
   orig: 45, 21
   offset: 0, 0
   index: -1
 Layer 4
-  rotate: true
-  xy: 112, 2
+  rotate: false
+  xy: 311, 18
   size: 32, 17
   orig: 32, 17
   offset: 0, 0
   index: -1
 Layer 5
   rotate: true
-  xy: 71, 2
+  xy: 223, 3
   size: 32, 39
   orig: 32, 39
   offset: 0, 0
   index: -1
 Layer 53 copy
   rotate: false
-  xy: 304, 16
+  xy: 127, 51
   size: 123, 135
   orig: 123, 135
   offset: 0, 0
   index: -1
 Layer 56 copy
   rotate: false
-  xy: 2, 184
+  xy: 2, 188
   size: 229, 350
   orig: 229, 350
   offset: 0, 0
   index: -1
 Layer 6
   rotate: false
-  xy: 178, 6
+  xy: 59, 10
   size: 49, 39
   orig: 49, 39
   offset: 0, 0
   index: -1
 Layer 7
-  rotate: false
-  xy: 233, 449
+  rotate: true
+  xy: 233, 204
   size: 66, 85
   orig: 66, 85
   offset: 0, 0
   index: -1
 Layer 8
   rotate: false
-  xy: 429, 33
+  xy: 233, 272
   size: 75, 118
   orig: 75, 118
   offset: 0, 0
   index: -1
+feelPrincess/Group 28 copy 3
+  rotate: false
+  xy: 343, 2
+  size: 13, 14
+  orig: 13, 14
+  offset: 0, 0
+  index: -1
+feelPrincess/Layer 18
+  rotate: false
+  xy: 223, 37
+  size: 103, 12
+  orig: 103, 12
+  offset: 0, 0
+  index: -1
+feelPrincess/mouth 1
+  rotate: false
+  xy: 306, 4
+  size: 35, 8
+  orig: 35, 8
+  offset: 0, 0
+  index: -1
+feelPrincess/mouth2
+  rotate: false
+  xy: 59, 2
+  size: 29, 6
+  orig: 29, 6
+  offset: 0, 0
+  index: -1
+feelPrincess/mouth3
+  rotate: false
+  xy: 264, 2
+  size: 40, 10
+  orig: 40, 10
+  offset: 0, 0
+  index: -1
 xich/Layer 1
-  rotate: true
-  xy: 2, 9
+  rotate: false
+  xy: 358, 7
   size: 173, 67
   orig: 173, 67
   offset: 0, 0
   index: -1
 xich/Layer 2
-  rotate: true
-  xy: 233, 253
+  rotate: false
+  xy: 149, 11
   size: 36, 38
   orig: 36, 38
   offset: 0, 0
   index: -1
 xich/Layer 3
   rotate: true
-  xy: 229, 6
+  xy: 110, 10
   size: 39, 37
   orig: 39, 37
   offset: 0, 0
