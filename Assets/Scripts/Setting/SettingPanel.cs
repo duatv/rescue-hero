@@ -15,6 +15,7 @@ public class SettingPanel : MonoBehaviour
         ChangeMusicSprite();
         ChangeVibrateSprite();
     }
+
     public void ChangeQuality() {
         Utils.useMediumImage = !Utils.useMediumImage;
         ChangeSprite();

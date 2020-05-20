@@ -272,7 +272,22 @@ public class EnemyBase : MonoBehaviour
         isContinueDetect = false;
         isBeginMove = false;
         rig.velocity = Vector2.zero;
-        PlayAnim(str_Att, true);
+        Debug.LogError("PrepareAttack: " + enemyType.ToString());
+        if (enemyType == ENEMY_TYPE.RANGE)
+        {
+            PlayAnim(str_Att, true);
+        }
+        else
+        {
+            PlayAnim(str_idle, true);
+            if (hitPlayer.collider != null)
+            {
+                if (hitPlayer.collider.gameObject.GetComponent<PlayerManager>().isTakeSword)
+                {
+                    hitPlayer.collider.gameObject.GetComponent<PlayerManager>().OnAttackEnemy(this);
+                }
+            }
+        }
     }
 
 

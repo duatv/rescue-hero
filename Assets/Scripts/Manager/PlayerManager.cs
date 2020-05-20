@@ -54,14 +54,19 @@ public class PlayerManager : MonoBehaviour
         {
             if (saPlayer.AnimationName.Equals(str_Att))
             {
-                enBase.OnDie_();
-                OnIdleState();
+                StartCoroutine(IEWaitToIdle());
             }
             if (saPlayer.AnimationName.Equals(str_OpenWithSword) || saPlayer.AnimationName.Equals(str_OpenWithoutSword))
             {
                 StartCoroutine(ISShowWin());
             }
         };
+    }
+    IEnumerator IEWaitToIdle()
+    {
+        yield return new WaitForSeconds(0.3f);
+        enBase.OnDie_();
+        OnIdleState();
     }
     IEnumerator ISShowWin()
     {
