@@ -1,166 +1,222 @@
 
 Hero.png
-size: 1396,1396
+size: 1516,1516
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
+144073_preview copy
+  rotate: false
+  xy: 2, 2
+  size: 531, 518
+  orig: 531, 518
+  offset: 0, 0
+  index: -1
 Group 1 copy
-  rotate: true
-  xy: 256, 264
+  rotate: false
+  xy: 1306, 992
   size: 134, 124
   orig: 134, 124
   offset: 0, 0
   index: -1
 Group 2 copy
-  rotate: true
-  xy: 1166, 592
+  rotate: false
+  xy: 1166, 761
   size: 126, 207
   orig: 126, 207
   offset: 0, 0
   index: -1
 Group 3 copy
   rotate: false
-  xy: 2, 252
+  xy: 1166, 970
   size: 138, 146
   orig: 138, 146
   offset: 0, 0
   index: -1
 Group 5 copy 2
-  rotate: true
-  xy: 946, 298
+  rotate: false
+  xy: 1404, 125
   size: 100, 178
   orig: 100, 178
   offset: 0, 0
   index: -1
 Group 6 copy 2
   rotate: false
-  xy: 142, 263
+  xy: 1332, 669
   size: 112, 135
   orig: 112, 135
   offset: 0, 0
   index: -1
 Group 6 copy 3
-  rotate: false
-  xy: 702, 284
+  rotate: true
+  xy: 1339, 1356
   size: 158, 114
   orig: 158, 114
   offset: 0, 0
   index: -1
 Group 7 copy
-  rotate: true
-  xy: 862, 296
+  rotate: false
+  xy: 1064, 29
   size: 102, 82
   orig: 102, 82
   offset: 0, 0
   index: -1
 Group 8 copy
   rotate: true
-  xy: 382, 273
+  xy: 1166, 634
   size: 125, 164
   orig: 125, 164
   offset: 0, 0
   index: -1
 Group 9 copy
-  rotate: false
-  xy: 946, 146
+  rotate: true
+  xy: 1166, 1118
   size: 158, 150
   orig: 158, 150
   offset: 0, 0
   index: -1
 Head copy
   rotate: true
-  xy: 2, 10
+  xy: 804, 63
   size: 240, 258
   orig: 240, 258
   offset: 0, 0
   index: -1
 Hip copy
-  rotate: true
-  xy: 262, 7
+  rotate: false
+  xy: 535, 64
   size: 255, 190
   orig: 255, 190
   offset: 0, 0
   index: -1
 Layer 45
-  rotate: true
-  xy: 454, 4
+  rotate: false
+  xy: 535, 256
   size: 267, 264
   orig: 267, 264
   offset: 0, 0
   index: -1
 Layer 46
   rotate: false
-  xy: 893, 45
+  xy: 1404, 24
   size: 97, 99
   orig: 97, 99
   offset: 0, 0
   index: -1
 Layer 47
   rotate: true
-  xy: 548, 280
+  xy: 1294, 806
   size: 118, 152
   orig: 118, 152
   offset: 0, 0
   index: -1
 Layer 52
   rotate: true
-  xy: 992, 46
+  xy: 1324, 13
   size: 98, 72
   orig: 98, 72
   offset: 0, 0
   index: -1
 Layer 54
   rotate: false
-  xy: 1222, 180
+  xy: 1318, 1158
   size: 155, 70
   orig: 155, 70
   offset: 0, 0
   index: -1
 Layer 57
-  rotate: true
-  xy: 1066, 6
+  rotate: false
+  xy: 635, 3
   size: 60, 59
   orig: 60, 59
   offset: 0, 0
   index: -1
 Layer 7
   rotate: false
-  xy: 720, 14
+  xy: 1166, 1278
   size: 171, 236
   orig: 171, 236
   offset: 0, 0
   index: -1
 eye
   rotate: false
-  xy: 1066, 68
+  xy: 1168, 35
   size: 154, 76
   orig: 154, 76
   offset: 0, 0
   index: -1
+feelHero/Layer 10
+  rotate: false
+  xy: 1318, 1230
+  size: 173, 46
+  orig: 173, 46
+  offset: 0, 0
+  index: -1
+feelHero/Layer 11
+  rotate: false
+  xy: 1398, 4
+  size: 70, 18
+  orig: 70, 18
+  offset: 0, 0
+  index: -1
+feelHero/Layer 7
+  rotate: false
+  xy: 697, 18
+  size: 81, 44
+  orig: 81, 44
+  offset: 0, 0
+  index: -1
+feelHero/Layer 8
+  rotate: false
+  xy: 1294, 926
+  size: 175, 42
+  orig: 175, 42
+  offset: 0, 0
+  index: -1
+feelHero/long may de
+  rotate: false
+  xy: 780, 10
+  size: 126, 51
+  orig: 126, 51
+  offset: 0, 0
+  index: -1
 hair
-  rotate: true
-  xy: 1166, 252
+  rotate: false
+  xy: 1064, 113
   size: 338, 190
   orig: 338, 190
   offset: 0, 0
   index: -1
 kiem
-  rotate: false
-  xy: 1166, 720
+  rotate: true
+  xy: 804, 305
   size: 215, 672
   orig: 215, 672
   offset: 0, 0
   index: -1
+long may L
+  rotate: false
+  xy: 535, 2
+  size: 98, 60
+  orig: 98, 60
+  offset: 0, 0
+  index: -1
+long may R
+  rotate: false
+  xy: 988, 27
+  size: 43, 34
+  orig: 43, 34
+  offset: 0, 0
+  index: -1
 mouth
-  rotate: true
-  xy: 1358, 512
+  rotate: false
+  xy: 908, 27
   size: 78, 34
   orig: 78, 34
   offset: 0, 0
   index: -1
 vet
   rotate: false
-  xy: 2, 400
+  xy: 2, 522
   size: 1162, 992
   orig: 1162, 992
   offset: 0, 0
