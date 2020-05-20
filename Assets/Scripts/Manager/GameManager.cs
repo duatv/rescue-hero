@@ -71,6 +71,7 @@ public class GameManager : MonoBehaviour
                 {
                     SoundManager.Instance.PlaySound(SoundManager.Instance.acWin);
                 }
+                MyAnalytic.LogEventWin(Utils.LEVEL_INDEX);
             }
         }
         else
@@ -83,6 +84,7 @@ public class GameManager : MonoBehaviour
                     SoundManager.Instance.PlaySound(SoundManager.Instance.acLose);
                 }
                 gPanelLose.SetActive(true);
+                MyAnalytic.LogEventLose(Utils.LEVEL_INDEX);
             }
         }
     }
@@ -107,6 +109,7 @@ public class GameManager : MonoBehaviour
             {
                 if (b)
                 {
+                    MyAnalytic.LogEventRewarded("x2_coin");
                     Utils.currentCoin += 3 * Utils.BASE_COIN;
                     OnUpdateCoin();
                     OnNextLevel();
@@ -121,6 +124,7 @@ public class GameManager : MonoBehaviour
             {
                 if (b)
                 {
+                    MyAnalytic.LogEventRewarded("skip_level");
                     OnNextLevel();
                 }
             });

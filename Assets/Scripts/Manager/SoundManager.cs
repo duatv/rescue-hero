@@ -28,14 +28,12 @@ public class SoundManager : MonoBehaviour
     }
     public void PlayBackgroundMusic() {
         bool isMainMenu = Application.loadedLevelName.Equals("MainMenu") ? true : false;
-        Debug.LogError("isMainMenu: " + isMainMenu);
         if (Utils.isMusicOn)
         {
             audioSource.mute = false;
             AudioClip _acPlay = isMainMenu ? acMainMenuMusic : acGamePlayMusic;
             audioSource.clip = _acPlay;
             audioSource.Play();
-            //audioSource.PlayOneShot(_acPlay);
         }
         else
         {

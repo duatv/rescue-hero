@@ -9,7 +9,7 @@ public class HeadPlayer : MonoBehaviour
     {
         if (collision.gameObject.tag.Contains(Utils.TAG_STONE))
         {
-            if (GameManager.Instance.gameState != GameManager.GAMESTATE.WIN)
+            if (GameManager.Instance.gameState != GameManager.GAMESTATE.LOSE)
             {
                 //if (collision.gameObject.GetComponent<Chest>() != null) {
                 //    if (collision.gameObject.GetComponent<Chest>().rig2d.velocity == Vector2.zero)

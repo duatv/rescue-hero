@@ -88,19 +88,6 @@ public class PlayerManager : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            PrepareMoveLeft();
-        }
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            PrepareMoveRight();
-        }
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            beginMove = false;
-            PlayAnim(str_idle, true);
-        }
         if (saPlayer.AnimationName.Equals(str_idle))
         {
             HeroBlink();
@@ -264,6 +251,7 @@ public class PlayerManager : MonoBehaviour
     #region Player action
     public void OnBeginRun()
     {
+        Debug.LogError("?");
         StartCoroutine(IEWaitToRun());
     }
     IEnumerator IEWaitToRun()
@@ -364,23 +352,27 @@ public class PlayerManager : MonoBehaviour
 
     public void OnWin()
     {
-        GameManager.Instance.gameState = GameManager.GAMESTATE.WIN;
-        pState = P_STATE.WIN;
-        _rig2D.velocity = Vector2.zero;
-        beginMove = false;
-        PlayAnim(isTakeSword ? str_OpenWithSword : str_OpenWithoutSword, false);
-        GameManager.Instance.ShowWinPanel();
+        //if (GameManager.Instance.gameState != GameManager.GAMESTATE.WIN)
+        {
+            Debug.LogError("OnWin");
+            GameManager.Instance.gameState = GameManager.GAMESTATE.WIN;
+            pState = P_STATE.WIN;
+            _rig2D.velocity = Vector2.zero;
+            beginMove = false;
+            PlayAnim(isTakeSword ? str_OpenWithSword : str_OpenWithoutSword, false);
+            GameManager.Instance.ShowWinPanel();
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (pState == P_STATE.PLAYING || pState == P_STATE.RUNNING)
-        {
-            if (collision.gameObject.tag.Contains(Utils.TAG_STICKBARRIE))
-            {
-                beginMove = false;
-                PlayAnim(str_idle, true);
-            }
-        }
+        //if (pState == P_STATE.PLAYING || pState == P_STATE.RUNNING)
+        //{
+        //    if (collision.gameObject.tag.Contains(Utils.TAG_STICKBARRIE))
+        //    {
+        //        beginMove = false;
+        //        PlayAnim(str_idle, true);
+        //    }
+        //}
     }
     private void OnTriggerExit2D(Collider2D collision)
     {

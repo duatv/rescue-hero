@@ -9,8 +9,8 @@ public class MenuController : MonoBehaviour
     [SerializeField] public LevelConfig levelConfig;
     public SettingPanel _settingPanel;
 
+
     public Text txtCurLevel;
-    // Start is called before the first frame update
     void Start()
     {
         Utils.LoadGameData();
@@ -18,9 +18,10 @@ public class MenuController : MonoBehaviour
         if (SoundManager.Instance != null) {
             SoundManager.Instance.PlayBackgroundMusic();
         }
-    }
 
-    // Update is called once per frame
+        MyAnalytic.LogEventOpenByDay();
+    }
+    
     void Update()
     {
         

@@ -42,10 +42,14 @@ public class Gems : MonoBehaviour
         }
         if(collision.gameObject.GetComponent<PlayerManager>() != null){
             
-            if (GameManager.Instance.gameState != GameManager.GAMESTATE.LOSE)
+            if (GameManager.Instance.gameState != GameManager.GAMESTATE.LOSE || GameManager.Instance.gameState != GameManager.GAMESTATE.WIN)
             {
-                GameManager.Instance.gameState = GameManager.GAMESTATE.WIN;
-                collision.gameObject.GetComponent<PlayerManager>().OnWin();
+                if (PlayerManager.Instance.isContinueDetect)
+                {
+                    GameManager.Instance.gameState = GameManager.GAMESTATE.WIN;
+                    collision.gameObject.GetComponent<PlayerManager>().OnWin();
+                    PlayerManager.Instance.isContinueDetect = false;
+                }
             }
         }
     }
