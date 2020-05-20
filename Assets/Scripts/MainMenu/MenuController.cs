@@ -15,12 +15,21 @@ public class MenuController : MonoBehaviour
     {
         Utils.LoadGameData();
         txtCurLevel.text ="LEVEL "+ (Utils.LEVEL_INDEX+1) + "/" + levelConfig.lstAllLevel.Count;
+        if (SoundManager.Instance != null) {
+            SoundManager.Instance.PlayBackgroundMusic();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+    public void SoundClickButton() {
+        if (SoundManager.Instance != null)
+        {
+            SoundManager.Instance.PlaySound(SoundManager.Instance.acClick);
+        }
     }
     public void ShowSetting() {
         Debug.LogError("Show Setting Panel");

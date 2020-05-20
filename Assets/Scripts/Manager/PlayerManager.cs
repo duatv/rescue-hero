@@ -305,6 +305,12 @@ public class PlayerManager : MonoBehaviour
         saPlayer.Skeleton.SetSkin(skinSword);
 
         Debug.LogError("Take Sword: " + saPlayer.Skeleton.Skin.Name);
+
+        if (SoundManager.Instance != null)
+        {
+            SoundManager.Instance.PlaySound(SoundManager.Instance.acTakeSword);
+        }
+
         OnIdleState();
     }
     public void OnPlayerDie()
@@ -322,6 +328,12 @@ public class PlayerManager : MonoBehaviour
     IEnumerator IEWait() {
         yield return new WaitForSeconds(0.6f);
         MapLevelManager.Instance.OnLose();
+
+        if (SoundManager.Instance != null)
+        {
+            SoundManager.Instance.PlaySound(SoundManager.Instance.acHeroDie);
+        }
+
         saPlayer.AnimationState.SetEmptyAnimation(1, 0.2f);
         PlayAnim(str_Lose, false);
     }

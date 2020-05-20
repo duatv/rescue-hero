@@ -16,6 +16,9 @@ public class GameManager : MonoBehaviour
     public GAMESTATE gameState;
     [SerializeField] public LevelConfig levelConfig;
     [HideInInspector] public MapLevelManager mapLevel;
+    public int totalGems;
+    public List<GameObject> lstAllGems = new List<GameObject>();
+    public bool isNotEnoughGems;
     public CamFollow _camFollow;
     public GameObject gPanelWin;
     public GameObject gPanelLose;
@@ -30,7 +33,6 @@ public class GameManager : MonoBehaviour
         txtCoin.text = Utils.currentCoin + "";
         Utils.SaveCoin();
     }
-    // Start is called before the first frame update
     void Start()
     {
 
@@ -39,6 +41,9 @@ public class GameManager : MonoBehaviour
 
         if (!isTest)
             LoadLevelToPlay(Utils.LEVEL_INDEX);
+        if (SoundManager.Instance != null) {
+            SoundManager.Instance.PlayBackgroundMusic();
+        }
     }
     private void LoadLevelToPlay(int levelIndex) {
         mapLevel = levelConfig.lstAllLevel[levelIndex];
@@ -62,12 +67,23 @@ public class GameManager : MonoBehaviour
                 Utils.currentCoin += Utils.BASE_COIN;
                 OnUpdateCoin();
                 gPanelWin.SetActive(true);
+                if (SoundManager.Instance != null)
+                {
+                    SoundManager.Instance.PlaySound(SoundManager.Instance.acWin);
+                }
             }
         }
         else
         {
             ActiveCamEff();
-            if (!gPanelLose.activeSelf) gPanelLose.SetActive(true);
+            if (!gPanelLose.activeSelf)
+            {
+                if (SoundManager.Instance != null)
+                {
+                    SoundManager.Instance.PlaySound(SoundManager.Instance.acLose);
+                }
+                gPanelLose.SetActive(true);
+            }
         }
     }
     public void ShowLosePanel()
@@ -97,7 +113,6 @@ public class GameManager : MonoBehaviour
                 }
             });
         }
-        
     }
     public void OnSkipByVideo() {
         Debug.LogError("Skip by video");
@@ -127,5 +142,14 @@ public class GameManager : MonoBehaviour
     {
         //if (!focus)
         //    Utils.SaveGameData();
+    }
+
+
+    public void SoundClickButton()
+    {
+        if (SoundManager.Instance != null)
+        {
+            SoundManager.Instance.PlaySound(SoundManager.Instance.acClick);
+        }
     }
 }

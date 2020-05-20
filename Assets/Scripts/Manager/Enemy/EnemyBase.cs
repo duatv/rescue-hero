@@ -314,6 +314,13 @@ public class EnemyBase : MonoBehaviour
             PlayAnim(str_Lose, false);
             _charStage = CHAR_STATE.DIE;
             MapLevelManager.Instance.lstAllEnemies.Remove(this);
+
+            if (SoundManager.Instance != null)
+            {
+                SoundManager.Instance.PlaySound(SoundManager.Instance.acEnemyDie);
+            }
+
+
             if (MapLevelManager.Instance.questType == MapLevelManager.QUEST_TYPE.KILL && MapLevelManager.Instance.lstAllEnemies.Count == 0)
             {
                 PlayerManager.Instance.OnWin();

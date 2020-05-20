@@ -31,6 +31,10 @@ public class Chest : MonoBehaviour
                 {
                     if (!hasDetect)
                     {
+                        if (SoundManager.Instance != null)
+                        {
+                            SoundManager.Instance.PlaySound(SoundManager.Instance.acOpenChest);
+                        }
                         collision.gameObject.GetComponent<PlayerManager>().OnWin();
                     }
                 }

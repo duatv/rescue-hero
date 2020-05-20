@@ -37,6 +37,10 @@ public class SettingPanel : MonoBehaviour
         Utils.ChangeVibrate();
     }
     public void OnClose() {
+        if (SoundManager.Instance != null)
+        {
+            SoundManager.Instance.PlayBackgroundMusic();
+        }
         gameObject.SetActive(false);
     }
     public void OnRestorePurchase() {
@@ -44,19 +48,19 @@ public class SettingPanel : MonoBehaviour
 
 
     private void ChangeVibrateSprite() {
-        gVibrateOff.SetActive(Utils.isVibrateOn);
-        gVibrateOn.SetActive(!Utils.isVibrateOn);
+        gVibrateOff.SetActive(!Utils.isVibrateOn);
+        gVibrateOn.SetActive(Utils.isVibrateOn);
     }
     private void ChangeMusicSprite() {
-        gMusicOff.SetActive(Utils.isMusicOn);
-        gMusicOn.SetActive(!Utils.isMusicOn);
+        gMusicOff.SetActive(!Utils.isMusicOn);
+        gMusicOn.SetActive(Utils.isMusicOn);
     }
     private void ChangeSoundSprite() {
-        gSoundOff.SetActive(Utils.isSoundOn);
-        gSoundOn.SetActive(!Utils.isSoundOn);
+        gSoundOff.SetActive(!Utils.isSoundOn);
+        gSoundOn.SetActive(Utils.isSoundOn);
     }
     private void ChangeQualitySprite() {
-        gQualityOff.SetActive(Utils.useMediumImage);
-        gQualityOn.SetActive(!Utils.useMediumImage);
+        gQualityOff.SetActive(!Utils.useMediumImage);
+        gQualityOn.SetActive(Utils.useMediumImage);
     }
 }
