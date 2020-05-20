@@ -109,11 +109,11 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.12625118, y: 0.07545431}
-      - {x: -0.03207723, y: 0.16299525}
-      - {x: -0.16190487, y: 0.11161088}
-      - {x: -0.10483324, y: -0.16172963}
-      - {x: 0.15981892, y: -0.062661566}
+    - - {x: 0.08870899, y: 0.05812724}
+      - {x: -0.03207723, y: 0.12834111}
+      - {x: -0.12003103, y: 0.09572783}
+      - {x: -0.086784154, y: -0.11552412}
+      - {x: 0.11505702, y: -0.031617083}
 --- !u!50 &50453571727617798
 Rigidbody2D:
   serializedVersion: 4
@@ -126,9 +126,9 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.02
+  m_Mass: 0.0001
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: b0a58d042ab47e4459e8de12a0bf051f, type: 2}
   m_Interpolate: 1
