@@ -798,7 +798,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &273683915
 MonoBehaviour:
@@ -812,7 +812,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e9212e2bc919004a86b41116bc3b02b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acClick: {fileID: 0}
+  acMainMenuMusic: {fileID: 8300000, guid: 397987ee452130740af082c812111b3f, type: 3}
+  acGamePlayMusic: {fileID: 8300000, guid: b5337d0e318e86546881a44ee6275472, type: 3}
+  acClick: {fileID: 8300000, guid: 296328109f89d124b8d2276dff23cd86, type: 3}
+  acWin: {fileID: 8300000, guid: 4f669f004a5cb314681c1954ca0f567e, type: 3}
+  acLose: {fileID: 8300000, guid: 8b7026a966e873e4690b930798e6ba72, type: 3}
+  acHeroDie: {fileID: 8300000, guid: 0259b3e1ccbfcd74a8c11fd671851860, type: 3}
+  acTakeSword: {fileID: 8300000, guid: 0b157d097b820574fbeb8a3d4ab39def, type: 3}
+  acOpenChest: {fileID: 8300000, guid: 16e20009cf608614d9aea42e8ca041e2, type: 3}
+  acEnemyDie: {fileID: 8300000, guid: b7926ef627e12384294e0254e70a2b24, type: 3}
   audioSource: {fileID: 273683916}
 --- !u!82 &273683916
 AudioSource:
@@ -1900,7 +1908,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &672568322
 MonoBehaviour:
@@ -2077,6 +2085,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 672568322}
         m_MethodName: LoadScenePlay
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 672568322}
+        m_MethodName: SoundClickButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2601,7 +2620,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1079181888
 MonoBehaviour:
@@ -3614,7 +3633,7 @@ RectTransform:
   - {fileID: 2020554650}
   - {fileID: 1084999293}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4337,7 +4356,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1840321487
 GameObject:
@@ -4516,7 +4535,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1906473978
 MonoBehaviour:
@@ -4613,6 +4632,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 672568322}
         m_MethodName: ShowSetting
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 672568322}
+        m_MethodName: SoundClickButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
