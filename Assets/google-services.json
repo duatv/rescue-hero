@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "815596294997",
+    "firebase_url": "https://rescue-hero.firebaseio.com",
+    "project_id": "rescue-hero",
+    "storage_bucket": "rescue-hero.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:815596294997:android:715f2f1c6fea4e70e315dc",
+        "android_client_info": {
+          "package_name": "com.OhzeGameStudio.RescueHero"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "815596294997-rbs23rhmhlpngt78q9ihrghmijfo6k0v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAOHXIFJAM5TxolQvzWILOwaIpC8MFQL-8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "815596294997-rbs23rhmhlpngt78q9ihrghmijfo6k0v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
