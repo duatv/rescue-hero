@@ -82,11 +82,11 @@ public class EnemyBase : MonoBehaviour
                     isContinueDetect = false;
                     if (hitPlayer.collider.gameObject.GetComponent<PlayerManager>())
                     {
-                        if (hitPlayer.collider.gameObject.GetComponent<PlayerManager>().isTakeSword)
-                        {
-                            hitPlayer.collider.gameObject.GetComponent<PlayerManager>().OnAttackEnemy(this);
-                        }
-                        else
+                        //if (hitPlayer.collider.gameObject.GetComponent<PlayerManager>().isTakeSword)
+                        //{
+                        //    hitPlayer.collider.gameObject.GetComponent<PlayerManager>().OnAttackEnemy(this);
+                        //}
+                        //else
                         {
                             hitPlayer.collider.gameObject.GetComponent<PlayerManager>().OnPlayerDie();
                             GameManager.Instance.gameState = GameManager.GAMESTATE.LOSE;
@@ -101,6 +101,7 @@ public class EnemyBase : MonoBehaviour
             }
         };
     }
+
     private bool _isCanMoveToTarget;
 
     Vector3 _vStartHitDown, _vEndHitDown;
@@ -275,17 +276,27 @@ public class EnemyBase : MonoBehaviour
         Debug.LogError("PrepareAttack: " + enemyType.ToString());
         if (enemyType == ENEMY_TYPE.RANGE)
         {
-            PlayAnim(str_Att, true);
+            PlayAnim(str_Att, false);
         }
         else
         {
-            PlayAnim(str_idle, true);
+            //PlayAnim(str_idle, true);
             if (hitPlayer.collider != null)
             {
-                if (hitPlayer.collider.gameObject.GetComponent<PlayerManager>().isTakeSword)
+                if (hitPlayer.collider.gameObject.GetComponent<PlayerManager>() != null)
                 {
-                    hitPlayer.collider.gameObject.GetComponent<PlayerManager>().OnAttackEnemy(this);
+                    if (hitPlayer.collider.gameObject.GetComponent<PlayerManager>().isTakeSword)
+                    {
+                        hitPlayer.collider.gameObject.GetComponent<PlayerManager>().OnAttackEnemy(this);
+                        PlayAnim(str_idle, true);
+                    }
+                    else PlayAnim(str_Att, false);
                 }
+                else PlayAnim(str_Att, false);
+            }
+            else
+            {
+                PlayAnim(str_idle, true);
             }
         }
     }

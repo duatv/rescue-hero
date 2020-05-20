@@ -5,6 +5,7 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance;
+    public AudioClip acMainMenuMusic, acGamePlayMusic;
     public AudioClip acClick;
     public AudioSource audioSource;
 
@@ -21,8 +22,9 @@ public class SoundManager : MonoBehaviour
             audioSource.PlayOneShot(_ac);
         }
     }
-    public void PlayBackgroundMusic() {
+    public void PlayBackgroundMusic(bool isMainMenu) {
         if (Utils.isMusicOn) {
+            audioSource.clip = isMainMenu ? acMainMenuMusic : acGamePlayMusic;
             audioSource.Play();
         }
     }

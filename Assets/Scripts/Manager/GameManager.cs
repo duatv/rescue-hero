@@ -51,19 +51,28 @@ public class GameManager : MonoBehaviour
     }
     public void ShowWinPanel()
     {
-        ActiveCamEff();
-        
-        if (!gPanelWin.activeSelf)
+        StartCoroutine(IEWaitToShowWinLose(true));
+    }
+    private IEnumerator IEWaitToShowWinLose(bool isWin) {
+        yield return new WaitForSeconds(1.0f);
+        if (isWin) {
+            ActiveCamEff();
+            if (!gPanelWin.activeSelf)
+            {
+                Utils.currentCoin += Utils.BASE_COIN;
+                OnUpdateCoin();
+                gPanelWin.SetActive(true);
+            }
+        }
+        else
         {
-            Utils.currentCoin += Utils.BASE_COIN;
-            OnUpdateCoin();
-            gPanelWin.SetActive(true);
+            ActiveCamEff();
+            if (!gPanelLose.activeSelf) gPanelLose.SetActive(true);
         }
     }
     public void ShowLosePanel()
     {
-        ActiveCamEff();
-        if (!gPanelLose.activeSelf) gPanelLose.SetActive(true);
+        StartCoroutine(IEWaitToShowWinLose(false));
     }
     public void OnNextLevel()
     {

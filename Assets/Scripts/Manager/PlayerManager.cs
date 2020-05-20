@@ -19,7 +19,7 @@ public class PlayerManager : MonoBehaviour
 
     [DrawIf("isReadOnly", true, ComparisonType.Equals, DisablingType.ReadOnly)]
     [SpineAnimation]
-    public string str_idle, str_Win, str_Lose, str_Move, str_Att, str_TakeSword, str_OpenWithoutSword, str_OpenWithSword, str_MoveWithSword;
+    public string str_idle, str_Win, str_Lose, str_Move, str_Att, str_TakeSword, str_OpenWithoutSword, str_OpenWithSword, str_MoveWithSword, str_Blink;
     [SpineSkin]
     public string skinDefault, skinSword;
     public PlayerDetectGems _detectGems;
@@ -49,7 +49,7 @@ public class PlayerManager : MonoBehaviour
     {
         GameManager.Instance.gTargetFollow = gameObject;
 
-
+        OnIdleState();
         saPlayer.AnimationState.End += delegate
         {
             if (saPlayer.AnimationName.Equals(str_Att))
@@ -75,6 +75,17 @@ public class PlayerManager : MonoBehaviour
         yield return new WaitForSeconds(1.2f);
         MapLevelManager.Instance.OnWin();
     }
+
+    const float timeConst = 2;
+    private float timeBlink = 0;
+    private void HeroBlink() {
+        timeBlink += Time.deltaTime;
+        if(timeBlink >= timeConst)
+        {
+            saPlayer.AnimationState.SetAnimation(1, str_Blink, false);
+            timeBlink = 0;
+        }
+    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.LeftArrow))
@@ -89,6 +100,10 @@ public class PlayerManager : MonoBehaviour
         {
             beginMove = false;
             PlayAnim(str_idle, true);
+        }
+        if (saPlayer.AnimationName.Equals(str_idle))
+        {
+            HeroBlink();
         }
     }
 
@@ -266,11 +281,14 @@ public class PlayerManager : MonoBehaviour
             }
         }
     }
+
+
     public void OnIdleState()
     {
         pState = P_STATE.PLAYING;
         _rig2D.velocity = Vector2.zero;
         beginMove = false;
+        saPlayer.AnimationState.SetAnimation(1, str_Blink, false);
         PlayAnim(str_idle, true);
     }
     public void OnAttackEnemy(EnemyBase _enBase)
@@ -282,10 +300,11 @@ public class PlayerManager : MonoBehaviour
     }
     public void OnTakeSword(Transform _tr)
     {
-        Debug.LogError("Take Sword");
         isTakeSword = true;
         _tr.gameObject.SetActive(false);
         saPlayer.Skeleton.SetSkin(skinSword);
+
+        Debug.LogError("Take Sword: " + saPlayer.Skeleton.Skin.Name);
         OnIdleState();
     }
     public void OnPlayerDie()
@@ -296,15 +315,17 @@ public class PlayerManager : MonoBehaviour
             pState = P_STATE.DIE;
             GameManager.Instance.gameState = GameManager.GAMESTATE.LOSE;
             _rig2D.velocity = Vector2.zero;
-            //Physics2D.IgnoreLayerCollision(13, 11, false);
-            //Physics2D.IgnoreLayerCollision(13, 14, false);
-            //Physics2D.IgnoreLayerCollision(13, 9, false);
-            //Physics2D.IgnoreLayerCollision(13, 4, false);
-
-            MapLevelManager.Instance.OnLose();
-            PlayAnim(str_Lose, false);
+            PlayAnim(str_idle, true);
+            StartCoroutine(IEWait());
         }
     }
+    IEnumerator IEWait() {
+        yield return new WaitForSeconds(0.6f);
+        MapLevelManager.Instance.OnLose();
+        saPlayer.AnimationState.SetEmptyAnimation(1, 0.2f);
+        PlayAnim(str_Lose, false);
+    }
+
     #endregion
     #region Collision
     private void OnCollisionEnter2D(Collision2D collision)
@@ -336,6 +357,7 @@ public class PlayerManager : MonoBehaviour
         _rig2D.velocity = Vector2.zero;
         beginMove = false;
         PlayAnim(isTakeSword ? str_OpenWithSword : str_OpenWithoutSword, false);
+        GameManager.Instance.ShowWinPanel();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
