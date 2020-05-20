@@ -16,6 +16,9 @@ public class SpawnObject : MonoBehaviour
     }
     private void Start()
     {
+        if (_spawnType == MapLevelManager.SPAWNTYPE.GEMS) {
+            GameManager.Instance.totalGems = totalGems;
+        }
         SpawnAllGems();
     }
     private GameObject gInstantiate;
@@ -26,6 +29,12 @@ public class SpawnObject : MonoBehaviour
             gInstantiate = Instantiate(gGems[Random.Range(0, gGems.Length)], transform.position, Quaternion.identity);
             gInstantiate.transform.position = Vector3.zero;
             gInstantiate.transform.SetParent(transform, false);
+
+            if (_spawnType == MapLevelManager.SPAWNTYPE.GEMS)
+            {
+                if(!GameManager.Instance.lstAllGems.Contains(gInstantiate))
+                    GameManager.Instance.lstAllGems.Add(gInstantiate);
+            }
             if (_spawnType != MapLevelManager.SPAWNTYPE.STONE)
                 gInstantiate.SetActive(true);
             if (_spawnType == MapLevelManager.SPAWNTYPE.WATER)
@@ -45,12 +54,11 @@ public class SpawnObject : MonoBehaviour
             }
         }
     }
-
-    //int DefaultCount;
+    
     bool _breakLoop = false;
     private void Spawn(List<GameObject> lst)
     {
-        Spawn(/*DefaultCount*/0, lst);
+        Spawn(0, lst);
     }
     public void Spawn(int count, List<GameObject> lst)
     {

@@ -6,23 +6,35 @@ public class Gems : MonoBehaviour
 {
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag.Contains(Utils.TAG_STICKBARRIE)) {
-            if (collision.gameObject.GetComponent<StickBarrier>() != null) {
-                /*
-                if (!collision.gameObject.GetComponent<StickBarrier>().hasBlockGems&& collision.gameObject.GetComponent<StickBarrier>().time_> 0) {
-                    collision.gameObject.GetComponent<StickBarrier>().hasBlockGems = true;
-                }
-                */
-            }
-        }
+        //if (collision.gameObject.tag.Contains(Utils.TAG_STICKBARRIE)) {
+        //    if (collision.gameObject.GetComponent<StickBarrier>() != null) {
+        //        /*
+        //        if (!collision.gameObject.GetComponent<StickBarrier>().hasBlockGems&& collision.gameObject.GetComponent<StickBarrier>().time_> 0) {
+        //            collision.gameObject.GetComponent<StickBarrier>().hasBlockGems = true;
+        //        }
+        //        */
+        //    }
+        //}
+
         if (collision.gameObject.name.Contains("Lava_Pr"))
         {
+            if (GameManager.Instance.lstAllGems.Contains(gameObject))
+            {
+                GameManager.Instance.lstAllGems.Remove(gameObject);
+                if (GameManager.Instance.lstAllGems.Count * 1.0f / GameManager.Instance.totalGems <= 0.2f) {
+                    
+                    GameManager.Instance.isNotEnoughGems = true;
+                }
+            }
+
             if (PlayerManager.Instance != null) {
                 if (PlayerManager.Instance.isContinueDetect) {
                     if (GameManager.Instance.gameState != GameManager.GAMESTATE.WIN)
                     {
-                        PlayerManager.Instance.isContinueDetect = false;
-                        PlayerManager.Instance.OnPlayerDie();
+                        if (GameManager.Instance.isNotEnoughGems) {
+                            PlayerManager.Instance.isContinueDetect = false;
+                            PlayerManager.Instance.OnPlayerDie();
+                        }
                     }
                 }
             }
@@ -37,4 +49,5 @@ public class Gems : MonoBehaviour
             }
         }
     }
+    
 }

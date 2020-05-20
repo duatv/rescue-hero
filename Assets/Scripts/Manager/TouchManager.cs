@@ -30,8 +30,7 @@ public class TouchManager : MonoBehaviour
         trail.sharedMaterial = new Material(Shader.Find("Unlit/Color"));
         trail.sharedMaterial.color = trailColor;
     }
-
-
+    
     void Update()
     {
         mousePos = Input.mousePosition;
