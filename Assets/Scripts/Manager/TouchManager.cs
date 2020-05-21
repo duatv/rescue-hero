@@ -47,7 +47,11 @@ public class TouchManager : MonoBehaviour
                     {
                         if (SoundManager.Instance != null)
                         {
-                            SoundManager.Instance.PlaySound(SoundManager.Instance.acMoveStick);
+                            if (hit[i].collider.gameObject.GetComponent<StickBarrier>()._moveType == StickBarrier.MOVETYPE.FREE) {
+                                SoundManager.Instance.PlaySound(SoundManager.Instance.acMoveStickClick);
+                            }
+                            else
+                                SoundManager.Instance.PlaySound(SoundManager.Instance.acMoveStick);
                         }
                         Debug.LogError("1111");
                     }

@@ -10,24 +10,25 @@ public class SpawnObject : MonoBehaviour
     public Vector2 initSpeed = new Vector2(1f, -1.8f);
     private List<GameObject> lstWaterDrops = new List<GameObject>();
     private List<GameObject> lstLavaDrops = new List<GameObject>();
-    private void OnEnable()
-    {
-        //SpawnAllGems();
-    }
-
-
-
-
+    private GameObject gInstantiate;
+    int _ranIndex = 0;
 
     private void Start()
     {
         if (_spawnType == MapLevelManager.SPAWNTYPE.GEMS) {
             GameManager.Instance.totalGems = totalGems;
         }
+        if (_spawnType == MapLevelManager.SPAWNTYPE.LAVA) {
+            StartCoroutine(PlaySoundLavaApear());
+        }
         SpawnAllGems();
     }
-    private GameObject gInstantiate;
-    int _ranIndex = 0;
+
+    IEnumerator PlaySoundLavaApear()
+    {
+        yield return new WaitForSeconds(0.5f);
+        SoundManager.Instance.PlaySound(SoundManager.Instance.acLavaApear);
+    }
     private void SpawnAllGems()
     {
         for (int i = 0; i < totalGems; i++)

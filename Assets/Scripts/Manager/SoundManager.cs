@@ -7,19 +7,22 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance;
     public AudioClip acMainMenuMusic, acGamePlayMusic;
-    public AudioClip acClick, acWin, acLose, acHeroDie, acTakeSword, acOpenChest, acEnemyDie, acMoveStick,acMeleeAttack, acPrincessApear, acPrincessHurt, acLavaOnWater;
+    public AudioClip acClick, acWin, acLose, acHeroDie, acTakeSword, acOpenChest, acEnemyDie, acMoveStick, acMeleeAttack, acPrincessApear, acPrincessHurt, acLavaOnWater, acLavaApear, acStoneApear,
+                     acMoveStickClick, acFoundOtherStick;
     public AudioClip[] acCoinApear;
     public AudioSource audioSource;
 
     private void Awake()
     {
-        if (Instance == null) {
+        if (Instance == null)
+        {
             Instance = this;
             DontDestroyOnLoad(this);
         }
     }
 
-    public void PlaySound(AudioClip _ac) {
+    public void PlaySound(AudioClip _ac)
+    {
         if (Utils.isSoundOn)
         {
             audioSource.mute = false;
@@ -27,7 +30,8 @@ public class SoundManager : MonoBehaviour
         }
         else audioSource.mute = true;
     }
-    public void PlayBackgroundMusic() {
+    public void PlayBackgroundMusic()
+    {
         bool isMainMenu = Application.loadedLevelName.Equals("MainMenu") ? true : false;
         if (Utils.isMusicOn)
         {

@@ -24,12 +24,13 @@ public class GameManager : MonoBehaviour
     public GameObject gPanelLose;
 
     [HideInInspector] public GameObject gTargetFollow;
-    
+
     private void Awake()
     {
         Instance = this;
     }
-    private void OnUpdateCoin() {
+    private void OnUpdateCoin()
+    {
         txtCoin.text = Utils.currentCoin + "";
         Utils.SaveCoin();
     }
@@ -42,16 +43,19 @@ public class GameManager : MonoBehaviour
         MyAnalytic.LogEventPlayLevel(Utils.LEVEL_INDEX + 1);
         if (!isTest)
             LoadLevelToPlay(Utils.LEVEL_INDEX);
-        if (SoundManager.Instance != null) {
+        if (SoundManager.Instance != null)
+        {
             SoundManager.Instance.PlayBackgroundMusic();
         }
     }
-    private void LoadLevelToPlay(int levelIndex) {
+    private void LoadLevelToPlay(int levelIndex)
+    {
         mapLevel = levelConfig.lstAllLevel[levelIndex];
         Instantiate(mapLevel.gameObject, Vector3.zero, Quaternion.identity);
     }
 
-    private void ActiveCamEff() {
+    private void ActiveCamEff()
+    {
         _camFollow.objectToFollow = gTargetFollow;
         _camFollow.beginFollow = true;
     }
@@ -59,9 +63,11 @@ public class GameManager : MonoBehaviour
     {
         StartCoroutine(IEWaitToShowWinLose(true));
     }
-    private IEnumerator IEWaitToShowWinLose(bool isWin) {
+    private IEnumerator IEWaitToShowWinLose(bool isWin)
+    {
         yield return new WaitForSeconds(1.0f);
-        if (isWin) {
+        if (isWin)
+        {
             ActiveCamEff();
             if (!gPanelWin.activeSelf)
             {
@@ -96,6 +102,19 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+    private bool playingSoundLava = false;
+    public void PlaySoundLavaOnWater()
+    {
+        if (SoundManager.Instance != null)
+        {
+            SoundManager.Instance.PlaySound(SoundManager.Instance.acStoneApear);
+            if (!playingSoundLava)
+            {
+                SoundManager.Instance.PlaySound(SoundManager.Instance.acLavaOnWater);
+            }
+            playingSoundLava = true;
+        }
+    }
     public void ShowLosePanel()
     {
         StartCoroutine(IEWaitToShowWinLose(false));
@@ -103,7 +122,8 @@ public class GameManager : MonoBehaviour
     public void OnNextLevel()
     {
         Debug.LogError(Utils.LEVEL_INDEX + " vs " + levelConfig.lstAllLevel.Count);
-        if (Utils.LEVEL_INDEX < levelConfig.lstAllLevel.Count-1) {
+        if (Utils.LEVEL_INDEX < levelConfig.lstAllLevel.Count - 1)
+        {
             Utils.LEVEL_INDEX += 1;
             Utils.SaveLevel();
             SceneManager.LoadSceneAsync("MainGame");
@@ -112,7 +132,8 @@ public class GameManager : MonoBehaviour
     public void OnX2Coin()
     {
         Debug.LogError("X2 Coin");
-        if (AdsManager.Instance != null) {
+        if (AdsManager.Instance != null)
+        {
             AdsManager.Instance.ShowRewardedVideo((b) =>
             {
                 if (b)
@@ -125,9 +146,11 @@ public class GameManager : MonoBehaviour
             });
         }
     }
-    public void OnSkipByVideo() {
+    public void OnSkipByVideo()
+    {
         Debug.LogError("Skip by video");
-        if (AdsManager.Instance != null) {
+        if (AdsManager.Instance != null)
+        {
             AdsManager.Instance.ShowRewardedVideo((b) =>
             {
                 if (b)
@@ -144,10 +167,12 @@ public class GameManager : MonoBehaviour
         MyAnalytic.LogEventReplay(Utils.LEVEL_INDEX + 1);
         SceneManager.LoadSceneAsync("MainGame");
     }
-    public void GoToMenu() {
+    public void GoToMenu()
+    {
         SceneManager.LoadSceneAsync("MainMenu");
     }
-    public void BuyRemoveAds() {
+    public void BuyRemoveAds()
+    {
         Debug.LogError("Buy Remove Ads");
     }
 

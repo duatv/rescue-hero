@@ -20,13 +20,8 @@ public class WaterCollison : MonoBehaviour
     {
         if (collision.gameObject.name.Contains("Lava_Pr"))
         {
+            GameManager.Instance.PlaySoundLavaOnWater();
             collision.gameObject.SetActive(false);
-            if (!isStone) {
-                if (SoundManager.Instance != null)
-                {
-                    SoundManager.Instance.PlaySound(SoundManager.Instance.acLavaOnWater);
-                }
-            }
             isStone = true;
             GetComponent<SpriteRenderer>().sprite = sprLavaStone;
             MapLevelManager.Instance.dAllStone[id].transform.position = transform.position;
