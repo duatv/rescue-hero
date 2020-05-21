@@ -14,6 +14,11 @@ public class SpawnObject : MonoBehaviour
     {
         //SpawnAllGems();
     }
+
+
+
+
+
     private void Start()
     {
         if (_spawnType == MapLevelManager.SPAWNTYPE.GEMS) {
@@ -22,17 +27,19 @@ public class SpawnObject : MonoBehaviour
         SpawnAllGems();
     }
     private GameObject gInstantiate;
+    int _ranIndex = 0;
     private void SpawnAllGems()
     {
         for (int i = 0; i < totalGems; i++)
         {
-            gInstantiate = Instantiate(gGems[Random.Range(0, gGems.Length)], transform.position, Quaternion.identity);
+            _ranIndex = Random.Range(0, gGems.Length);
+            gInstantiate = Instantiate(gGems[_ranIndex], transform.position, Quaternion.identity);
             gInstantiate.transform.position = Vector3.zero;
             gInstantiate.transform.SetParent(transform, false);
 
             if (_spawnType == MapLevelManager.SPAWNTYPE.GEMS)
             {
-                if(!GameManager.Instance.lstAllGems.Contains(gInstantiate))
+                if (!GameManager.Instance.lstAllGems.Contains(gInstantiate))
                     GameManager.Instance.lstAllGems.Add(gInstantiate);
             }
             if (_spawnType != MapLevelManager.SPAWNTYPE.STONE)

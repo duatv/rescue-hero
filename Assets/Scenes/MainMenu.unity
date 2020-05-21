@@ -823,6 +823,21 @@ MonoBehaviour:
   acEnemyDie: {fileID: 8300000, guid: ab74d1a8da1578e4fb68e742d03f2de8, type: 3}
   acMoveStick: {fileID: 8300000, guid: 7c66655782e8bca48997db113d86a925, type: 3}
   acMeleeAttack: {fileID: 8300000, guid: 2e420fccc8289d1488b7dabc520b254e, type: 3}
+  acPrincessApear: {fileID: 8300000, guid: c00dddf65b1397943b3e65423e00359f, type: 3}
+  acPrincessHurt: {fileID: 8300000, guid: ca55f8283ce67214ab43310bb0f06f84, type: 3}
+  acLavaOnWater: {fileID: 8300000, guid: 9c2e8e272f936d14a87a52e8b50e59e8, type: 3}
+  acCoinApear:
+  - {fileID: 8300000, guid: d03f683d23d76f74987212a69467cb9a, type: 3}
+  - {fileID: 8300000, guid: 79939273fcf312446a7df815860d134c, type: 3}
+  - {fileID: 8300000, guid: 72579c9e18896df4e985ef5cf2f0d910, type: 3}
+  - {fileID: 8300000, guid: d5708f35132d6d44f9f839a218e8afd1, type: 3}
+  - {fileID: 8300000, guid: 0ef9d95315c547343b2ccc8afe18bffe, type: 3}
+  - {fileID: 8300000, guid: 129da7d00a032a94db6cf8f3189abd00, type: 3}
+  - {fileID: 8300000, guid: 098ce26a3266f0846958b70a80bef991, type: 3}
+  - {fileID: 8300000, guid: ea68154190150964e9c0f0b050379c2d, type: 3}
+  - {fileID: 8300000, guid: e1c70bdbc6197bc488c264aa1beaf47c, type: 3}
+  - {fileID: 8300000, guid: 6ee72d23d89078f43940e712d9360e02, type: 3}
+  - {fileID: 8300000, guid: e4e24c162d200694b90085f1b4212480, type: 3}
   audioSource: {fileID: 273683916}
 --- !u!82 &273683916
 AudioSource:

@@ -7,7 +7,8 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance;
     public AudioClip acMainMenuMusic, acGamePlayMusic;
-    public AudioClip acClick, acWin, acLose, acHeroDie, acTakeSword, acOpenChest, acEnemyDie, acMoveStick,acMeleeAttack;
+    public AudioClip acClick, acWin, acLose, acHeroDie, acTakeSword, acOpenChest, acEnemyDie, acMoveStick,acMeleeAttack, acPrincessApear, acPrincessHurt, acLavaOnWater;
+    public AudioClip[] acCoinApear;
     public AudioSource audioSource;
 
     private void Awake()

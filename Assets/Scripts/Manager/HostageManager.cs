@@ -10,6 +10,14 @@ public class HostageManager : CharsBase
     public bool isMeetPlayer;
     void Start()
     {
+        if (SoundManager.Instance != null)
+        {
+            //Debug.LogError(":D");
+            //SoundManager.Instance.PlaySound(SoundManager.Instance.acPrincessApear);
+            StartCoroutine(PlaySoundApear());
+        }
+
+
         if (MapLevelManager.Instance != null)
         {
             MapLevelManager.Instance.trTarget = transform;
@@ -36,6 +44,20 @@ public class HostageManager : CharsBase
         {
             GameManager.Instance.gTargetFollow = gameObject;
         }
+    }
+    private void OnEnable()
+    {
+        //if (SoundManager.Instance != null)
+        //{
+        //    Debug.LogError(":D");
+        //    SoundManager.Instance.PlaySound(SoundManager.Instance.acPrincessApear);
+        //}
+    }
+
+    IEnumerator PlaySoundApear()
+    {
+        yield return new WaitForSeconds(0.5f);
+        SoundManager.Instance.PlaySound(SoundManager.Instance.acPrincessApear);
     }
     public void PlayWin()
     {

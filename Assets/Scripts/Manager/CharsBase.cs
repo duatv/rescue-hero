@@ -59,6 +59,10 @@ public class CharsBase : MonoBehaviour
                     PlayerManager.Instance.OnPlayerDie();
                 MapLevelManager.Instance.OnLose();
             }
+            if (SoundManager.Instance != null)
+            {
+                SoundManager.Instance.PlaySound(SoundManager.Instance.acPrincessHurt);
+            }
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
