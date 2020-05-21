@@ -88,8 +88,11 @@ public class PlayerManager : MonoBehaviour
         }
     }
     private void HeroJump() {
-        vJumpHeigh = new Vector2(saPlayer.skeleton.ScaleX, 3);
-        _rig2D.AddForce(vJumpHeigh, ForceMode2D.Impulse);
+        if (pState != P_STATE.DIE && pState != P_STATE.WIN)
+        {
+            vJumpHeigh = new Vector2(saPlayer.skeleton.ScaleX, 3);
+            _rig2D.AddForce(vJumpHeigh, ForceMode2D.Impulse);
+        }
     }
     private void Update()
     {

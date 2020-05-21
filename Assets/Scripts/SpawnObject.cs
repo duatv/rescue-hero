@@ -19,7 +19,8 @@ public class SpawnObject : MonoBehaviour
             GameManager.Instance.totalGems = totalGems;
         }
         if (_spawnType == MapLevelManager.SPAWNTYPE.LAVA) {
-            StartCoroutine(PlaySoundLavaApear());
+            if(SoundManager.Instance != null)
+                StartCoroutine(PlaySoundLavaApear());
         }
         SpawnAllGems();
     }
