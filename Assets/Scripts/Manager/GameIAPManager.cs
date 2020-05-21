@@ -88,6 +88,7 @@ public class GameIAPManager : MonoBehaviour, IStoreListener
         {
             case Utils.INAPP_REMOVE_ADS:
                 Utils.SaveRemoveAds();
+                MyAnalytic.LogEventBuyRemoveAds();
                 break;
         }
         return PurchaseProcessingResult.Complete;

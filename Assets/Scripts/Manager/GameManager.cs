@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
         txtLevel.text = "LEVEL " + (Utils.LEVEL_INDEX + 1).ToString("00,#");
         OnUpdateCoin();
 
+        MyAnalytic.LogEventPlayLevel(Utils.LEVEL_INDEX + 1);
         if (!isTest)
             LoadLevelToPlay(Utils.LEVEL_INDEX);
         if (SoundManager.Instance != null) {
@@ -71,7 +72,7 @@ public class GameManager : MonoBehaviour
                 {
                     SoundManager.Instance.PlaySound(SoundManager.Instance.acWin);
                 }
-                MyAnalytic.LogEventWin(Utils.LEVEL_INDEX);
+                MyAnalytic.LogEventWin(Utils.LEVEL_INDEX + 1);
             }
         }
         else
@@ -84,7 +85,14 @@ public class GameManager : MonoBehaviour
                     SoundManager.Instance.PlaySound(SoundManager.Instance.acLose);
                 }
                 gPanelLose.SetActive(true);
-                MyAnalytic.LogEventLose(Utils.LEVEL_INDEX);
+                MyAnalytic.LogEventLose(Utils.LEVEL_INDEX + 1);
+                if (AdsManager.Instance != null)
+                {
+                    if (Random.Range(0, 10) <= 5)
+                    {
+                        AdsManager.Instance.ShowInterstitial(null);
+                    }
+                }
             }
         }
     }
@@ -125,6 +133,7 @@ public class GameManager : MonoBehaviour
                 if (b)
                 {
                     MyAnalytic.LogEventRewarded("skip_level");
+                    MyAnalytic.LogEventSkipLevel(Utils.LEVEL_INDEX + 1);
                     OnNextLevel();
                 }
             });
@@ -132,6 +141,7 @@ public class GameManager : MonoBehaviour
     }
     public void OnReplay()
     {
+        MyAnalytic.LogEventReplay(Utils.LEVEL_INDEX + 1);
         SceneManager.LoadSceneAsync("MainGame");
     }
     public void GoToMenu() {

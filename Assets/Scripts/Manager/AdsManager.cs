@@ -122,9 +122,16 @@ public class AdsManager : MonoBehaviour
     void InitInterstitial()
     {
         interstitial = new InterstitialAd(Application.platform == RuntimePlatform.Android ? Utils.INTERS_ID : Utils.INTERS_ID);
+        interstitial.OnAdOpening += Interstitial_OnAdOpening;
         interstitial.OnAdClosed += HandleOnAdClosed;
         interstitial.LoadAd(CreateRequest());
     }
+
+    private void Interstitial_OnAdOpening(object sender, EventArgs e)
+    {
+        MyAnalytic.LogEventAdClick();
+    }
+
     void InitRewarded()
     {
         this.rewardedAd = new RewardedAd(Application.platform == RuntimePlatform.Android ? Utils.VIDEO_ID : Utils.VIDEO_ID);

@@ -30,13 +30,14 @@ public class PlayerManager : MonoBehaviour
     public Rigidbody2D _rig2D;
     public float moveSpeed;
     public P_STATE pState;
+    public Vector2 vJumpHeigh;
 
     [HideInInspector] public bool isContinueDetect = true;
     [HideInInspector] public bool beginMove = false;
     private bool isMoveLeft = false;
     private bool isMoveRight = false;
-    [HideInInspector] public RaycastHit2D hit2D, hitDown;
-    private Vector3 vEnd, vStart;
+    [HideInInspector] public RaycastHit2D hit2D, hitDown, hitForward;
+    private Vector3 vEnd, vStart, vEndForward, vStartForward;
     private EnemyBase enBase;
     private bool _isCanMoveToTarget;
     Vector3 _vStart, _vEnd;
@@ -86,8 +87,15 @@ public class PlayerManager : MonoBehaviour
             timeBlink = 0;
         }
     }
+    private void HeroJump() {
+        vJumpHeigh = new Vector2(saPlayer.skeleton.ScaleX, 3);
+        _rig2D.AddForce(vJumpHeigh, ForceMode2D.Impulse);
+    }
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.A)) {
+            HeroJump();
+        }
         if (saPlayer.AnimationName.Equals(str_idle))
         {
             HeroBlink();
@@ -98,7 +106,6 @@ public class PlayerManager : MonoBehaviour
     {
         vStart = new Vector3(transform.localPosition.x + saPlayer.skeleton.ScaleX * 0.35f, transform.localPosition.y - 1.5f, transform.localPosition.z);
         vEnd = new Vector3(vStart.x + saPlayer.skeleton.ScaleX * 2f, vStart.y, vStart.z);
-        Debug.DrawLine(vStart, vEnd, Color.yellow);
         hit2D = Physics2D.Linecast(vStart, vEnd, lmColl);
         if (hit2D.collider != null)
         {
@@ -137,12 +144,18 @@ public class PlayerManager : MonoBehaviour
         _vStart = new Vector3(transform.localPosition.x, transform.localPosition.y - 1.5f, transform.localPosition.z);
         _vEnd = new Vector3(_vStart.x, _vStart.y - 0.15f, _vStart.z);
         hitDown = Physics2D.Linecast(_vStart, _vEnd, lmMapObject);
-        Debug.DrawLine(_vStart, _vEnd, Color.red);
     }
 
+    private void CheckHitMapAhead() {
+        vStartForward = new Vector3(transform.localPosition.x + saPlayer.skeleton.ScaleX * 0.25f, transform.localPosition.y - 1.5f, transform.localPosition.z);
+        vEndForward = new Vector3(vStartForward.x + saPlayer.skeleton.ScaleX * 0.25f, vStartForward.y, vStartForward.z);
+        //hitDown = Physics2D.Linecast(vStartForward, vEndForward, lmMapObject);
+        Debug.DrawLine(vStartForward, vEndForward, Color.red);
+    }
     private void FixedUpdate()
     {
         CheckHitAhead();
+        CheckHitMapAhead();
         HitDownMapObject();
         if (hitDown.collider != null)
         {
@@ -150,8 +163,15 @@ public class PlayerManager : MonoBehaviour
             {
                 if (hitDown.collider.gameObject.tag.Contains(Utils.TAG_WALL_BOTTOM))
                 {
+                    pState = P_STATE.RUNNING;
                     beginMove = true;
                     MoveToTarget();
+                }
+            }
+            else if (!_isCanMoveToTarget) {
+                if (hitDown.collider.gameObject.tag.Contains(Utils.TAG_STONE))
+                {
+                    HeroJump();
                 }
             }
         }
@@ -192,6 +212,7 @@ public class PlayerManager : MonoBehaviour
     {
         if (pState != P_STATE.DIE && pState != P_STATE.WIN)
         {
+            pState = P_STATE.RUNNING;
             beginMove = true;
             saPlayer.skeleton.ScaleX = -1;
             isMoveLeft = true;
@@ -203,6 +224,7 @@ public class PlayerManager : MonoBehaviour
     {
         if (pState != P_STATE.DIE && pState != P_STATE.WIN)
         {
+            pState = P_STATE.RUNNING;
             beginMove = true;
             saPlayer.skeleton.ScaleX = 1;
             isMoveLeft = false;
@@ -251,7 +273,6 @@ public class PlayerManager : MonoBehaviour
     #region Player action
     public void OnBeginRun()
     {
-        Debug.LogError("?");
         StartCoroutine(IEWaitToRun());
     }
     IEnumerator IEWaitToRun()
