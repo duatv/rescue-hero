@@ -7,7 +7,7 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance;
     public AudioClip acMainMenuMusic, acGamePlayMusic;
-    public AudioClip acClick, acWin, acLose, acHeroDie, acTakeSword, acOpenChest, acEnemyDie;
+    public AudioClip acClick, acWin, acLose, acHeroDie, acTakeSword, acOpenChest, acEnemyDie, acMoveStick,acMeleeAttack;
     public AudioSource audioSource;
 
     private void Awake()

@@ -820,7 +820,9 @@ MonoBehaviour:
   acHeroDie: {fileID: 8300000, guid: 0259b3e1ccbfcd74a8c11fd671851860, type: 3}
   acTakeSword: {fileID: 8300000, guid: 0b157d097b820574fbeb8a3d4ab39def, type: 3}
   acOpenChest: {fileID: 8300000, guid: 16e20009cf608614d9aea42e8ca041e2, type: 3}
-  acEnemyDie: {fileID: 8300000, guid: b7926ef627e12384294e0254e70a2b24, type: 3}
+  acEnemyDie: {fileID: 8300000, guid: ab74d1a8da1578e4fb68e742d03f2de8, type: 3}
+  acMoveStick: {fileID: 8300000, guid: 7c66655782e8bca48997db113d86a925, type: 3}
+  acMeleeAttack: {fileID: 8300000, guid: 2e420fccc8289d1488b7dabc520b254e, type: 3}
   audioSource: {fileID: 273683916}
 --- !u!82 &273683916
 AudioSource:

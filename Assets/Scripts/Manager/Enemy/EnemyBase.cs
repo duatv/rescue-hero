@@ -56,7 +56,9 @@ public class EnemyBase : MonoBehaviour
     protected void PlayAnim(string anim_, bool isLoop)
     {
         if (!saPlayer.AnimationName.Equals(anim_))
+        {
             saPlayer.AnimationState.SetAnimation(0, anim_, isLoop);
+        }
     }
 
     public virtual void OnEnable()
@@ -82,20 +84,18 @@ public class EnemyBase : MonoBehaviour
                     isContinueDetect = false;
                     if (hitPlayer.collider.gameObject.GetComponent<PlayerManager>())
                     {
-                        //if (hitPlayer.collider.gameObject.GetComponent<PlayerManager>().isTakeSword)
-                        //{
-                        //    hitPlayer.collider.gameObject.GetComponent<PlayerManager>().OnAttackEnemy(this);
-                        //}
-                        //else
-                        {
-                            hitPlayer.collider.gameObject.GetComponent<PlayerManager>().OnPlayerDie();
-                            GameManager.Instance.gameState = GameManager.GAMESTATE.LOSE;
-                        }
+                        hitPlayer.collider.gameObject.GetComponent<PlayerManager>().OnPlayerDie();
+                        GameManager.Instance.gameState = GameManager.GAMESTATE.LOSE;
                     }
                     else if (hitPlayer.collider.gameObject.GetComponent<HostageManager>())
                     {
                         hitPlayer.collider.gameObject.GetComponent<HostageManager>().OnDie_();
                         GameManager.Instance.gameState = GameManager.GAMESTATE.LOSE;
+                    }
+
+                    if (SoundManager.Instance != null)
+                    {
+                        SoundManager.Instance.PlaySound(SoundManager.Instance.acMeleeAttack);
                     }
                 }
             }

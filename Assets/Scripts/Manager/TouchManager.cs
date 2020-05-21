@@ -29,6 +29,7 @@ public class TouchManager : MonoBehaviour
         trail.numCapVertices = 2;
         trail.sharedMaterial = new Material(Shader.Find("Unlit/Color"));
         trail.sharedMaterial.color = trailColor;
+        trailTransform.gameObject.SetActive(false);
     }
     
     void Update()
@@ -42,6 +43,15 @@ public class TouchManager : MonoBehaviour
             {
                 if (hit[i].collider.gameObject.tag.Contains(Utils.TAG_STICKBARRIE))
                 {
+                    if (!hit[i].collider.gameObject.GetComponent<StickBarrier>().beginMove)
+                    {
+                        if (SoundManager.Instance != null)
+                        {
+                            SoundManager.Instance.PlaySound(SoundManager.Instance.acMoveStick);
+                        }
+                        Debug.LogError("1111");
+                    }
+                    
                     hit[i].collider.gameObject.GetComponent<StickBarrier>().beginMove = true;
                 }
                 if (hit[i].collider.gameObject.GetComponent<RopeNode>() != null) {

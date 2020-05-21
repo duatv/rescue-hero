@@ -364,11 +364,12 @@ MonoBehaviour:
     m_Bits: 69632
   lmMapObject:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 1536
   saPlayer: {fileID: 4785156957416898561}
   _rig2D: {fileID: 4785156955821841587}
   moveSpeed: 1.1
   pState: 0
+  vJumpHeigh: {x: 0, y: 0}
   isContinueDetect: 1
   beginMove: 0
 --- !u!61 &4785156955821841586
