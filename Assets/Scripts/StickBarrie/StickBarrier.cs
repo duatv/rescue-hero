@@ -130,7 +130,6 @@ public class StickBarrier : MonoBehaviour
                         moveBack = false;
                     }
                 }
-                //_rig2D.velocity = Vector2.left * moveSpeed * speedAdd;
                 break;
             case MOVETYPE.RIGHT:
                 if (beginMove && !moveBack)
@@ -150,7 +149,6 @@ public class StickBarrier : MonoBehaviour
                         moveBack = false;
                     }
                 }
-                //_rig2D.velocity = Vector2.right * moveSpeed * speedAdd;
                 break;
             case MOVETYPE.UP:
                 if (beginMove && !moveBack)
@@ -170,7 +168,6 @@ public class StickBarrier : MonoBehaviour
                         moveBack = false;
                     }
                 }
-                //_rig2D.velocity = Vector2.up * moveSpeed * speedAdd;
                 break;
             case MOVETYPE.DOWN:
                 if (beginMove && !moveBack)
@@ -190,7 +187,6 @@ public class StickBarrier : MonoBehaviour
                         moveBack = false;
                     }
                 }
-                //_rig2D.velocity = Vector2.down * moveSpeed * speedAdd;
                 break;
         }
     }

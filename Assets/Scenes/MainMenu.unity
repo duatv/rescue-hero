@@ -825,7 +825,12 @@ MonoBehaviour:
   acMeleeAttack: {fileID: 8300000, guid: 2e420fccc8289d1488b7dabc520b254e, type: 3}
   acPrincessApear: {fileID: 8300000, guid: c00dddf65b1397943b3e65423e00359f, type: 3}
   acPrincessHurt: {fileID: 8300000, guid: ca55f8283ce67214ab43310bb0f06f84, type: 3}
-  acLavaOnWater: {fileID: 8300000, guid: 9c2e8e272f936d14a87a52e8b50e59e8, type: 3}
+  acLavaOnWater: {fileID: 8300000, guid: 8896f6f826238b3429d89707db94efc9, type: 3}
+  acLavaApear: {fileID: 8300000, guid: 205508a02b4cc9d4e9d92dc083a1fd82, type: 3}
+  acStoneApear: {fileID: 8300000, guid: 27ebfbbc67b9e9a44b9fbaff0ff6b7ee, type: 3}
+  acMoveStickClick: {fileID: 8300000, guid: 1f3744c76eb69dd41a38c5be30f42d31, type: 3}
+  acFoundOtherStick: {fileID: 8300000, guid: d730afb793cd8a541a39323c509d4640, type: 3}
+  acCutRope: {fileID: 8300000, guid: a65a115dc75b7cc40a57c197f4bb4345, type: 3}
   acCoinApear:
   - {fileID: 8300000, guid: d03f683d23d76f74987212a69467cb9a, type: 3}
   - {fileID: 8300000, guid: 79939273fcf312446a7df815860d134c, type: 3}

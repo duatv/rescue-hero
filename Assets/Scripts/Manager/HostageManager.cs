@@ -12,8 +12,6 @@ public class HostageManager : CharsBase
     {
         if (SoundManager.Instance != null)
         {
-            //Debug.LogError(":D");
-            //SoundManager.Instance.PlaySound(SoundManager.Instance.acPrincessApear);
             StartCoroutine(PlaySoundApear());
         }
 
@@ -44,14 +42,6 @@ public class HostageManager : CharsBase
         {
             GameManager.Instance.gTargetFollow = gameObject;
         }
-    }
-    private void OnEnable()
-    {
-        //if (SoundManager.Instance != null)
-        //{
-        //    Debug.LogError(":D");
-        //    SoundManager.Instance.PlaySound(SoundManager.Instance.acPrincessApear);
-        //}
     }
 
     IEnumerator PlaySoundApear()

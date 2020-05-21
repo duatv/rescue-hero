@@ -148,7 +148,6 @@ public class GameManager : MonoBehaviour
     }
     public void OnSkipByVideo()
     {
-        Debug.LogError("Skip by video");
         if (AdsManager.Instance != null)
         {
             AdsManager.Instance.ShowRewardedVideo((b) =>

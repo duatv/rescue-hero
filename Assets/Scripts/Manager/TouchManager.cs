@@ -53,7 +53,6 @@ public class TouchManager : MonoBehaviour
                             else
                                 SoundManager.Instance.PlaySound(SoundManager.Instance.acMoveStick);
                         }
-                        Debug.LogError("1111");
                     }
                     
                     hit[i].collider.gameObject.GetComponent<StickBarrier>().beginMove = true;
@@ -63,6 +62,9 @@ public class TouchManager : MonoBehaviour
                     if (ropeNode)
                     {
                         ropeNode.hingeJoin2D.enabled = false;
+                        if (SoundManager.Instance != null) {
+                            SoundManager.Instance.PlaySound(SoundManager.Instance.acCutRope);
+                        }
                         RopeManager.Instance.UnUseRope(ropeNode.ropeIndex);
                     }
                 }

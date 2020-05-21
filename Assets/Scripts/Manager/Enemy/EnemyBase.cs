@@ -60,10 +60,7 @@ public class EnemyBase : MonoBehaviour
             saPlayer.AnimationState.SetAnimation(0, anim_, isLoop);
         }
     }
-
-    public virtual void OnEnable()
-    {
-    }
+    
     public virtual void Start()
     {
         if (MapLevelManager.Instance != null)
@@ -124,8 +121,6 @@ public class EnemyBase : MonoBehaviour
             #region Check Hit Down
             HitDownMapObject();
             #endregion
-
-
             if (hitDown.collider != null)
             {
                 #region Check Hit Ahead
@@ -227,8 +222,6 @@ public class EnemyBase : MonoBehaviour
                 }
                 #endregion
             }
-
-
             if (isBeginMove && _isCanMoveToTarget)
             {
                 MoveToTarget();
@@ -273,14 +266,12 @@ public class EnemyBase : MonoBehaviour
         isContinueDetect = false;
         isBeginMove = false;
         rig.velocity = Vector2.zero;
-        Debug.LogError("PrepareAttack: " + enemyType.ToString());
         if (enemyType == ENEMY_TYPE.RANGE)
         {
             PlayAnim(str_Att, false);
         }
         else
         {
-            //PlayAnim(str_idle, true);
             if (hitPlayer.collider != null)
             {
                 if (hitPlayer.collider.gameObject.GetComponent<PlayerManager>() != null)
