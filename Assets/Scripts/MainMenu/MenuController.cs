@@ -47,4 +47,12 @@ public class MenuController : MonoBehaviour
     public void LoadScenePlay() {
         SceneManager.LoadSceneAsync("MainGame");
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.A)) {
+            _dailyGiftPanel.gameObject.SetActive(true);
+            _dailyGiftPanel.OnShowPanel();
+        }
+    }
 }

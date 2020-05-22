@@ -9,7 +9,7 @@ public class DailyGiftPanel : MonoBehaviour
 
     public void OnShowPanel() {
         for (int i = 0; i < gAllGift.Length; i++) {
-            if (i == Utils.curDailyGift - 1) {
+            if (i == Utils.curDailyGift - 1 && !Utils.cantakegiftdaily) {
                 gAllGift[i].interactable = true;
             }
             else
