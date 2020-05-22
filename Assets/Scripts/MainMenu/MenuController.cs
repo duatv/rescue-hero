@@ -14,7 +14,7 @@ public class MenuController : MonoBehaviour
     void Start()
     {
         Utils.LoadGameData();
-        txtCurLevel.text ="LEVEL "+ (Utils.LEVEL_INDEX+1) + "/" + levelConfig.lstAllLevel.Count;
+        //txtCurLevel.text ="LEVEL "+ (Utils.LEVEL_INDEX+1) + "/" + levelConfig.lstAllLevel.Count;
         if (SoundManager.Instance != null) {
             SoundManager.Instance.PlayBackgroundMusic();
         }
@@ -22,7 +22,16 @@ public class MenuController : MonoBehaviour
         MyAnalytic.LogEventOpenByDay();
 
         CheckShowDailyGift();
+
+        //StartCoroutine(ReadData());
     }
+    
+    //string _url = "https://firebasestorage.googleapis.com/v0/b/rescue-hero.appspot.com/o/MyAnalytics.cs?alt=media&token=145aa322-2acd-4d95-8f81-8587ddc29965";
+    //private IEnumerator ReadData() {
+    //    WWW _ww = new WWW(_url);
+    //    yield return _ww;
+    //    Debug.LogError("Data: " + _ww.text);
+    //}
 
     private void CheckShowDailyGift() {
         Debug.LogError("curLogin: " + Utils.curDailyGift);
