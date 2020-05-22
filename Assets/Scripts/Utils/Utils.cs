@@ -25,6 +25,8 @@ public class Utils
     public const string CHANGE_MUSIC = GAME_KEY + ".change.music";
     public const string CHANGE_VIBRATE = GAME_KEY + ".change.vibrate";
     public const string HAS_REMOVE_ADS = GAME_KEY + ".removeads";
+    public const string KEY_DAILY_REWARD = GAME_KEY + ".KEY_DAILY_REWARD";
+    public const string KEY_CURRENT_DAILY_GIFT = GAME_KEY + ".KEY_CURRENT_DAILY_GIFT";
 
     public const string TAG_STICKBARRIE = "StickBarrie";
     public const string TAG_TRAP = "Trap_Lava";
@@ -44,13 +46,11 @@ public class Utils
     }
     public static void SaveLevel()
     {
-        Debug.Log("LEVEL_INDEX: " + LEVEL_INDEX);
         PlayerPrefs.SetInt(LEVEL_KEY, LEVEL_INDEX);
         PlayerPrefs.Save();
     }
     public static void SaveGameData()
     {
-        Debug.LogError("SaveGame");
         SaveCoin();
         SaveLevel();
     }
@@ -63,6 +63,14 @@ public class Utils
         isMusicOn = PlayerPrefs.GetInt(CHANGE_MUSIC, 0) == 0 ? false : true;
         isVibrateOn = PlayerPrefs.GetInt(CHANGE_VIBRATE, 0) == 0 ? false : true;
         isRemoveAds = PlayerPrefs.GetInt(HAS_REMOVE_ADS, 0) == 0 ? false : true;
+
+
+        curDailyGift = PlayerPrefs.GetInt(KEY_CURRENT_DAILY_GIFT, 1);
+        if (curDailyGift > 7)
+        {
+            curDailyGift = 1;
+        }
+        Debug.LogError("curentDailyGift: " + curDailyGift + " vs " + PlayerPrefs.GetInt(KEY_CURRENT_DAILY_GIFT, 1));
     }
 
 
@@ -98,4 +106,29 @@ public class Utils
         PlayerPrefs.SetInt(HAS_REMOVE_ADS, isRemoveAds ? 1 : 0);
         PlayerPrefs.Save();
     }
+
+
+    #region Daily reward
+    public static bool IsClaimReward()
+    {
+        string _key = System.DateTime.Now.Day + "_" + System.DateTime.Now.Month;
+        return _key.Equals(SReward());
+    }
+    public static string SReward()
+    {
+        return PlayerPrefs.GetString(KEY_DAILY_REWARD, "");
+    }
+    public static void HasClaimReward()
+    {
+        string _key = System.DateTime.Now.Day + "_" + System.DateTime.Now.Month;
+        PlayerPrefs.SetString(KEY_DAILY_REWARD, _key);
+        PlayerPrefs.Save();
+    }
+    public static int curDailyGift;
+    public static bool cantakegiftdaily;
+    public static void SaveDailyGift() {
+        PlayerPrefs.SetInt(KEY_CURRENT_DAILY_GIFT, curDailyGift);
+        PlayerPrefs.Save();
+    }
+    #endregion
 }

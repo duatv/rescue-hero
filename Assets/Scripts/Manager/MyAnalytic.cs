@@ -17,7 +17,15 @@ public class MyAnalytic : MonoBehaviour
     const string EVENT_SKIP_LEVEL = "skip_level_";
     const string EVENT_REPLAY_LEVEL = "replay_level_";
     const string EVENT_PLAY_LEVEL = "play_level_";
+    const string EVENT_TAKE_DAILY_REWARD = "take_daily_reward";
+    const string EVENT_TAKE_DAILY_REWARD_X2 = "take_daily_reward_x2";
 
+    public static void TakeDailyGift() {
+        FirebaseAnalytics.LogEvent(EVENT_TAKE_DAILY_REWARD);
+    }
+    public static void TakeDailyGiftX2() {
+        FirebaseAnalytics.LogEvent(EVENT_TAKE_DAILY_REWARD_X2);
+    }
     public static void LogEventOpenByDay()
     {
         FirebaseAnalytics.LogEvent(EVENT_LOGIN_BY_DAY);

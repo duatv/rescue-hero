@@ -8,7 +8,7 @@ public class MenuController : MonoBehaviour
 {
     [SerializeField] public LevelConfig levelConfig;
     public SettingPanel _settingPanel;
-
+    public DailyGiftPanel _dailyGiftPanel;
 
     public Text txtCurLevel;
     void Start()
@@ -20,12 +20,20 @@ public class MenuController : MonoBehaviour
         }
 
         MyAnalytic.LogEventOpenByDay();
+
+        CheckShowDailyGift();
     }
-    
-    void Update()
-    {
-        
+
+    private void CheckShowDailyGift() {
+        Debug.LogError("curLogin: " + Utils.curDailyGift);
+
+        if (!Utils.IsClaimReward())
+        {
+            _dailyGiftPanel.gameObject.SetActive(true);
+            _dailyGiftPanel.OnShowPanel();
+        }
     }
+
     public void SoundClickButton() {
         if (SoundManager.Instance != null)
         {
