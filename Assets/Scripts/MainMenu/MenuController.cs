@@ -14,7 +14,7 @@ public class MenuController : MonoBehaviour
     void Start()
     {
         Utils.LoadGameData();
-        txtCurLevel.text ="LEVEL "+ (Utils.LEVEL_INDEX+1) + "/" + levelConfig.lstAllLevel.Count;
+        txtCurLevel.text = "LEVEL " + (Utils.LEVEL_INDEX + 1);
         if (SoundManager.Instance != null) {
             SoundManager.Instance.PlayBackgroundMusic();
         }
