@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[SerializeField]
 public class RopeManager : MonoBehaviour
 {
     public static RopeManager Instance;
@@ -11,7 +12,15 @@ public class RopeManager : MonoBehaviour
     {
         Instance = this;
     }
+    public void UnUseRope(RopeNode _ropeNote)
+    {
+        _ropeNote.hingeJoin2D.enabled = false;
+        for (int i = 0; i < _ropeNote.gRopeParent.transform.childCount; i++){
+            _ropeNote.gRopeParent.transform.GetChild(i).gameObject.SetActive(false);
+        }
+    }
     public void UnUseRope(int _ropeIdex) {
+        Debug.LogError("UnUseRope");
         StartCoroutine(HideAllRope(_ropeIdex));
     }
     IEnumerator HideAllRope(int _index)

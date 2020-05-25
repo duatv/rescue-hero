@@ -10,6 +10,7 @@ public class TouchManager : MonoBehaviour
     public float startWidth = 0.01f;
     public float endWidth = 0f;
     public float trailTime = 0.14f;
+    public LayerMask lmTouch;
     Transform trailTransform;
     public Camera thisCamera;
     #endregion
@@ -65,7 +66,7 @@ public class TouchManager : MonoBehaviour
                         if (SoundManager.Instance != null) {
                             SoundManager.Instance.PlaySound(SoundManager.Instance.acCutRope);
                         }
-                        RopeManager.Instance.UnUseRope(ropeNode.ropeIndex);
+                        RopeManager.Instance.UnUseRope(/*ropeNode.ropeIndex*/ropeNode);
                     }
                 }
             }

@@ -99,7 +99,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 20
-  m_LinearDrag: 2
+  m_LinearDrag: 0
   m_AngularDrag: 0.25
   m_GravityScale: 1
   m_Material: {fileID: 0}
@@ -295,6 +295,7 @@ MonoBehaviour:
   _rig: {fileID: 4672183506315191191}
   hingeJoin2D: {fileID: 4672183506149404666}
   ropeIndex: 1
+  gRopeParent: {fileID: 4672183506527983960}
 --- !u!50 &4672183506149404665
 Rigidbody2D:
   serializedVersion: 4
@@ -466,6 +467,7 @@ MonoBehaviour:
   _rig: {fileID: 4672183507342883674}
   hingeJoin2D: {fileID: 4672183506244871132}
   ropeIndex: 1
+  gRopeParent: {fileID: 4672183506527983960}
 --- !u!50 &4672183506244871133
 Rigidbody2D:
   serializedVersion: 4
@@ -637,6 +639,7 @@ MonoBehaviour:
   _rig: {fileID: 4672183506244871133}
   hingeJoin2D: {fileID: 4672183506315191190}
   ropeIndex: 1
+  gRopeParent: {fileID: 4672183506527983960}
 --- !u!50 &4672183506315191191
 Rigidbody2D:
   serializedVersion: 4
@@ -844,6 +847,7 @@ MonoBehaviour:
   _rig: {fileID: 4672183507146638499}
   hingeJoin2D: {fileID: 4672183507146638500}
   ropeIndex: 1
+  gRopeParent: {fileID: 4672183506527983960}
 --- !u!50 &4672183507146638499
 Rigidbody2D:
   serializedVersion: 4
@@ -1013,7 +1017,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 20
-  m_LinearDrag: 2
+  m_LinearDrag: 0
   m_AngularDrag: 0.25
   m_GravityScale: 1
   m_Material: {fileID: 0}
@@ -1185,6 +1189,7 @@ MonoBehaviour:
   _rig: {fileID: 4672183507342883674}
   hingeJoin2D: {fileID: 4672183507342883673}
   ropeIndex: 1
+  gRopeParent: {fileID: 4672183506527983960}
 --- !u!50 &4672183507342883674
 Rigidbody2D:
   serializedVersion: 4
@@ -1518,6 +1523,7 @@ MonoBehaviour:
   _rig: {fileID: 8981559373177848777}
   hingeJoin2D: {fileID: 8981559372249876839}
   ropeIndex: 2
+  gRopeParent: {fileID: 8981559372864863234}
 --- !u!50 &8981559372249876837
 Rigidbody2D:
   serializedVersion: 4
@@ -1689,6 +1695,7 @@ MonoBehaviour:
   _rig: {fileID: 8981559373705176099}
   hingeJoin2D: {fileID: 8981559372519699395}
   ropeIndex: 2
+  gRopeParent: {fileID: 8981559372864863234}
 --- !u!50 &8981559372519699394
 Rigidbody2D:
   serializedVersion: 4
@@ -1896,6 +1903,7 @@ MonoBehaviour:
   _rig: {fileID: 8981559373177848777}
   hingeJoin2D: {fileID: 8981559373177848779}
   ropeIndex: 2
+  gRopeParent: {fileID: 8981559372864863234}
 --- !u!50 &8981559373177848777
 Rigidbody2D:
   serializedVersion: 4
@@ -2067,6 +2075,7 @@ MonoBehaviour:
   _rig: {fileID: 8981559373579722124}
   hingeJoin2D: {fileID: 8981559373579722126}
   ropeIndex: 2
+  gRopeParent: {fileID: 8981559372864863234}
 --- !u!50 &8981559373579722124
 Rigidbody2D:
   serializedVersion: 4
@@ -2238,6 +2247,7 @@ MonoBehaviour:
   _rig: {fileID: 8981559372249876837}
   hingeJoin2D: {fileID: 8981559373705176101}
   ropeIndex: 2
+  gRopeParent: {fileID: 8981559372864863234}
 --- !u!50 &8981559373705176099
 Rigidbody2D:
   serializedVersion: 4
