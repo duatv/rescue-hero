@@ -66,7 +66,7 @@ public class AdsManager : MonoBehaviour
     }
     private void Banner_OnAdLoaded(object sender, EventArgs e)
     {
-        //HideBanner();
+        HideBanner();
     }
 
     private bool IsIntersLoaded()

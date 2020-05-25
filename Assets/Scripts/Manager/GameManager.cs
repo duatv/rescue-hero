@@ -47,6 +47,9 @@ public class GameManager : MonoBehaviour
         {
             SoundManager.Instance.PlayBackgroundMusic();
         }
+        if (AdsManager.Instance != null) {
+            AdsManager.Instance.ShowBanner();
+        }
     }
     private void LoadLevelToPlay(int levelIndex)
     {

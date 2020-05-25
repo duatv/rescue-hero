@@ -40,7 +40,6 @@ public class Utils
 
     public static void SaveCoin()
     {
-        Debug.Log("currentCoin: " + currentCoin);
         PlayerPrefs.SetInt(COIN_KEY, currentCoin);
         PlayerPrefs.Save();
     }
@@ -70,7 +69,6 @@ public class Utils
         {
             curDailyGift = 1;
         }
-        Debug.LogError("curentDailyGift: " + curDailyGift + " vs " + PlayerPrefs.GetInt(KEY_CURRENT_DAILY_GIFT, 1));
     }
 
 

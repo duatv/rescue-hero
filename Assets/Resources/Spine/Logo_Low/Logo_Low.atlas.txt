@@ -1,0 +1,13 @@
+
+Logo_Low.png
+size: 896,896
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Logo_low
+  rotate: false
+  xy: 2, 652
+  size: 892, 242
+  orig: 892, 242
+  offset: 0, 0
+  index: -1
