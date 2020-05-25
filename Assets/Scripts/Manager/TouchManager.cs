@@ -39,37 +39,72 @@ public class TouchManager : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             Vector3 screenPos = Camera.main.ScreenToWorldPoint(mousePos);
-            RaycastHit2D[] hit = Physics2D.RaycastAll(screenPos, Vector2.zero, 1000);
-            for (int i = 0; i < hit.Length; i++)
-            {
-                if (hit[i].collider.gameObject.tag.Contains(Utils.TAG_STICKBARRIE))
+            RaycastHit2D hit2D = Physics2D.Raycast(screenPos, Vector2.zero, 1000,lmTouch);
+
+            if (hit2D.collider != null) {
+                if (hit2D.collider.gameObject.GetComponent<RopeNode>() != null)
                 {
-                    if (!hit[i].collider.gameObject.GetComponent<StickBarrier>().beginMove)
+                    var ropeNode = hit2D.collider.gameObject.GetComponent<RopeNode>();
+                    if (ropeNode)
+                    {
+                        ropeNode.hingeJoin2D.enabled = false;
+                        if (SoundManager.Instance != null)
+                        {
+                            SoundManager.Instance.PlaySound(SoundManager.Instance.acCutRope);
+                        }
+                        RopeManager.Instance.UnUseRope(ropeNode);
+                    }
+                }
+
+                if (hit2D.collider.gameObject.tag.Contains(Utils.TAG_STICKBARRIE))
+                {
+                    if (!hit2D.collider.gameObject.GetComponent<StickBarrier>().beginMove)
                     {
                         if (SoundManager.Instance != null)
                         {
-                            if (hit[i].collider.gameObject.GetComponent<StickBarrier>()._moveType == StickBarrier.MOVETYPE.FREE) {
+                            if (hit2D.collider.gameObject.GetComponent<StickBarrier>()._moveType == StickBarrier.MOVETYPE.FREE)
+                            {
                                 SoundManager.Instance.PlaySound(SoundManager.Instance.acMoveStickClick);
                             }
                             else
                                 SoundManager.Instance.PlaySound(SoundManager.Instance.acMoveStick);
                         }
                     }
-                    
-                    hit[i].collider.gameObject.GetComponent<StickBarrier>().beginMove = true;
-                }
-                if (hit[i].collider.gameObject.GetComponent<RopeNode>() != null) {
-                    var ropeNode = hit[i].collider.gameObject.GetComponent<RopeNode>();
-                    if (ropeNode)
-                    {
-                        ropeNode.hingeJoin2D.enabled = false;
-                        if (SoundManager.Instance != null) {
-                            SoundManager.Instance.PlaySound(SoundManager.Instance.acCutRope);
-                        }
-                        RopeManager.Instance.UnUseRope(/*ropeNode.ropeIndex*/ropeNode);
-                    }
+
+                    hit2D.collider.gameObject.GetComponent<StickBarrier>().beginMove = true;
                 }
             }
+            //RaycastHit2D[] hit = Physics2D.RaycastAll(screenPos, Vector2.zero, 1000);
+            //for (int i = 0; i < hit.Length; i++)
+            //{
+            //    if (hit[i].collider.gameObject.tag.Contains(Utils.TAG_STICKBARRIE))
+            //    {
+            //        if (!hit[i].collider.gameObject.GetComponent<StickBarrier>().beginMove)
+            //        {
+            //            if (SoundManager.Instance != null)
+            //            {
+            //                if (hit[i].collider.gameObject.GetComponent<StickBarrier>()._moveType == StickBarrier.MOVETYPE.FREE) {
+            //                    SoundManager.Instance.PlaySound(SoundManager.Instance.acMoveStickClick);
+            //                }
+            //                else
+            //                    SoundManager.Instance.PlaySound(SoundManager.Instance.acMoveStick);
+            //            }
+            //        }
+
+            //        hit[i].collider.gameObject.GetComponent<StickBarrier>().beginMove = true;
+            //    }
+            //    if (hit[i].collider.gameObject.GetComponent<RopeNode>() != null) {
+            //        var ropeNode = hit[i].collider.gameObject.GetComponent<RopeNode>();
+            //        if (ropeNode)
+            //        {
+            //            ropeNode.hingeJoin2D.enabled = false;
+            //            if (SoundManager.Instance != null) {
+            //                SoundManager.Instance.PlaySound(SoundManager.Instance.acCutRope);
+            //            }
+            //            RopeManager.Instance.UnUseRope(/*ropeNode.ropeIndex*/ropeNode);
+            //        }
+            //    }
+            //}
 
 
             if (GameManager.Instance.canUseTrail) {
