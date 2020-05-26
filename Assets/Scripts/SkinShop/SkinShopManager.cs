@@ -9,19 +9,34 @@ public class SkinShopManager : MonoBehaviour
     public Color clSelect, clNormal;
     public Text txtPrice, txtCurCoin;
     public Button btnBuyNow, btnDailyReward;
-    public SkinShopItem shopItem;
+    [SerializeField]public SkinShopItem shopItem;
 
     private void Start()
     {
         btnBuyNow.onClick.AddListener(() => {
-            Debug.LogError("Check Buy Hero: " + shopItem.txtName.text);
+            if (Utils.currentCoin >= shopItem.priceValue)
+            {
+                Utils.currentCoin -= shopItem.priceValue;
+                Utils.UnlockHero(shopItem.txtName.text);
+                Debug.LogError("Buy Success");
+            }
+            else
+            {
+                Debug.LogError("Not Enough Coin");
+                if (Utils.isVibrateOn)
+                {
+                    Handheld.Vibrate();
+                }
+            }
         });
+
         btnDailyReward.onClick.AddListener(() =>
         {
             gameObject.SetActive(false);
             menuController.ShowDailyReward();
         });
     }
+
     private void OnEnable()
     {
         txtCurCoin.text = Utils.currentCoin.ToString("#,##0");
@@ -29,5 +44,8 @@ public class SkinShopManager : MonoBehaviour
     public void OnHideShop() {
         gameObject.SetActive(false);
     }
-
+    private void OnDisable()
+    {
+        Utils.SaveCoin();
+    }
 }

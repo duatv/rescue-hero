@@ -17,8 +17,6 @@ public class SkinShopItem : MonoBehaviour
 
         btn.onClick.AddListener(() =>
         {
-            Debug.LogError("MyName: " + txtName.text);
-
             if (Utils.IsHeroUnlock(txtName.text) || txtName.text.Equals("DRAGON"))
             {
                 shopManager.btnBuyNow.gameObject.SetActive(false);
@@ -34,6 +32,9 @@ public class SkinShopItem : MonoBehaviour
             else
             {
                 shopManager.txtPrice.text = priceValue.ToString("#,##0");
+
+                shopManager.shopItem = this;
+
                 shopManager.btnDailyReward.gameObject.SetActive(false);
                 shopManager.btnBuyNow.gameObject.SetActive(true);
             }

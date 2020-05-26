@@ -137,15 +137,18 @@ public class Utils
     private static string curHero = "";
     public static void UnlockHero(string heroName) {
         //string sCur = PlayerPrefs.GetString(KEY_PLAYER_SKIN, "HENRY");
-        if (!curHero.Equals("HENRY")) {
+
+        //if (!curHero.Equals("HENRY"))
+        {
             curHero += "," + heroName;
             PlayerPrefs.SetString(KEY_PLAYER_SKIN, curHero);
             PlayerPrefs.Save();
+            Debug.LogError("curHero: " + curHero);
         }
     }
     public static bool IsHeroUnlock(string heroName) {
         //string sCur = PlayerPrefs.GetString(KEY_PLAYER_SKIN, "HENRY");
-        return curHero.Equals(heroName);
+        return curHero.Contains(heroName);
     }
     private static string heroSelected = "";
     public static bool IsHeroSelect(string heroName) {
