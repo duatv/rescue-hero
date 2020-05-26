@@ -27,6 +27,8 @@ public class Utils
     public const string HAS_REMOVE_ADS = GAME_KEY + ".removeads";
     public const string KEY_DAILY_REWARD = GAME_KEY + ".KEY_DAILY_REWARD";
     public const string KEY_CURRENT_DAILY_GIFT = GAME_KEY + ".KEY_CURRENT_DAILY_GIFT";
+    public const string KEY_PLAYER_SKIN = GAME_KEY + ".player.skin";
+    public const string KEY_HERO_SELECTED = GAME_KEY + ".hero.selected";
 
     public const string TAG_STICKBARRIE = "StickBarrie";
     public const string TAG_TRAP = "Trap_Lava";
@@ -62,7 +64,8 @@ public class Utils
         isMusicOn = PlayerPrefs.GetInt(CHANGE_MUSIC, 0) == 0 ? false : true;
         isVibrateOn = PlayerPrefs.GetInt(CHANGE_VIBRATE, 0) == 0 ? false : true;
         isRemoveAds = PlayerPrefs.GetInt(HAS_REMOVE_ADS, 0) == 0 ? false : true;
-
+        curHero = PlayerPrefs.GetString(KEY_PLAYER_SKIN, "HENRY");
+        heroSelected = PlayerPrefs.GetString(KEY_HERO_SELECTED, "HENRY");
 
         curDailyGift = PlayerPrefs.GetInt(KEY_CURRENT_DAILY_GIFT, 1);
         if (curDailyGift > 7)
@@ -127,6 +130,26 @@ public class Utils
     public static void SaveDailyGift() {
         PlayerPrefs.SetInt(KEY_CURRENT_DAILY_GIFT, curDailyGift);
         PlayerPrefs.Save();
+    }
+    #endregion
+
+    #region Player Skin
+    private static string curHero = "";
+    public static void UnlockHero(string heroName) {
+        //string sCur = PlayerPrefs.GetString(KEY_PLAYER_SKIN, "HENRY");
+        if (!curHero.Equals("HENRY")) {
+            curHero += "," + heroName;
+            PlayerPrefs.SetString(KEY_PLAYER_SKIN, curHero);
+            PlayerPrefs.Save();
+        }
+    }
+    public static bool IsHeroUnlock(string heroName) {
+        //string sCur = PlayerPrefs.GetString(KEY_PLAYER_SKIN, "HENRY");
+        return curHero.Equals(heroName);
+    }
+    private static string heroSelected = "";
+    public static bool IsHeroSelect(string heroName) {
+        return heroSelected.Equals(heroName);
     }
     #endregion
 }

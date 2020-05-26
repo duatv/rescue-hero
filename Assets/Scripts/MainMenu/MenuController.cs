@@ -9,6 +9,7 @@ public class MenuController : MonoBehaviour
     [SerializeField] public LevelConfig levelConfig;
     public SettingPanel _settingPanel;
     public DailyGiftPanel _dailyGiftPanel;
+    public SkinShopManager shopManager;
 
     public Text txtCurLevel;
     void Start()
@@ -50,6 +51,10 @@ public class MenuController : MonoBehaviour
         _dailyGiftPanel.gameObject.SetActive(true);
         _dailyGiftPanel.OnShowPanel();
     }
+    public void ShowSkinShop() {
+        shopManager.gameObject.SetActive(true);
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.A)) {
