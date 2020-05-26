@@ -13,8 +13,11 @@ public class RewardItem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.LogError("Utils.curDailyGift: " + Utils.curDailyGift);
-        if (dayIndex == Utils.curDailyGift && !Utils.cantakegiftdaily)
+
+    }
+    private void OnEnable()
+    {
+        if (dayIndex == Utils.curDailyGift && !Utils.cantakegiftdaily && !Utils.IsClaimReward())
         {
             imgPreview.sprite = sprSelected;
             _dailyGift._dayIndex = dayIndex;
@@ -24,6 +27,14 @@ public class RewardItem : MonoBehaviour
                 _dailyGift.btnClaimX3.interactable = false;
             }
             else _dailyGift.btnClaimX3.interactable = true;
+        }
+        else if (dayIndex == Utils.curDailyGift && Utils.cantakegiftdaily) {
+            _dailyGift.btnClaimX3.interactable = false;
+            _dailyGift.btnClaim.interactable = false;
+        } else if (dayIndex == Utils.curDailyGift-1 &&!Utils.cantakegiftdaily && Utils.IsClaimReward()) {
+            _dailyGift.btnClaimX3.interactable = false;
+            _dailyGift.btnClaim.interactable = false;
+            imgPreview.sprite = sprHasClaim;
         }
         else if (dayIndex < Utils.curDailyGift)
         {

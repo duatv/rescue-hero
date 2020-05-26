@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class DailyGiftPanel : MonoBehaviour
 {
-    public Button btnClaimX3;
+    public Button btnClaimX3, btnClaim;
     public Button[] gAllGift;
     public RewardItem[] _allRewardItems;
     public int _dayIndex = 1;
@@ -99,7 +99,6 @@ public class DailyGiftPanel : MonoBehaviour
     }
 
     public void OnClaim() {
-        Debug.LogError("DayIndex: " + _dayIndex);
         MyAnalytic.TakeDailyGift();
         Utils.HasClaimReward();
         switch (_dayIndex)
@@ -129,7 +128,6 @@ public class DailyGiftPanel : MonoBehaviour
         OnClosePanel();
     }
     public void OnX3Claim() {
-        Debug.LogError("X3Claim_DayIndex: " + _dayIndex);
         TakeX2Gift(_dayIndex);
     }
 }
