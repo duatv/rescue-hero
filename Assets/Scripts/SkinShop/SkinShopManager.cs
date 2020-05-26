@@ -10,6 +10,7 @@ public class SkinShopManager : MonoBehaviour
     public Text txtPrice, txtCurCoin;
     public Button btnBuyNow, btnDailyReward;
     [SerializeField]public SkinShopItem shopItem;
+    public Dictionary<string, SkinShopItem> dicAllSkin = new Dictionary<string, SkinShopItem>();
 
     private void Start()
     {

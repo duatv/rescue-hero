@@ -11,6 +11,14 @@ public class SkinShopItem : MonoBehaviour
     public Image imgLock, imgPreview, imgSelect;
     public Sprite sprGray, sprSelect;
     public Button btn;
+
+    private void Start()
+    {
+        if (!shopManager.dicAllSkin.ContainsKey(txtName.text))
+        {
+            shopManager.dicAllSkin.Add(txtName.text, this);
+        }
+    }
     private void OnEnable()
     {
         CheckHeroUnlock();
@@ -19,6 +27,19 @@ public class SkinShopItem : MonoBehaviour
         {
             if (Utils.IsHeroUnlock(txtName.text) || txtName.text.Equals("DRAGON"))
             {
+                foreach (SkinShopItem ssItem in shopManager.dicAllSkin.Values)
+                {
+                    if(ssItem.txtName.text.Equals(txtName.text)){
+                        ssItem.txtName.color = shopManager.clSelect;
+                        ssItem.imgSelect.enabled = true;
+                    }
+                    else{
+                        ssItem.txtName.color = shopManager.clNormal;
+                        ssItem.imgSelect.enabled = false;
+                    }
+                }
+
+
                 shopManager.btnBuyNow.gameObject.SetActive(false);
                 if (Utils.IsHeroUnlock(txtName.text) && txtName.text.Equals("DRAGON"))
                     shopManager.btnDailyReward.gameObject.SetActive(false);
@@ -40,7 +61,8 @@ public class SkinShopItem : MonoBehaviour
             }
         });
     }
-    private void CheckHeroUnlock() {
+    private void CheckHeroUnlock()
+    {
         if (Utils.IsHeroUnlock(txtName.text) || txtName.text.Equals("DRAGON"))
         {
             if (Utils.IsHeroSelect(txtName.text))
@@ -57,7 +79,8 @@ public class SkinShopItem : MonoBehaviour
             imgLock.enabled = false;
             imgPreview.sprite = sprSelect;
         }
-        else {
+        else
+        {
             shopManager.btnBuyNow.gameObject.SetActive(true);
             shopManager.btnDailyReward.gameObject.SetActive(false);
 
