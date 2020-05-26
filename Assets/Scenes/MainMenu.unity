@@ -775,7 +775,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 789.00995, y: -171}
+  m_AnchoredPosition: {x: 789.2605, y: -171}
   m_SizeDelta: {x: 262, y: 298}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &89135951
@@ -1150,7 +1150,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 210.01373, y: -582.1444}
+  m_AnchoredPosition: {x: 209.34485, y: -582.26025}
   m_SizeDelta: {x: 276, y: 347}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &152441155
@@ -1210,6 +1210,8 @@ MonoBehaviour:
   sprGray: {fileID: 21300000, guid: edfe41c4866d17946bd6a90005f8b2ca, type: 3}
   sprSelect: {fileID: 21300000, guid: 724e70cfbd74948498ff629c6d4b8ac7, type: 3}
   btn: {fileID: 152441158}
+  skinName: Superman/superman
+  skinWithSword: Superman/kiem Superman
 --- !u!114 &152441158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1525,7 +1527,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 802.01373, y: -205.14441}
+  m_AnchoredPosition: {x: 801.34485, y: -205.26025}
   m_SizeDelta: {x: 276, y: 347}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &201042731
@@ -1585,6 +1587,8 @@ MonoBehaviour:
   sprGray: {fileID: 21300000, guid: 507d0fe4020a9b34db8142e9fa927b6c, type: 3}
   sprSelect: {fileID: 21300000, guid: c3ccc1d970e52274e967ffc9568f23ba, type: 3}
   btn: {fileID: 201042734}
+  skinName: Athur/Athur
+  skinWithSword: Athur/kiem Athur
 --- !u!114 &201042734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2875,6 +2879,42 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 408833365}
   m_CullTransparentMesh: 0
+--- !u!1 &419083540
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 419083541}
+  m_Layer: 5
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &419083541
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 419083540}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1229551955}
+  m_Father: {fileID: 1806947986}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.4498928, y: 0.6475631}
+  m_AnchorMax: {x: 0.549, y: 0.70047903}
+  m_AnchoredPosition: {x: 0.5, y: 1.5}
+  m_SizeDelta: {x: -7, y: -1}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &432272158
 GameObject:
   m_ObjectHideFlags: 0
@@ -3137,10 +3177,10 @@ RectTransform:
   m_Father: {fileID: 1806947986}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.03337199, y: 0.15400001}
-  m_AnchorMax: {x: 0.96825606, y: 0.5853949}
-  m_AnchoredPosition: {x: -1, y: -2.1000366}
-  m_SizeDelta: {x: 2, y: -0.7000122}
+  m_AnchorMin: {x: 0.064777985, y: 0.16100001}
+  m_AnchorMax: {x: 0.934, y: 0.58400005}
+  m_AnchoredPosition: {x: 1, y: -8.100098}
+  m_SizeDelta: {x: 72, y: 15.299988}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &480519492
 MonoBehaviour:
@@ -3155,7 +3195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.40392157}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -3498,6 +3538,42 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519172941}
   m_CullTransparentMesh: 0
+--- !u!1 &524259189
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 524259190}
+  m_Layer: 5
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &524259190
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524259189}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 747612495}
+  m_Father: {fileID: 927311294}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.6702701, y: 0.10160067}
+  m_AnchorMax: {x: 0.85868233, y: 0.9399}
+  m_AnchoredPosition: {x: -2.1000366, y: -23.567993}
+  m_SizeDelta: {x: -4.23999, y: -44.78}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &536224336
 GameObject:
   m_ObjectHideFlags: 0
@@ -4001,7 +4077,7 @@ PrefabInstance:
     - target: {fileID: 7897738126549671188, guid: ec69796c6380fa545ac2d78c2fbbecb2,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -20
+      value: -102
       objectReference: {fileID: 0}
     - target: {fileID: 7897738126549671188, guid: ec69796c6380fa545ac2d78c2fbbecb2,
         type: 3}
@@ -4264,7 +4340,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 210.01373, y: -205.14441}
+  m_AnchoredPosition: {x: 209.34485, y: -205.26025}
   m_SizeDelta: {x: 276, y: 347}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &601949498
@@ -4324,6 +4400,8 @@ MonoBehaviour:
   sprGray: {fileID: 21300000, guid: ac0fdbdbdf54bb747a4ce0714aa8113e, type: 3}
   sprSelect: {fileID: 21300000, guid: 03cabe40e30f33240a0862018d0abb2b, type: 3}
   btn: {fileID: 601949502}
+  skinName: 1
+  skinWithSword: kiem
 --- !u!114 &601949502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4809,6 +4887,87 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 745436227}
   m_CullTransparentMesh: 0
+--- !u!1 &747612494
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 747612495}
+  - component: {fileID: 747612497}
+  - component: {fileID: 747612496}
+  m_Layer: 0
+  m_Name: New SkeletonGraphic
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &747612495
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 747612494}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: -2.5, y: 2.5, z: 2.5}
+  m_Children: []
+  m_Father: {fileID: 524259190}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 2.899994, y: -103.5}
+  m_SizeDelta: {x: -71.52, y: -197.73}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &747612496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 747612494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d85b887af7e6c3f45a2e2d2920d641bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 2100000, guid: b66cf7a186d13054989b33a5c90044e4, type: 2}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  skeletonDataAsset: {fileID: 11400000, guid: 25e37ca615df27d44b84beb473c398ab, type: 2}
+  initialSkinName: dragon Knight/dragon knight
+  initialFlipX: 1
+  initialFlipY: 0
+  startingAnimation: idle
+  startingLoop: 1
+  timeScale: 1
+  freeze: 1
+  unscaledTime: 1
+  meshGenerator:
+    settings:
+      useClipping: 1
+      zSpacing: 0
+      pmaVertexColors: 1
+      tintBlack: 0
+      calculateTangents: 0
+      addNormals: 0
+      immutableTriangles: 0
+--- !u!222 &747612497
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 747612494}
+  m_CullTransparentMesh: 0
 --- !u!1 &753424515
 GameObject:
   m_ObjectHideFlags: 0
@@ -4997,7 +5156,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 502.00995, y: -494}
+  m_AnchoredPosition: {x: 502.26047, y: -494}
   m_SizeDelta: {x: 262, y: 298}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &768895356
@@ -5221,7 +5380,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 215.00995, y: -171}
+  m_AnchoredPosition: {x: 215.26047, y: -171}
   m_SizeDelta: {x: 262, y: 298}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &794227386
@@ -5745,7 +5904,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 802.01373, y: -582.1444}
+  m_AnchoredPosition: {x: 801.34485, y: -582.26025}
   m_SizeDelta: {x: 276, y: 347}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &882118806
@@ -5805,6 +5964,8 @@ MonoBehaviour:
   sprGray: {fileID: 21300000, guid: f302c37ed7ac9e94095f785e1230d06a, type: 3}
   sprSelect: {fileID: 21300000, guid: 3ec00db2dd80f6c45a7450c9aab64f8a, type: 3}
   btn: {fileID: 882118809}
+  skinName: dragon Knight/dragon knight
+  skinWithSword: dragon Knight/kiem dragon knight
 --- !u!114 &882118809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5883,6 +6044,7 @@ RectTransform:
   - {fileID: 1947389862}
   - {fileID: 342310343}
   - {fileID: 664335665}
+  - {fileID: 524259190}
   m_Father: {fileID: 2062350880}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6192,7 +6354,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 506.01373, y: -205.14441}
+  m_AnchoredPosition: {x: 505.34485, y: -205.26025}
   m_SizeDelta: {x: 276, y: 347}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &961358110
@@ -6252,6 +6414,8 @@ MonoBehaviour:
   sprGray: {fileID: 21300000, guid: c27bf405e367b27439890765816b7ecc, type: 3}
   sprSelect: {fileID: 21300000, guid: 7fd86b27fc20919468f3f352aeaba939, type: 3}
   btn: {fileID: 961358113}
+  skinName: Hercules/hercules
+  skinWithSword: Hercules/kiem hercules
 --- !u!114 &961358113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6557,7 +6721,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 506.01373, y: -582.1444}
+  m_AnchoredPosition: {x: 505.34485, y: -582.26025}
   m_SizeDelta: {x: 276, y: 347}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1027760067
@@ -6617,6 +6781,8 @@ MonoBehaviour:
   sprGray: {fileID: 21300000, guid: c18ba717cd4e5954181c1a7171084e64, type: 3}
   sprSelect: {fileID: 21300000, guid: 76f87c6d930131a4b879c563222e21d7, type: 3}
   btn: {fileID: 1027760070}
+  skinName: Holy/holy
+  skinWithSword: Holy/kiem holy
 --- !u!114 &1027760070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6699,7 +6865,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 789.00995, y: -494}
+  m_AnchoredPosition: {x: 789.2605, y: -494}
   m_SizeDelta: {x: 262, y: 298}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1047383372
@@ -7809,6 +7975,87 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1226389399}
+  m_CullTransparentMesh: 0
+--- !u!1 &1229551954
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1229551955}
+  - component: {fileID: 1229551957}
+  - component: {fileID: 1229551956}
+  m_Layer: 0
+  m_Name: New SkeletonGraphic
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1229551955
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1229551954}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_Children: []
+  m_Father: {fileID: 419083541}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: 1, y: -28}
+  m_SizeDelta: {x: 0, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1229551956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1229551954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d85b887af7e6c3f45a2e2d2920d641bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 2100000, guid: b66cf7a186d13054989b33a5c90044e4, type: 2}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  skeletonDataAsset: {fileID: 11400000, guid: 25e37ca615df27d44b84beb473c398ab, type: 2}
+  initialSkinName: 1
+  initialFlipX: 1
+  initialFlipY: 0
+  startingAnimation: idle
+  startingLoop: 1
+  timeScale: 1
+  freeze: 0
+  unscaledTime: 0
+  meshGenerator:
+    settings:
+      useClipping: 1
+      zSpacing: 0
+      pmaVertexColors: 1
+      tintBlack: 0
+      calculateTangents: 0
+      addNormals: 0
+      immutableTriangles: 0
+--- !u!222 &1229551957
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1229551954}
   m_CullTransparentMesh: 0
 --- !u!1 &1263757351
 GameObject:
@@ -8985,7 +9232,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1544737669}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1824271028}
+        m_MethodName: OnHideShop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1544737669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9463,7 +9721,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1613697204
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10304,6 +10562,7 @@ RectTransform:
   - {fileID: 480519491}
   - {fileID: 1613697204}
   - {fileID: 1448832142}
+  - {fileID: 419083541}
   m_Father: {fileID: 1824271025}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10503,6 +10762,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menuController: {fileID: 672568322}
+  saPlayer: {fileID: 1229551956}
+  skinHenry: 1
+  skinHercules: Hercules/hercules
+  skinKael: Superman/superman
+  skinArthur: Athur/Athur
+  skinGabriel: Holy/holy
+  skinDragon: dragon Knight/dragon knight
+  skinHenryWSword: kiem
+  skinHerculesWSword: Hercules/kiem hercules
+  skinKaelWSword: Superman/kiem Superman
+  skinArthurWSword: Athur/kiem Athur
+  skinGabrielWSword: Holy/kiem holy
+  skinDragonWSword: dragon Knight/kiem dragon knight
   clSelect: {r: 0.9607843, g: 0.7019608, b: 0.003921569, a: 1}
   clNormal: {r: 1, g: 1, b: 1, a: 1}
   txtPrice: {fileID: 1731269537}
@@ -10678,7 +10950,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 215.00995, y: -494}
+  m_AnchoredPosition: {x: 215.26047, y: -494}
   m_SizeDelta: {x: 262, y: 298}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1866973526
@@ -11099,7 +11371,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.025899574, y: 0.896}
   m_AnchorMax: {x: 0.18048245, y: 0.9877284}
-  m_AnchoredPosition: {x: -1.0006104, y: 0.099853516}
+  m_AnchoredPosition: {x: -1.0007935, y: 0.099853516}
   m_SizeDelta: {x: -1, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2020554651
@@ -11637,7 +11909,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 502.00995, y: -171}
+  m_AnchoredPosition: {x: 502.26047, y: -171}
   m_SizeDelta: {x: 262, y: 298}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2066855605

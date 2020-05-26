@@ -45,6 +45,9 @@ public class PlayerManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        saPlayer.Skeleton.SetSkin(Utils.skinNormal);
+        saPlayer.Skeleton.SetSlotsToSetupPose();
+        saPlayer.LateUpdate();
     }
     private void Start()
     {
@@ -62,6 +65,14 @@ public class PlayerManager : MonoBehaviour
                 StartCoroutine(ISShowWin());
             }
         };
+    }
+    private void OnEnable()
+    {
+        //saPlayer.Skeleton.SetSkin(/*skinSword*/Utils.skinNormal);
+
+        //saPlayer.Skeleton.SetSkin(Utils.skinNormal);
+        //saPlayer.Skeleton.SetSlotsToSetupPose();
+        //saPlayer.LateUpdate();
     }
     IEnumerator IEWaitToIdle()
     {
@@ -314,7 +325,7 @@ public class PlayerManager : MonoBehaviour
     {
         isTakeSword = true;
         _tr.gameObject.SetActive(false);
-        saPlayer.Skeleton.SetSkin(skinSword);
+        saPlayer.Skeleton.SetSkin(/*skinSword*/Utils.skinSword);
 
         Debug.LogError("Take Sword: " + saPlayer.Skeleton.Skin.Name);
 

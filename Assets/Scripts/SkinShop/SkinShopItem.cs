@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Spine.Unity;
 
 public class SkinShopItem : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class SkinShopItem : MonoBehaviour
     public Image imgLock, imgPreview, imgSelect;
     public Sprite sprGray, sprSelect;
     public Button btn;
+    public string skinName;
+    public string skinWithSword;
 
     private void Start()
     {
@@ -18,10 +21,6 @@ public class SkinShopItem : MonoBehaviour
         {
             shopManager.dicAllSkin.Add(txtName.text, this);
         }
-    }
-    private void OnEnable()
-    {
-        CheckHeroUnlock();
 
         btn.onClick.AddListener(() =>
         {
@@ -29,11 +28,14 @@ public class SkinShopItem : MonoBehaviour
             {
                 foreach (SkinShopItem ssItem in shopManager.dicAllSkin.Values)
                 {
-                    if(ssItem.txtName.text.Equals(txtName.text)){
+                    if (ssItem.txtName.text.Equals(txtName.text))
+                    {
                         ssItem.txtName.color = shopManager.clSelect;
                         ssItem.imgSelect.enabled = true;
+                        shopManager.shopItem = this;
                     }
-                    else{
+                    else
+                    {
                         ssItem.txtName.color = shopManager.clNormal;
                         ssItem.imgSelect.enabled = false;
                     }
@@ -42,10 +44,15 @@ public class SkinShopItem : MonoBehaviour
 
                 shopManager.btnBuyNow.gameObject.SetActive(false);
                 if (Utils.IsHeroUnlock(txtName.text) && txtName.text.Equals("DRAGON"))
+                {
                     shopManager.btnDailyReward.gameObject.SetActive(false);
-                else if (!Utils.IsHeroUnlock(txtName.text) && txtName.text.Equals("DRAGON")) shopManager.btnDailyReward.gameObject.SetActive(true);
+                    Utils.heroSelected = txtName.text;
+                }
+                else if (!Utils.IsHeroUnlock(txtName.text) && txtName.text.Equals("DRAGON"))
+                    shopManager.btnDailyReward.gameObject.SetActive(true);
                 else
                 {
+                    Utils.heroSelected = txtName.text;
                     shopManager.btnBuyNow.gameObject.SetActive(false);
                     shopManager.btnDailyReward.gameObject.SetActive(false);
                 }
@@ -53,14 +60,20 @@ public class SkinShopItem : MonoBehaviour
             else
             {
                 shopManager.txtPrice.text = priceValue.ToString("#,##0");
-
                 shopManager.shopItem = this;
-
                 shopManager.btnDailyReward.gameObject.SetActive(false);
                 shopManager.btnBuyNow.gameObject.SetActive(true);
             }
+
+            shopManager.ChangeSkin(skinName);
         });
     }
+
+    private void OnEnable()
+    {
+        CheckHeroUnlock();
+    }
+
     private void CheckHeroUnlock()
     {
         if (Utils.IsHeroUnlock(txtName.text) || txtName.text.Equals("DRAGON"))
@@ -68,22 +81,20 @@ public class SkinShopItem : MonoBehaviour
             if (Utils.IsHeroSelect(txtName.text))
             {
                 imgSelect.enabled = true;
+                shopManager.shopItem = this;
                 txtName.color = shopManager.clSelect;
+                shopManager.ChangeSkin(skinName);
             }
             else
             {
                 imgSelect.enabled = false;
                 txtName.color = shopManager.clNormal;
             }
-            shopManager.btnBuyNow.gameObject.SetActive(false);
             imgLock.enabled = false;
             imgPreview.sprite = sprSelect;
         }
         else
         {
-            shopManager.btnBuyNow.gameObject.SetActive(true);
-            shopManager.btnDailyReward.gameObject.SetActive(false);
-
             txtName.color = shopManager.clNormal;
             imgPreview.sprite = sprGray;
             imgSelect.enabled = false;
