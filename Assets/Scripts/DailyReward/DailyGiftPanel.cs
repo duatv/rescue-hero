@@ -93,8 +93,11 @@ public class DailyGiftPanel : MonoBehaviour
         OnClosePanel();
     }
     public void TakeSpecialGift() {
-        Utils.HasClaimReward();
-        Utils.curDailyGift++;
+        if (!Utils.cantakegiftdaily)
+        {
+            Utils.HasClaimReward();
+            Utils.curDailyGift++;
+        }
         OnClosePanel();
     }
 
