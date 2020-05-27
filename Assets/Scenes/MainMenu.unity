@@ -3571,7 +3571,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.6702701, y: 0.10160067}
   m_AnchorMax: {x: 0.85868233, y: 0.9399}
-  m_AnchoredPosition: {x: -2.1000366, y: -23.567993}
+  m_AnchoredPosition: {x: -2.1000366, y: -23.56799}
   m_SizeDelta: {x: -4.23999, y: -44.78}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &536224336
@@ -4554,7 +4554,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.08785213, y: 0.5712077}
   m_AnchorMax: {x: 0.93167275, y: 0.896}
-  m_AnchoredPosition: {x: -35, y: -34}
+  m_AnchoredPosition: {x: -34.99997, y: -34}
   m_SizeDelta: {x: 1, y: -2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &639422786
@@ -4949,7 +4949,7 @@ MonoBehaviour:
   startingAnimation: idle
   startingLoop: 1
   timeScale: 1
-  freeze: 1
+  freeze: 0
   unscaledTime: 1
   meshGenerator:
     settings:
@@ -10872,7 +10872,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.14951687, y: 0.606}
   m_AnchorMax: {x: 0.90800005, y: 0.7062459}
-  m_AnchoredPosition: {x: -335.7, y: 7.5}
+  m_AnchoredPosition: {x: -335.69998, y: 7.5}
   m_SizeDelta: {x: -670, y: -15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1840321489
