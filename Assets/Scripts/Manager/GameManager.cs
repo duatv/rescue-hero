@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
 
     public Text txtLevel;
     public Text txtCoin;
+    public Text txtCoinWin;
     public bool isTest;
     [HideInInspector] public bool canUseTrail;
     public GAMESTATE gameState;
@@ -31,7 +32,8 @@ public class GameManager : MonoBehaviour
     }
     private void OnUpdateCoin()
     {
-        txtCoin.text = Utils.currentCoin + "";
+        txtCoin.text = Utils.currentCoin.ToString("00,#");
+        txtCoinWin.text = Utils.currentCoin.ToString("00,#");
         Utils.SaveCoin();
     }
     void Start()
