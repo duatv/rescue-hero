@@ -43,18 +43,18 @@ public class Chest : MonoBehaviour
             {
                 if (GameManager.Instance.gameState != GameManager.GAMESTATE.LOSE)
                 {
-                    if (!hasDetect)
+                    //if (!hasDetect)
                     {
                         if (SoundManager.Instance != null)
                         {
                             SoundManager.Instance.PlaySound(SoundManager.Instance.acOpenChest);
                         }
                         PlayerManager.Instance._rig2D.velocity = Vector2.zero;
+                        Debug.LogError("IEOpenChest: " + PlayerManager.Instance._rig2D.velocity);
                         StartCoroutine(IEOpenChest());
-                        //collision.gameObject.GetComponent<PlayerManager>().OnWin();
                     }
                 }
-                hasDetect = true;
+                //hasDetect = true;
             }
         }
 
@@ -67,7 +67,7 @@ public class Chest : MonoBehaviour
     }
 
     IEnumerator IEOpenChest() {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.2f);
         saChest.AnimationState.SetAnimation(0, animOpen, false);
     }
     private void PlayAnim(SkeletonAnimation saPlayer, string anim_, bool isLoop)

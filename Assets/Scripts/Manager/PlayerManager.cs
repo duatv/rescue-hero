@@ -252,22 +252,22 @@ public class PlayerManager : MonoBehaviour
             }
         }
     }
-    public void PrepareRotate_(Transform _trTarget, bool rotateOnly)
-    {
-        if (pState != P_STATE.DIE && pState != P_STATE.WIN)
-        {
-            if (transform.localPosition.x > _trTarget.localPosition.x)
-            {
-                saPlayer.skeleton.ScaleX = -1;
-                PrepareMoveRight();
-            }
-            else
-            {
-                saPlayer.skeleton.ScaleX = 1;
-                PrepareMoveLeft();
-            }
-        }
-    }
+    //public void PrepareRotate_(Transform _trTarget, bool rotateOnly)
+    //{
+    //    if (pState != P_STATE.DIE && pState != P_STATE.WIN)
+    //    {
+    //        if (transform.localPosition.x > _trTarget.localPosition.x)
+    //        {
+    //            saPlayer.skeleton.ScaleX = -1;
+    //            PrepareMoveRight();
+    //        }
+    //        else
+    //        {
+    //            saPlayer.skeleton.ScaleX = 1;
+    //            PrepareMoveLeft();
+    //        }
+    //    }
+    //}
 
     public void PrepareRotate(Transform _trTarget, bool rotateOnly)
     {
@@ -275,15 +275,20 @@ public class PlayerManager : MonoBehaviour
         {
             if (hitDown.collider != null)
             {
+                beginMove = true;
                 if (transform.localPosition.x > _trTarget.localPosition.x)
                 {
                     saPlayer.skeleton.ScaleX = -1;
-                    PrepareMoveLeft();
+                    //PrepareMoveLeft();
+                    isMoveLeft = true;
+                    isMoveRight = false;
                 }
                 else
                 {
                     saPlayer.skeleton.ScaleX = 1;
-                    PrepareMoveRight();
+                    isMoveLeft = false;
+                    isMoveRight = true;
+                    //PrepareMoveRight();
                 }
             }
         }

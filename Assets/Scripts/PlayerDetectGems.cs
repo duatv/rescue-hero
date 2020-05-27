@@ -6,7 +6,8 @@ public class PlayerDetectGems : MonoBehaviour
 {
     public PlayerManager pManager;
     public GameObject gTarget;
-    
+
+    private bool isDetect = false;
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.tag.Contains(Utils.TAG_SWORD))
@@ -36,8 +37,10 @@ public class PlayerDetectGems : MonoBehaviour
         }
         if (collision.gameObject.GetComponent<Chest>() != null)
         {
-            if(!pManager.beginMove)
+            if (!pManager.beginMove) {
+                Debug.LogError(":D");
                 pManager.PrepareRotate(collision.transform, false);
+            }
         }
     }
 }

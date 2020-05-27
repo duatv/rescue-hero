@@ -105,6 +105,9 @@ public class GameManager : MonoBehaviour
     private IEnumerator IEWaitToShowWinLose(bool isWin)
     {
         yield return new WaitForSeconds(1.0f);
+        if (AdsManager.Instance != null) {
+            AdsManager.Instance.HideBanner();
+        }
         if (isWin)
         {
             ActiveCamEff();

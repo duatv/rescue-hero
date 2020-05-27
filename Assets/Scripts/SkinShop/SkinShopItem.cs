@@ -65,7 +65,7 @@ public class SkinShopItem : MonoBehaviour
                 shopManager.btnBuyNow.gameObject.SetActive(true);
             }
 
-            shopManager.ChangeSkin(skinName);
+            shopManager.ChangeSkin(/*skinName*/skinWithSword);
         });
     }
 
@@ -83,7 +83,7 @@ public class SkinShopItem : MonoBehaviour
                 imgSelect.enabled = true;
                 shopManager.shopItem = this;
                 txtName.color = shopManager.clSelect;
-                shopManager.ChangeSkin(skinName);
+                shopManager.ChangeSkin(/*skinName*/skinWithSword);
             }
             else
             {
