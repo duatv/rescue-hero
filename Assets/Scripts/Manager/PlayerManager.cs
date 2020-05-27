@@ -90,15 +90,17 @@ public class PlayerManager : MonoBehaviour
 
     const float timeConst = 2;
     private float timeBlink = 0;
-    private void HeroBlink() {
+    private void HeroBlink()
+    {
         timeBlink += Time.deltaTime;
-        if(timeBlink >= timeConst)
+        if (timeBlink >= timeConst)
         {
             saPlayer.AnimationState.SetAnimation(1, str_Blink, false);
             timeBlink = 0;
         }
     }
-    private void HeroJump() {
+    private void HeroJump()
+    {
         if (pState != P_STATE.DIE && pState != P_STATE.WIN)
         {
             vJumpHeigh = new Vector2(saPlayer.skeleton.ScaleX, 3);
@@ -107,7 +109,8 @@ public class PlayerManager : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A)) {
+        if (Input.GetKeyDown(KeyCode.A))
+        {
             HeroJump();
         }
         if (saPlayer.AnimationName.Equals(str_idle))
@@ -160,7 +163,8 @@ public class PlayerManager : MonoBehaviour
         hitDown = Physics2D.Linecast(_vStart, _vEnd, lmMapObject);
     }
 
-    private void CheckHitMapAhead() {
+    private void CheckHitMapAhead()
+    {
         vStartForward = new Vector3(transform.localPosition.x + saPlayer.skeleton.ScaleX * 0.25f, transform.localPosition.y - 1.5f, transform.localPosition.z);
         vEndForward = new Vector3(vStartForward.x + saPlayer.skeleton.ScaleX * 0.25f, vStartForward.y, vStartForward.z);
         //hitDown = Physics2D.Linecast(vStartForward, vEndForward, lmMapObject);
@@ -177,15 +181,13 @@ public class PlayerManager : MonoBehaviour
             {
                 if (hitDown.collider.gameObject.tag.Contains(Utils.TAG_WALL_BOTTOM))
                 {
-                    if (!beginMove)
-                    {
-                        pState = P_STATE.RUNNING;
-                        beginMove = true;
-                        MoveToTarget();
-                    }
+                    pState = P_STATE.RUNNING;
+                    beginMove = true;
+                    MoveToTarget();
                 }
             }
-            else if (!_isCanMoveToTarget) {
+            else if (!_isCanMoveToTarget)
+            {
                 if (hitDown.collider.gameObject.tag.Contains(Utils.TAG_STONE))
                 {
                     HeroJump();
@@ -357,7 +359,8 @@ public class PlayerManager : MonoBehaviour
             StartCoroutine(IEWait());
         }
     }
-    IEnumerator IEWait() {
+    IEnumerator IEWait()
+    {
         yield return new WaitForSeconds(0.6f);
         MapLevelManager.Instance.OnLose();
 
