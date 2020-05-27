@@ -45,9 +45,12 @@ public class PlayerManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        saPlayer.Skeleton.SetSkin(Utils.skinNormal);
-        saPlayer.Skeleton.SetSlotsToSetupPose();
-        saPlayer.LateUpdate();
+        if (!string.IsNullOrEmpty(Utils.skinNormal))
+        {
+            saPlayer.Skeleton.SetSkin(Utils.skinNormal);
+            saPlayer.Skeleton.SetSlotsToSetupPose();
+            saPlayer.LateUpdate();
+        }
     }
     private void Start()
     {
@@ -327,7 +330,6 @@ public class PlayerManager : MonoBehaviour
     }
     public void OnAttackEnemy(EnemyBase _enBase)
     {
-        Debug.LogError("KILL HIMMMMMMMMMMM");
         enBase = _enBase;
         PlayAnim(str_Att, false);
         MapLevelManager.Instance.trTarget = null;
@@ -336,9 +338,9 @@ public class PlayerManager : MonoBehaviour
     {
         isTakeSword = true;
         _tr.gameObject.SetActive(false);
-        saPlayer.Skeleton.SetSkin(/*skinSword*/Utils.skinSword);
-
-        Debug.LogError("Take Sword: " + saPlayer.Skeleton.Skin.Name);
+        if (!string.IsNullOrEmpty(Utils.skinSword))
+            saPlayer.Skeleton.SetSkin(Utils.skinSword);
+        else saPlayer.Skeleton.SetSkin(skinSword);
 
         if (SoundManager.Instance != null)
         {
@@ -401,7 +403,6 @@ public class PlayerManager : MonoBehaviour
     {
         //if (GameManager.Instance.gameState != GameManager.GAMESTATE.WIN)
         {
-            Debug.LogError("OnWin");
             GameManager.Instance.gameState = GameManager.GAMESTATE.WIN;
             pState = P_STATE.WIN;
             _rig2D.velocity = Vector2.zero;
