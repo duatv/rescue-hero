@@ -59,7 +59,6 @@ public class GameManager : MonoBehaviour
         }
     }
     private void OnChange(Sprite _spr, string _text) {
-        //<color =#FFBC01>LEVEL 025</color> SAVE THE PRINCESS
         imgQuestImage.sprite = _spr;
         txtQuestText.text = "<color=#FFBC01> LEVEL "+(Utils.LEVEL_INDEX + 1).ToString("0#") + "</color> " + _text.ToUpper();
     }
@@ -68,23 +67,15 @@ public class GameManager : MonoBehaviour
         {
             case MapLevelManager.QUEST_TYPE.COLLECT:
                 OnChange(mCollect.spr_, mCollect.strQuest);
-                //imgQuestImage.sprite = mCollect.spr_;
-                //txtQuestText.text = (Utils.LEVEL_INDEX + 1).ToString("0#") + " " + mCollect.strQuest.ToUpper();
                 break;
             case MapLevelManager.QUEST_TYPE.KILL:
                 OnChange(mKill.spr_, mKill.strQuest);
-                //imgQuestImage.sprite = mKill.spr_;
-                //txtQuestText.text = (Utils.LEVEL_INDEX + 1).ToString("0#") + " " + mKill.strQuest.ToUpper();
                 break;
             case MapLevelManager.QUEST_TYPE.OPEN_CHEST:
                 OnChange(mOpenChest.spr_, mOpenChest.strQuest);
-                //imgQuestImage.sprite = mOpenChest.spr_;
-                //txtQuestText.text = (Utils.LEVEL_INDEX + 1).ToString("0#") + " " + mOpenChest.strQuest.ToUpper();
                 break;
             case MapLevelManager.QUEST_TYPE.SAVE_HOSTAGE:
                 OnChange(mSavePrincess.spr_, mSavePrincess.strQuest);
-                //imgQuestImage.sprite = mSavePrincess.spr_;
-                //txtQuestText.text = (Utils.LEVEL_INDEX + 1).ToString("0#") + " " + mSavePrincess.strQuest.ToUpper();
                 break;
         }
     }

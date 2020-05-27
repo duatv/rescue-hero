@@ -69,14 +69,6 @@ public class PlayerManager : MonoBehaviour
             }
         };
     }
-    private void OnEnable()
-    {
-        //saPlayer.Skeleton.SetSkin(/*skinSword*/Utils.skinNormal);
-
-        //saPlayer.Skeleton.SetSkin(Utils.skinNormal);
-        //saPlayer.Skeleton.SetSlotsToSetupPose();
-        //saPlayer.LateUpdate();
-    }
     IEnumerator IEWaitToIdle()
     {
         yield return new WaitForSeconds(0.3f);
@@ -401,26 +393,12 @@ public class PlayerManager : MonoBehaviour
 
     public void OnWin()
     {
-        //if (GameManager.Instance.gameState != GameManager.GAMESTATE.WIN)
-        {
-            GameManager.Instance.gameState = GameManager.GAMESTATE.WIN;
-            pState = P_STATE.WIN;
-            _rig2D.velocity = Vector2.zero;
-            beginMove = false;
-            PlayAnim(isTakeSword ? str_OpenWithSword : str_OpenWithoutSword, false);
-            GameManager.Instance.ShowWinPanel();
-        }
-    }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        //if (pState == P_STATE.PLAYING || pState == P_STATE.RUNNING)
-        //{
-        //    if (collision.gameObject.tag.Contains(Utils.TAG_STICKBARRIE))
-        //    {
-        //        beginMove = false;
-        //        PlayAnim(str_idle, true);
-        //    }
-        //}
+        GameManager.Instance.gameState = GameManager.GAMESTATE.WIN;
+        pState = P_STATE.WIN;
+        _rig2D.velocity = Vector2.zero;
+        beginMove = false;
+        PlayAnim(isTakeSword ? str_OpenWithSword : str_OpenWithoutSword, false);
+        GameManager.Instance.ShowWinPanel();
     }
     private void OnTriggerExit2D(Collider2D collision)
     {

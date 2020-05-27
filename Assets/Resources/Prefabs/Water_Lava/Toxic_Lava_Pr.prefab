@@ -98,7 +98,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1.5
+  m_Radius: 1
 --- !u!50 &5976190729354532741
 Rigidbody2D:
   serializedVersion: 4
@@ -115,7 +115,7 @@ Rigidbody2D:
   m_LinearDrag: 8
   m_AngularDrag: 2
   m_GravityScale: -0.5
-  m_Material: {fileID: 6200000, guid: 369d025b6b8cf4a4da23d3cfa84d5376, type: 2}
+  m_Material: {fileID: 6200000, guid: b0a58d042ab47e4459e8de12a0bf051f, type: 2}
   m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0

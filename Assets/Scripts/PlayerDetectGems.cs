@@ -36,7 +36,8 @@ public class PlayerDetectGems : MonoBehaviour
         }
         if (collision.gameObject.GetComponent<Chest>() != null)
         {
-            pManager.PrepareRotate(collision.transform, false);
+            if(!pManager.beginMove)
+                pManager.PrepareRotate(collision.transform, false);
         }
     }
 }

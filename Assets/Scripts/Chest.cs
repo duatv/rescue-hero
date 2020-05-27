@@ -7,6 +7,7 @@ public class Chest : MonoBehaviour
 {
     public bool fallingChest;
     private bool hasDetect;
+    public ParticleSystem _pOpenChest;
     public SkeletonAnimation saChest;
     [SpineAnimation]
     public string animOpen;
@@ -23,6 +24,15 @@ public class Chest : MonoBehaviour
             if(!fallingChest)
                 MapLevelManager.Instance.trTarget = transform;
         }
+        saChest.AnimationState.Complete += delegate
+        {
+            Debug.LogError("??WTF COMPLETE");
+            if (saChest.AnimationName.Equals(animOpen))
+            {
+                _pOpenChest.gameObject.SetActive(true);
+                PlayerManager.Instance.OnWin();
+            }
+        };
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -39,8 +49,9 @@ public class Chest : MonoBehaviour
                         {
                             SoundManager.Instance.PlaySound(SoundManager.Instance.acOpenChest);
                         }
+                        PlayerManager.Instance._rig2D.velocity = Vector2.zero;
                         StartCoroutine(IEOpenChest());
-                        collision.gameObject.GetComponent<PlayerManager>().OnWin();
+                        //collision.gameObject.GetComponent<PlayerManager>().OnWin();
                     }
                 }
                 hasDetect = true;
