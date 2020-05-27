@@ -6,21 +6,7 @@ public class PlayerDetectGems : MonoBehaviour
 {
     public PlayerManager pManager;
     public GameObject gTarget;
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        //if(MapLevelManager.Instance.questType == MapLevelManager.QUEST_TYPE.COLLECT)
-        //{
-        //    if (collision.gameObject.tag.Contains(Utils.TAG_WIN))
-        //    {
-        //        if (gTarget == null)
-        //        {
-        //            gTarget = collision.gameObject;
-        //            pManager.PrepareRotate(collision.transform, false);
-        //        }
-        //    }
-        //}
-    }
+    
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.tag.Contains(Utils.TAG_SWORD))
@@ -51,10 +37,6 @@ public class PlayerDetectGems : MonoBehaviour
         if (collision.gameObject.GetComponent<Chest>() != null)
         {
             pManager.PrepareRotate(collision.transform, false);
-        }
-        if (collision.gameObject.name.Contains("FallingChest"))
-        {
-            pManager.PrepareRotate_(collision.transform, true);
         }
     }
 }

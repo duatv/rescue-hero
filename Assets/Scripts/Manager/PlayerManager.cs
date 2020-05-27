@@ -177,9 +177,12 @@ public class PlayerManager : MonoBehaviour
             {
                 if (hitDown.collider.gameObject.tag.Contains(Utils.TAG_WALL_BOTTOM))
                 {
-                    pState = P_STATE.RUNNING;
-                    beginMove = true;
-                    MoveToTarget();
+                    if (!beginMove)
+                    {
+                        pState = P_STATE.RUNNING;
+                        beginMove = true;
+                        MoveToTarget();
+                    }
                 }
             }
             else if (!_isCanMoveToTarget) {
@@ -226,24 +229,30 @@ public class PlayerManager : MonoBehaviour
     {
         if (pState != P_STATE.DIE && pState != P_STATE.WIN)
         {
-            pState = P_STATE.RUNNING;
-            beginMove = true;
-            saPlayer.skeleton.ScaleX = -1;
-            isMoveLeft = true;
-            isMoveRight = false;
-            PlayAnim(isTakeSword ? str_MoveWithSword : str_Move, true);
+            if (!beginMove)
+            {
+                pState = P_STATE.RUNNING;
+                beginMove = true;
+                saPlayer.skeleton.ScaleX = -1;
+                isMoveLeft = true;
+                isMoveRight = false;
+                PlayAnim(isTakeSword ? str_MoveWithSword : str_Move, true);
+            }
         }
     }
     public void PrepareMoveRight()
     {
         if (pState != P_STATE.DIE && pState != P_STATE.WIN)
         {
-            pState = P_STATE.RUNNING;
-            beginMove = true;
-            saPlayer.skeleton.ScaleX = 1;
-            isMoveLeft = false;
-            isMoveRight = true;
-            PlayAnim(isTakeSword ? str_MoveWithSword : str_Move, true);
+            if (!beginMove)
+            {
+                pState = P_STATE.RUNNING;
+                beginMove = true;
+                saPlayer.skeleton.ScaleX = 1;
+                isMoveLeft = false;
+                isMoveRight = true;
+                PlayAnim(isTakeSword ? str_MoveWithSword : str_Move, true);
+            }
         }
     }
     public void PrepareRotate_(Transform _trTarget, bool rotateOnly)

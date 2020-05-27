@@ -1,0 +1,62 @@
+
+Hom.png
+size: 560,560
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Group 1 copy
+  rotate: true
+  xy: 2, 68
+  size: 325, 148
+  orig: 325, 148
+  offset: 0, 0
+  index: -1
+Layer 14
+  rotate: false
+  xy: 2, 395
+  size: 350, 161
+  orig: 350, 161
+  offset: 0, 0
+  index: -1
+Layer 17
+  rotate: true
+  xy: 354, 222
+  size: 334, 162
+  orig: 334, 162
+  offset: 0, 0
+  index: -1
+Layer 17_1
+  rotate: true
+  xy: 266, 2
+  size: 109, 110
+  orig: 109, 110
+  offset: 0, 0
+  index: -1
+Layer 19
+  rotate: true
+  xy: 518, 250
+  size: 306, 31
+  orig: 306, 31
+  offset: 0, 0
+  index: -1
+Play Gold1
+  rotate: false
+  xy: 266, 113
+  size: 268, 107
+  orig: 268, 107
+  offset: 0, 0
+  index: -1
+nap back
+  rotate: true
+  xy: 152, 67
+  size: 326, 112
+  orig: 326, 112
+  offset: 0, 0
+  index: -1
+o khoa
+  rotate: true
+  xy: 266, 271
+  size: 122, 72
+  orig: 122, 72
+  offset: 0, 0
+  index: -1

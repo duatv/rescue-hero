@@ -1,11 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Spine.Unity;
 
 public class Chest : MonoBehaviour
 {
     public bool fallingChest;
     private bool hasDetect;
+    public SkeletonAnimation saChest;
+    [SpineAnimation]
+    public string animOpen;
     [HideInInspector]public Rigidbody2D rig2d;
     private void OnEnable()
     {
@@ -35,6 +39,7 @@ public class Chest : MonoBehaviour
                         {
                             SoundManager.Instance.PlaySound(SoundManager.Instance.acOpenChest);
                         }
+                        StartCoroutine(IEOpenChest());
                         collision.gameObject.GetComponent<PlayerManager>().OnWin();
                     }
                 }
@@ -47,6 +52,18 @@ public class Chest : MonoBehaviour
                 PlayerManager.Instance.OnPlayerDie();
             }
             hasDetect = true;
+        }
+    }
+
+    IEnumerator IEOpenChest() {
+        yield return new WaitForSeconds(0.5f);
+        saChest.AnimationState.SetAnimation(0, animOpen, false);
+    }
+    private void PlayAnim(SkeletonAnimation saPlayer, string anim_, bool isLoop)
+    {
+        if (!saPlayer.AnimationName.Equals(anim_))
+        {
+            saPlayer.AnimationState.SetAnimation(0, anim_, isLoop);
         }
     }
 }
