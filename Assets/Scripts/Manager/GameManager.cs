@@ -95,23 +95,24 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            ActiveCamEff();
-            if (!gPanelLose.activeSelf)
-            {
-                if (SoundManager.Instance != null)
-                {
-                    SoundManager.Instance.PlaySound(SoundManager.Instance.acLose);
-                }
-                gPanelLose.SetActive(true);
-                MyAnalytic.LogEventLose(Utils.LEVEL_INDEX + 1);
-                if (AdsManager.Instance != null)
-                {
-                    if (Random.Range(0, 10) <= 5)
-                    {
-                        AdsManager.Instance.ShowInterstitial(null);
-                    }
-                }
-            }
+            OnReplay();
+            //ActiveCamEff();
+            //if (!gPanelLose.activeSelf)
+            //{
+            //    if (SoundManager.Instance != null)
+            //    {
+            //        SoundManager.Instance.PlaySound(SoundManager.Instance.acLose);
+            //    }
+            //    gPanelLose.SetActive(true);
+            //    MyAnalytic.LogEventLose(Utils.LEVEL_INDEX + 1);
+            //    if (AdsManager.Instance != null)
+            //    {
+            //        if (Random.Range(0, 10) <= 5)
+            //        {
+            //            AdsManager.Instance.ShowInterstitial(null);
+            //        }
+            //    }
+            //}
         }
     }
     private bool playingSoundLava = false;

@@ -45,7 +45,7 @@ public class PlayerManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        //saPlayer.Skeleton.SetSkin(Utils.skinNormal);
+        saPlayer.Skeleton.SetSkin(Utils.skinNormal);
         saPlayer.Skeleton.SetSlotsToSetupPose();
         saPlayer.LateUpdate();
     }
