@@ -69,7 +69,8 @@ public class MapLevelEditor : Editor
     public override void OnInspectorGUI()
     {
         DrawDefaultInspector();
-
+        if(myScript == null)
+            myScript = (MapLevelManager)target;
         GUIStyle SectionNameStyle = new GUIStyle();
         SectionNameStyle.fontSize = 16;
         SectionNameStyle.normal.textColor = Color.blue;
