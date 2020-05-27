@@ -3868,10 +3868,10 @@ RectTransform:
   m_Father: {fileID: 255239049}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 13.38, y: 0}
-  m_SizeDelta: {x: 544.3, y: 50}
+  m_AnchorMin: {x: 0.054773066, y: 0}
+  m_AnchorMax: {x: 0.989, y: 1}
+  m_AnchoredPosition: {x: -1.1000061, y: -0.000030517578}
+  m_SizeDelta: {x: -0.5999756, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &121401106
 MonoBehaviour:
@@ -3893,8 +3893,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: <color=#FFBC01>LEVEL 025</color> SAVE THE PRINCESS
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: aa8209d1c0844dd45a7f580abb7765e2, type: 2}
+  m_sharedMaterial: {fileID: -1483325816973740778, guid: aa8209d1c0844dd45a7f580abb7765e2,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3919,14 +3920,14 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 45
+  m_fontSizeBase: 45
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_textAlignment: 513
+  m_textAlignment: 4098
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -3936,7 +3937,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 19
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -3965,7 +3966,7 @@ MonoBehaviour:
     spaceCount: 4
     wordCount: 5
     linkCount: 0
-    lineCount: 2
+    lineCount: 1
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -5644,7 +5645,7 @@ RectTransform:
   m_Children:
   - {fileID: 1184841994}
   m_Father: {fileID: 839542454}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.043, y: 0.84400004}
   m_AnchorMax: {x: 0.043, y: 0.84400004}
@@ -8130,12 +8131,12 @@ RectTransform:
   - {fileID: 636209205}
   - {fileID: 121401105}
   m_Father: {fileID: 839542454}
-  m_RootOrder: 9
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 46.2, y: 861.2}
-  m_SizeDelta: {x: 591, y: 81}
+  m_AnchorMin: {x: 0.2692225, y: 0.92652094}
+  m_AnchorMax: {x: 0.81600004, y: 0.96968555}
+  m_AnchoredPosition: {x: -0.30000305, y: 0.7000122}
+  m_SizeDelta: {x: 0, y: -2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &255239050
 MonoBehaviour:
@@ -15912,7 +15913,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.354, y: 0.25300002}
   m_AnchorMax: {x: 0.64439607, y: 0.316}
-  m_AnchoredPosition: {x: -1.8999939, y: -395.90002}
+  m_AnchoredPosition: {x: -1.8999939, y: -395.90005}
   m_SizeDelta: {x: 395.7, y: 51.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &461021099
@@ -18894,7 +18895,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 839542454}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.85270286, y: 0.911521}
   m_AnchorMax: {x: 0.98255515, y: 0.99000007}
@@ -23105,9 +23106,9 @@ RectTransform:
   m_Father: {fileID: 255239049}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -331.8, y: 3.9}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: -36.799988, y: 3.9}
   m_SizeDelta: {x: 136, y: 135}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &636209206
@@ -24460,7 +24461,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 839542454}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.017221719, y: 0.91}
   m_AnchorMax: {x: 0.147, y: 0.99000007}
@@ -31288,6 +31289,7 @@ RectTransform:
   m_Children:
   - {fileID: 874757133}
   - {fileID: 1519425865}
+  - {fileID: 255239049}
   - {fileID: 1002731800}
   - {fileID: 1448947374}
   - {fileID: 186900204}
@@ -31295,7 +31297,6 @@ RectTransform:
   - {fileID: 958619080}
   - {fileID: 665188372}
   - {fileID: 539829138}
-  - {fileID: 255239049}
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -34936,7 +34937,7 @@ RectTransform:
   - {fileID: 1505240703}
   - {fileID: 1431259910}
   m_Father: {fileID: 839542454}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -35192,7 +35193,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 839542454}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.85, y: 0.115479045}
   m_AnchorMax: {x: 0.97885144, y: 0.19447905}
@@ -49584,7 +49585,7 @@ RectTransform:
   - {fileID: 2120497385}
   - {fileID: 1127458709}
   m_Father: {fileID: 839542454}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -49643,7 +49644,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1341071657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53414,7 +53415,7 @@ RectTransform:
   m_Children:
   - {fileID: 801555217}
   m_Father: {fileID: 839542454}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.79700005, y: 0.8485205}
   m_AnchorMax: {x: 0.97700006, y: 0.8965205}
@@ -77017,10 +77018,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 861767d2f6362664486709c93996caf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mSavePrincess:
+    questType: 0
+    spr_: {fileID: 21300000, guid: c63aa8c644164634abd0fca1a269cecb, type: 3}
+    strQuest: save the princess
+  mCollect:
+    questType: 0
+    spr_: {fileID: 21300000, guid: 62192404165936f44b608feff0b85c29, type: 3}
+    strQuest: Collect the gold
+  mOpenChest:
+    questType: 0
+    spr_: {fileID: 21300000, guid: 28119083c38d07941be30667c08c4ec5, type: 3}
+    strQuest: get the treasure
+  mKill:
+    questType: 0
+    spr_: {fileID: 0}
+    strQuest: kill all monsters
+  imgQuestImage: {fileID: 636209206}
+  txtQuestText: {fileID: 121401106}
   txtLevel: {fileID: 1519425866}
   txtCoin: {fileID: 1184841995}
   txtCoinWin: {fileID: 255562569}
-  isTest: 1
+  isTest: 0
   canUseTrail: 0
   gameState: 0
   levelConfig: {fileID: 11400000, guid: 545dfe20f6a848048be655bb1e39f1ee, type: 2}
@@ -77132,7 +77151,7 @@ PrefabInstance:
     - target: {fileID: 2801402572694545313, guid: 7d208e69d61259e48aa8365c28325232,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2801402572694545313, guid: 7d208e69d61259e48aa8365c28325232,
         type: 3}

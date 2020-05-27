@@ -3,11 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     public enum GAMESTATE { PLAYING, WIN, LOSE }
     public static GameManager Instance;
+    //public List<MissionType> lstAllMission = new List<MissionType>();
+    public MissionType mSavePrincess, mCollect, mOpenChest, mKill;
+    public Image imgQuestImage;
+    public TextMeshProUGUI txtQuestText;
 
     public Text txtLevel;
     public Text txtCoin;
@@ -53,6 +58,37 @@ public class GameManager : MonoBehaviour
             AdsManager.Instance.ShowBanner();
         }
     }
+    private void OnChange(Sprite _spr, string _text) {
+        //<color =#FFBC01>LEVEL 025</color> SAVE THE PRINCESS
+        imgQuestImage.sprite = _spr;
+        txtQuestText.text = "<color=#FFBC01> LEVEL "+(Utils.LEVEL_INDEX + 1).ToString("0#") + "</color> " + _text.ToUpper();
+    }
+    public void OnInitQuestText(MapLevelManager.QUEST_TYPE _questType) {
+        switch (_questType)
+        {
+            case MapLevelManager.QUEST_TYPE.COLLECT:
+                OnChange(mCollect.spr_, mCollect.strQuest);
+                //imgQuestImage.sprite = mCollect.spr_;
+                //txtQuestText.text = (Utils.LEVEL_INDEX + 1).ToString("0#") + " " + mCollect.strQuest.ToUpper();
+                break;
+            case MapLevelManager.QUEST_TYPE.KILL:
+                OnChange(mKill.spr_, mKill.strQuest);
+                //imgQuestImage.sprite = mKill.spr_;
+                //txtQuestText.text = (Utils.LEVEL_INDEX + 1).ToString("0#") + " " + mKill.strQuest.ToUpper();
+                break;
+            case MapLevelManager.QUEST_TYPE.OPEN_CHEST:
+                OnChange(mOpenChest.spr_, mOpenChest.strQuest);
+                //imgQuestImage.sprite = mOpenChest.spr_;
+                //txtQuestText.text = (Utils.LEVEL_INDEX + 1).ToString("0#") + " " + mOpenChest.strQuest.ToUpper();
+                break;
+            case MapLevelManager.QUEST_TYPE.SAVE_HOSTAGE:
+                OnChange(mSavePrincess.spr_, mSavePrincess.strQuest);
+                //imgQuestImage.sprite = mSavePrincess.spr_;
+                //txtQuestText.text = (Utils.LEVEL_INDEX + 1).ToString("0#") + " " + mSavePrincess.strQuest.ToUpper();
+                break;
+        }
+    }
+
     private void OnDisable()
     {
         if (AdsManager.Instance != null)
@@ -203,4 +239,11 @@ public class GameManager : MonoBehaviour
             SoundManager.Instance.PlaySound(SoundManager.Instance.acClick);
         }
     }
+}
+[System.Serializable]
+public class MissionType
+{
+    public MapLevelManager.QUEST_TYPE questType;
+    public Sprite spr_;
+    public string strQuest;
 }

@@ -40,6 +40,10 @@ public class MapLevelManager : MonoBehaviour
                 trTarget = trHostage;
                 break;
         }
+
+        if (GameManager.Instance != null) {
+            GameManager.Instance.OnInitQuestText(questType);
+        }
     }
     public void OnWin()
     {
