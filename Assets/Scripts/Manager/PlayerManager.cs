@@ -212,13 +212,19 @@ public class PlayerManager : MonoBehaviour
     private void MoveLeft()
     {
         if (pState != P_STATE.DIE)
+        {
             _rig2D.velocity = Vector2.left * moveSpeed;
+            PlayAnim(isTakeSword ? str_MoveWithSword : str_Move, true);
+        }
         else _rig2D.velocity = Vector2.zero;
     }
     public void MoveRight()
     {
         if (pState != P_STATE.DIE)
+        {
             _rig2D.velocity = Vector2.right * moveSpeed;
+            PlayAnim(isTakeSword ? str_MoveWithSword : str_Move, true);
+        }
         else _rig2D.velocity = Vector2.zero;
     }
 
@@ -279,7 +285,7 @@ public class PlayerManager : MonoBehaviour
                 if (transform.localPosition.x > _trTarget.localPosition.x)
                 {
                     saPlayer.skeleton.ScaleX = -1;
-                    //PrepareMoveLeft();
+                    PrepareMoveLeft();
                     isMoveLeft = true;
                     isMoveRight = false;
                 }
