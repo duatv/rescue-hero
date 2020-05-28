@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "815596294997",
-    "firebase_url": "https://rescue-hero.firebaseio.com",
-    "project_id": "rescue-hero",
-    "storage_bucket": "rescue-hero.appspot.com"
+    "project_number": "1083746164606",
+    "firebase_url": "https://rescue-hero-eb50b.firebaseio.com",
+    "project_id": "rescue-hero-eb50b",
+    "storage_bucket": "rescue-hero-eb50b.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:815596294997:android:715f2f1c6fea4e70e315dc",
+        "mobilesdk_app_id": "1:1083746164606:android:8d8fabaf9a8563cfb3dd2f",
         "android_client_info": {
-          "package_name": "com.OhzeGameStudio.RescueHero"
+          "package_name": "com.ohzegame.rescuehero"
         }
       },
       "oauth_client": [
         {
-          "client_id": "815596294997-rbs23rhmhlpngt78q9ihrghmijfo6k0v.apps.googleusercontent.com",
+          "client_id": "1083746164606-o9c9911avk537vi7fdso20n79v3fd9p6.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAOHXIFJAM5TxolQvzWILOwaIpC8MFQL-8"
+          "current_key": "AIzaSyAXnEIdDBKpyjd56dYf6uMbx6uo2qhcvvE"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "815596294997-rbs23rhmhlpngt78q9ihrghmijfo6k0v.apps.googleusercontent.com",
+              "client_id": "1083746164606-o9c9911avk537vi7fdso20n79v3fd9p6.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
