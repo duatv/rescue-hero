@@ -350,7 +350,6 @@ public class PlayerManager : MonoBehaviour
     {
         if (GameManager.Instance.gameState != GameManager.GAMESTATE.WIN)
         {
-            Debug.LogError("1");
             pState = P_STATE.DIE;
             GameManager.Instance.gameState = GameManager.GAMESTATE.LOSE;
             _rig2D.velocity = Vector2.zero;
@@ -404,6 +403,10 @@ public class PlayerManager : MonoBehaviour
         beginMove = false;
         PlayAnim(isTakeSword ? str_OpenWithSword : str_OpenWithoutSword, false);
         GameManager.Instance.ShowWinPanel();
+    }
+
+    public void OnPlayAnimOpenChest() {
+        PlayAnim(isTakeSword ? str_OpenWithSword : str_OpenWithoutSword, false);
     }
     private void OnTriggerExit2D(Collider2D collision)
     {

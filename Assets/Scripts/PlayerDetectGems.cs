@@ -38,8 +38,10 @@ public class PlayerDetectGems : MonoBehaviour
         if (collision.gameObject.GetComponent<Chest>() != null)
         {
             if (!pManager.beginMove) {
-                Debug.LogError(":D");
-                pManager.PrepareRotate(collision.transform, false);
+                if (pManager.hitDown.collider != null)
+                {
+                    pManager.PrepareRotate(collision.transform, false);
+                }
             }
         }
     }

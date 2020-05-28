@@ -51,7 +51,8 @@ public class HostageManager : CharsBase
     }
     public void PlayWin()
     {
-        saPlayer.AnimationState.SetAnimation(0, str_Win, false);
+        StartCoroutine(IEWaitToIdle());
+        //saPlayer.AnimationState.SetAnimation(0, str_Win, false);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -60,9 +61,16 @@ public class HostageManager : CharsBase
             if (GameManager.Instance.gameState != GameManager.GAMESTATE.LOSE)
             {
                 GameManager.Instance.gameState = GameManager.GAMESTATE.WIN;
+                PlayerManager.Instance.OnPlayAnimOpenChest();
+                PlayerManager.Instance._rig2D.constraints = RigidbodyConstraints2D.FreezePositionX;
                 PlayWin();
             }
         }
+    }
+    IEnumerator IEWaitToIdle()
+    {
+        yield return new WaitForSeconds(0.35f);
+        saPlayer.AnimationState.SetAnimation(0, str_Win, false);
     }
 }
 #region Editor Mode

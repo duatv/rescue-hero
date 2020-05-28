@@ -11,7 +11,7 @@ public class Chest : MonoBehaviour
     public SkeletonAnimation saChest;
     [SpineAnimation]
     public string animOpen;
-    [HideInInspector]public Rigidbody2D rig2d;
+    [HideInInspector] public Rigidbody2D rig2d;
     private void OnEnable()
     {
         rig2d = GetComponent<Rigidbody2D>();
@@ -19,14 +19,13 @@ public class Chest : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(MapLevelManager.Instance.questType == MapLevelManager.QUEST_TYPE.OPEN_CHEST)
+        if (MapLevelManager.Instance.questType == MapLevelManager.QUEST_TYPE.OPEN_CHEST)
         {
-            if(!fallingChest)
+            if (!fallingChest)
                 MapLevelManager.Instance.trTarget = transform;
         }
         saChest.AnimationState.Complete += delegate
         {
-            Debug.LogError("??WTF COMPLETE");
             if (saChest.AnimationName.Equals(animOpen))
             {
                 _pOpenChest.gameObject.SetActive(true);
@@ -43,30 +42,30 @@ public class Chest : MonoBehaviour
             {
                 if (GameManager.Instance.gameState != GameManager.GAMESTATE.LOSE)
                 {
-                    //if (!hasDetect)
+                    GameManager.Instance.gameState = GameManager.GAMESTATE.WIN;
+                    PlayerManager.Instance.OnPlayAnimOpenChest();
+                    PlayerManager.Instance._rig2D.constraints = RigidbodyConstraints2D.FreezePositionX;
+                    if (SoundManager.Instance != null)
                     {
-                        if (SoundManager.Instance != null)
-                        {
-                            SoundManager.Instance.PlaySound(SoundManager.Instance.acOpenChest);
-                        }
-                        PlayerManager.Instance._rig2D.velocity = Vector2.zero;
-                        Debug.LogError("IEOpenChest: " + PlayerManager.Instance._rig2D.velocity);
-                        StartCoroutine(IEOpenChest());
+                        SoundManager.Instance.PlaySound(SoundManager.Instance.acOpenChest);
                     }
+                    StartCoroutine(IEOpenChest());
                 }
-                //hasDetect = true;
             }
         }
 
-        if (collision.gameObject.name.Contains("Lava_Pr")) {
-            if (!hasDetect) {
+        if (collision.gameObject.name.Contains("Lava_Pr"))
+        {
+            if (!hasDetect)
+            {
                 PlayerManager.Instance.OnPlayerDie();
             }
             hasDetect = true;
         }
     }
 
-    IEnumerator IEOpenChest() {
+    IEnumerator IEOpenChest()
+    {
         yield return new WaitForSeconds(0.2f);
         saChest.AnimationState.SetAnimation(0, animOpen, false);
     }
