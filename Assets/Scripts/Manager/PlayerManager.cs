@@ -61,7 +61,9 @@ public class PlayerManager : MonoBehaviour
         {
             if (saPlayer.AnimationName.Equals(str_Att))
             {
-                StartCoroutine(IEWaitToIdle());
+                enBase.OnDie_();
+                OnIdleState();
+                //StartCoroutine(IEWaitToIdle());
             }
             if (saPlayer.AnimationName.Equals(str_OpenWithSword) || saPlayer.AnimationName.Equals(str_OpenWithoutSword))
             {

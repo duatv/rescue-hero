@@ -7,6 +7,7 @@ using UnityEditor;
 #endif
 public class HostageManager : CharsBase
 {
+    public ParticleSystem pheart;
     public bool isMeetPlayer;
     void Start()
     {
@@ -69,7 +70,8 @@ public class HostageManager : CharsBase
     }
     IEnumerator IEWaitToIdle()
     {
-        yield return new WaitForSeconds(0.35f);
+        yield return new WaitForSeconds(0.3f);
+        pheart.Play();
         saPlayer.AnimationState.SetAnimation(0, str_Win, false);
     }
 }

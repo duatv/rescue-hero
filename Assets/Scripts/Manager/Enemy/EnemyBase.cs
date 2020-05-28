@@ -297,7 +297,7 @@ public class EnemyBase : MonoBehaviour
     {
         rig.velocity = moveSpeed * (saPlayer.skeleton.ScaleX > 0 ? Vector2.left : Vector2.right);
     }
-    public void OnDie_()
+    public virtual void OnDie_()
     {
         if (_charStage != CHAR_STATE.DIE)
         {
