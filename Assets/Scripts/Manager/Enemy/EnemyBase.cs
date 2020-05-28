@@ -68,7 +68,7 @@ public class EnemyBase : MonoBehaviour
             MapLevelManager.Instance.lstAllEnemies.Add(this);
         }
 
-        saPlayer.AnimationState.End += delegate
+        saPlayer.AnimationState.Complete += delegate
         {
             if (saPlayer.AnimationName.Equals(str_Lose))
             {

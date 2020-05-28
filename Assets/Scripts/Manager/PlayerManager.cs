@@ -57,7 +57,7 @@ public class PlayerManager : MonoBehaviour
         GameManager.Instance.gTargetFollow = gameObject;
 
         OnIdleState();
-        saPlayer.AnimationState.End += delegate
+        saPlayer.AnimationState.Complete += delegate
         {
             if (saPlayer.AnimationName.Equals(str_Att))
             {
@@ -199,8 +199,11 @@ public class PlayerManager : MonoBehaviour
         {
             if (beginMove)
             {
-                if (isMoveLeft) MoveLeft();
-                else if (isMoveRight) MoveRight();
+                if (GameManager.Instance.gameState != GameManager.GAMESTATE.WIN)
+                {
+                    if (isMoveLeft) MoveLeft();
+                    else if (isMoveRight) MoveRight();
+                }
             }
         }
     }
@@ -412,6 +415,7 @@ public class PlayerManager : MonoBehaviour
     }
 
     public void OnPlayAnimOpenChest() {
+        beginMove = false;
         PlayAnim(isTakeSword ? str_OpenWithSword : str_OpenWithoutSword, false);
     }
     private void OnTriggerExit2D(Collider2D collision)

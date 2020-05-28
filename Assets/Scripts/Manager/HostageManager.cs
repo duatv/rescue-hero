@@ -20,7 +20,7 @@ public class HostageManager : CharsBase
         {
             MapLevelManager.Instance.trTarget = transform;
         }
-        saPlayer.AnimationState.End += delegate
+        saPlayer.AnimationState.Complete += delegate
         {
             if (saPlayer.AnimationName.Equals(str_Win))
             {
