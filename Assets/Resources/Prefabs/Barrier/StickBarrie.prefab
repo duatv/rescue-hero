@@ -156,12 +156,9 @@ MonoBehaviour:
   isMove2Pos: 0
   vEndPos: {x: 0, y: 0, z: 0}
   vStartPos: {x: 0, y: 0, z: 0}
-  vUpPos: {x: 0, y: 0, z: 0}
-  vDownPos: {x: 0, y: 0, z: 0}
-  vLeftPos: {x: 0, y: 0, z: 0}
-  vRightPos: {x: 0, y: 0, z: 0}
   beginMove: 0
   moveBack: 0
+  gCircle: {fileID: 0}
   time_: 2
   dir: {x: 0, y: 0, z: 0}
 --- !u!50 &3115096989556330170
@@ -183,7 +180,7 @@ Rigidbody2D:
   m_Material: {fileID: 6200000, guid: b0a58d042ab47e4459e8de12a0bf051f, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!1 &5848152228258135224
 GameObject:
