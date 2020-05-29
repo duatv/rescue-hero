@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Gems : MonoBehaviour
+public class Gems : Unit
 {
+
     IEnumerator PlaySoundApear(int _ranIndex)
     {
         yield return new WaitForSeconds(0.1f);
@@ -18,13 +19,14 @@ public class Gems : MonoBehaviour
             StartCoroutine(PlaySoundApear(_ranIndex));
         }
     }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.name.Contains("Lava_Pr"))
         {
-            if (GameManager.Instance.lstAllGems.Contains(gameObject))
+            if (GameManager.Instance.lstAllGems.Contains(this))
             {
-                GameManager.Instance.lstAllGems.Remove(gameObject);
+                GameManager.Instance.lstAllGems.Remove(this);
                 if (GameManager.Instance.lstAllGems.Count * 1.0f / GameManager.Instance.totalGems <= 0.2f)
                 {
 

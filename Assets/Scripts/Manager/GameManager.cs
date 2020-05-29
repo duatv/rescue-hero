@@ -7,6 +7,7 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+
     public enum GAMESTATE { PLAYING, WIN, LOSE }
     public static GameManager Instance;
     //public List<MissionType> lstAllMission = new List<MissionType>();
@@ -23,7 +24,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public LevelConfig levelConfig;
     [HideInInspector] public MapLevelManager mapLevel;
     public int totalGems;
-    public List<GameObject> lstAllGems = new List<GameObject>();
+    public List<Unit> lstAllGems = new List<Unit>();
     public bool isNotEnoughGems;
     public CamFollow _camFollow;
     public GameObject gPanelWin;
@@ -169,6 +170,7 @@ public class GameManager : MonoBehaviour
         {
             Utils.LEVEL_INDEX += 1;
             Utils.SaveLevel();
+            ObjectPoolManagerHaveScript.Instance.ClearAllPool();
             SceneManager.LoadSceneAsync("MainGame");
         }
     }
@@ -207,10 +209,12 @@ public class GameManager : MonoBehaviour
     public void OnReplay()
     {
         MyAnalytic.LogEventReplay(Utils.LEVEL_INDEX + 1);
+        ObjectPoolManagerHaveScript.Instance.ClearAllPool();
         SceneManager.LoadSceneAsync("MainGame");
     }
     public void GoToMenu()
     {
+        ObjectPoolManagerHaveScript.Instance.ClearAllPool();
         SceneManager.LoadSceneAsync("MainMenu");
     }
     public void BuyRemoveAds()

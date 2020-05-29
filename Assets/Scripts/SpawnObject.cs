@@ -4,100 +4,88 @@ using UnityEngine;
 
 public class SpawnObject : MonoBehaviour
 {
-    public GameObject[] gGems;
+    public List<Unit> gGems;
     public MapLevelManager.SPAWNTYPE _spawnType;
     public int totalGems;
     public Vector2 initSpeed = new Vector2(1f, -1.8f);
-    private List<GameObject> lstWaterDrops = new List<GameObject>();
-    private List<GameObject> lstLavaDrops = new List<GameObject>();
-    private GameObject gInstantiate;
-    int _ranIndex = 0;
+    //private List<Unit> lstWaterDrops = new List<Unit>();
+    //private List<Unit> lstLavaDrops = new List<Unit>();
+    private Unit gInstantiate;
+    // int _ranIndex = 0;
+    public bool loadObjectChild;
+    private void OnValidate()
+    {
+        if (!loadObjectChild)
+        {
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                Unit u = transform.GetChild(i).gameObject.GetComponent<Unit>();
+                if (!gGems.Contains(u))
+                {
+                    gGems.Add(u);
+                }
+            }
+            loadObjectChild = true;
+        }
+    }
 
     private void Start()
     {
-        if (_spawnType == MapLevelManager.SPAWNTYPE.GEMS) {
+        if (_spawnType == MapLevelManager.SPAWNTYPE.GEMS)
+        {
             GameManager.Instance.totalGems = totalGems;
         }
-        if (_spawnType == MapLevelManager.SPAWNTYPE.LAVA) {
-            if(SoundManager.Instance != null)
+        if (_spawnType == MapLevelManager.SPAWNTYPE.LAVA)
+        {
+            if (SoundManager.Instance != null)
                 StartCoroutine(PlaySoundLavaApear());
         }
-        SpawnAllGems();
+        //SpawnAllGems();
+        BeginSet();
     }
-
+    void BeginSet()
+    {
+        for (int i = 0; i < gGems.Count; i++)
+        {
+            gGems[i].DisplayEffect(true, transform.position);
+        }
+    }
     IEnumerator PlaySoundLavaApear()
     {
         yield return new WaitForSeconds(0.5f);
         SoundManager.Instance.PlaySound(SoundManager.Instance.acLavaApear);
     }
-    private void SpawnAllGems()
-    {
-        for (int i = 0; i < totalGems; i++)
-        {
-            _ranIndex = Random.Range(0, gGems.Length);
-            gInstantiate = Instantiate(gGems[_ranIndex], transform.position, Quaternion.identity);
-            gInstantiate.transform.position = Vector3.zero;
-            gInstantiate.transform.SetParent(transform, false);
+    //private void SpawnAllGems()
+    //{
+    //    for (int i = 0; i < totalGems; i++)
+    //    {
+    //        if (_spawnType == MapLevelManager.SPAWNTYPE.GEMS)
+    //        {
+    //            gInstantiate = ObjectPoolManagerHaveScript.Instance.gemPooler.GetUnitPooledObject();
+    //            gInstantiate.DisplayEffect();
+    //            gInstantiate.transform.position = new Vector2(transform.position.x + Random.Range(-0.01f, 0.01f), transform.position.y);
 
-            if (_spawnType == MapLevelManager.SPAWNTYPE.GEMS)
-            {
-                if (!GameManager.Instance.lstAllGems.Contains(gInstantiate))
-                    GameManager.Instance.lstAllGems.Add(gInstantiate);
-            }
-            if (_spawnType != MapLevelManager.SPAWNTYPE.STONE)
-                gInstantiate.SetActive(true);
-            if (_spawnType == MapLevelManager.SPAWNTYPE.WATER)
-            {
-                gInstantiate.GetComponent<WaterCollison>().id = "W" + i;
-                lstWaterDrops.Add(gInstantiate);
-                Spawn(lstWaterDrops);
-            }
-            if (_spawnType == MapLevelManager.SPAWNTYPE.LAVA)
-            {
-                lstLavaDrops.Add(gInstantiate);
-                Spawn(lstLavaDrops);
-            }
-            if (_spawnType == MapLevelManager.SPAWNTYPE.STONE)
-            {
-                MapLevelManager.Instance.dAllStone.Add("W" + i, gInstantiate);
-            }
-        }
-    }
-    
-    bool _breakLoop = false;
-    private void Spawn(List<GameObject> lst)
-    {
-        Spawn(0, lst);
-    }
-    public void Spawn(int count, List<GameObject> lst)
-    {
-        StartCoroutine(loop(gameObject.transform.position, lst, initSpeed, count));
-    }
-    IEnumerator loop(Vector3 _pos, List<GameObject> lst, Vector2 _initSpeed, int count = -1, float delay = 0f, bool waitBetweenDropSpawn = true)
-    {
-        yield return new WaitForSeconds(delay);
-        _breakLoop = false;
-        int auxCount = 0;
-        for (int i = 0; i < lst.Count; i++)
-        {
-            if (_breakLoop)
-                yield break;
+    //            gInstantiate.gameObject.SetActive(true);
+    //            if (!GameManager.Instance.lstAllGems.Contains(gInstantiate))
+    //                GameManager.Instance.lstAllGems.Add(gInstantiate);
+    //        }
 
-            if (_initSpeed == Vector2.zero)
-                _initSpeed = initSpeed;
-            lst[i].GetComponent<Rigidbody2D>().velocity = _initSpeed;
+    //        if (_spawnType == MapLevelManager.SPAWNTYPE.WATER)
+    //        {
+    //            gInstantiate = ObjectPoolManagerHaveScript.Instance.waterPooler.GetUnitPooledObject();
+    //            gInstantiate.DisplayEffect();
+    //            gInstantiate.transform.position = new Vector2(transform.position.x + Random.Range(-0.01f, 0.01f), transform.position.y);
+    //            gInstantiate.gameObject.SetActive(true);
+    //        }
+    //        if (_spawnType == MapLevelManager.SPAWNTYPE.LAVA)
+    //        {
 
-            lst[i].SetActive(true);
-            if (count > -1)
-            {
-                auxCount++;
-                if (auxCount >= count)
-                {
-                    yield break;
-                }
-            }
-        }
+    //            gInstantiate = ObjectPoolManagerHaveScript.Instance.firePooler.GetUnitPooledObject();
+    //            gInstantiate.transform.position = new Vector2(transform.position.x + Random.Range(-0.01f, 0.01f), transform.position.y);
+    //            gInstantiate.gameObject.SetActive(true);
+    //        }
 
-        yield return new WaitForEndOfFrame();
-    }
+    //    }
+    //}
+
 }

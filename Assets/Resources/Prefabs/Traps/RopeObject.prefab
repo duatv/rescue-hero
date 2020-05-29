@@ -312,6 +312,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fallingChest: 1
+  _pOpenChest: {fileID: 0}
+  saChest: {fileID: 0}
+  animOpen: 
   rig2d: {fileID: 0}
 --- !u!50 &4355550990345189182
 Rigidbody2D:

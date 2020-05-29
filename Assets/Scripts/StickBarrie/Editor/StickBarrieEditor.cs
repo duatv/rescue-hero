@@ -9,12 +9,12 @@ public class StickBarrieEditor : Editor
     private StickBarrier myScript;
     private void OnSceneGUI()
     {
-        myScript = (StickBarrier)target;
+
     }
     public override void OnInspectorGUI()
     {
         DrawDefaultInspector();
-
+        myScript = (StickBarrier)target;
         GUIStyle SectionNameStyle = new GUIStyle();
         SectionNameStyle.fontSize = 16;
         SectionNameStyle.normal.textColor = Color.blue;

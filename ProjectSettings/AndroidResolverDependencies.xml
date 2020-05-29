@@ -13,7 +13,7 @@
   </files>
   <settings>
     <setting name="androidAbis" value="armeabi-v7a" />
-    <setting name="bundleId" value="com.OhzeGameStudio.RescueHero" />
+    <setting name="bundleId" value="com.ohzegame.rescuehero" />
     <setting name="explodeAars" value="True" />
     <setting name="gradleBuildEnabled" value="True" />
     <setting name="gradleTemplateEnabled" value="True" />

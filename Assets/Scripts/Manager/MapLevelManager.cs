@@ -7,6 +7,8 @@ using UnityEditor;
 
 public class MapLevelManager : MonoBehaviour
 {
+
+
     public enum SPAWNTYPE { WATER, LAVA, STONE, GEMS }
     public enum QUEST_TYPE {NONE, COLLECT, KILL, SAVE_HOSTAGE,OPEN_CHEST, ALL}
     public static MapLevelManager Instance;
@@ -22,7 +24,7 @@ public class MapLevelManager : MonoBehaviour
     //[HideInInspector]
     public Transform trChest;
 
-    public Dictionary<string, GameObject> dAllStone = new Dictionary<string, GameObject>();
+   // public Dictionary<string, GameObject> dAllStone = new Dictionary<string, GameObject>();
     public List<EnemyBase> lstAllEnemies = new List<EnemyBase>();
     public List<StickBarrier> lstAllStick = new List<StickBarrier>();
 
