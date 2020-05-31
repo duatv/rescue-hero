@@ -1,13 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SettingPanel : MonoBehaviour
 {
+    public Text txtVersion;
     public GameObject gQualityOn, gQualityOff, gSoundOn, gSoundOff, gMusicOn, gMusicOff, gVibrateOn, gVibrateOff;
     private void OnEnable()
     {
         ChangeSprite();
+    }
+    private void Start()
+    {
+        txtVersion.text = Application.version.ToString();
     }
     private void ChangeSprite() {
         ChangeQualitySprite();

@@ -51,6 +51,13 @@ public class GameManager : MonoBehaviour
             AdsManager.Instance.ShowBanner();
         }
     }
+    private void OnDisable()
+    {
+        if (AdsManager.Instance != null)
+        {
+            AdsManager.Instance.HideBanner();
+        }
+    }
     private void LoadLevelToPlay(int levelIndex)
     {
         mapLevel = levelConfig.lstAllLevel[levelIndex];
