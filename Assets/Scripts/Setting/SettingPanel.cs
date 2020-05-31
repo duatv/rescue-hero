@@ -13,7 +13,7 @@ public class SettingPanel : MonoBehaviour
     }
     private void Start()
     {
-        txtVersion.text = Application.version.ToString();
+        txtVersion.text = "Version " + Application.version;
     }
     private void ChangeSprite() {
         ChangeQualitySprite();
