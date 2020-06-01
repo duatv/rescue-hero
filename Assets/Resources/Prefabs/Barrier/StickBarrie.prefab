@@ -149,6 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db75b6c7a7d2daa48b022d29c415d3e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Head: {fileID: 5848152228258135224}
   _moveType: 1
   _rig2D: {fileID: 3115096989556330170}
   moveSpeed: 2
@@ -162,7 +163,6 @@ MonoBehaviour:
   vRightPos: {x: 0, y: 0, z: 0}
   beginMove: 0
   moveBack: 0
-  time_: 2
   dir: {x: 0, y: 0, z: 0}
 --- !u!50 &3115096989556330170
 Rigidbody2D:

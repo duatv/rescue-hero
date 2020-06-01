@@ -341,6 +341,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db75b6c7a7d2daa48b022d29c415d3e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Head: {fileID: 0}
   _moveType: 4
   _rig2D: {fileID: 5274862688083696870}
   moveSpeed: 2
@@ -354,7 +355,6 @@ MonoBehaviour:
   vRightPos: {x: 0, y: 0, z: 0}
   beginMove: 0
   moveBack: 0
-  time_: 2
   dir: {x: 0, y: 0, z: 0}
 --- !u!60 &5274862688083696871
 PolygonCollider2D:

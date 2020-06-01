@@ -58,11 +58,12 @@ public class TouchManager : MonoBehaviour
 
                 if (hit2D.collider.gameObject.tag.Contains(Utils.TAG_STICKBARRIE))
                 {
-                    if (!hit2D.collider.gameObject.GetComponent<StickBarrier>().beginMove)
+                    StickBarrier sb = hit2D.collider.gameObject.GetComponent<StickBarrier>();
+                    if (!sb.beginMove)
                     {
                         if (SoundManager.Instance != null)
                         {
-                            if (hit2D.collider.gameObject.GetComponent<StickBarrier>()._moveType == StickBarrier.MOVETYPE.FREE)
+                            if (sb._moveType == StickBarrier.MOVETYPE.FREE)
                             {
                                 SoundManager.Instance.PlaySound(SoundManager.Instance.acMoveStickClick);
                             }
@@ -71,7 +72,8 @@ public class TouchManager : MonoBehaviour
                         }
                     }
 
-                    hit2D.collider.gameObject.GetComponent<StickBarrier>().beginMove = true;
+                    sb.beginMove = true;
+                   // sb.Head.SetActive(false);
                 }
             }
             //RaycastHit2D[] hit = Physics2D.RaycastAll(screenPos, Vector2.zero, 1000);
