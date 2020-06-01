@@ -7,10 +7,10 @@ using UnityEditor;
 
 public class MapLevelManager : MonoBehaviour
 {
-
-
+    public SpawnObject lavaObj, waterObj;
+  
     public enum SPAWNTYPE { WATER, LAVA, STONE, GEMS }
-    public enum QUEST_TYPE {NONE, COLLECT, KILL, SAVE_HOSTAGE,OPEN_CHEST, ALL}
+    public enum QUEST_TYPE { NONE, COLLECT, KILL, SAVE_HOSTAGE, OPEN_CHEST, ALL }
     public static MapLevelManager Instance;
 
     [HideInInspector]
@@ -24,7 +24,7 @@ public class MapLevelManager : MonoBehaviour
     //[HideInInspector]
     public Transform trChest;
 
-   // public Dictionary<string, GameObject> dAllStone = new Dictionary<string, GameObject>();
+    // public Dictionary<string, GameObject> dAllStone = new Dictionary<string, GameObject>();
     public List<EnemyBase> lstAllEnemies = new List<EnemyBase>();
     public List<StickBarrier> lstAllStick = new List<StickBarrier>();
 
@@ -34,7 +34,8 @@ public class MapLevelManager : MonoBehaviour
     }
     private void Start()
     {
-        switch (questType) {
+        switch (questType)
+        {
             case QUEST_TYPE.COLLECT:
                 trTarget = trGems;
                 break;
@@ -43,7 +44,8 @@ public class MapLevelManager : MonoBehaviour
                 break;
         }
 
-        if (GameManager.Instance != null) {
+        if (GameManager.Instance != null)
+        {
             GameManager.Instance.OnInitQuestText(questType);
         }
     }
@@ -51,10 +53,11 @@ public class MapLevelManager : MonoBehaviour
     {
         GameManager.Instance.ShowWinPanel();
     }
-    public void OnLose() {
+    public void OnLose()
+    {
         GameManager.Instance.ShowLosePanel();
     }
-    
+
 
     public void OnClearMap()
     {
@@ -75,7 +78,7 @@ public class MapLevelEditor : Editor
     public override void OnInspectorGUI()
     {
         DrawDefaultInspector();
-        if(myScript == null)
+        if (myScript == null)
             myScript = (MapLevelManager)target;
         GUIStyle SectionNameStyle = new GUIStyle();
         SectionNameStyle.fontSize = 16;

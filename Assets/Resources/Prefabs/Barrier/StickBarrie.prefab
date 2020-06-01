@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4105256230520295356}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -0.202, y: 0, z: -2}
+  m_LocalPosition: {x: -0.202, y: 0, z: 0}
   m_LocalScale: {x: 1.0000002, y: 1, z: 1}
   m_Children:
   - {fileID: 6636853483329265584}
@@ -156,9 +156,12 @@ MonoBehaviour:
   isMove2Pos: 0
   vEndPos: {x: 0, y: 0, z: 0}
   vStartPos: {x: 0, y: 0, z: 0}
+  vUpPos: {x: 0, y: 0, z: 0}
+  vDownPos: {x: 0, y: 0, z: 0}
+  vLeftPos: {x: 0, y: 0, z: 0}
+  vRightPos: {x: 0, y: 0, z: 0}
   beginMove: 0
   moveBack: 0
-  gCircle: {fileID: 0}
   time_: 2
   dir: {x: 0, y: 0, z: 0}
 --- !u!50 &3115096989556330170
@@ -208,7 +211,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5848152228258135224}
   m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -1.519, z: 2}
+  m_LocalPosition: {x: 0, y: -1.519, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2792697067004873771}

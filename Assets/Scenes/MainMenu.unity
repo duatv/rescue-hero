@@ -1801,16 +1801,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f61bc784a55fbc4ba1d649e7f95732d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waterPooler: {fileID: 0}
-  firePooler: {fileID: 0}
-  gemPooler: {fileID: 0}
   stonePooler: {fileID: 0}
-  waterPrefab: {fileID: -8207047274339540064, guid: b79045f0834e36d4b8ad3cd0cf1c82f5,
-    type: 3}
-  firePrefab: {fileID: 4936206682982441617, guid: 7fa883f45d8232d41a272cce2c598873,
-    type: 3}
-  gemPrefab: {fileID: -6812811554415879656, guid: 818e2de03caf74346804c1bea94e1b37,
-    type: 3}
   stonePrefab: {fileID: -3741601619321135655, guid: a4e517dbddff2cc4a8fbeebaf1521f1f,
     type: 3}
   AllPool: []
@@ -8358,7 +8349,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.542762}
   m_AnchorMax: {x: 1, y: 0.9524762}
-  m_AnchoredPosition: {x: 0, y: 4.3705006}
+  m_AnchoredPosition: {x: 0, y: 4.3705015}
   m_SizeDelta: {x: 0, y: 11.241}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1393963068
@@ -10906,7 +10897,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.14951687, y: 0.606}
   m_AnchorMax: {x: 0.90800005, y: 0.7062459}
-  m_AnchoredPosition: {x: -335.69992, y: 7.5}
+  m_AnchoredPosition: {x: -335.69995, y: 7.5}
   m_SizeDelta: {x: -670, y: -15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1840321489

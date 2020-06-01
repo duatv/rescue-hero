@@ -100,8 +100,10 @@ public class PlayerManager : MonoBehaviour
     {
         if (pState != P_STATE.DIE && pState != P_STATE.WIN)
         {
-            vJumpHeigh = new Vector2(saPlayer.skeleton.ScaleX, 3);
-            _rig2D.AddForce(vJumpHeigh, ForceMode2D.Impulse);
+            //vJumpHeigh = new Vector2(saPlayer.skeleton.ScaleX, 4);
+            //_rig2D.AddForce(vJumpHeigh, ForceMode2D.Impulse);
+            _rig2D.velocity = new Vector2(saPlayer.skeleton.ScaleX, 6);
+        //    Debug.LogError("jump:" + saPlayer.skeleton.ScaleX);
         }
     }
     private void Update()

@@ -6,20 +6,36 @@ public class SpawnObject : MonoBehaviour
 {
     public List<Unit> gGems;
     public MapLevelManager.SPAWNTYPE _spawnType;
+    [Range(10, 30)]
     public int totalGems;
-    public Vector2 initSpeed = new Vector2(1f, -1.8f);
-    //private List<Unit> lstWaterDrops = new List<Unit>();
-    //private List<Unit> lstLavaDrops = new List<Unit>();
-    private Unit gInstantiate;
-    // int _ranIndex = 0;
+    public Unit gInstantiate;
     public bool loadObjectChild;
+    int randomDisplayEffect;
     private void OnValidate()
     {
         if (!loadObjectChild)
         {
-            for (int i = 0; i < transform.childCount; i++)
+            for (int i = gGems.Count; i < totalGems; i++)
             {
-                Unit u = transform.GetChild(i).gameObject.GetComponent<Unit>();
+                Unit u = Instantiate(gInstantiate);
+                u.transform.parent = gameObject.transform;
+
+                u.transform.position = new Vector2(transform.position.x + Random.Range(-0.2f, 0.2f), transform.position.y + Random.Range(-0.2f, 0.2f));
+                if (u._spawnType == MapLevelManager.SPAWNTYPE.WATER)
+                {
+                    randomDisplayEffect = Random.Range(0, 100);
+
+                    if (randomDisplayEffect <= 30)
+                    {
+                        Debug.LogError(randomDisplayEffect);
+                        if (u.effect != null)
+                            u.effect.gameObject.SetActive(true);
+                    }
+                }
+                else if(u._spawnType == MapLevelManager.SPAWNTYPE.GEMS)
+                {
+                    u.DisableSprite();
+                }
                 if (!gGems.Contains(u))
                 {
                     gGems.Add(u);
@@ -33,59 +49,19 @@ public class SpawnObject : MonoBehaviour
     {
         if (_spawnType == MapLevelManager.SPAWNTYPE.GEMS)
         {
-            GameManager.Instance.totalGems = totalGems;
+            GameManager.Instance.totalGems = /*totalGems*/gGems.Count;
         }
         if (_spawnType == MapLevelManager.SPAWNTYPE.LAVA)
         {
             if (SoundManager.Instance != null)
                 StartCoroutine(PlaySoundLavaApear());
         }
-        //SpawnAllGems();
-        BeginSet();
     }
-    void BeginSet()
-    {
-        for (int i = 0; i < gGems.Count; i++)
-        {
-            gGems[i].DisplayEffect(true, transform.position);
-        }
-    }
+
     IEnumerator PlaySoundLavaApear()
     {
         yield return new WaitForSeconds(0.5f);
         SoundManager.Instance.PlaySound(SoundManager.Instance.acLavaApear);
     }
-    //private void SpawnAllGems()
-    //{
-    //    for (int i = 0; i < totalGems; i++)
-    //    {
-    //        if (_spawnType == MapLevelManager.SPAWNTYPE.GEMS)
-    //        {
-    //            gInstantiate = ObjectPoolManagerHaveScript.Instance.gemPooler.GetUnitPooledObject();
-    //            gInstantiate.DisplayEffect();
-    //            gInstantiate.transform.position = new Vector2(transform.position.x + Random.Range(-0.01f, 0.01f), transform.position.y);
-
-    //            gInstantiate.gameObject.SetActive(true);
-    //            if (!GameManager.Instance.lstAllGems.Contains(gInstantiate))
-    //                GameManager.Instance.lstAllGems.Add(gInstantiate);
-    //        }
-
-    //        if (_spawnType == MapLevelManager.SPAWNTYPE.WATER)
-    //        {
-    //            gInstantiate = ObjectPoolManagerHaveScript.Instance.waterPooler.GetUnitPooledObject();
-    //            gInstantiate.DisplayEffect();
-    //            gInstantiate.transform.position = new Vector2(transform.position.x + Random.Range(-0.01f, 0.01f), transform.position.y);
-    //            gInstantiate.gameObject.SetActive(true);
-    //        }
-    //        if (_spawnType == MapLevelManager.SPAWNTYPE.LAVA)
-    //        {
-
-    //            gInstantiate = ObjectPoolManagerHaveScript.Instance.firePooler.GetUnitPooledObject();
-    //            gInstantiate.transform.position = new Vector2(transform.position.x + Random.Range(-0.01f, 0.01f), transform.position.y);
-    //            gInstantiate.gameObject.SetActive(true);
-    //        }
-
-    //    }
-    //}
 
 }

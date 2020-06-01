@@ -93,7 +93,6 @@ GameObject:
   - component: {fileID: 5976190729354532738}
   - component: {fileID: 5976190729354532741}
   - component: {fileID: 2747999264892075429}
-  - component: {fileID: -8207047274339540064}
   m_Layer: 4
   m_Name: Water_Pr
   m_TagString: Water
@@ -110,7 +109,7 @@ Transform:
   m_GameObject: {fileID: 5976190729354532743}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.17, y: 2.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 7744957084581264949}
   - {fileID: 2274670546303217500}
@@ -126,7 +125,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 5976190729354532743}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: b0a58d042ab47e4459e8de12a0bf051f, type: 2}
+  m_Material: {fileID: 6200000, guid: 8a86371d2a7e1004fad0d95eb9425013, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -145,14 +144,14 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 0.001256637
+  m_Mass: 0.0028274334
   m_LinearDrag: 0
   m_AngularDrag: 0
-  m_GravityScale: 0.3
-  m_Material: {fileID: 6200000, guid: b0a58d042ab47e4459e8de12a0bf051f, type: 2}
+  m_GravityScale: 1
+  m_Material: {fileID: 6200000, guid: 8a86371d2a7e1004fad0d95eb9425013, type: 2}
   m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!114 &2747999264892075429
 MonoBehaviour:
@@ -166,22 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83a2295e6ee68d148bb1859c3642b7ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawnType: 0
-  id: 
-  isLava: 0
-  isStone: 0
---- !u!114 &-8207047274339540064
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5976190729354532743}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: afc92302a564e074c82f9bdb5fc54d6a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  spriteGem: []
   _spawnType: 0
   effect: {fileID: 7744957084581264950}
   sp: {fileID: 0}

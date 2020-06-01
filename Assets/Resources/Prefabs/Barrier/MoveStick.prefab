@@ -57,7 +57,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5274862687071640573}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5274862688083696865}
@@ -348,9 +348,12 @@ MonoBehaviour:
   isMove2Pos: 1
   vEndPos: {x: -2.28, y: -0.01, z: 0}
   vStartPos: {x: 0.629, y: -0.005, z: 0}
+  vUpPos: {x: 0, y: 0, z: 0}
+  vDownPos: {x: 0, y: 0, z: 0}
+  vLeftPos: {x: 0, y: 0, z: 0}
+  vRightPos: {x: 0, y: 0, z: 0}
   beginMove: 0
   moveBack: 0
-  gCircle: {fileID: 0}
   time_: 2
   dir: {x: 0, y: 0, z: 0}
 --- !u!60 &5274862688083696871
@@ -368,7 +371,7 @@ PolygonCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0.66999996, z: 0, w: 0.41}
+    border: {x: 0, y: 0.98999995, z: 0, w: 0.41}
     pivot: {x: 0.5, y: 0.11}
     oldSize: {x: 0.88, y: 2.57}
     newSize: {x: 0.88, y: 2.57}

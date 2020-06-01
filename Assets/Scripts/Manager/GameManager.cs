@@ -7,7 +7,7 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-
+    public int counthatlava;
     public enum GAMESTATE { PLAYING, WIN, LOSE }
     public static GameManager Instance;
     //public List<MissionType> lstAllMission = new List<MissionType>();
@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public bool canUseTrail;
     public GAMESTATE gameState;
     [SerializeField] public LevelConfig levelConfig;
-    [HideInInspector] public MapLevelManager mapLevel;
+    public MapLevelManager mapLevel;
     public int totalGems;
     public List<Unit> lstAllGems = new List<Unit>();
     public bool isNotEnoughGems;
@@ -45,25 +45,31 @@ public class GameManager : MonoBehaviour
     void Start()
     {
 
+
         txtLevel.text = "LEVEL " + (Utils.LEVEL_INDEX + 1).ToString("00,#");
         OnUpdateCoin();
 
         MyAnalytic.LogEventPlayLevel(Utils.LEVEL_INDEX + 1);
         if (!isTest)
+        {
             LoadLevelToPlay(Utils.LEVEL_INDEX);
+        }
         if (SoundManager.Instance != null)
         {
             SoundManager.Instance.PlayBackgroundMusic();
         }
-        if (AdsManager.Instance != null) {
+        if (AdsManager.Instance != null)
+        {
             AdsManager.Instance.ShowBanner();
         }
     }
-    private void OnChange(Sprite _spr, string _text) {
+    private void OnChange(Sprite _spr, string _text)
+    {
         imgQuestImage.sprite = _spr;
-        txtQuestText.text = "<color=#FFBC01> LEVEL "+(Utils.LEVEL_INDEX + 1).ToString("0#") + "</color> " + _text.ToUpper();
+        txtQuestText.text = "<color=#FFBC01> LEVEL " + (Utils.LEVEL_INDEX + 1).ToString("0#") + "</color> " + _text.ToUpper();
     }
-    public void OnInitQuestText(MapLevelManager.QUEST_TYPE _questType) {
+    public void OnInitQuestText(MapLevelManager.QUEST_TYPE _questType)
+    {
         switch (_questType)
         {
             case MapLevelManager.QUEST_TYPE.COLLECT:
@@ -80,7 +86,29 @@ public class GameManager : MonoBehaviour
                 break;
         }
     }
-
+    public void DisableAllLava()
+    {
+        for (int i = 0; i < mapLevel.lavaObj.gGems.Count; i++)
+        {
+            if (mapLevel.lavaObj.gGems[i].gameObject.activeSelf)
+            {
+                mapLevel.lavaObj.gGems[i].gameObject.SetActive(false);
+                Unit stone = ObjectPoolManagerHaveScript.Instance.stonePooler.GetUnitPooledObject();
+                stone.transform.position = mapLevel.lavaObj.gGems[i].transform.position;
+                stone.gameObject.SetActive(true);
+            }
+        }
+        for (int i = 0; i < mapLevel.waterObj.gGems.Count; i++)
+        {
+            if (mapLevel.waterObj.gGems[i].gameObject.activeSelf)
+            {
+                mapLevel.waterObj.gGems[i].gameObject.SetActive(false);
+                Unit stone = ObjectPoolManagerHaveScript.Instance.stonePooler.GetUnitPooledObject();
+                stone.transform.position = mapLevel.waterObj.gGems[i].transform.position;
+                stone.gameObject.SetActive(true);
+            }
+        }
+    }
     private void OnDisable()
     {
         if (AdsManager.Instance != null)
@@ -90,8 +118,11 @@ public class GameManager : MonoBehaviour
     }
     private void LoadLevelToPlay(int levelIndex)
     {
-        mapLevel = levelConfig.lstAllLevel[levelIndex];
-        Instantiate(mapLevel.gameObject, Vector3.zero, Quaternion.identity);
+
+        mapLevel = Instantiate(levelConfig.lstAllLevel[levelIndex], Vector3.zero, Quaternion.identity);
+
+        if (mapLevel.lavaObj != null)
+            counthatlava = mapLevel.lavaObj.gGems.Count - 2;
     }
 
     private void ActiveCamEff()
@@ -106,7 +137,8 @@ public class GameManager : MonoBehaviour
     private IEnumerator IEWaitToShowWinLose(bool isWin)
     {
         yield return new WaitForSeconds(1.0f);
-        if (AdsManager.Instance != null) {
+        if (AdsManager.Instance != null)
+        {
             AdsManager.Instance.HideBanner();
         }
         if (isWin)
@@ -165,14 +197,19 @@ public class GameManager : MonoBehaviour
     }
     public void OnNextLevel()
     {
-        Debug.LogError(Utils.LEVEL_INDEX + " vs " + levelConfig.lstAllLevel.Count);
+        //  Debug.LogError(Utils.LEVEL_INDEX + " vs " + levelConfig.lstAllLevel.Count);
         if (Utils.LEVEL_INDEX < levelConfig.lstAllLevel.Count - 1)
         {
             Utils.LEVEL_INDEX += 1;
             Utils.SaveLevel();
-            ObjectPoolManagerHaveScript.Instance.ClearAllPool();
-            SceneManager.LoadSceneAsync("MainGame");
         }
+        else
+        {
+            Utils.LEVEL_INDEX = 0;
+            Utils.SaveLevel();
+        }
+        ObjectPoolManagerHaveScript.Instance.ClearAllPool();
+        SceneManager.LoadSceneAsync("MainGame");
     }
     public void OnX2Coin()
     {
@@ -193,6 +230,11 @@ public class GameManager : MonoBehaviour
     }
     public void OnSkipByVideo()
     {
+
+#if UNITY_EDITOR
+        OnNextLevel();
+#else
+
         if (AdsManager.Instance != null)
         {
             AdsManager.Instance.ShowRewardedVideo((b) =>
@@ -205,6 +247,7 @@ public class GameManager : MonoBehaviour
                 }
             });
         }
+#endif
     }
     public void OnReplay()
     {
