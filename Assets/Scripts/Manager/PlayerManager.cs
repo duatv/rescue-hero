@@ -100,22 +100,23 @@ public class PlayerManager : MonoBehaviour
     {
         if (pState != P_STATE.DIE && pState != P_STATE.WIN)
         {
-            //vJumpHeigh = new Vector2(saPlayer.skeleton.ScaleX, 4);
+            //vJumpHeigh = new Vector2(saPlayer.skeleton.ScaleX, 2);
             //_rig2D.AddForce(vJumpHeigh, ForceMode2D.Impulse);
-            _rig2D.velocity = new Vector2(saPlayer.skeleton.ScaleX, 6);
-        //    Debug.LogError("jump:" + saPlayer.skeleton.ScaleX);
+              _rig2D.velocity = new Vector2(saPlayer.skeleton.ScaleX, 7);
+            //    Debug.LogError("jump:" + saPlayer.skeleton.ScaleX);
         }
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            HeroJump();
-        }
+        //if (Input.GetKeyDown(KeyCode.A))
+        //{
+        //    HeroJump();
+        //}
         if (saPlayer.AnimationName.Equals(str_idle))
         {
             HeroBlink();
         }
+
     }
 
     private void CheckHitAhead()
@@ -160,6 +161,7 @@ public class PlayerManager : MonoBehaviour
         _vStart = new Vector3(transform.localPosition.x, transform.localPosition.y - 1.5f, transform.localPosition.z);
         _vEnd = new Vector3(_vStart.x, _vStart.y - 0.15f, _vStart.z);
         hitDown = Physics2D.Linecast(_vStart, _vEnd, lmMapObject);
+        Debug.DrawLine(_vStart, _vEnd, Color.green);
     }
 
     private void CheckHitMapAhead()
@@ -171,6 +173,7 @@ public class PlayerManager : MonoBehaviour
     }
     private void FixedUpdate()
     {
+
         CheckHitAhead();
         CheckHitMapAhead();
         HitDownMapObject();
