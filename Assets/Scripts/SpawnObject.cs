@@ -60,7 +60,7 @@ public class SpawnObject : MonoBehaviour
     {
         if (_spawnType == MapLevelManager.SPAWNTYPE.GEMS)
         {
-            GameManager.Instance.totalGems = /*totalGems*/gGems.Count;
+            GameManager.Instance.totalGems = /*totalGems*/gGems.Count - (int)(gGems.Count * 0.3f);
         }
         if (_spawnType == MapLevelManager.SPAWNTYPE.LAVA)
         {

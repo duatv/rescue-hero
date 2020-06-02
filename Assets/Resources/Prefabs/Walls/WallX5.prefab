@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1566221782186168861}
   - component: {fileID: 6696527053040614882}
-  - component: {fileID: 8520648581912864541}
   m_Layer: 10
   m_Name: WallX5
   m_TagString: Untagged
@@ -25,10 +24,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1544165960768423370}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.25, y: 0.25, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 6339944857370905642}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -82,13 +82,44 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &8520648581912864541
+--- !u!1 &3922650014375460197
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6339944857370905642}
+  - component: {fileID: 7603617265295625565}
+  m_Layer: 10
+  m_Name: Polygon (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6339944857370905642
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3922650014375460197}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1566221782186168861}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &7603617265295625565
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1544165960768423370}
+  m_GameObject: {fileID: 3922650014375460197}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -107,8 +138,8 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 1.3299999, y: 1.38}
-      - {x: -1.38, y: -1.35}
-      - {x: -1.38, y: -1.38}
+    - - {x: 1.306032, y: 1.38}
+      - {x: -1.3912358, y: -1.3106743}
+      - {x: -1.3968539, y: -1.419326}
       - {x: 1.38, y: -1.38}
-      - {x: 1.38, y: 1.38}
+      - {x: 1.4119575, y: 1.3879896}

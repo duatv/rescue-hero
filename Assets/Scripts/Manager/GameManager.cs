@@ -24,8 +24,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] public LevelConfig levelConfig;
     public MapLevelManager mapLevel;
     public int totalGems;
-    public List<Unit> lstAllGems = new List<Unit>();
-    public bool isNotEnoughGems;
+  //  public List<Unit> lstAllGems = new List<Unit>();
+  //  public bool isNotEnoughGems;
     public CamFollow _camFollow;
     public GameObject gPanelWin;
     public GameObject gPanelLose;

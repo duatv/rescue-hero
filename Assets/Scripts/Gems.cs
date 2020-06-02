@@ -24,27 +24,32 @@ public class Gems : Unit
     {
         if (collision.gameObject.tag == "Trap_Lava")
         {
+            GameManager.Instance.totalGems--;
+            //if (GameManager.Instance.lstAllGems.Contains(this))
+            //{
+            //    GameManager.Instance.lstAllGems.Remove(this);
+            //    if (GameManager.Instance.lstAllGems.Count * 1.0f / GameManager.Instance.totalGems <= 0.2f)
+            //    {
+            //        GameManager.Instance.isNotEnoughGems = true;
+            //        Debug.LogError("het gem roi");
+            //    }
+            //}
 
-            if (GameManager.Instance.lstAllGems.Contains(this))
-            {
-                GameManager.Instance.lstAllGems.Remove(this);
-                if (GameManager.Instance.lstAllGems.Count * 1.0f / GameManager.Instance.totalGems <= 0.2f)
-                {
-                    GameManager.Instance.isNotEnoughGems = true;
-                }
-            }
 
             //if (PlayerManager.Instance.isContinueDetect)
             //{
-                if (GameManager.Instance.gameState != GameManager.GAMESTATE.WIN)
+            if (GameManager.Instance.totalGems <= 0)
+            {
+                if (PlayerManager.Instance.pState == PlayerManager.P_STATE.PLAYING || PlayerManager.Instance.pState == PlayerManager.P_STATE.RUNNING)
                 {
-                    if (GameManager.Instance.isNotEnoughGems)
+                    Debug.LogError("zoooooooooooooooooooo");
+                    if (GameManager.Instance.gameState != GameManager.GAMESTATE.WIN)
                     {
-                       // PlayerManager.Instance.isContinueDetect = false;
+                        // PlayerManager.Instance.isContinueDetect = false;
                         PlayerManager.Instance.OnPlayerDie();
-                      //  Debug.LogError("yahhhhhhhhh");
                     }
                 }
+            }
           //  }
             gameObject.layer = 0;
             gameObject.SetActive(false);

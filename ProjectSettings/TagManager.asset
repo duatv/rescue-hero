@@ -13,6 +13,7 @@ TagManager:
   - Water
   - Sword
   - BodyPlayer
+  - GroundPlayer
   layers:
   - Default
   - TransparentFX
