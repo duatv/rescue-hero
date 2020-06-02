@@ -4,42 +4,17 @@ using UnityEngine;
 
 public class WaterCollison : Unit
 {
-
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        //if (GameManager.Instance.counthatlava < 0)
-        //    return;
-        if (collision.gameObject.tag == "Trap_Lava" /*|| collision.gameObject.tag == "Tag_Stone"*/ /*|| collision.gameObject.tag == "Wall_Bottom"*/)
+        if(collision.tag == "Trap_Lava")
         {
-            GameManager.Instance.PlaySoundLavaOnWater();
-            if(collision.gameObject.tag == "Trap_Lava")
-                collision.gameObject.SetActive(false);
-            gameObject.SetActive(false);
-            Unit stone = ObjectPoolManagerHaveScript.Instance.stonePooler.GetUnitPooledObject();
-            stone.transform.position = gameObject.transform.position;
-            stone.gameObject.SetActive(true);
-
-
-            GameManager.Instance.counthatwater--;
-
-            if (GameManager.Instance.counthatwater <= 0)
-            {
-                GameManager.Instance.DisableAllLava();
-            }
-
+            ChildUnit _current = collision.GetComponent<ChildUnit>();
+            _current.myUnit.ChangeStone();
+            ChangeStone();
         }
-        //if (!canDectectStone)
-        //    return;
-
-        //if (collision.gameObject.tag == "Tag_Stone" || collision.gameObject.tag == "Wall_Bottom")
-        //{
-        //    GameManager.Instance.PlaySoundLavaOnWater();
-        //   // collision.gameObject.SetActive(false);
-        //    gameObject.SetActive(false);
-        //    Unit stone = ObjectPoolManagerHaveScript.Instance.stonePooler.GetUnitPooledObject();
-        //    stone.transform.position = gameObject.transform.position;
-        //    stone.gameObject.SetActive(true);
-        //}
-
+        else if(collision.tag == "Tag_Stone")
+        {
+            ChangeStone();
+        }
     }
 }

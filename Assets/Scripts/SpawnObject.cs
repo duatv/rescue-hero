@@ -6,11 +6,12 @@ public class SpawnObject : MonoBehaviour
 {
     public List<Unit> gGems;
     public MapLevelManager.SPAWNTYPE _spawnType;
-    [Range(10, 50)]
+    [Range(10, 30)]
     public int totalGems;
     public Unit gInstantiate;
     public bool loadObjectChild;
     int randomDisplayEffect;
+
     private void OnValidate()
     {
         if (!loadObjectChild)
@@ -19,7 +20,6 @@ public class SpawnObject : MonoBehaviour
             {
                 Unit u = Instantiate(gInstantiate);
                 u.transform.parent = gameObject.transform;
-
                 u.transform.position = new Vector2(transform.position.x + Random.Range(-0.2f, 0.2f), transform.position.y + Random.Range(-0.2f, 0.2f));
                 if (u._spawnType == MapLevelManager.SPAWNTYPE.WATER)
                 {
@@ -27,12 +27,23 @@ public class SpawnObject : MonoBehaviour
 
                     if (randomDisplayEffect <= 30)
                     {
-                        Debug.LogError(randomDisplayEffect);
+                     //   Debug.LogError(randomDisplayEffect);
                         if (u.effect != null)
                             u.effect.gameObject.SetActive(true);
                     }
                 }
-                else if(u._spawnType == MapLevelManager.SPAWNTYPE.GEMS)
+                else if (u._spawnType == MapLevelManager.SPAWNTYPE.LAVA)
+                {
+                    randomDisplayEffect = Random.Range(0, 100);
+
+                    if (randomDisplayEffect <= 20)
+                    {
+                        //   Debug.LogError(randomDisplayEffect);
+                        if (u.effect2 != null)
+                            u.effect2.gameObject.SetActive(true);
+                    }
+                }
+                else if (u._spawnType == MapLevelManager.SPAWNTYPE.GEMS)
                 {
                     u.DisableSprite();
                 }

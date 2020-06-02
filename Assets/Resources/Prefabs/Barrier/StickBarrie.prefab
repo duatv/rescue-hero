@@ -152,7 +152,7 @@ MonoBehaviour:
   Head: {fileID: 5848152228258135224}
   _moveType: 1
   _rig2D: {fileID: 3115096989556330170}
-  moveSpeed: 2
+  moveSpeed: 4
   hasBlockGems: 0
   isMove2Pos: 0
   vEndPos: {x: 0, y: 0}

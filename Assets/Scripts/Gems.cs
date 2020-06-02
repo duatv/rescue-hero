@@ -29,7 +29,6 @@ public class Gems : Unit
                 GameManager.Instance.lstAllGems.Remove(this);
                 if (GameManager.Instance.lstAllGems.Count * 1.0f / GameManager.Instance.totalGems <= 0.2f)
                 {
-
                     GameManager.Instance.isNotEnoughGems = true;
                 }
             }
@@ -49,6 +48,7 @@ public class Gems : Unit
                 }
             }
             gameObject.layer = 0;
+          //  gameObject.SetActive(false);
         }
         if (collision.gameObject.GetComponent<PlayerManager>() != null)
         {

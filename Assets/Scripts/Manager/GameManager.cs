@@ -86,34 +86,7 @@ public class GameManager : MonoBehaviour
                 break;
         }
     }
-    public void DisableAllLava()
-    {
 
-
-        for (int i = 0; i < mapLevel.lavaObj.gGems.Count; i++)
-        {
-            if (mapLevel.lavaObj.gGems[i].gameObject.activeSelf)
-            {
-
-                Unit stone = ObjectPoolManagerHaveScript.Instance.stonePooler.GetUnitPooledObject();
-                stone.transform.position = mapLevel.lavaObj.gGems[i].transform.position;
-                stone.gameObject.SetActive(true);
-                mapLevel.lavaObj.gGems[i].gameObject.SetActive(false);
-
-            }
-        }
-        //for (int i = 0; i < mapLevel.waterObj.gGems.Count; i++)
-        //{
-        //    if (mapLevel.waterObj.gGems[i].gameObject.activeSelf)
-        //    {
-
-        //        Unit stone = ObjectPoolManagerHaveScript.Instance.stonePooler.GetUnitPooledObject();
-        //        stone.transform.position = mapLevel.waterObj.gGems[i].transform.position;
-        //        stone.gameObject.SetActive(true);
-        //        mapLevel.waterObj.gGems[i].gameObject.SetActive(false);
-        //    }
-        //}
-    }
     private void OnDisable()
     {
         if (AdsManager.Instance != null)
@@ -213,7 +186,7 @@ public class GameManager : MonoBehaviour
             Utils.LEVEL_INDEX = 0;
             Utils.SaveLevel();
         }
-        ObjectPoolManagerHaveScript.Instance.ClearAllPool();
+      //  ObjectPoolManagerHaveScript.Instance.ClearAllPool();
         SceneManager.LoadSceneAsync("MainGame");
     }
     public void OnX2Coin()
@@ -257,12 +230,12 @@ public class GameManager : MonoBehaviour
     public void OnReplay()
     {
         MyAnalytic.LogEventReplay(Utils.LEVEL_INDEX + 1);
-        ObjectPoolManagerHaveScript.Instance.ClearAllPool();
+      //  ObjectPoolManagerHaveScript.Instance.ClearAllPool();
         SceneManager.LoadSceneAsync("MainGame");
     }
     public void GoToMenu()
     {
-        ObjectPoolManagerHaveScript.Instance.ClearAllPool();
+      //  ObjectPoolManagerHaveScript.Instance.ClearAllPool();
         SceneManager.LoadSceneAsync("MainMenu");
     }
     public void BuyRemoveAds()

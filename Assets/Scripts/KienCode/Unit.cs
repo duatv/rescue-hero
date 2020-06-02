@@ -6,10 +6,11 @@ public class Unit : MonoBehaviour
 {
     public Sprite[] spriteGem;
     public MapLevelManager.SPAWNTYPE _spawnType;
-    public GameObject effect;
+    public GameObject effect,effect2;
     public SpriteRenderer sp;
     public Rigidbody2D rid;
-    public bool canDectectStone;
+    public bool activeChangeStone;
+    public GameObject stone,check;
     public void DisableSprite()
     {
         if (spriteGem.Length > 0)
@@ -18,7 +19,19 @@ public class Unit : MonoBehaviour
             sp.sprite = spriteGem[randomDisplayEffect];
         }
     }
-
+    public virtual void ChangeStone()
+    {
+        if (activeChangeStone)
+            return;
+        activeChangeStone = true;
+        sp.gameObject.SetActive(false);
+        stone.SetActive(true);
+        if (effect != null)
+            effect.SetActive(false);
+        if(effect2 != null)
+            effect2.SetActive(false);
+        Debug.LogError("zooooooooooooo");
+    }
     private void OnValidate()
     {
         if (sp == null)

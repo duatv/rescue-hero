@@ -52,11 +52,11 @@ public class StickBarrier : MonoBehaviour
     {
         hasBlockGems = false;
         gameObject.SetActive(false);
-        Debug.LogError("zoooooooooooooooo");
+    //    Debug.LogError("zoooooooooooooooo");
     }
 
     private void MoveStick(Vector2 endPos) {
-        transform.localPosition = Vector2.MoveTowards(transform.localPosition, endPos, Time.deltaTime * moveSpeed * 4);
+        transform.localPosition = Vector2.Lerp(transform.localPosition, endPos, Time.deltaTime * moveSpeed);
     }
 
     [SerializeField]Vector2 dir;
@@ -71,7 +71,7 @@ public class StickBarrier : MonoBehaviour
             case MOVETYPE.FREE:
                 if (isMove2Pos) {
                     if (beginMove && !moveBack) {
-                        if (Vector2.Distance(transform.position, vEndPos) > 0.03f)
+                        if (Vector2.Distance(transform.position, vEndPos) > 0.03f/*transform.position.x != vEndPos.x || transform.position.y != vEndPos.y*/)
                             MoveStick2Pos(vEndPos);
                         else
                         {
@@ -81,7 +81,7 @@ public class StickBarrier : MonoBehaviour
                         }
                     }
                     if (moveBack && beginMove) {
-                        if (Vector2.Distance(transform.position, vStartPos) > 0.03f)
+                        if (Vector2.Distance(transform.position, vStartPos) > 0.03f/*transform.position.x != vStartPos.x || transform.position.y != vStartPos.y*/)
                             MoveStick2Pos(vStartPos);
                         else
                         {
@@ -95,7 +95,7 @@ public class StickBarrier : MonoBehaviour
                 {
                     if (beginMove && !moveBack)
                     {
-                        if (Vector2.Distance(transform.localPosition, vEndPos) > 0.003f)
+                        if (Vector2.Distance(transform.localPosition, vEndPos) > 0.003f /*transform.localPosition.x != vEndPos.x || transform.localPosition.y != vEndPos.y*/)
                         {
                             MoveStick(vEndPos);
                         }
@@ -108,7 +108,7 @@ public class StickBarrier : MonoBehaviour
 
                     if (moveBack && beginMove)
                     {
-                        if (Vector2.Distance(transform.localPosition, vStartPos) > 0.003f)
+                        if (Vector2.Distance(transform.localPosition, vStartPos) > 0.003f/*transform.localPosition.x != vStartPos.x || transform.localPosition.y != vStartPos.y*/)
                         {
                             MoveStick(vStartPos);
                         }

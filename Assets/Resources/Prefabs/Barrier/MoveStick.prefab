@@ -347,15 +347,15 @@ MonoBehaviour:
   moveSpeed: 2
   hasBlockGems: 0
   isMove2Pos: 1
-  vEndPos: {x: -2.28, y: -0.01, z: 0}
-  vStartPos: {x: 0.629, y: -0.005, z: 0}
-  vUpPos: {x: 0, y: 0, z: 0}
-  vDownPos: {x: 0, y: 0, z: 0}
-  vLeftPos: {x: 0, y: 0, z: 0}
-  vRightPos: {x: 0, y: 0, z: 0}
+  vEndPos: {x: -2.28, y: -0.01}
+  vStartPos: {x: 0.629, y: -0.005}
+  vUpPos: {x: 0, y: 0}
+  vDownPos: {x: 0, y: 0}
+  vLeftPos: {x: 0, y: 0}
+  vRightPos: {x: 0, y: 0}
   beginMove: 0
   moveBack: 0
-  dir: {x: 0, y: 0, z: 0}
+  dir: {x: 0, y: 0}
 --- !u!60 &5274862688083696871
 PolygonCollider2D:
   m_ObjectHideFlags: 0
