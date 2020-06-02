@@ -14,6 +14,7 @@ TagManager:
   - Sword
   - BodyPlayer
   - GroundPlayer
+  - Chan
   layers:
   - Default
   - TransparentFX
