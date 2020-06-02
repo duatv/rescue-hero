@@ -56,7 +56,7 @@ public class StickBarrier : MonoBehaviour
     }
 
     private void MoveStick(Vector2 endPos) {
-        transform.localPosition = Vector2.Lerp(transform.localPosition, endPos, Time.deltaTime * moveSpeed);
+        transform.localPosition = Vector2.MoveTowards(transform.localPosition, endPos, Time.deltaTime * moveSpeed * 4);
     }
 
     [SerializeField]Vector2 dir;

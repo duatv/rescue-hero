@@ -7,7 +7,7 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    public int counthatlava;
+    public int counthatwater;
     public enum GAMESTATE { PLAYING, WIN, LOSE }
     public static GameManager Instance;
     //public List<MissionType> lstAllMission = new List<MissionType>();
@@ -88,26 +88,31 @@ public class GameManager : MonoBehaviour
     }
     public void DisableAllLava()
     {
+
+
         for (int i = 0; i < mapLevel.lavaObj.gGems.Count; i++)
         {
             if (mapLevel.lavaObj.gGems[i].gameObject.activeSelf)
             {
-                mapLevel.lavaObj.gGems[i].gameObject.SetActive(false);
+
                 Unit stone = ObjectPoolManagerHaveScript.Instance.stonePooler.GetUnitPooledObject();
                 stone.transform.position = mapLevel.lavaObj.gGems[i].transform.position;
                 stone.gameObject.SetActive(true);
+                mapLevel.lavaObj.gGems[i].gameObject.SetActive(false);
+
             }
         }
-        for (int i = 0; i < mapLevel.waterObj.gGems.Count; i++)
-        {
-            if (mapLevel.waterObj.gGems[i].gameObject.activeSelf)
-            {
-                mapLevel.waterObj.gGems[i].gameObject.SetActive(false);
-                Unit stone = ObjectPoolManagerHaveScript.Instance.stonePooler.GetUnitPooledObject();
-                stone.transform.position = mapLevel.waterObj.gGems[i].transform.position;
-                stone.gameObject.SetActive(true);
-            }
-        }
+        //for (int i = 0; i < mapLevel.waterObj.gGems.Count; i++)
+        //{
+        //    if (mapLevel.waterObj.gGems[i].gameObject.activeSelf)
+        //    {
+
+        //        Unit stone = ObjectPoolManagerHaveScript.Instance.stonePooler.GetUnitPooledObject();
+        //        stone.transform.position = mapLevel.waterObj.gGems[i].transform.position;
+        //        stone.gameObject.SetActive(true);
+        //        mapLevel.waterObj.gGems[i].gameObject.SetActive(false);
+        //    }
+        //}
     }
     private void OnDisable()
     {
@@ -121,8 +126,8 @@ public class GameManager : MonoBehaviour
 
         mapLevel = Instantiate(levelConfig.lstAllLevel[levelIndex], Vector3.zero, Quaternion.identity);
 
-        if (mapLevel.lavaObj != null)
-            counthatlava = mapLevel.lavaObj.gGems.Count - 2;
+        if (mapLevel.waterObj != null)
+            counthatwater = mapLevel.waterObj.gGems.Count;
     }
 
     private void ActiveCamEff()

@@ -155,15 +155,15 @@ MonoBehaviour:
   moveSpeed: 2
   hasBlockGems: 0
   isMove2Pos: 0
-  vEndPos: {x: 0, y: 0, z: 0}
-  vStartPos: {x: 0, y: 0, z: 0}
-  vUpPos: {x: 0, y: 0, z: 0}
-  vDownPos: {x: 0, y: 0, z: 0}
-  vLeftPos: {x: 0, y: 0, z: 0}
-  vRightPos: {x: 0, y: 0, z: 0}
+  vEndPos: {x: 0, y: 0}
+  vStartPos: {x: 0, y: 0}
+  vUpPos: {x: 0, y: 0}
+  vDownPos: {x: 0, y: 0}
+  vLeftPos: {x: 0, y: 0}
+  vRightPos: {x: 0, y: 0}
   beginMove: 0
   moveBack: 0
-  dir: {x: 0, y: 0, z: 0}
+  dir: {x: 0, y: 0}
 --- !u!50 &3115096989556330170
 Rigidbody2D:
   serializedVersion: 4

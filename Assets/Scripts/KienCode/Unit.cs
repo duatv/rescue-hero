@@ -9,16 +9,16 @@ public class Unit : MonoBehaviour
     public GameObject effect;
     public SpriteRenderer sp;
     public Rigidbody2D rid;
+    public bool canDectectStone;
     public void DisableSprite()
     {
-
         if (spriteGem.Length > 0)
         {
             randomDisplayEffect = Random.Range(0, spriteGem.Length);
             sp.sprite = spriteGem[randomDisplayEffect];
         }
-
     }
+
     private void OnValidate()
     {
         if (sp == null)
