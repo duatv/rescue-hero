@@ -106,7 +106,7 @@ public class PlayerManager : MonoBehaviour
                 //_rig2D.AddForce(vJumpHeigh, ForceMode2D.Impulse);
                 _rig2D.velocity = new Vector2(saPlayer.skeleton.ScaleX, 5);
                 isJump = true;
-                Debug.LogError("jump:");
+               // Debug.LogError("jump:");
             }
         }
     }
@@ -163,7 +163,7 @@ public class PlayerManager : MonoBehaviour
 
     private void HitDownMapObject()
     {
-        _vStart = new Vector2(transform.localPosition.x, transform.localPosition.y - 1.5f);
+        _vStart = ground.transform.position;
         _vEnd = new Vector2(_vStart.x, _vStart.y - 0.15f);
         hitDown = Physics2D.Linecast(_vStart, _vEnd, lmMapObject);
         Debug.DrawLine(_vStart, _vEnd, Color.red);
@@ -212,7 +212,7 @@ public class PlayerManager : MonoBehaviour
             if (hitForward.collider.gameObject.tag != "Wall_Bottom")
             {
                 HeroJump();
-                Debug.LogError(hitForward.collider.name);
+             //   Debug.LogError(hitForward.collider.name);
             }
 
             // }
@@ -249,7 +249,7 @@ public class PlayerManager : MonoBehaviour
         else _rig2D.velocity = Vector2.zero;
 
 
-        Debug.LogError("moveleft");
+      //  Debug.LogError("moveleft");
     }
     public void MoveRight()
     {
@@ -261,7 +261,7 @@ public class PlayerManager : MonoBehaviour
         }
         else _rig2D.velocity = Vector2.zero;
 
-        Debug.LogError("moveright");
+      //  Debug.LogError("moveright");
     }
 
     public void PrepareMoveLeft()

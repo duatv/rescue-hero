@@ -1802,7 +1802,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effectWaterFirePooler: {fileID: 0}
-  effectWaterFirePrefab: {fileID: 1618520244537708748, guid: 01e3ebe8eb63a6e4bbf444567ccbef44,
+  effectWaterFirePrefab: {fileID: 5682739432146589048, guid: 01e3ebe8eb63a6e4bbf444567ccbef44,
     type: 3}
   AllPool: []
 --- !u!4 &213295872
@@ -4124,7 +4124,7 @@ PrefabInstance:
     - target: {fileID: 7897738126549671188, guid: ec69796c6380fa545ac2d78c2fbbecb2,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -102.00049
+      value: -102.00052
       objectReference: {fileID: 0}
     - target: {fileID: 7897738126549671188, guid: ec69796c6380fa545ac2d78c2fbbecb2,
         type: 3}
@@ -10379,7 +10379,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.13970786, y: 0.43730733}
   m_AnchorMax: {x: 0.91600007, y: 0.5365532}
-  m_AnchoredPosition: {x: -329.09988, y: -3}
+  m_AnchoredPosition: {x: -329.09985, y: -3}
   m_SizeDelta: {x: -670, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1790520207
@@ -10897,7 +10897,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.14951687, y: 0.606}
   m_AnchorMax: {x: 0.90800005, y: 0.7062459}
-  m_AnchoredPosition: {x: -335.6999, y: 7.5}
+  m_AnchoredPosition: {x: -335.69992, y: 7.5}
   m_SizeDelta: {x: -670, y: -15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1840321489

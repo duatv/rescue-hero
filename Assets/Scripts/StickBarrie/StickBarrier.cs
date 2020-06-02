@@ -10,7 +10,7 @@ public class StickBarrier : MonoBehaviour
     public enum MOVETYPE { RIGHT, LEFT, UP, DOWN, FREE }
     [SerializeField] public MOVETYPE _moveType;
     [SerializeField] public Rigidbody2D _rig2D;
-    [Range(0, 4)] [SerializeField] public float moveSpeed = 2;
+    [Range(0, 10)] [SerializeField] public float moveSpeed = 2;
     [SerializeField] public bool hasBlockGems;
 
     [HideInInspector]
@@ -61,8 +61,10 @@ public class StickBarrier : MonoBehaviour
 
     [SerializeField]Vector2 dir;
     private void MoveStick2Pos(Vector2 endPos) {
-        dir = (endPos - (Vector2)transform.position).normalized;
-        _rig2D.MovePosition((Vector2)transform.position + dir * (moveSpeed * Time.fixedDeltaTime));
+        //dir = (endPos - (Vector2)transform.position).normalized;
+        //_rig2D.MovePosition((Vector2)transform.position + dir * (moveSpeed * Time.fixedDeltaTime));
+
+             transform.position = Vector2.Lerp(transform.position, endPos, Time.deltaTime * moveSpeed);
     }
     private void MoveStickBarrie()
     {
@@ -223,12 +225,12 @@ public class StickBarrier : MonoBehaviour
     {
         if (isMove2Pos)
         {
-            vEndPos = transform./*localPosition*/position;
+            vEndPos = transform.localPosition/*position*/;
             if (vStartPos == Vector2.zero)
             {
                 vStartPos = vEndPos;
             }
-            transform./*localPosition*/position = vStartPos;
+            transform.localPosition/*position*/ = vStartPos;
         }
         else {
             vEndPos = transform.localPosition;
@@ -245,8 +247,8 @@ public class StickBarrier : MonoBehaviour
     {
         if (isMove2Pos)
         {
-            vStartPos = transform./*localPosition*/position;
-            transform./*localPosition*/position = vStartPos;
+            vStartPos = transform.localPosition/*position*/;
+            transform.localPosition/*position*/ = vStartPos;
         }
         else {
             vStartPos = transform.localPosition;

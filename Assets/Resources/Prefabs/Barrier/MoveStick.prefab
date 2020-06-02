@@ -57,7 +57,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5274862687071640573}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.002, y: 0.026, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5274862688083696865}
@@ -271,7 +271,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5274862688083696866}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.629, y: -0.005, z: 0}
+  m_LocalPosition: {x: -2.3000004, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5274862687071640572}
@@ -344,11 +344,11 @@ MonoBehaviour:
   Head: {fileID: 0}
   _moveType: 4
   _rig2D: {fileID: 5274862688083696870}
-  moveSpeed: 2
+  moveSpeed: 10
   hasBlockGems: 0
   isMove2Pos: 1
-  vEndPos: {x: -2.28, y: -0.01}
-  vStartPos: {x: 0.629, y: -0.005}
+  vEndPos: {x: -1.5, y: -1.178}
+  vStartPos: {x: -1.4999999, y: 0.3170001}
   vUpPos: {x: 0, y: 0}
   vDownPos: {x: 0, y: 0}
   vLeftPos: {x: 0, y: 0}

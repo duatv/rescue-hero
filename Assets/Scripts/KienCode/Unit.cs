@@ -27,13 +27,6 @@ public class Unit : MonoBehaviour
             activeChangeStone = true;
             if (check != null)
                 check.SetActive(false);
-            int randomeffect = Random.Range(0, 100);
-            if (randomeffect < 20)
-            {
-                GameObject g = ObjectPoolerManager.Instance.effectWaterFirePooler.GetPooledObject();
-                g.transform.position = transform.position;
-                g.SetActive(true);
-            }
 
             StartCoroutine(DelayChangeStone());
         }
@@ -48,6 +41,13 @@ public class Unit : MonoBehaviour
             effect.SetActive(false);
         if (effect2 != null)
             effect2.SetActive(false);
+        int randomeffect = Random.Range(0, 100);
+        if (randomeffect < 10)
+        {
+            GameObject g = ObjectPoolerManager.Instance.effectWaterFirePooler.GetPooledObject();
+            g.transform.position = transform.position;
+            g.SetActive(true);
+        }
     }
     private void OnValidate()
     {
