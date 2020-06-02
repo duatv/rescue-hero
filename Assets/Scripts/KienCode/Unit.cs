@@ -6,11 +6,11 @@ public class Unit : MonoBehaviour
 {
     public Sprite[] spriteGem;
     public MapLevelManager.SPAWNTYPE _spawnType;
-    public GameObject effect,effect2;
+    public GameObject effect, effect2;
     public SpriteRenderer sp;
     public Rigidbody2D rid;
     public bool activeChangeStone;
-    public GameObject stone,check;
+    public GameObject stone, check;
     public void DisableSprite()
     {
         if (spriteGem.Length > 0)
@@ -21,16 +21,33 @@ public class Unit : MonoBehaviour
     }
     public virtual void ChangeStone()
     {
-        if (activeChangeStone)
-            return;
-        activeChangeStone = true;
-        sp.gameObject.SetActive(false);
+        if (!activeChangeStone)
+        {
+
+            activeChangeStone = true;
+            if (check != null)
+                check.SetActive(false);
+            int randomeffect = Random.Range(0, 100);
+            if (randomeffect < 20)
+            {
+                GameObject g = ObjectPoolerManager.Instance.effectWaterFirePooler.GetPooledObject();
+                g.transform.position = transform.position;
+                g.SetActive(true);
+            }
+
+            StartCoroutine(DelayChangeStone());
+        }
+        //    Debug.LogError("zooooooooooooo");
+    }
+    IEnumerator DelayChangeStone()
+    {
+        yield return new WaitForSeconds(0.1f);
         stone.SetActive(true);
+        sp.gameObject.SetActive(false);
         if (effect != null)
             effect.SetActive(false);
-        if(effect2 != null)
+        if (effect2 != null)
             effect2.SetActive(false);
-        Debug.LogError("zooooooooooooo");
     }
     private void OnValidate()
     {

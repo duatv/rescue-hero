@@ -11,5 +11,34 @@ public class LavaController : Unit
         {
             ChangeStone();
         }
+        if (activeChangeStone)
+            return;
+        if ( collision.gameObject.tag == "BodyPlayer")
+        {
+            if (PlayerManager.Instance.pState == PlayerManager.P_STATE.PLAYING || PlayerManager.Instance.pState == PlayerManager.P_STATE.RUNNING)
+            {
+                Debug.LogError("zoooooooooooooooooooo");
+                if (GameManager.Instance.gameState != GameManager.GAMESTATE.WIN)
+                {
+                    // PlayerManager.Instance.isContinueDetect = false;
+                    PlayerManager.Instance.OnPlayerDie();
+                }
+            }
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "GroundPlayer")
+        {
+            if (PlayerManager.Instance.pState == PlayerManager.P_STATE.PLAYING || PlayerManager.Instance.pState == PlayerManager.P_STATE.RUNNING)
+            {
+                Debug.LogError("zoooooooooooooooooooo");
+                if (GameManager.Instance.gameState != GameManager.GAMESTATE.WIN)
+                {
+                    // PlayerManager.Instance.isContinueDetect = false;
+                    PlayerManager.Instance.OnPlayerDie();
+                }
+            }
+        }
     }
 }

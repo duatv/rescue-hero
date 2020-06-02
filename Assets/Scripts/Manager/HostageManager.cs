@@ -55,9 +55,13 @@ public class HostageManager : CharsBase
         StartCoroutine(IEWaitToIdle());
         //saPlayer.AnimationState.SetAnimation(0, str_Win, false);
     }
+    public void PlayDie()
+    {
+        saPlayer.AnimationState.SetAnimation(0, str_Lose, false);
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<PlayerManager>() != null)
+        if (collision.gameObject.tag == "BodyPlayer")
         {
             if (GameManager.Instance.gameState != GameManager.GAMESTATE.LOSE)
             {
@@ -65,6 +69,19 @@ public class HostageManager : CharsBase
                 PlayerManager.Instance.OnPlayAnimOpenChest();
                 PlayerManager.Instance._rig2D.constraints = RigidbodyConstraints2D.FreezePositionX;
                 PlayWin();
+            }
+        }
+        else if(collision.gameObject.tag == Utils.TAG_TRAP)
+        {
+            if (PlayerManager.Instance.pState == PlayerManager.P_STATE.PLAYING || PlayerManager.Instance.pState == PlayerManager.P_STATE.RUNNING)
+            {
+                Debug.LogError("zoooooooooooooooooooo");
+                if (GameManager.Instance.gameState != GameManager.GAMESTATE.WIN)
+                {
+                    // PlayerManager.Instance.isContinueDetect = false;
+                    PlayerManager.Instance.OnPlayerDie();
+                    PlayDie();
+                }
             }
         }
     }

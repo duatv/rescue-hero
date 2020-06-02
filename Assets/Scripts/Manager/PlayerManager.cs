@@ -32,12 +32,12 @@ public class PlayerManager : MonoBehaviour
     public P_STATE pState;
     public Vector2 vJumpHeigh;
 
-    [HideInInspector] public bool isContinueDetect = true;
+    // [HideInInspector] public bool isContinueDetect = true;
     [HideInInspector] public bool beginMove = false;
     private bool isMoveLeft = false;
     private bool isMoveRight = false;
     [HideInInspector] public RaycastHit2D hit2D, hitDown, hitForward;
-    private Vector3 vEnd, vStart, vEndForward, vStartForward;
+    private Vector3 vEnd, vStart;
     private EnemyBase enBase;
     private bool _isCanMoveToTarget;
     Vector3 _vStart, _vEnd;
@@ -100,10 +100,14 @@ public class PlayerManager : MonoBehaviour
     {
         if (pState != P_STATE.DIE && pState != P_STATE.WIN)
         {
-            //vJumpHeigh = new Vector2(saPlayer.skeleton.ScaleX, 2);
-            //_rig2D.AddForce(vJumpHeigh, ForceMode2D.Impulse);
-              _rig2D.velocity = new Vector2(saPlayer.skeleton.ScaleX, 7);
-            //    Debug.LogError("jump:" + saPlayer.skeleton.ScaleX);
+            if (!isJump)
+            {
+                //vJumpHeigh = new Vector2(saPlayer.skeleton.ScaleX, 2);
+                //_rig2D.AddForce(vJumpHeigh, ForceMode2D.Impulse);
+                _rig2D.velocity = new Vector2(saPlayer.skeleton.ScaleX, 5);
+                isJump = true;
+                Debug.LogError("jump:");
+            }
         }
     }
     private void Update()
@@ -146,6 +150,7 @@ public class PlayerManager : MonoBehaviour
             }
             else _isCanMoveToTarget = false;
         }
+        //    Debug.DrawLine(vStart, vEnd, Color.red);
     }
     private void MoveToTarget()
     {
@@ -158,47 +163,60 @@ public class PlayerManager : MonoBehaviour
 
     private void HitDownMapObject()
     {
-        _vStart = new Vector3(transform.localPosition.x, transform.localPosition.y - 1.5f, transform.localPosition.z);
-        _vEnd = new Vector3(_vStart.x, _vStart.y - 0.15f, _vStart.z);
+        _vStart = new Vector2(transform.localPosition.x, transform.localPosition.y - 1.5f);
+        _vEnd = new Vector2(_vStart.x, _vStart.y - 0.15f);
         hitDown = Physics2D.Linecast(_vStart, _vEnd, lmMapObject);
-        Debug.DrawLine(_vStart, _vEnd, Color.green);
+        Debug.DrawLine(_vStart, _vEnd, Color.red);
     }
-
-    private void CheckHitMapAhead()
+    public Transform leftJump, rightJump, ground;
+    Vector2 checkJumpStart, checkJumpEnd;
+    private void CheckVatCan()
     {
-        vStartForward = new Vector3(transform.localPosition.x + saPlayer.skeleton.ScaleX * 0.25f, transform.localPosition.y - 1.5f, transform.localPosition.z);
-        vEndForward = new Vector3(vStartForward.x + saPlayer.skeleton.ScaleX * 0.25f, vStartForward.y, vStartForward.z);
-        //hitDown = Physics2D.Linecast(vStartForward, vEndForward, lmMapObject);
-        Debug.DrawLine(vStartForward, vEndForward, Color.red);
+        checkJumpStart = ground.transform.position;
+        checkJumpEnd = saPlayer.skeleton.ScaleX > 0 ? rightJump.transform.position : leftJump.transform.position;
+        hitForward = Physics2D.Linecast(checkJumpStart, checkJumpEnd, lmMapObject);
+        Debug.DrawLine(checkJumpStart, checkJumpEnd);
     }
+    public bool isJump;
     private void FixedUpdate()
     {
 
         CheckHitAhead();
-        CheckHitMapAhead();
+        CheckVatCan();
         HitDownMapObject();
         if (hitDown.collider != null)
         {
-            if (_isCanMoveToTarget)
-            {
-                if (hitDown.collider.gameObject.tag.Contains(Utils.TAG_WALL_BOTTOM))
-                {
-                    pState = P_STATE.RUNNING;
-                    beginMove = true;
-                    MoveToTarget();
-                }
-            }
-            else if (!_isCanMoveToTarget)
-            {
-                if (hitDown.collider.gameObject.tag.Contains(Utils.TAG_STONE))
-                {
-                    HeroJump();
-                }
-            }
+            if (isJump)
+                isJump = false;
+            // Debug.LogError(hitDown.collider.tag);
+            //if (_isCanMoveToTarget)
+            //{
+            //    if (hitDown.collider.gameObject.tag == Utils.TAG_WALL_BOTTOM)
+            //    {
+            //        pState = P_STATE.RUNNING;
+            //        beginMove = true;
+            //        MoveToTarget();
+            //    }
+            //}
         }
-        else
+        //else
+        //{
+        //    beginMove = false;
+        //}
+        if (hitForward.collider != null)
         {
-            beginMove = false;
+            //if (!_isCanMoveToTarget)
+            //{
+            //if (hitForward.collider.gameObject.tag == Utils.TAG_STONE)
+            //{
+            if (hitForward.collider.gameObject.tag != "Wall_Bottom")
+            {
+                HeroJump();
+                Debug.LogError(hitForward.collider.name);
+            }
+
+            // }
+            //}
         }
 
         if (!IsCanMove()) _rig2D.velocity = Vector2.zero;
@@ -219,23 +237,31 @@ public class PlayerManager : MonoBehaviour
         return pState != P_STATE.DIE || pState != P_STATE.WIN;
     }
     #region Player movement
+    Vector2 movement;
     private void MoveLeft()
     {
         if (pState != P_STATE.DIE)
         {
-            _rig2D.velocity = Vector2.left * moveSpeed;
+            movement = Vector2.left * moveSpeed;
+            _rig2D.velocity = new Vector2(movement.x, _rig2D.velocity.y);
             PlayAnim(isTakeSword ? str_MoveWithSword : str_Move, true);
         }
         else _rig2D.velocity = Vector2.zero;
+
+
+        Debug.LogError("moveleft");
     }
     public void MoveRight()
     {
         if (pState != P_STATE.DIE)
         {
-            _rig2D.velocity = Vector2.right * moveSpeed;
+            movement = Vector2.right * moveSpeed;
+            _rig2D.velocity = new Vector2(movement.x, _rig2D.velocity.y);
             PlayAnim(isTakeSword ? str_MoveWithSword : str_Move, true);
         }
         else _rig2D.velocity = Vector2.zero;
+
+        Debug.LogError("moveright");
     }
 
     public void PrepareMoveLeft()
@@ -369,6 +395,7 @@ public class PlayerManager : MonoBehaviour
             pState = P_STATE.DIE;
             GameManager.Instance.gameState = GameManager.GAMESTATE.LOSE;
             _rig2D.velocity = Vector2.zero;
+            _rig2D.constraints = RigidbodyConstraints2D.FreezePosition;
             PlayAnim(str_idle, true);
             StartCoroutine(IEWait());
         }
@@ -389,59 +416,61 @@ public class PlayerManager : MonoBehaviour
 
     #endregion
     #region Collision
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (pState == P_STATE.PLAYING || pState == P_STATE.RUNNING)
-        {
-            if ((isContinueDetect && collision.gameObject.name.Contains("Lava_Pr") && collision.gameObject.tag.Contains(Utils.TAG_TRAP)) || (isContinueDetect && collision.gameObject.tag.Contains(Utils.TAG_TRAP)))
-            {
-                if (GameManager.Instance.gameState != GameManager.GAMESTATE.WIN)
-                {
-                    isContinueDetect = false;
-                    OnPlayerDie();
-                }
-            }
-            if (isContinueDetect && collision.gameObject.tag.Contains(Utils.TAG_WIN))
-            {
-                _rig2D.velocity = Vector2.zero;
-                beginMove = false;
-                if (GameManager.Instance.gameState != GameManager.GAMESTATE.LOSE)
-                    OnWin();
-            }
-        }
-    }
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (pState == P_STATE.PLAYING || pState == P_STATE.RUNNING)
+    //    {
+    //        if (isContinueDetect && collision.gameObject.tag == Utils.TAG_TRAP)
+    //        {
+    //            if (GameManager.Instance.gameState != GameManager.GAMESTATE.WIN)
+    //            {
+    //                isContinueDetect = false;
+    //                OnPlayerDie();
+    //            }
+    //        }
+    //        if (isContinueDetect && collision.gameObject.tag == Utils.TAG_WIN)
+    //        {
+    //            _rig2D.velocity = Vector2.zero;
+    //            beginMove = false;
+    //            if (GameManager.Instance.gameState != GameManager.GAMESTATE.LOSE)
+    //                OnWin();
+    //        }
+    //    }
+    //}
 
     public void OnWin()
     {
         GameManager.Instance.gameState = GameManager.GAMESTATE.WIN;
         pState = P_STATE.WIN;
         _rig2D.velocity = Vector2.zero;
+        _rig2D.constraints = RigidbodyConstraints2D.FreezePosition;
         beginMove = false;
         PlayAnim(isTakeSword ? str_OpenWithSword : str_OpenWithoutSword, false);
         GameManager.Instance.ShowWinPanel();
     }
 
-    public void OnPlayAnimOpenChest() {
+    public void OnPlayAnimOpenChest()
+    {
         beginMove = false;
         PlayAnim(isTakeSword ? str_OpenWithSword : str_OpenWithoutSword, false);
     }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (pState == P_STATE.PLAYING || pState == P_STATE.RUNNING)
-        {
-            if (collision.gameObject.tag.Contains(Utils.TAG_STICKBARRIE))
-            {
-                if (hitDown.collider != null)
-                    if (hitDown.collider.gameObject.tag.Contains(Utils.TAG_WALL_BOTTOM))
-                        OnBeginRun();
-            }
-        }
-    }
+    //private void OnTriggerExit2D(Collider2D collision)
+    //{
+    //    if (pState == P_STATE.PLAYING || pState == P_STATE.RUNNING)
+    //    {
+    //        if (collision.gameObject.tag.Contains(Utils.TAG_STICKBARRIE))
+    //        {
+    //            if (hitDown.collider != null)
+    //                if (hitDown.collider.gameObject.tag.Contains(Utils.TAG_WALL_BOTTOM))
+    //                    OnBeginRun();
+    //        }
+    //    }
+    //}
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (pState == P_STATE.PLAYING || pState == P_STATE.RUNNING)
         {
-            if (collision.gameObject.tag.Contains(Utils.TAG_STICKBARRIE))
+            if (collision.gameObject.tag == Utils.TAG_STICKBARRIE)
             {
                 OnBeginRun();
             }

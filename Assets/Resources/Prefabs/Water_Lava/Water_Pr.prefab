@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2274670546303217500}
   - component: {fileID: 8919490622328166327}
-  m_Layer: 14
+  m_Layer: 4
   m_Name: waterSp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4938757346899956422}
   - component: {fileID: 1390498794208988341}
-  m_Layer: 4
+  m_Layer: 9
   m_Name: stoneSp
   m_TagString: Tag_Stone
   m_Icon: {fileID: 0}
@@ -175,7 +175,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 5976190729354532743}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: b0a58d042ab47e4459e8de12a0bf051f, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -196,9 +196,9 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0
+  m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: b0a58d042ab47e4459e8de12a0bf051f, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -223,7 +223,6 @@ MonoBehaviour:
   rid: {fileID: 5976190729354532741}
   activeChangeStone: 0
   stone: {fileID: 5637273966240951081}
-  check: {fileID: 6006918280067312736}
 --- !u!1 &6006918280067312736
 GameObject:
   m_ObjectHideFlags: 0
@@ -281,7 +280,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4113273517870105180}
   - component: {fileID: 2287227739053483902}
-  m_Layer: 4
+  m_Layer: 9
   m_Name: New Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

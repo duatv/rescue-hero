@@ -20,10 +20,11 @@ public class Gems : Unit
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name.Contains("Lava_Pr"))
+        if (collision.gameObject.tag == "Trap_Lava")
         {
+
             if (GameManager.Instance.lstAllGems.Contains(this))
             {
                 GameManager.Instance.lstAllGems.Remove(this);
@@ -33,34 +34,31 @@ public class Gems : Unit
                 }
             }
 
-            if (PlayerManager.Instance != null)
-            {
-                if (PlayerManager.Instance.isContinueDetect)
+            //if (PlayerManager.Instance.isContinueDetect)
+            //{
+                if (GameManager.Instance.gameState != GameManager.GAMESTATE.WIN)
                 {
-                    if (GameManager.Instance.gameState != GameManager.GAMESTATE.WIN)
+                    if (GameManager.Instance.isNotEnoughGems)
                     {
-                        if (GameManager.Instance.isNotEnoughGems)
-                        {
-                            PlayerManager.Instance.isContinueDetect = false;
-                            PlayerManager.Instance.OnPlayerDie();
-                        }
+                       // PlayerManager.Instance.isContinueDetect = false;
+                        PlayerManager.Instance.OnPlayerDie();
+                      //  Debug.LogError("yahhhhhhhhh");
                     }
                 }
-            }
+          //  }
             gameObject.layer = 0;
-          //  gameObject.SetActive(false);
+            gameObject.SetActive(false);
         }
-        if (collision.gameObject.GetComponent<PlayerManager>() != null)
+        if (collision.gameObject.tag == "BodyPlayer")
         {
-
             if (GameManager.Instance.gameState != GameManager.GAMESTATE.LOSE || GameManager.Instance.gameState != GameManager.GAMESTATE.WIN)
             {
-                if (PlayerManager.Instance.isContinueDetect)
-                {
+                //if (PlayerManager.Instance.isContinueDetect)
+                //{
                     GameManager.Instance.gameState = GameManager.GAMESTATE.WIN;
-                    collision.gameObject.GetComponent<PlayerManager>().OnWin();
-                    PlayerManager.Instance.isContinueDetect = false;
-                }
+                    PlayerManager.Instance.OnWin();
+                //    PlayerManager.Instance.isContinueDetect = false;
+                //}
             }
         }
     }

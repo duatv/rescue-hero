@@ -12,6 +12,7 @@ TagManager:
   - Wall_Bottom
   - Water
   - Sword
+  - BodyPlayer
   layers:
   - Default
   - TransparentFX
@@ -34,7 +35,7 @@ TagManager:
   - MainUI
   - Rope
   - Sword
-  - 
+  - DetectedGem
   - 
   - 
   - 

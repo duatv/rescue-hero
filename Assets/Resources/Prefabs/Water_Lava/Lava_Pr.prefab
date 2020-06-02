@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5552368966479890855}
   - component: {fileID: 9139892426197873216}
-  m_Layer: 4
+  m_Layer: 9
   m_Name: stoneSp (1)
   m_TagString: Tag_Stone
   m_Icon: {fileID: 0}
@@ -139,7 +139,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6478306540696270007}
   - component: {fileID: 610360247622964070}
-  m_Layer: 4
+  m_Layer: 9
   m_Name: New Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -221,7 +221,7 @@ GameObject:
   - component: {fileID: 2780356263271940767}
   - component: {fileID: 6877743566754429295}
   - component: {fileID: 1603180062447939615}
-  m_Layer: 4
+  m_Layer: 14
   m_Name: check (1)
   m_TagString: Trap_Lava
   m_Icon: {fileID: 0}
@@ -318,7 +318,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 5976190729354532743}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: b0a58d042ab47e4459e8de12a0bf051f, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -341,7 +341,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: b0a58d042ab47e4459e8de12a0bf051f, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0

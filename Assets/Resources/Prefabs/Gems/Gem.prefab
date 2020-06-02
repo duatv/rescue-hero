@@ -125,8 +125,11 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 9e9d5d67b9cc5d545a86d38e4b3250b7, type: 3}
   _spawnType: 3
   effect: {fileID: 0}
+  effect2: {fileID: 0}
   sp: {fileID: 2136656365759674112}
   rid: {fileID: 50804008356172700}
+  activeChangeStone: 0
+  stone: {fileID: 0}
 --- !u!58 &-72706679941203493
 CircleCollider2D:
   m_ObjectHideFlags: 0
