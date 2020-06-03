@@ -6,7 +6,7 @@ public class SpawnObject : MonoBehaviour
 {
     public List<Unit> gGems;
     public MapLevelManager.SPAWNTYPE _spawnType;
-    [Range(10, 100)]
+    [Range(10, 15)]
     public int totalGems;
     public Unit gInstantiate;
     public bool loadObjectChild;

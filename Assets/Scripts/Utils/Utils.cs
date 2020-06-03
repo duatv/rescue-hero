@@ -33,9 +33,10 @@ public class Utils
     public const string KEY_SKIN_SWORD = GAME_KEY + ".skin.hero.sword";
 
     public const string TAG_STICKBARRIE = "StickBarrie";
-    public const string TAG_TRAP = "Trap_Lava";
+    public const string TAG_LAVA = "Trap_Lava";
     public const string TAG_WIN = "Tag_Win";
     public const string TAG_STONE = "Tag_Stone";
+    public const string TAG_CHEST = "Chest";
     public const string TAG_WALL_BOTTOM = "Wall_Bottom";
     public const string TAG_SWORD = "Sword";
 

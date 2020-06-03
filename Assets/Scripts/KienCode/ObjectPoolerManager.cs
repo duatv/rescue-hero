@@ -42,7 +42,7 @@ public class ObjectPoolerManager : MonoBehaviour
             effectWaterFirePooler = go.AddComponent<ObjectPooler>();
             effectWaterFirePooler.PooledObject = effectWaterFirePrefab;
             go.transform.parent = this.gameObject.transform;
-            effectWaterFirePooler.Initialize(50);
+            effectWaterFirePooler.Initialize(30);
             AllPool.Add(effectWaterFirePooler);
         }
 

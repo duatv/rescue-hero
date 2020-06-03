@@ -123,34 +123,14 @@ public class PlayerManager : MonoBehaviour
 
     }
 
-    private void CheckHitAhead()
+    private void CheckStickBarrier()
     {
-        vStart = new Vector3(transform.localPosition.x + saPlayer.skeleton.ScaleX * 0.35f, transform.localPosition.y - 1.5f, transform.localPosition.z);
-        vEnd = new Vector3(vStart.x + saPlayer.skeleton.ScaleX * 2f, vStart.y, vStart.z);
+        if (pState == P_STATE.DIE)
+            return;
+        vStart = body.position;
+        vEnd = saPlayer.skeleton.ScaleX > 0 ? rightCheckStick.transform.position : leftCheckStick.transform.position;
         hit2D = Physics2D.Linecast(vStart, vEnd, lmColl);
-        if (hit2D.collider != null)
-        {
-            if (hit2D.collider.gameObject.GetComponent<Chest>() != null)
-            {
-                _isCanMoveToTarget = true;
-            }
-            else if (hit2D.collider.gameObject.GetComponent<HostageManager>() != null)
-            {
-                HostageManager _hm = hit2D.collider.gameObject.GetComponent<HostageManager>();
-                if (_hm._charStage == CharsBase.CHAR_STATE.DIE) _isCanMoveToTarget = false;
-
-                else
-                {
-                    _isCanMoveToTarget = true;
-                }
-            }
-            else if (hit2D.collider.gameObject.GetComponent<StickBarrier>() != null)
-            {
-                _isCanMoveToTarget = false;
-            }
-            else _isCanMoveToTarget = false;
-        }
-        //    Debug.DrawLine(vStart, vEnd, Color.red);
+        Debug.DrawLine(vStart, vEnd, Color.yellow);
     }
     private void MoveToTarget()
     {
@@ -163,15 +143,20 @@ public class PlayerManager : MonoBehaviour
 
     private void HitDownMapObject()
     {
+        if (pState == P_STATE.DIE)
+            return;
         _vStart = ground.transform.position;
         _vEnd = new Vector2(_vStart.x, _vStart.y - 0.15f);
         hitDown = Physics2D.Linecast(_vStart, _vEnd, lmMapObject);
         Debug.DrawLine(_vStart, _vEnd, Color.red);
     }
-    public Transform leftJump, rightJump, ground;
+    public Transform leftCheckStick, rightCheckStick;
+    public Transform leftJump, rightJump, ground,body;
     Vector2 checkJumpStart, checkJumpEnd;
     private void CheckVatCan()
     {
+        if (pState == P_STATE.DIE)
+            return;
         checkJumpStart = ground.transform.position;
         checkJumpEnd = saPlayer.skeleton.ScaleX > 0 ? rightJump.transform.position : leftJump.transform.position;
         hitForward = Physics2D.Linecast(checkJumpStart, checkJumpEnd, lmMapObject);
@@ -181,7 +166,7 @@ public class PlayerManager : MonoBehaviour
     private void FixedUpdate()
     {
 
-        CheckHitAhead();
+        CheckStickBarrier();
         CheckVatCan();
         HitDownMapObject();
         if (hitDown.collider != null)
@@ -241,6 +226,12 @@ public class PlayerManager : MonoBehaviour
     Vector2 movement;
     private void MoveLeft()
     {
+        if (hit2D.collider != null)
+        {
+            _rig2D.velocity = Vector2.zero;
+            return;
+        }
+
         if (pState != P_STATE.DIE)
         {
             movement = Vector2.left * moveSpeed;
@@ -254,6 +245,11 @@ public class PlayerManager : MonoBehaviour
     }
     public void MoveRight()
     {
+        if (hit2D.collider != null)
+        {
+            _rig2D.velocity = Vector2.zero;
+            return;
+        }
         if (pState != P_STATE.DIE)
         {
             movement = Vector2.right * moveSpeed;
@@ -265,36 +261,40 @@ public class PlayerManager : MonoBehaviour
         //  Debug.LogError("moveright");
     }
 
-    public void PrepareMoveLeft()
-    {
-        if (pState != P_STATE.DIE && pState != P_STATE.WIN)
-        {
-            if (!beginMove)
-            {
-                pState = P_STATE.RUNNING;
-                beginMove = true;
-                saPlayer.skeleton.ScaleX = -1;
-                isMoveLeft = true;
-                isMoveRight = false;
-                PlayAnim(isTakeSword ? str_MoveWithSword : str_Move, true);
-            }
-        }
-    }
-    public void PrepareMoveRight()
-    {
-        if (pState != P_STATE.DIE && pState != P_STATE.WIN)
-        {
-            if (!beginMove)
-            {
-                pState = P_STATE.RUNNING;
-                beginMove = true;
-                saPlayer.skeleton.ScaleX = 1;
-                isMoveLeft = false;
-                isMoveRight = true;
-                PlayAnim(isTakeSword ? str_MoveWithSword : str_Move, true);
-            }
-        }
-    }
+    //public void PrepareMoveLeft()
+    //{
+    //    if (pState != P_STATE.DIE && pState != P_STATE.WIN)
+    //    {
+    //        if (!beginMove)
+    //        {
+    //            pState = P_STATE.RUNNING;
+    //            beginMove = true;
+    //            //saPlayer.skeleton.ScaleX = -1;
+    //            //isMoveLeft = true;
+    //            //isMoveRight = false;
+    //            PlayAnim(isTakeSword ? str_MoveWithSword : str_Move, true);
+
+    //            Debug.LogError("dectect left");
+    //        }
+    //    }
+    //}
+    //public void PrepareMoveRight()
+    //{
+    //    if (pState != P_STATE.DIE && pState != P_STATE.WIN)
+    //    {
+    //        if (!beginMove)
+    //        {
+    //            pState = P_STATE.RUNNING;
+    //            beginMove = true;
+    //            //saPlayer.skeleton.ScaleX = 1;
+    //            //isMoveLeft = false;
+    //            //isMoveRight = true;
+    //            PlayAnim(isTakeSword ? str_MoveWithSword : str_Move, true);
+
+    //            Debug.LogError("dectect right");
+    //        }
+    //    }
+    //}
     //public void PrepareRotate_(Transform _trTarget, bool rotateOnly)
     //{
     //    if (pState != P_STATE.DIE && pState != P_STATE.WIN)
@@ -322,16 +322,20 @@ public class PlayerManager : MonoBehaviour
                 if (transform.localPosition.x > _trTarget.localPosition.x)
                 {
                     saPlayer.skeleton.ScaleX = -1;
-                    PrepareMoveLeft();
+                  //  PrepareMoveLeft();
                     isMoveLeft = true;
                     isMoveRight = false;
+
+                    Debug.LogError("=====dectect left");
                 }
                 else
                 {
                     saPlayer.skeleton.ScaleX = 1;
                     isMoveLeft = false;
                     isMoveRight = true;
-                    //PrepareMoveRight();
+                   // PrepareMoveRight();
+
+                    Debug.LogError("=====dectect right");
                 }
             }
         }
@@ -396,7 +400,9 @@ public class PlayerManager : MonoBehaviour
             pState = P_STATE.DIE;
             GameManager.Instance.gameState = GameManager.GAMESTATE.LOSE;
             _rig2D.velocity = Vector2.zero;
-            _rig2D.constraints = RigidbodyConstraints2D.FreezePosition;
+            _rig2D.constraints = RigidbodyConstraints2D.FreezePositionX;
+            transform.rotation = Quaternion.identity;
+            _rig2D.constraints = RigidbodyConstraints2D.FreezeRotation;
             PlayAnim(str_idle, true);
             StartCoroutine(IEWait());
         }
@@ -444,7 +450,10 @@ public class PlayerManager : MonoBehaviour
         GameManager.Instance.gameState = GameManager.GAMESTATE.WIN;
         pState = P_STATE.WIN;
         _rig2D.velocity = Vector2.zero;
-        _rig2D.constraints = RigidbodyConstraints2D.FreezePosition;
+        _rig2D.constraints = RigidbodyConstraints2D.FreezePositionX;
+        transform.rotation = Quaternion.identity;
+        _rig2D.constraints = RigidbodyConstraints2D.FreezeRotation;
+
         beginMove = false;
         PlayAnim(isTakeSword ? str_OpenWithSword : str_OpenWithoutSword, false);
         GameManager.Instance.ShowWinPanel();

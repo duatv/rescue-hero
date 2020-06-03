@@ -71,7 +71,7 @@ public class HostageManager : CharsBase
                 PlayWin();
             }
         }
-        else if(collision.gameObject.tag == Utils.TAG_TRAP)
+        else if(collision.gameObject.tag == Utils.TAG_LAVA)
         {
             if (PlayerManager.Instance.pState == PlayerManager.P_STATE.PLAYING || PlayerManager.Instance.pState == PlayerManager.P_STATE.RUNNING)
             {

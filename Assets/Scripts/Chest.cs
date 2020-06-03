@@ -33,36 +33,59 @@ public class Chest : MonoBehaviour
             }
         };
     }
-
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<PlayerManager>() != null)
-        {
-            if ((int)rig2d.velocity.y == 0)
-            {
-                if (GameManager.Instance.gameState != GameManager.GAMESTATE.LOSE)
-                {
-                    GameManager.Instance.gameState = GameManager.GAMESTATE.WIN;
-                    PlayerManager.Instance.OnPlayAnimOpenChest();
-                    PlayerManager.Instance._rig2D.constraints = RigidbodyConstraints2D.FreezePositionX;
-                    if (SoundManager.Instance != null)
-                    {
-                        SoundManager.Instance.PlaySound(SoundManager.Instance.acOpenChest);
-                    }
-                    StartCoroutine(IEOpenChest());
-                }
-            }
-        }
-
-        if (collision.gameObject.name.Contains("Lava_Pr"))
+        if (collision.gameObject.tag == Utils.TAG_LAVA)
         {
             if (!hasDetect)
             {
-                PlayerManager.Instance.OnPlayerDie();
+                if (PlayerManager.Instance.pState == PlayerManager.P_STATE.PLAYING || PlayerManager.Instance.pState == PlayerManager.P_STATE.RUNNING)
+                {
+                    Debug.LogError("zoooooooooooooooooooo");
+                    if (GameManager.Instance.gameState != GameManager.GAMESTATE.WIN)
+                    {
+                        // PlayerManager.Instance.isContinueDetect = false;
+                        PlayerManager.Instance.OnPlayerDie();
+                    }
+                }
             }
             hasDetect = true;
         }
+        if (collision.gameObject.tag == "BodyPlayer")
+        {
+            if (GameManager.Instance.gameState != GameManager.GAMESTATE.LOSE)
+            {
+                GameManager.Instance.gameState = GameManager.GAMESTATE.WIN;
+                PlayerManager.Instance.OnPlayAnimOpenChest();
+                PlayerManager.Instance._rig2D.constraints = RigidbodyConstraints2D.FreezePosition;
+                if (SoundManager.Instance != null)
+                {
+                    SoundManager.Instance.PlaySound(SoundManager.Instance.acOpenChest);
+                }
+                StartCoroutine(IEOpenChest());
+            }
+        }
     }
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if (collision.gameObject.GetComponent<PlayerManager>() != null)
+    //    {
+    //        if ((int)rig2d.velocity.y == 0)
+    //        {
+    //            if (GameManager.Instance.gameState != GameManager.GAMESTATE.LOSE)
+    //            {
+    //                GameManager.Instance.gameState = GameManager.GAMESTATE.WIN;
+    //                PlayerManager.Instance.OnPlayAnimOpenChest();
+    //                PlayerManager.Instance._rig2D.constraints = RigidbodyConstraints2D.FreezePosition;
+    //                if (SoundManager.Instance != null)
+    //                {
+    //                    SoundManager.Instance.PlaySound(SoundManager.Instance.acOpenChest);
+    //                }
+    //                StartCoroutine(IEOpenChest());
+    //            }
+    //        }
+    //    }
+    //}
 
     IEnumerator IEOpenChest()
     {

@@ -67,7 +67,7 @@ public class CharsBase : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (isContinueDetect && collision.gameObject.name.Contains("Lava_Pr") && collision.gameObject.tag.Contains(Utils.TAG_TRAP))
+        if (isContinueDetect && collision.gameObject.name.Contains("Lava_Pr") && collision.gameObject.tag.Contains(Utils.TAG_LAVA))
         {
             OnDie_();
         }

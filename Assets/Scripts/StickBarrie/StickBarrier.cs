@@ -50,8 +50,11 @@ public class StickBarrier : MonoBehaviour
 
     private void OnBecameInvisible()
     {
-        hasBlockGems = false;
-        gameObject.SetActive(false);
+        if (GameManager.Instance.gameState == GameManager.GAMESTATE.PLAYING)
+        {
+            hasBlockGems = false;
+            gameObject.SetActive(false);
+        }
     //    Debug.LogError("zoooooooooooooooo");
     }
 

@@ -60,7 +60,7 @@ public class EnemyBase : MonoBehaviour
             saPlayer.AnimationState.SetAnimation(0, anim_, isLoop);
         }
     }
-    
+
     public virtual void Start()
     {
         if (MapLevelManager.Instance != null)
@@ -319,21 +319,21 @@ public class EnemyBase : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (_charStage == CHAR_STATE.PLAYING)
-        {
-            if (isContinueDetect && collision.gameObject.name.Contains("Lava_Pr") && collision.gameObject.tag.Contains(Utils.TAG_TRAP))
-            {
-                OnDie_();
-            }
-        }
-    }
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if (_charStage == CHAR_STATE.PLAYING)
+    //    {
+    //        if (/*isContinueDetect && */collision.gameObject.tag == Utils.TAG_LAVA)
+    //        {
+    //            OnDie_();
+    //        }
+    //    }
+    //}
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (_charStage == CHAR_STATE.PLAYING)
         {
-            if (isContinueDetect && collision.gameObject.tag.Contains(Utils.TAG_TRAP))
+            if (/*isContinueDetect && */collision.gameObject.tag == Utils.TAG_LAVA)
             {
                 OnDie_();
             }

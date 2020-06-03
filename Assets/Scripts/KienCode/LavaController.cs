@@ -17,7 +17,7 @@ public class LavaController : Unit
         {
             if (PlayerManager.Instance.pState == PlayerManager.P_STATE.PLAYING || PlayerManager.Instance.pState == PlayerManager.P_STATE.RUNNING)
             {
-                Debug.LogError("zoooooooooooooooooooo");
+              //  Debug.LogError("zoooooooooooooooooooo");
                 if (GameManager.Instance.gameState != GameManager.GAMESTATE.WIN)
                 {
                     // PlayerManager.Instance.isContinueDetect = false;
@@ -32,7 +32,7 @@ public class LavaController : Unit
         {
             if (PlayerManager.Instance.pState == PlayerManager.P_STATE.PLAYING || PlayerManager.Instance.pState == PlayerManager.P_STATE.RUNNING)
             {
-                Debug.LogError("zoooooooooooooooooooo");
+              //  Debug.LogError("zoooooooooooooooooooo");
                 if (GameManager.Instance.gameState != GameManager.GAMESTATE.WIN)
                 {
                     // PlayerManager.Instance.isContinueDetect = false;

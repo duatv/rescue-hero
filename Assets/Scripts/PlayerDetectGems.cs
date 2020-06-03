@@ -10,13 +10,13 @@ public class PlayerDetectGems : MonoBehaviour
     private bool isDetect = false;
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.tag.Contains(Utils.TAG_SWORD))
+        if (collision.gameObject.tag == Utils.TAG_SWORD)
         {
             if (!pManager.isTakeSword)
                 pManager.PrepareRotate(collision.transform, false);
         }
 
-        if (collision.gameObject.tag.Contains(Utils.TAG_WIN))
+        if (collision.gameObject.tag == Utils.TAG_WIN)
         {
             if (gTarget == null)
             {
@@ -37,7 +37,8 @@ public class PlayerDetectGems : MonoBehaviour
         }
         if (collision.gameObject.GetComponent<Chest>() != null)
         {
-            if (!pManager.beginMove) {
+            if (!pManager.beginMove)
+            {
                 if (pManager.hitDown.collider != null)
                 {
                     pManager.PrepareRotate(collision.transform, false);

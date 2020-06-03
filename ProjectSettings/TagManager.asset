@@ -15,6 +15,7 @@ TagManager:
   - BodyPlayer
   - GroundPlayer
   - Chan
+  - Chest
   layers:
   - Default
   - TransparentFX
@@ -38,7 +39,7 @@ TagManager:
   - Rope
   - Sword
   - DetectedGem
-  - 
+  - GroundPlayer
   - 
   - 
   - 
