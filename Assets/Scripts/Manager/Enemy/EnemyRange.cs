@@ -13,10 +13,10 @@ public class EnemyRange : EnemyBase
     }
 
     // Update is called once per frame
-    override public void Update()
-    {
-        base.Update();
-    }
+    //override public void Update()
+    //{
+    //    base.Update();
+    //}
 }
 //#region Editor Mode
 //#if UNITY_EDITOR

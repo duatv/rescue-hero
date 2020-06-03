@@ -15,6 +15,7 @@ public class WaterCollison : Unit
         else if(collision.tag == "Tag_Stone")
         {
             ChangeStone();
+          //  Debug.LogError("utwwtwtaf");
         }
     }
 }

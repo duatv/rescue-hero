@@ -8,7 +8,9 @@ using UnityEditor;
 public class MapLevelManager : MonoBehaviour
 {
     public SpawnObject lavaObj, waterObj;
-  
+    public GameObject BarrierParent;
+    public bool loadListStick;
+
     public enum SPAWNTYPE { WATER, LAVA, STONE, GEMS }
     public enum QUEST_TYPE { NONE, COLLECT, KILL, SAVE_HOSTAGE, OPEN_CHEST, ALL }
     public static MapLevelManager Instance;
@@ -24,13 +26,29 @@ public class MapLevelManager : MonoBehaviour
     //[HideInInspector]
     public Transform trChest;
 
-    // public Dictionary<string, GameObject> dAllStone = new Dictionary<string, GameObject>();
-    public List<EnemyBase> lstAllEnemies = new List<EnemyBase>();
     public List<StickBarrier> lstAllStick = new List<StickBarrier>();
-
+    public List<EnemyBase> lstAllEnemies = new List<EnemyBase>();
     private void Awake()
     {
         Instance = this;
+    }
+    private void OnValidate()
+    {
+        if (!loadListStick)
+        {
+
+            StickBarrier[] stick = GetComponentsInChildren<StickBarrier>();
+            for (int i = 0; i < stick.Length; i++)
+            {
+                if (stick[i].key && !lstAllStick.Contains(stick[i]))
+                {
+                    lstAllStick.Add(stick[i]);
+                }
+            }
+            loadListStick = true;
+
+            Debug.LogError("chay vao day");
+        }
     }
     private void Start()
     {
@@ -46,6 +64,12 @@ public class MapLevelManager : MonoBehaviour
 
         if (GameManager.Instance != null)
         {
+            if (GameManager.Instance.isTest)
+            {
+                GameManager.Instance.mapLevel = this;
+                if (lstAllStick.Count > 0)
+                    GameManager.Instance.playerMove = true;
+            }
             GameManager.Instance.OnInitQuestText(questType);
         }
     }

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2274670546303217500}
   - component: {fileID: 8919490622328166327}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: waterSp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,8 +26,9 @@ Transform:
   m_GameObject: {fileID: 3617958570081448915}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.04, y: 0.04, z: 1}
-  m_Children: []
+  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
+  m_Children:
+  - {fileID: 4057833613252990760}
   m_Father: {fileID: 5976190729354532740}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -90,7 +91,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4938757346899956422}
-  - component: {fileID: 1390498794208988341}
+  - component: {fileID: 1841490849147834100}
   m_Layer: 9
   m_Name: stoneSp
   m_TagString: Tag_Stone
@@ -113,7 +114,7 @@ Transform:
   m_Father: {fileID: 5976190729354532740}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &1390498794208988341
+--- !u!58 &1841490849147834100
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -128,7 +129,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.03
+  m_Radius: 0.055
 --- !u!1 &5976190729354532743
 GameObject:
   m_ObjectHideFlags: 0
@@ -138,10 +139,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5976190729354532740}
-  - component: {fileID: 5976190729354532738}
   - component: {fileID: 5976190729354532741}
   - component: {fileID: 2747999264892075429}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: Water_Pr
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -157,31 +157,15 @@ Transform:
   m_GameObject: {fileID: 5976190729354532743}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.17, y: 2.5, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2274670546303217500}
+  - {fileID: 5838954464596017636}
   - {fileID: 1475645811937570912}
-  - {fileID: 4057833613252990760}
   - {fileID: 4938757346899956422}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &5976190729354532738
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5976190729354532743}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: b0a58d042ab47e4459e8de12a0bf051f, type: 2}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.02
 --- !u!50 &5976190729354532741
 Rigidbody2D:
   serializedVersion: 4
@@ -223,7 +207,8 @@ MonoBehaviour:
   rid: {fileID: 5976190729354532741}
   activeChangeStone: 0
   stone: {fileID: 5637273966240951081}
-  check: {fileID: 0}
+  check: {fileID: 6006918280067312736}
+  colliderBegin: {fileID: 6669283075457319964}
 --- !u!1 &6006918280067312736
 GameObject:
   m_ObjectHideFlags: 0
@@ -234,9 +219,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1475645811937570912}
   - component: {fileID: 7097325979928787991}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: check
-  m_TagString: Water
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -253,7 +238,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5976190729354532740}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &7097325979928787991
 CircleCollider2D:
@@ -270,7 +255,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.025
+  m_Radius: 0.055
 --- !u!1 &6412819087578090121
 GameObject:
   m_ObjectHideFlags: 0
@@ -281,7 +266,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4113273517870105180}
   - component: {fileID: 2287227739053483902}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: New Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -297,7 +282,7 @@ Transform:
   m_GameObject: {fileID: 6412819087578090121}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.15, y: 0.15, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_Children: []
   m_Father: {fileID: 4938757346899956422}
   m_RootOrder: 0
@@ -352,12 +337,59 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &6669283075457319964
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5838954464596017636}
+  - component: {fileID: 3300034760719699739}
+  m_Layer: 4
+  m_Name: colliderBegin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5838954464596017636
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6669283075457319964}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5976190729354532740}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &3300034760719699739
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6669283075457319964}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: b0a58d042ab47e4459e8de12a0bf051f, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.05
 --- !u!1001 &2229879988989840020
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 5976190729354532740}
+    m_TransformParent: {fileID: 2274670546303217500}
     m_Modifications:
     - target: {fileID: 2783913023325625788, guid: 72308542ef2c2fc4e95658c941c6e8ab,
         type: 3}
@@ -377,7 +409,7 @@ PrefabInstance:
     - target: {fileID: 2783913023325625788, guid: 72308542ef2c2fc4e95658c941c6e8ab,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.7071068
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2783913023325625788, guid: 72308542ef2c2fc4e95658c941c6e8ab,
         type: 3}
@@ -392,17 +424,17 @@ PrefabInstance:
     - target: {fileID: 2783913023325625788, guid: 72308542ef2c2fc4e95658c941c6e8ab,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2783913023325625788, guid: 72308542ef2c2fc4e95658c941c6e8ab,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2783913023325625788, guid: 72308542ef2c2fc4e95658c941c6e8ab,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -90
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2783913023325625788, guid: 72308542ef2c2fc4e95658c941c6e8ab,
         type: 3}
@@ -413,6 +445,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2783913023325625788, guid: 72308542ef2c2fc4e95658c941c6e8ab,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2783913023325625788, guid: 72308542ef2c2fc4e95658c941c6e8ab,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2783913023325625791, guid: 72308542ef2c2fc4e95658c941c6e8ab,
         type: 3}

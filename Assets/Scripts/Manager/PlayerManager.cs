@@ -22,7 +22,6 @@ public class PlayerManager : MonoBehaviour
     public string str_idle, str_Win, str_Lose, str_Move, str_Att, str_TakeSword, str_OpenWithoutSword, str_OpenWithSword, str_MoveWithSword, str_Blink;
     [SpineSkin]
     public string skinDefault, skinSword;
-    public PlayerDetectGems _detectGems;
     public Transform trSword, trSwordPos;
     public bool isTakeSword;
     public LayerMask lmColl, lmMapObject;
@@ -34,8 +33,8 @@ public class PlayerManager : MonoBehaviour
 
     // [HideInInspector] public bool isContinueDetect = true;
     [HideInInspector] public bool beginMove = false;
-    private bool isMoveLeft = false;
-    private bool isMoveRight = false;
+    public bool isMoveLeft = false;
+    public bool isMoveRight = false;
     [HideInInspector] public RaycastHit2D hit2D, hitDown, hitForward;
     private Vector3 vEnd, vStart;
     private EnemyBase enBase;
@@ -151,7 +150,7 @@ public class PlayerManager : MonoBehaviour
         Debug.DrawLine(_vStart, _vEnd, Color.red);
     }
     public Transform leftCheckStick, rightCheckStick;
-    public Transform leftJump, rightJump, ground,body;
+    public Transform leftJump, rightJump, ground, body;
     Vector2 checkJumpStart, checkJumpEnd;
     private void CheckVatCan()
     {
@@ -165,7 +164,8 @@ public class PlayerManager : MonoBehaviour
     public bool isJump;
     private void FixedUpdate()
     {
-
+        if (!GameManager.Instance.playerMove)
+            return;
         CheckStickBarrier();
         CheckVatCan();
         HitDownMapObject();
@@ -173,36 +173,21 @@ public class PlayerManager : MonoBehaviour
         {
             if (isJump)
                 isJump = false;
-            // Debug.LogError(hitDown.collider.tag);
-            //if (_isCanMoveToTarget)
-            //{
-            //    if (hitDown.collider.gameObject.tag == Utils.TAG_WALL_BOTTOM)
-            //    {
-            //        pState = P_STATE.RUNNING;
-            //        beginMove = true;
-            //        MoveToTarget();
-            //    }
-            //}
+
+            if (!beginMove)
+            {
+                if (GameManager.Instance.mapLevel.lstAllStick.Count <= 0)
+                    PrepareRotate();
+            }
         }
-        //else
-        //{
-        //    beginMove = false;
-        //}
+
         if (hitForward.collider != null)
         {
-            //if (!_isCanMoveToTarget)
-            //{
-            //if (hitForward.collider.gameObject.tag == Utils.TAG_STONE)
-            //{
             if (hitForward.collider.gameObject.tag != "Wall_Bottom")
             {
                 if (hitForward.collider.gameObject.tag == "Tag_Stone" || hitForward.collider.gameObject.tag == "Chan")
                     HeroJump();
-                //   Debug.LogError(hitForward.collider.name);
             }
-
-            // }
-            //}
         }
 
         if (!IsCanMove()) _rig2D.velocity = Vector2.zero;
@@ -226,9 +211,14 @@ public class PlayerManager : MonoBehaviour
     Vector2 movement;
     private void MoveLeft()
     {
+
         if (hit2D.collider != null)
         {
-            _rig2D.velocity = Vector2.zero;
+            if (pState != P_STATE.DIE)
+            {
+                _rig2D.velocity = new Vector2(0,_rig2D.velocity.y);
+                PlayAnim(str_idle, true);
+            }
             return;
         }
 
@@ -241,13 +231,16 @@ public class PlayerManager : MonoBehaviour
         else _rig2D.velocity = Vector2.zero;
 
 
-        //  Debug.LogError("moveleft");
     }
     public void MoveRight()
     {
         if (hit2D.collider != null)
         {
-            _rig2D.velocity = Vector2.zero;
+            if (pState != P_STATE.DIE)
+            {
+                _rig2D.velocity = new Vector2(0, _rig2D.velocity.y);
+                PlayAnim(str_idle, true);
+            }
             return;
         }
         if (pState != P_STATE.DIE)
@@ -258,83 +251,29 @@ public class PlayerManager : MonoBehaviour
         }
         else _rig2D.velocity = Vector2.zero;
 
-        //  Debug.LogError("moveright");
     }
 
-    //public void PrepareMoveLeft()
-    //{
-    //    if (pState != P_STATE.DIE && pState != P_STATE.WIN)
-    //    {
-    //        if (!beginMove)
-    //        {
-    //            pState = P_STATE.RUNNING;
-    //            beginMove = true;
-    //            //saPlayer.skeleton.ScaleX = -1;
-    //            //isMoveLeft = true;
-    //            //isMoveRight = false;
-    //            PlayAnim(isTakeSword ? str_MoveWithSword : str_Move, true);
 
-    //            Debug.LogError("dectect left");
-    //        }
-    //    }
-    //}
-    //public void PrepareMoveRight()
-    //{
-    //    if (pState != P_STATE.DIE && pState != P_STATE.WIN)
-    //    {
-    //        if (!beginMove)
-    //        {
-    //            pState = P_STATE.RUNNING;
-    //            beginMove = true;
-    //            //saPlayer.skeleton.ScaleX = 1;
-    //            //isMoveLeft = false;
-    //            //isMoveRight = true;
-    //            PlayAnim(isTakeSword ? str_MoveWithSword : str_Move, true);
-
-    //            Debug.LogError("dectect right");
-    //        }
-    //    }
-    //}
-    //public void PrepareRotate_(Transform _trTarget, bool rotateOnly)
-    //{
-    //    if (pState != P_STATE.DIE && pState != P_STATE.WIN)
-    //    {
-    //        if (transform.localPosition.x > _trTarget.localPosition.x)
-    //        {
-    //            saPlayer.skeleton.ScaleX = -1;
-    //            PrepareMoveRight();
-    //        }
-    //        else
-    //        {
-    //            saPlayer.skeleton.ScaleX = 1;
-    //            PrepareMoveLeft();
-    //        }
-    //    }
-    //}
-
-    public void PrepareRotate(Transform _trTarget, bool rotateOnly)
+    public void PrepareRotate()
     {
+        if (!GameManager.Instance.playerMove)
+            return;
+        Debug.LogError("zoooooooooooooooo");
         if (pState != P_STATE.DIE && pState != P_STATE.WIN)
         {
             if (hitDown.collider != null)
             {
                 beginMove = true;
-                if (transform.localPosition.x > _trTarget.localPosition.x)
+                if (saPlayer.skeleton.ScaleX < 0)
                 {
-                    saPlayer.skeleton.ScaleX = -1;
-                  //  PrepareMoveLeft();
                     isMoveLeft = true;
                     isMoveRight = false;
-
                     Debug.LogError("=====dectect left");
                 }
                 else
                 {
-                    saPlayer.skeleton.ScaleX = 1;
                     isMoveLeft = false;
                     isMoveRight = true;
-                   // PrepareMoveRight();
-
                     Debug.LogError("=====dectect right");
                 }
             }
@@ -343,25 +282,25 @@ public class PlayerManager : MonoBehaviour
     #endregion
 
     #region Player action
-    public void OnBeginRun()
-    {
-        StartCoroutine(IEWaitToRun());
-    }
-    IEnumerator IEWaitToRun()
-    {
-        yield return new WaitForSeconds(2.0f);
-        if (pState != P_STATE.DIE)
-        {
-            pState = P_STATE.RUNNING;
-            if (MapLevelManager.Instance != null)
-            {
-                if (MapLevelManager.Instance.trTarget != null && MapLevelManager.Instance.trTarget.gameObject.activeSelf)
-                {
-                    PrepareRotate(MapLevelManager.Instance.trTarget, false);
-                }
-            }
-        }
-    }
+    //public void OnBeginRun()
+    //{
+    //    StartCoroutine(IEWaitToRun());
+    //}
+    //IEnumerator IEWaitToRun()
+    //{
+    //    yield return new WaitForSeconds(2.0f);
+    //    if (pState != P_STATE.DIE)
+    //    {
+    //        pState = P_STATE.RUNNING;
+    //        if (MapLevelManager.Instance != null)
+    //        {
+    //            if (MapLevelManager.Instance.trTarget != null && MapLevelManager.Instance.trTarget.gameObject.activeSelf)
+    //            {
+    //                PrepareRotate(MapLevelManager.Instance.trTarget, false);
+    //            }
+    //        }
+    //    }
+    //}
 
 
     public void OnIdleState()
@@ -444,6 +383,24 @@ public class PlayerManager : MonoBehaviour
     //        }
     //    }
     //}
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "ChangeDir")
+        {
+            if (collision.gameObject.transform.localScale.x == 1)
+            {
+                isMoveLeft = false;
+                isMoveRight = true;
+            }
+            else
+            {
+               isMoveLeft = true;
+               isMoveRight = false;
+            }
+           saPlayer.skeleton.ScaleX = collision.gameObject.transform.localScale.x;
+            Debug.LogError("zo day");
+        }
+    }
 
     public void OnWin()
     {
@@ -464,28 +421,17 @@ public class PlayerManager : MonoBehaviour
         beginMove = false;
         PlayAnim(isTakeSword ? str_OpenWithSword : str_OpenWithoutSword, false);
     }
-    //private void OnTriggerExit2D(Collider2D collision)
+
+    //private void OnCollisionExit2D(Collision2D collision)
     //{
     //    if (pState == P_STATE.PLAYING || pState == P_STATE.RUNNING)
     //    {
-    //        if (collision.gameObject.tag.Contains(Utils.TAG_STICKBARRIE))
+    //        if (collision.gameObject.tag == Utils.TAG_STICKBARRIE)
     //        {
-    //            if (hitDown.collider != null)
-    //                if (hitDown.collider.gameObject.tag.Contains(Utils.TAG_WALL_BOTTOM))
-    //                    OnBeginRun();
+    //            OnBeginRun();
     //        }
     //    }
     //}
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (pState == P_STATE.PLAYING || pState == P_STATE.RUNNING)
-        {
-            if (collision.gameObject.tag == Utils.TAG_STICKBARRIE)
-            {
-                OnBeginRun();
-            }
-        }
-    }
     #endregion
 
     public void ChoosePlayer(int i)

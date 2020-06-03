@@ -8,4 +8,14 @@ public class RopeNode : MonoBehaviour
     [SerializeField]public HingeJoint2D hingeJoin2D;
     [SerializeField] public int ropeIndex;
     public GameObject gRopeParent;
+
+    public void OnMouseDown()
+    {
+        hingeJoin2D.enabled = false;
+        if (SoundManager.Instance != null)
+        {
+            SoundManager.Instance.PlaySound(SoundManager.Instance.acCutRope);
+        }
+        RopeManager.Instance.UnUseRope(this);
+    }
 }

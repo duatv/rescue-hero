@@ -7,6 +7,7 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    public bool playerMove;
     public int counthatwater;
     public enum GAMESTATE { PLAYING, WIN, LOSE }
     public static GameManager Instance;
@@ -24,8 +25,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] public LevelConfig levelConfig;
     public MapLevelManager mapLevel;
     public int totalGems;
-  //  public List<Unit> lstAllGems = new List<Unit>();
-  //  public bool isNotEnoughGems;
+    //  public List<Unit> lstAllGems = new List<Unit>();
+    //  public bool isNotEnoughGems;
     public CamFollow _camFollow;
     public GameObject gPanelWin;
     public GameObject gPanelLose;
@@ -98,7 +99,9 @@ public class GameManager : MonoBehaviour
     {
 
         mapLevel = Instantiate(levelConfig.lstAllLevel[levelIndex], Vector3.zero, Quaternion.identity);
-
+        Debug.LogError("wtf:" + mapLevel.loadListStick);
+        if (mapLevel.lstAllStick.Count > 0)
+            playerMove = true;
         if (mapLevel.waterObj != null)
             counthatwater = mapLevel.waterObj.gGems.Count;
     }
@@ -186,7 +189,7 @@ public class GameManager : MonoBehaviour
             Utils.LEVEL_INDEX = 0;
             Utils.SaveLevel();
         }
-      //  ObjectPoolManagerHaveScript.Instance.ClearAllPool();
+        //  ObjectPoolManagerHaveScript.Instance.ClearAllPool();
         SceneManager.LoadSceneAsync("MainGame");
     }
     public void OnX2Coin()
@@ -230,12 +233,12 @@ public class GameManager : MonoBehaviour
     public void OnReplay()
     {
         MyAnalytic.LogEventReplay(Utils.LEVEL_INDEX + 1);
-      //  ObjectPoolManagerHaveScript.Instance.ClearAllPool();
+        //  ObjectPoolManagerHaveScript.Instance.ClearAllPool();
         SceneManager.LoadSceneAsync("MainGame");
     }
     public void GoToMenu()
     {
-      //  ObjectPoolManagerHaveScript.Instance.ClearAllPool();
+        //  ObjectPoolManagerHaveScript.Instance.ClearAllPool();
         SceneManager.LoadSceneAsync("MainMenu");
     }
     public void BuyRemoveAds()

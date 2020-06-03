@@ -16,6 +16,7 @@ TagManager:
   - GroundPlayer
   - Chan
   - Chest
+  - ChangeDir
   layers:
   - Default
   - TransparentFX

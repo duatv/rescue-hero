@@ -5,6 +5,7 @@ using UnityEngine;
 [SerializeField]
 public class StickBarrier : MonoBehaviour
 {
+    public bool key;
     const float speedAdd = 2;
     public GameObject Head;
     public enum MOVETYPE { RIGHT, LEFT, UP, DOWN, FREE }
@@ -19,7 +20,6 @@ public class StickBarrier : MonoBehaviour
     [SerializeField] public Vector2 vEndPos;
     [SerializeField] public Vector2 vStartPos;
     [SerializeField] private Vector2 vUpPos, vDownPos, vLeftPos, vRightPos;
-
     [HideInInspector] public bool beginMove;
     [HideInInspector] public bool moveBack;
 
@@ -33,10 +33,26 @@ public class StickBarrier : MonoBehaviour
             _rig2D = GetComponent<Rigidbody2D>();
         }
     }
+    private void OnMouseDown()
+    {
+        if (!beginMove)
+        {
+            if (SoundManager.Instance != null)
+            {
+                if (_moveType == MOVETYPE.FREE)
+                {
+                    SoundManager.Instance.PlaySound(SoundManager.Instance.acMoveStickClick);
+                }
+                else
+                    SoundManager.Instance.PlaySound(SoundManager.Instance.acMoveStick);
+            }
+        }
+        beginMove = true;
+    }
     void Start()
     {
 
-        MapLevelManager.Instance.lstAllStick.Add(this);
+      //  MapLevelManager.Instance.lstAllStick.Add(this);
         if (_moveType != MOVETYPE.FREE) {
             vStartPos = transform.localPosition;
         }
@@ -54,8 +70,17 @@ public class StickBarrier : MonoBehaviour
         {
             hasBlockGems = false;
             gameObject.SetActive(false);
+
+            if (GameManager.Instance.mapLevel.lstAllStick.Contains(this))
+                GameManager.Instance.mapLevel.lstAllStick.Remove(this);
+            //Debug.LogError("Count:" + GameManager.Instance.mapLevel.lstAllStick.Count);
+            //if (GameManager.Instance.mapLevel.lstAllStick.Count <= 0)
+            //{
+            //    PlayerManager.Instance.PrepareRotate();
+            //}
+
         }
-    //    Debug.LogError("zoooooooooooooooo");
+
     }
 
     private void MoveStick(Vector2 endPos) {
