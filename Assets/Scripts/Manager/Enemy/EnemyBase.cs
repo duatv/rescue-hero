@@ -72,7 +72,7 @@ public class EnemyBase : MonoBehaviour
         {
             if (saPlayer.AnimationName.Equals(str_Lose))
             {
-                gGround.layer = 0;
+               // gGround.layer = 0;
             }
             if (saPlayer.AnimationName.Equals(str_Att))
             {
@@ -310,6 +310,10 @@ public class EnemyBase : MonoBehaviour
             //    isContinueDetect = false;
             PlayAnim(str_Lose, false);
             _charStage = CHAR_STATE.DIE;
+            rig.velocity = Vector2.zero;
+            rig.constraints = RigidbodyConstraints2D.FreezePositionX;
+            transform.rotation = Quaternion.identity;
+            rig.constraints = RigidbodyConstraints2D.FreezeRotation;
             MapLevelManager.Instance.lstAllEnemies.Remove(this);
 
             if (SoundManager.Instance != null)
