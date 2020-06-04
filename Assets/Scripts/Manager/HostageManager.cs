@@ -84,6 +84,19 @@ public class HostageManager : CharsBase
                 }
             }
         }
+        else if (collision.gameObject.tag == Utils.TAG_GAS)
+        {
+            if (PlayerManager.Instance.pState == PlayerManager.P_STATE.PLAYING || PlayerManager.Instance.pState == PlayerManager.P_STATE.RUNNING)
+            {
+                Debug.LogError("zoooooooooooooooooooo");
+                if (GameManager.Instance.gameState != GameManager.GAMESTATE.WIN)
+                {
+                    // PlayerManager.Instance.isContinueDetect = false;
+                    PlayerManager.Instance.OnPlayerDie();
+                    PlayDie();
+                }
+            }
+        }
     }
     IEnumerator IEWaitToIdle()
     {

@@ -376,7 +376,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &1097022519910621825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -759,7 +759,7 @@ PrefabInstance:
     - target: {fileID: 3553999728456655664, guid: e9ae293a9b700f14c8ba4006acc8f08d,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3553999728456655670, guid: e9ae293a9b700f14c8ba4006acc8f08d,
         type: 3}
@@ -770,6 +770,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingOrder
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3553999728456655671, guid: e9ae293a9b700f14c8ba4006acc8f08d,
+        type: 3}
+      propertyPath: m_RenderAlignment
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9ae293a9b700f14c8ba4006acc8f08d, type: 3}

@@ -6,7 +6,7 @@ public class SpawnObject : MonoBehaviour
 {
     public List<Unit> gGems;
     public MapLevelManager.SPAWNTYPE _spawnType;
-    [Range(10, 15)]
+    [Range(10, 20)]
     public int totalGems;
     public Unit gInstantiate;
     public bool loadObjectChild;
@@ -42,10 +42,25 @@ public class SpawnObject : MonoBehaviour
                         if (u.effect2 != null)
                             u.effect2.gameObject.SetActive(true);
                     }
+
+
                 }
                 else if (u._spawnType == MapLevelManager.SPAWNTYPE.GEMS)
                 {
                     u.DisableSprite();
+                    randomDisplayEffect = Random.Range(0, 100);
+
+                    if (randomDisplayEffect <= 30)
+                    {
+                        //   Debug.LogError(randomDisplayEffect);
+                        if (u.effect != null)
+                            u.effect.gameObject.SetActive(true);
+                    }
+                }
+                else if(u._spawnType == MapLevelManager.SPAWNTYPE.GAS)
+                {
+                    u.BeginCreateGas();
+
                 }
                 if (!gGems.Contains(u))
                 {

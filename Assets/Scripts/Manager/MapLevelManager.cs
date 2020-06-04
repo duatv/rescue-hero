@@ -11,7 +11,7 @@ public class MapLevelManager : MonoBehaviour
     public GameObject BarrierParent;
     public bool loadListStick;
 
-    public enum SPAWNTYPE { WATER, LAVA, STONE, GEMS }
+    public enum SPAWNTYPE { WATER, LAVA, STONE, GEMS,GAS }
     public enum QUEST_TYPE { NONE, COLLECT, KILL, SAVE_HOSTAGE, OPEN_CHEST, ALL }
     public static MapLevelManager Instance;
 

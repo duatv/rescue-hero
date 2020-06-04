@@ -38,16 +38,17 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1315909973204964174}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: abf3414abe8b04d44bf032db0c4f93d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gGems:
-  - {fileID: 5976190729354532743, guid: 41957d2c7e4a07b409407c3f7f9e724e, type: 3}
+  - {fileID: 0}
   _spawnType: 1
   totalGems: 100
-  initSpeed: {x: 1, y: -1.8}
+  gInstantiate: {fileID: 0}
+  loadObjectChild: 0
 --- !u!1 &1315909973537420325
 GameObject:
   m_ObjectHideFlags: 0

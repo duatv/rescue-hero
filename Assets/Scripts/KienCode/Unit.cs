@@ -60,4 +60,21 @@ public class Unit : MonoBehaviour
     }
     int randomDisplayEffect;
 
+
+    private float speedMove;
+    public bool isGravity;
+    public float timeFly = 0;
+    private float ranGas;
+    // Start is called before the first frame update
+    public void BeginCreateGas()
+    {
+        ranGas = Random.Range(0.5f, 1);
+        if (isGravity)
+            rid.gravityScale = 0;
+        else
+            rid.gravityScale = Random.Range(0.05f, 0.15f);
+        transform.localScale = new Vector3(ranGas, ranGas, ranGas);
+        speedMove = Random.Range(40, 75);
+    }
+
 }

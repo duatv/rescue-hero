@@ -17,6 +17,7 @@ TagManager:
   - Chan
   - Chest
   - ChangeDir
+  - Trap_Gas
   layers:
   - Default
   - TransparentFX
@@ -42,7 +43,7 @@ TagManager:
   - DetectedGem
   - GroundPlayer
   - GroundEnemy
-  - 
+  - Gas
   - 
   - 
   - 
