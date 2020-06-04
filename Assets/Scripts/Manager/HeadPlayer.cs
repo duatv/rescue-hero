@@ -14,5 +14,12 @@ public class HeadPlayer : MonoBehaviour
                     pPlayer.OnPlayerDie();
             }
         }
+        if (collision.gameObject.tag == Utils.TAG_LAVA)
+        {
+            if (GameManager.Instance.gameState != GameManager.GAMESTATE.LOSE)
+            {
+                pPlayer.OnPlayerDie();
+            }
+        }
     }
 }

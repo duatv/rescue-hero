@@ -9,13 +9,18 @@ public class RopeNode : MonoBehaviour
     [SerializeField] public int ropeIndex;
     public GameObject gRopeParent;
 
-    public void OnMouseDown()
-    {
-        hingeJoin2D.enabled = false;
-        if (SoundManager.Instance != null)
-        {
-            SoundManager.Instance.PlaySound(SoundManager.Instance.acCutRope);
-        }
-        RopeManager.Instance.UnUseRope(this);
-    }
+    //public void OnMouseDown()
+    //{
+
+    //}
+    //public void OnMouseOver()
+    //{
+    //    Debug.LogError("====wtf====");
+    //    hingeJoin2D.enabled = false;
+    //    if (SoundManager.Instance != null)
+    //    {
+    //        SoundManager.Instance.PlaySound(SoundManager.Instance.acCutRope);
+    //    }
+    //    RopeManager.Instance.UnUseRope(this);
+    //}
 }
