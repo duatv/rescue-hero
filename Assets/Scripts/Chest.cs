@@ -39,9 +39,9 @@ public class Chest : MonoBehaviour
         {
             if (!hasDetect)
             {
-                if (PlayerManager.Instance.pState == PlayerManager.P_STATE.PLAYING || PlayerManager.Instance.pState == PlayerManager.P_STATE.RUNNING)
+                if (PlayerManager.Instance.pState == PlayerManager.P_STATE.PLAYING /*|| PlayerManager.Instance.pState == PlayerManager.P_STATE.RUNNING*/)
                 {
-                    Debug.LogError("zoooooooooooooooooooo");
+                    Debug.LogError("huy hom");
                     if (GameManager.Instance.gameState != GameManager.GAMESTATE.WIN)
                     {
                         // PlayerManager.Instance.isContinueDetect = false;

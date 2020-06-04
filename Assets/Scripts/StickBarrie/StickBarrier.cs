@@ -42,12 +42,17 @@ public class StickBarrier : MonoBehaviour
                 if (_moveType == MOVETYPE.FREE)
                 {
                     SoundManager.Instance.PlaySound(SoundManager.Instance.acMoveStickClick);
+                    if (GameManager.Instance.mapLevel.lstAllStick.Contains(this))
+                        GameManager.Instance.mapLevel.lstAllStick.Remove(this);
                 }
                 else
                     SoundManager.Instance.PlaySound(SoundManager.Instance.acMoveStick);
             }
         }
         beginMove = true;
+
+
+
     }
     void Start()
     {

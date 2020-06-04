@@ -273,14 +273,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lavaObj: {fileID: 0}
   waterObj: {fileID: 0}
+  BarrierParent: {fileID: 0}
+  loadListStick: 1
   isReadOnly: 0
   trHostage: {fileID: 0}
   trGems: {fileID: 0}
   questType: 3
   trTarget: {fileID: 0}
   trChest: {fileID: 0}
+  lstAllStick:
+  - {fileID: 8468393982155898250}
   lstAllEnemies: []
-  lstAllStick: []
 --- !u!1 &1396916701
 GameObject:
   m_ObjectHideFlags: 0
@@ -3442,6 +3445,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 9216183609870251235, guid: 8eea6eff2c4b9b34dbfe6f3070739266,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 4.8650694
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8eea6eff2c4b9b34dbfe6f3070739266, type: 3}
 --- !u!4 &4921622438609733101 stripped
@@ -3556,6 +3564,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9216183609870251235, guid: 8eea6eff2c4b9b34dbfe6f3070739266,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 4.8267217
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8eea6eff2c4b9b34dbfe6f3070739266, type: 3}
@@ -3837,6 +3850,11 @@ PrefabInstance:
       propertyPath: _moveType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 360150832557463478, guid: 8eea6eff2c4b9b34dbfe6f3070739266,
+        type: 3}
+      propertyPath: key
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2792697067004873771, guid: 8eea6eff2c4b9b34dbfe6f3070739266,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3917,6 +3935,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9216183609870251235, guid: 8eea6eff2c4b9b34dbfe6f3070739266,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 4.349636
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8eea6eff2c4b9b34dbfe6f3070739266, type: 3}
 --- !u!4 &2064271845677536602 stripped
@@ -3925,6 +3948,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8176923062438144572}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8468393982155898250 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 360150832557463478, guid: 8eea6eff2c4b9b34dbfe6f3070739266,
+    type: 3}
+  m_PrefabInstance: {fileID: 8176923062438144572}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db75b6c7a7d2daa48b022d29c415d3e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8306672797348821096
 PrefabInstance:
   m_ObjectHideFlags: 0

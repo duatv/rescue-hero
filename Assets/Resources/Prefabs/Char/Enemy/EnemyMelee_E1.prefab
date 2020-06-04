@@ -109,6 +109,8 @@ MonoBehaviour:
     m_Bits: 5120
   isRangerAtt: 0
   gGround: {fileID: 447227861480680704}
+  body: {fileID: 1615520503359557926}
+  head: {fileID: 1735463995111354824}
   center: {fileID: 1805887834346773353}
   left: {fileID: 2356719846181075938}
   right: {fileID: 66328300164332968}

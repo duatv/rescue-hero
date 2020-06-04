@@ -24,7 +24,7 @@ public class EnemyBase : MonoBehaviour
     [SerializeField] public Rigidbody2D rig;
     public LayerMask lmColl, lmPlayer, lmMapObject;
     public bool isRangerAtt;
-    public GameObject gGround;
+    public GameObject gGround,body,head;
 
     [SerializeField]
     private RaycastHit2D hit2D, hit2D_1, hitPlayer;
@@ -314,6 +314,8 @@ public class EnemyBase : MonoBehaviour
             rig.constraints = RigidbodyConstraints2D.FreezePositionX;
             transform.rotation = Quaternion.identity;
             rig.constraints = RigidbodyConstraints2D.FreezeRotation;
+            body.SetActive(false);
+            head.SetActive(false);
             MapLevelManager.Instance.lstAllEnemies.Remove(this);
 
             if (SoundManager.Instance != null)

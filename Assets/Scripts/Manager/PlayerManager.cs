@@ -252,12 +252,9 @@ public class PlayerManager : MonoBehaviour
         else _rig2D.velocity = Vector2.zero;
 
     }
-
-
-    public void PrepareRotate()
+    IEnumerator delayMove()
     {
-        if (!GameManager.Instance.playerMove)
-            return;
+        yield return new WaitForSeconds(0.5f);
         Debug.LogError("zoooooooooooooooo");
         if (pState != P_STATE.DIE && pState != P_STATE.WIN)
         {
@@ -278,6 +275,13 @@ public class PlayerManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void PrepareRotate()
+    {
+        if (!GameManager.Instance.playerMove)
+            return;
+        StartCoroutine(delayMove());
     }
     #endregion
 
