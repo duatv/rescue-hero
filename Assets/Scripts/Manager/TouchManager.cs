@@ -32,7 +32,7 @@ public class TouchManager : MonoBehaviour
         trail.sharedMaterial.color = trailColor;
         trailTransform.gameObject.SetActive(false);
     }
-    
+
     void Update()
     {
         mousePos = Input.mousePosition;
@@ -57,65 +57,72 @@ public class TouchManager : MonoBehaviour
                     }
                 }
             }
-                //    //if (hit2D.collider.gameObject.tag.Contains(Utils.TAG_STICKBARRIE))
-                //    //{
-                //    //    StickBarrier sb = hit2D.collider.gameObject.GetComponent<StickBarrier>();
-                //    //    if (!sb.beginMove)
-                //    //    {
-                //    //        if (SoundManager.Instance != null)
-                //    //        {
-                //    //            if (sb._moveType == StickBarrier.MOVETYPE.FREE)
-                //    //            {
-                //    //                SoundManager.Instance.PlaySound(SoundManager.Instance.acMoveStickClick);
-                //    //            }
-                //    //            else
-                //    //                SoundManager.Instance.PlaySound(SoundManager.Instance.acMoveStick);
-                //    //        }
-                //    //    }
+            if (hit2D.collider != null)
+            {
+                if (hit2D.collider.gameObject.tag == Utils.TAG_STICKBARRIE)
+                {
+                    StickBarrier sb = hit2D.collider.gameObject.GetComponent<StickBarrier>();
+                    if (!sb.beginMove)
+                    {
+                        if (SoundManager.Instance != null)
+                        {
+                            if (sb._moveType == StickBarrier.MOVETYPE.FREE)
+                            {
+                                SoundManager.Instance.PlaySound(SoundManager.Instance.acMoveStickClick);
+                                if (GameManager.Instance.mapLevel.lstAllStick.Contains(sb))
+                                    GameManager.Instance.mapLevel.lstAllStick.Remove(sb);
+                            }
+                            else
+                                SoundManager.Instance.PlaySound(SoundManager.Instance.acMoveStick);
+                        }
+                    }
 
-                //    //    sb.beginMove = true;
+                    sb.beginMove = true;
 
-                //    //}
-                //}
-                //RaycastHit2D[] hit = Physics2D.RaycastAll(screenPos, Vector2.zero, 1000);
-                //for (int i = 0; i < hit.Length; i++)
-                //{
-                //    if (hit[i].collider.gameObject.tag.Contains(Utils.TAG_STICKBARRIE))
-                //    {
-                //        if (!hit[i].collider.gameObject.GetComponent<StickBarrier>().beginMove)
-                //        {
-                //            if (SoundManager.Instance != null)
-                //            {
-                //                if (hit[i].collider.gameObject.GetComponent<StickBarrier>()._moveType == StickBarrier.MOVETYPE.FREE) {
-                //                    SoundManager.Instance.PlaySound(SoundManager.Instance.acMoveStickClick);
-                //                }
-                //                else
-                //                    SoundManager.Instance.PlaySound(SoundManager.Instance.acMoveStick);
-                //            }
-                //        }
+                }
+            }
+            //}
+            //RaycastHit2D[] hit = Physics2D.RaycastAll(screenPos, Vector2.zero, 1000);
+            //for (int i = 0; i < hit.Length; i++)
+            //{
+            //    if (hit[i].collider.gameObject.tag.Contains(Utils.TAG_STICKBARRIE))
+            //    {
+            //        if (!hit[i].collider.gameObject.GetComponent<StickBarrier>().beginMove)
+            //        {
+            //            if (SoundManager.Instance != null)
+            //            {
+            //                if (hit[i].collider.gameObject.GetComponent<StickBarrier>()._moveType == StickBarrier.MOVETYPE.FREE) {
+            //                    SoundManager.Instance.PlaySound(SoundManager.Instance.acMoveStickClick);
+            //                }
+            //                else
+            //                    SoundManager.Instance.PlaySound(SoundManager.Instance.acMoveStick);
+            //            }
+            //        }
 
-                //        hit[i].collider.gameObject.GetComponent<StickBarrier>().beginMove = true;
-                //    }
-                //    if (hit[i].collider.gameObject.GetComponent<RopeNode>() != null) {
-                //        var ropeNode = hit[i].collider.gameObject.GetComponent<RopeNode>();
-                //        if (ropeNode)
-                //        {
-                //            ropeNode.hingeJoin2D.enabled = false;
-                //            if (SoundManager.Instance != null) {
-                //                SoundManager.Instance.PlaySound(SoundManager.Instance.acCutRope);
-                //            }
-                //            RopeManager.Instance.UnUseRope(/*ropeNode.ropeIndex*/ropeNode);
-                //        }
-                //    }
-                //}
+            //        hit[i].collider.gameObject.GetComponent<StickBarrier>().beginMove = true;
+            //    }
+            //    if (hit[i].collider.gameObject.GetComponent<RopeNode>() != null) {
+            //        var ropeNode = hit[i].collider.gameObject.GetComponent<RopeNode>();
+            //        if (ropeNode)
+            //        {
+            //            ropeNode.hingeJoin2D.enabled = false;
+            //            if (SoundManager.Instance != null) {
+            //                SoundManager.Instance.PlaySound(SoundManager.Instance.acCutRope);
+            //            }
+            //            RopeManager.Instance.UnUseRope(/*ropeNode.ropeIndex*/ropeNode);
+            //        }
+            //    }
+            //}
 
 
-                if (GameManager.Instance.canUseTrail) {
+            if (GameManager.Instance.canUseTrail)
+            {
                 trailTransform.gameObject.SetActive(true);
                 MoveTrailToCursor(mousePos);
             }
         }
-        if (Input.GetMouseButtonUp(0)) {
+        if (Input.GetMouseButtonUp(0))
+        {
             if (GameManager.Instance.canUseTrail)
                 trailTransform.gameObject.SetActive(false);
         }

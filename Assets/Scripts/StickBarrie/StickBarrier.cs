@@ -33,27 +33,27 @@ public class StickBarrier : MonoBehaviour
             _rig2D = GetComponent<Rigidbody2D>();
         }
     }
-    private void OnMouseDown()
-    {
-        if (!beginMove)
-        {
-            if (SoundManager.Instance != null)
-            {
-                if (_moveType == MOVETYPE.FREE)
-                {
-                    SoundManager.Instance.PlaySound(SoundManager.Instance.acMoveStickClick);
-                            if (GameManager.Instance.mapLevel.lstAllStick.Contains(this))
-            GameManager.Instance.mapLevel.lstAllStick.Remove(this);
-                }
-                else
-                    SoundManager.Instance.PlaySound(SoundManager.Instance.acMoveStick);
-            }
-        }
-        beginMove = true;
+    //private void OnMouseDown()
+    //{
+    //    if (!beginMove)
+    //    {
+    //        if (SoundManager.Instance != null)
+    //        {
+    //            if (_moveType == MOVETYPE.FREE)
+    //            {
+    //                SoundManager.Instance.PlaySound(SoundManager.Instance.acMoveStickClick);
+    //                        if (GameManager.Instance.mapLevel.lstAllStick.Contains(this))
+    //        GameManager.Instance.mapLevel.lstAllStick.Remove(this);
+    //            }
+    //            else
+    //                SoundManager.Instance.PlaySound(SoundManager.Instance.acMoveStick);
+    //        }
+    //    }
+    //    beginMove = true;
 
 
 
-    }
+    //}
     void Start()
     {
 

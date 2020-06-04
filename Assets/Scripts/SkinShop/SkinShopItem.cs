@@ -4,101 +4,76 @@ using UnityEngine;
 using UnityEngine.UI;
 using Spine.Unity;
 
+
 public class SkinShopItem : MonoBehaviour
 {
+
     public SkinShopManager shopManager;
-    public Text txtName;
-    public int priceValue;
-    public Image imgLock, imgPreview, imgSelect;
-    public Sprite sprGray, sprSelect;
-    public Button btn;
-    public string skinName;
-    public string skinWithSword;
+    public int index;
 
-    private void Start()
+    public Image icon,bouder;
+    public Text nameText;
+
+    public GameObject lockObj;
+
+    public void DisplayBegin()
     {
-        if (!shopManager.dicAllSkin.ContainsKey(txtName.text))
+        if (!DataController.instance.savehero[index].unlock)
         {
-            shopManager.dicAllSkin.Add(txtName.text, this);
-        }
-
-        btn.onClick.AddListener(() =>
-        {
-            if (Utils.IsHeroUnlock(txtName.text) || txtName.text.Equals("DRAGON"))
+            icon.sprite = MenuController.instance.shopManager.spriteHero[index].info.avatar[0];
+            if (DataController.instance.heroData.infos[index].typeUnlock == HeroData.TypeUnlock.COIN)
             {
-                foreach (SkinShopItem ssItem in shopManager.dicAllSkin.Values)
-                {
-                    if (ssItem.txtName.text.Equals(txtName.text))
-                    {
-                        ssItem.txtName.color = shopManager.clSelect;
-                        ssItem.imgSelect.enabled = true;
-                        shopManager.shopItem = this;
-                    }
-                    else
-                    {
-                        ssItem.txtName.color = shopManager.clNormal;
-                        ssItem.imgSelect.enabled = false;
-                    }
-                }
-
-
-                shopManager.btnBuyNow.gameObject.SetActive(false);
-                if (Utils.IsHeroUnlock(txtName.text) && txtName.text.Equals("DRAGON"))
-                {
-                    shopManager.btnDailyReward.gameObject.SetActive(false);
-                    Utils.heroSelected = txtName.text;
-                }
-                else if (!Utils.IsHeroUnlock(txtName.text) && txtName.text.Equals("DRAGON"))
-                    shopManager.btnDailyReward.gameObject.SetActive(true);
-                else
-                {
-                    Utils.heroSelected = txtName.text;
-                    shopManager.btnBuyNow.gameObject.SetActive(false);
-                    shopManager.btnDailyReward.gameObject.SetActive(false);
-                }
+                MenuController.instance.shopManager.btnBuyNow.gameObject.SetActive(true);
+                MenuController.instance.shopManager.btnDailyReward.gameObject.SetActive(false);
             }
             else
             {
-                shopManager.txtPrice.text = priceValue.ToString("#,##0");
-                shopManager.shopItem = this;
-                shopManager.btnDailyReward.gameObject.SetActive(false);
-                shopManager.btnBuyNow.gameObject.SetActive(true);
+                MenuController.instance.shopManager.btnBuyNow.gameObject.SetActive(false);
+                MenuController.instance.shopManager.btnDailyReward.gameObject.SetActive(true);
             }
-
-            shopManager.ChangeSkin(/*skinName*/skinWithSword);
-        });
-    }
-
-    private void OnEnable()
-    {
-        CheckHeroUnlock();
-    }
-
-    private void CheckHeroUnlock()
-    {
-        if (Utils.IsHeroUnlock(txtName.text) || txtName.text.Equals("DRAGON"))
-        {
-            if (Utils.IsHeroSelect(txtName.text))
-            {
-                imgSelect.enabled = true;
-                shopManager.shopItem = this;
-                txtName.color = shopManager.clSelect;
-                shopManager.ChangeSkin(/*skinName*/skinWithSword);
-            }
-            else
-            {
-                imgSelect.enabled = false;
-                txtName.color = shopManager.clNormal;
-            }
-            imgLock.enabled = false;
-            imgPreview.sprite = sprSelect;
         }
         else
         {
-            txtName.color = shopManager.clNormal;
-            imgPreview.sprite = sprGray;
-            imgSelect.enabled = false;
-            imgLock.enabled = true;
+            icon.sprite = MenuController.instance.shopManager.spriteHero[index].info.avatar[1];
+            MenuController.instance.shopManager.btnBuyNow.gameObject.SetActive(false);
+            MenuController.instance.shopManager.btnDailyReward.gameObject.SetActive(false);
         }
+        nameText.text = DataController.instance.heroData.infos[index].itemName;
+        lockObj.SetActive(!DataController.instance.savehero[index].unlock);
+    }
+    public void Unlock()
+    {
+        icon.sprite = MenuController.instance.shopManager.spriteHero[index].info.avatar[1];
+        MenuController.instance.shopManager.btnBuyNow.gameObject.SetActive(false);
+        MenuController.instance.shopManager.btnDailyReward.gameObject.SetActive(false);
+        DataController.instance.savehero[index].unlock = true;
+        lockObj.SetActive(false);
+    }
+    public void Click()
+    {
+        if (DataController.instance.savehero[index].unlock)
+        {
+            DataParam.currentHero = index;
+            MenuController.instance.shopManager.btnBuyNow.gameObject.SetActive(false);
+            MenuController.instance.shopManager.btnDailyReward.gameObject.SetActive(false);
+        }
+        else
+        {
+            if (DataController.instance.heroData.infos[index].typeUnlock == HeroData.TypeUnlock.COIN)
+            {
+                MenuController.instance.shopManager.btnBuyNow.gameObject.SetActive(true);
+                MenuController.instance.shopManager.btnDailyReward.gameObject.SetActive(false);
+            }
+            else
+            {
+                MenuController.instance.shopManager.btnBuyNow.gameObject.SetActive(false);
+                MenuController.instance.shopManager.btnDailyReward.gameObject.SetActive(true);
+            }
+        }
+        MenuController.instance.shopManager.currentClickHero = index;
+        MenuController.instance.shopManager.DisplaySelect();
+
+        MenuController.instance.shopManager.ChangeSkin(DataController.instance.heroData.infos[index].nameSkin);
+
     }
 }

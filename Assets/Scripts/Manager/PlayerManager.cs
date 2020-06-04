@@ -44,12 +44,12 @@ public class PlayerManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        if (!string.IsNullOrEmpty(Utils.skinNormal))
-        {
-            saPlayer.Skeleton.SetSkin(Utils.skinNormal);
+        //if (!string.IsNullOrEmpty(Utils.skinNormal))
+        //{
+            saPlayer.Skeleton.SetSkin(DataController.instance.heroData.infos[DataParam.currentHero].nameSkin);
             saPlayer.Skeleton.SetSlotsToSetupPose();
             saPlayer.LateUpdate();
-        }
+        //}
     }
     private void Start()
     {

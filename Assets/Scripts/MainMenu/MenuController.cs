@@ -6,11 +6,16 @@ using UnityEngine.UI;
 
 public class MenuController : MonoBehaviour
 {
+    public static MenuController instance;
     [SerializeField] public LevelConfig levelConfig;
     public SettingPanel _settingPanel;
     public DailyGiftPanel _dailyGiftPanel;
     public SkinShopManager shopManager;
-
+    private void Awake()
+    {
+        if (instance == null)
+            instance = this;
+    }
     public Text txtCurLevel;
     void Start()
     {
@@ -23,6 +28,8 @@ public class MenuController : MonoBehaviour
         MyAnalytic.LogEventOpenByDay();
 
         CheckShowDailyGift();
+
+        shopManager.DisplayBegin();
     }
 
     private void CheckShowDailyGift() {

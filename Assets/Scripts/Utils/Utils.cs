@@ -62,16 +62,16 @@ public class Utils
     public static void LoadGameData()
     {
         LEVEL_INDEX = PlayerPrefs.GetInt(LEVEL_KEY, 0);
-        currentCoin = PlayerPrefs.GetInt(COIN_KEY, 0);
+        currentCoin = PlayerPrefs.GetInt(COIN_KEY, 1000000);
         useMediumImage = PlayerPrefs.GetInt(QUALITY_IMAGE, 0) == 0 ? false : true;
         isSoundOn = PlayerPrefs.GetInt(CHANGE_SOUND, 0) == 0 ? false : true;
         isMusicOn = PlayerPrefs.GetInt(CHANGE_MUSIC, 0) == 0 ? false : true;
         isVibrateOn = PlayerPrefs.GetInt(CHANGE_VIBRATE, 0) == 0 ? false : true;
         isRemoveAds = PlayerPrefs.GetInt(HAS_REMOVE_ADS, 0) == 0 ? false : true;
 
-        curHero = PlayerPrefs.GetString(KEY_PLAYER_SKIN, "HENRY");
-        heroSelected = PlayerPrefs.GetString(KEY_HERO_SELECTED, "HENRY");
-        skinNormal = GetCurSkinNormal();
+        //curHero = PlayerPrefs.GetString(KEY_PLAYER_SKIN, "HENRY");
+        //heroSelected = PlayerPrefs.GetString(KEY_HERO_SELECTED, "1");
+     //   skinNormal = GetCurSkinNormal();
         skinSword = GetCurSkinSword();
 
         curDailyGift = PlayerPrefs.GetInt(KEY_CURRENT_DAILY_GIFT, 1);
@@ -143,38 +143,38 @@ public class Utils
     #endregion
 
     #region Player Skin
-    private static string curHero = "";
-    public static void UnlockHero(string heroName)
-    {
-        //if (!curHero.Equals("HENRY"))
-        {
-            curHero += "," + heroName;
-            PlayerPrefs.SetString(KEY_PLAYER_SKIN, curHero);
-          //  PlayerPrefs.Save();
-        }
-    }
-    public static bool IsHeroUnlock(string heroName)
-    {
-        return curHero.Contains(heroName);
-    }
-    public static string heroSelected = "";
-    public static bool IsHeroSelect(string heroName)
-    {
-        return heroSelected.Equals(heroName);
-    }
-    public static void SetSelectedHero(string heroName)
-    {
-        PlayerPrefs.SetString(KEY_HERO_SELECTED, heroName);
-      //  PlayerPrefs.Save();
-    }
+   // private static string curHero = "";
+    //public static void UnlockHero(string heroName)
+    //{
+    //    //if (!curHero.Equals("HENRY"))
+    //    {
+    //        curHero += "," + heroName;
+    //        PlayerPrefs.SetString(KEY_PLAYER_SKIN, curHero);
+    //      //  PlayerPrefs.Save();
+    //    }
+    //}
+    //public static bool IsHeroUnlock(string heroName)
+    //{
+    //    return curHero.Contains(heroName);
+    //}
+    //public static string heroSelected = "";
+    //public static bool IsHeroSelect(string heroName)
+    //{
+    //    return heroSelected.Equals(heroName);
+    //}
+    //public static void SetSelectedHero(string heroName)
+    //{
+    //    PlayerPrefs.SetString(KEY_HERO_SELECTED, heroName);
+    //  //  PlayerPrefs.Save();
+    //}
 
-    public static string skinNormal = "";
+ //   public static string skinNormal = "";
     public static string skinSword = "";
 
-    public static string GetCurSkinNormal()
-    {
-        return PlayerPrefs.GetString(KEY_SKIN_NORMAL, "1");
-    }
+    //public static string GetCurSkinNormal()
+    //{
+    //    return PlayerPrefs.GetString(KEY_SKIN_NORMAL, "1");
+    //}
     public static void SetSkinNormal(string skinName)
     {
         PlayerPrefs.SetString(KEY_SKIN_NORMAL, skinName);
@@ -189,13 +189,13 @@ public class Utils
         PlayerPrefs.SetString(KEY_SKIN_SWORD, skinName);
       //  PlayerPrefs.Save();
     }
-    public static void SavePlayerSkin(string _skinNormal, string _skinSword)
-    {
-        skinNormal = _skinNormal;
-        skinSword = _skinSword;
+    //public static void SavePlayerSkin(string _skinNormal/*, string _skinSword*/)
+    //{
+    //    skinNormal = _skinNormal;
+    //   // skinSword = _skinSword;
 
-        SetSkinNormal(skinNormal);
-        SetSkinSword(skinSword);
-    }
+    //    SetSkinNormal(skinNormal);
+    //   // SetSkinSword(skinSword);
+    //}
     #endregion
 }

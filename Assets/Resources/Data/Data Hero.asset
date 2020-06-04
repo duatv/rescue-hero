@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6ff2f5a183db144bb01c9cbc7014122, type: 3}
+  m_Name: Data Hero
+  m_EditorClassIdentifier: 
+  infos:
+  - itemName: HENRY
+    nameSkin: 1
+    typeUnlock: 1
+    price: 0
+  - itemName: HERCULES
+    nameSkin: Hercules/hercules
+    typeUnlock: 1
+    price: 10000
+  - itemName: ARTHUR
+    nameSkin: Athur/Athur
+    typeUnlock: 1
+    price: 20000
+  - itemName: KA-EL
+    nameSkin: Superman/superman
+    typeUnlock: 1
+    price: 50000
+  - itemName: GABRIEL
+    nameSkin: Holy/holy
+    typeUnlock: 1
+    price: 100000
+  - itemName: DRAGON
+    nameSkin: dragon Knight/dragon knight
+    typeUnlock: 0
+    price: 0
