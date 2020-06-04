@@ -46,7 +46,7 @@ public class StickBarrieEditor : Editor
                 }
                 if (GUILayout.Button("Move to Start Position", GUILayout.Height(50)))
                 {
-                    Vector3 vSwap = myScript.vStartPos;
+                    Vector2 vSwap = myScript.vStartPos;
                     myScript.vStartPos = myScript.vEndPos;
                     myScript.vEndPos = vSwap;
                     if(myScript.isMove2Pos)

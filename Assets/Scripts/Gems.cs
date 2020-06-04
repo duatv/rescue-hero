@@ -60,7 +60,7 @@ public class Gems : Unit
             {
                 //if (PlayerManager.Instance.isContinueDetect)
                 //{
-                    GameManager.Instance.gameState = GameManager.GAMESTATE.WIN;
+                  //  GameManager.Instance.gameState = GameManager.GAMESTATE.WIN;
                     PlayerManager.Instance.OnWin();
                 //    PlayerManager.Instance.isContinueDetect = false;
                 //}

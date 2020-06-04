@@ -42,8 +42,8 @@ public class StickBarrier : MonoBehaviour
                 if (_moveType == MOVETYPE.FREE)
                 {
                     SoundManager.Instance.PlaySound(SoundManager.Instance.acMoveStickClick);
-                    if (GameManager.Instance.mapLevel.lstAllStick.Contains(this))
-                        GameManager.Instance.mapLevel.lstAllStick.Remove(this);
+                            if (GameManager.Instance.mapLevel.lstAllStick.Contains(this))
+            GameManager.Instance.mapLevel.lstAllStick.Remove(this);
                 }
                 else
                     SoundManager.Instance.PlaySound(SoundManager.Instance.acMoveStick);
@@ -59,7 +59,7 @@ public class StickBarrier : MonoBehaviour
 
       //  MapLevelManager.Instance.lstAllStick.Add(this);
         if (_moveType != MOVETYPE.FREE) {
-            vStartPos = transform.localPosition;
+            vStartPos = (Vector2)transform.localPosition;
         }
     }
 
@@ -89,6 +89,8 @@ public class StickBarrier : MonoBehaviour
     }
 
     private void MoveStick(Vector2 endPos) {
+
+
         transform.localPosition = Vector2.Lerp(transform.localPosition, endPos, Time.deltaTime * moveSpeed);
     }
 
@@ -96,8 +98,7 @@ public class StickBarrier : MonoBehaviour
     private void MoveStick2Pos(Vector2 endPos) {
         //dir = (endPos - (Vector2)transform.position).normalized;
         //_rig2D.MovePosition((Vector2)transform.position + dir * (moveSpeed * Time.fixedDeltaTime));
-
-             transform.position = Vector2.Lerp(transform.position, endPos, Time.deltaTime * moveSpeed);
+        transform.position = Vector2.Lerp(transform.position, endPos, Time.deltaTime * moveSpeed);
     }
     private void MoveStickBarrie()
     {
