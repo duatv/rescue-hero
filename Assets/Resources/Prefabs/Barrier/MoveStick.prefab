@@ -256,6 +256,7 @@ GameObject:
   - component: {fileID: 5274862688083696869}
   - component: {fileID: 5274862688083696871}
   - component: {fileID: 5274862688083696870}
+  - component: {fileID: 7102559586324175538}
   m_Layer: 12
   m_Name: Play Moc_X2
   m_TagString: StickBarrie
@@ -413,6 +414,32 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!61 &7102559586324175538
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5274862688083696866}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.011008039, y: 1.0022999}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0.98999995, z: 0, w: 0.41}
+    pivot: {x: 0.5, y: 0.11}
+    oldSize: {x: 0.88, y: 2.57}
+    newSize: {x: 0.88, y: 2.57}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 1
+    adaptiveTiling: 0
+  m_AutoTiling: 1
+  serializedVersion: 2
+  m_Size: {x: 0.53507376, y: 2.57}
+  m_EdgeRadius: 0
 --- !u!1 &8472223989632673837
 GameObject:
   m_ObjectHideFlags: 0

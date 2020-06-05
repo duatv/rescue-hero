@@ -7,6 +7,7 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    public PhysicsMaterial2D matStone;
     public bool playerMove;
     public int counthatwater;
     public enum GAMESTATE { PLAYING, WIN, LOSE }

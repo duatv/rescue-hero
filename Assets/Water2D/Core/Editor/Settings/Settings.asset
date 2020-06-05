@@ -18,4 +18,4 @@ MonoBehaviour:
   w2d_Metaball_collision_layermask:
     serializedVersion: 2
     m_Bits: 1
-  w2d_FlipCameraTexture: 1
+  w2d_FlipCameraTexture: 0

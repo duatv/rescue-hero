@@ -24,6 +24,9 @@ public class Unit : MonoBehaviour
     {
         if (!activeChangeStone)
         {
+            colliderBegin.gameObject.layer = 9;
+            rid.sharedMaterial = GameManager.Instance.matStone;
+            colliderBegin.sharedMaterial = GameManager.Instance.matStone;
             activeChangeStone = true;
             StartCoroutine(DelayChangeStone());
         }
@@ -32,8 +35,7 @@ public class Unit : MonoBehaviour
     IEnumerator DelayChangeStone()
     {
         yield return new WaitForSeconds(0.1f);
-        colliderBegin.gameObject.layer = 9;
-        colliderBegin.sharedMaterial = null;
+
         if (check != null)
             check.SetActive(false);
         stone.SetActive(true);

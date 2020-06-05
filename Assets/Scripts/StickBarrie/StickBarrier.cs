@@ -73,11 +73,14 @@ public class StickBarrier : MonoBehaviour
     {
         if (GameManager.Instance.gameState == GameManager.GAMESTATE.PLAYING)
         {
-            hasBlockGems = false;
-            gameObject.SetActive(false);
+            if (!moveBack)
+            {
+                hasBlockGems = false;
+                gameObject.SetActive(false);
 
-            if (GameManager.Instance.mapLevel.lstAllStick.Contains(this))
-                GameManager.Instance.mapLevel.lstAllStick.Remove(this);
+                if (GameManager.Instance.mapLevel.lstAllStick.Contains(this))
+                    GameManager.Instance.mapLevel.lstAllStick.Remove(this);
+            }
             //Debug.LogError("Count:" + GameManager.Instance.mapLevel.lstAllStick.Count);
             //if (GameManager.Instance.mapLevel.lstAllStick.Count <= 0)
             //{

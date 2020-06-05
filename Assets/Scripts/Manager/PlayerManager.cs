@@ -107,7 +107,7 @@ public class PlayerManager : MonoBehaviour
             {
                 //vJumpHeigh = new Vector2(saPlayer.skeleton.ScaleX, 2);
                 //_rig2D.AddForce(vJumpHeigh, ForceMode2D.Impulse);
-                _rig2D.velocity = new Vector2(saPlayer.skeleton.ScaleX, 5);
+                _rig2D.velocity = new Vector2(saPlayer.skeleton.ScaleX, 4);
                 isJump = true;
                 // Debug.LogError("jump:");
             }
