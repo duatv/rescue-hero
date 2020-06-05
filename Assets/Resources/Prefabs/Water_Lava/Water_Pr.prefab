@@ -208,7 +208,7 @@ MonoBehaviour:
   activeChangeStone: 0
   stone: {fileID: 5637273966240951081}
   check: {fileID: 6006918280067312736}
-  colliderBegin: {fileID: 6669283075457319964}
+  colliderBegin: {fileID: 3300034760719699739}
   isGravity: 0
   timeFly: 0
 --- !u!1 &6006918280067312736

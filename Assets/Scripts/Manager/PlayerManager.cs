@@ -100,6 +100,7 @@ public class PlayerManager : MonoBehaviour
     }
     private void HeroJump()
     {
+
         if (pState != P_STATE.DIE && pState != P_STATE.WIN)
         {
             if (!isJump)
@@ -157,7 +158,7 @@ public class PlayerManager : MonoBehaviour
     Vector2 checkJumpStart, checkJumpEnd;
     private void CheckVatCan()
     {
-        if (pState == P_STATE.DIE)
+        if (pState == P_STATE.DIE || !beginMove)
             return;
         checkJumpStart = ground.transform.position;
         checkJumpEnd = saPlayer.skeleton.ScaleX > 0 ? rightJump.transform.position : leftJump.transform.position;
@@ -168,6 +169,8 @@ public class PlayerManager : MonoBehaviour
     private void FixedUpdate()
     {
         if (!GameManager.Instance.playerMove)
+            return;
+        if (saPlayer.AnimationName == str_OpenWithSword || saPlayer.AnimationName == str_OpenWithoutSword)
             return;
         CheckStickBarrier();
         CheckVatCan();
@@ -355,7 +358,7 @@ public class PlayerManager : MonoBehaviour
     }
     IEnumerator IEWait()
     {
-        yield return new WaitForSeconds(0.6f);
+        yield return new WaitForSeconds(0.2f);
         MapLevelManager.Instance.OnLose();
 
         if (SoundManager.Instance != null)
@@ -423,11 +426,11 @@ public class PlayerManager : MonoBehaviour
 
     public void OnWin()
     {
-        _rig2D.velocity = Vector2.zero;
+        _rig2D.velocity = new Vector2(0, _rig2D.velocity.y);
         transform.rotation = Quaternion.identity;
         _rig2D.constraints = RigidbodyConstraints2D.FreezeRotation;
         beginMove = false;
-        PlayAnim(isTakeSword ? str_OpenWithSword : str_OpenWithoutSword, false);
+        PlayAnim(isTakeSword ? str_OpenWithSword : str_OpenWithoutSword, true);
         StartCoroutine(delayWin());
         //GameManager.Instance.gameState = GameManager.GAMESTATE.WIN;
         //pState = P_STATE.WIN;

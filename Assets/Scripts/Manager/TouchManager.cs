@@ -32,7 +32,7 @@ public class TouchManager : MonoBehaviour
         trail.sharedMaterial.color = trailColor;
         trailTransform.gameObject.SetActive(false);
     }
-
+    GameObject detectstick;
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -47,23 +47,27 @@ public class TouchManager : MonoBehaviour
             {
                 if (hit.collider.gameObject.tag == Utils.TAG_STICKBARRIE)
                 {
-                    StickBarrier sb = hit.collider.gameObject.GetComponent<StickBarrier>();
-                    if (!sb.beginMove)
+                    if (detectstick == null)
                     {
-                        if (SoundManager.Instance != null)
+                        StickBarrier sb = hit.collider.gameObject.GetComponent<StickBarrier>();
+                        if (!sb.beginMove)
                         {
-                            if (sb._moveType == StickBarrier.MOVETYPE.FREE)
+                            if (SoundManager.Instance != null)
                             {
-                                SoundManager.Instance.PlaySound(SoundManager.Instance.acMoveStickClick);
-                                if (GameManager.Instance.mapLevel.lstAllStick.Contains(sb))
-                                    GameManager.Instance.mapLevel.lstAllStick.Remove(sb);
+                                if (sb._moveType == StickBarrier.MOVETYPE.FREE)
+                                {
+                                    SoundManager.Instance.PlaySound(SoundManager.Instance.acMoveStickClick);
+                                    if (GameManager.Instance.mapLevel.lstAllStick.Contains(sb))
+                                        GameManager.Instance.mapLevel.lstAllStick.Remove(sb);
+                                }
+                                else
+                                    SoundManager.Instance.PlaySound(SoundManager.Instance.acMoveStick);
                             }
-                            else
-                                SoundManager.Instance.PlaySound(SoundManager.Instance.acMoveStick);
+                            detectstick = hit.collider.gameObject;
                         }
-                    }
 
-                    sb.beginMove = true;
+                        sb.beginMove = true;
+                    }
                 }
             }
         }
@@ -72,6 +76,7 @@ public class TouchManager : MonoBehaviour
             if (GameManager.Instance.canUseTrail)
                 trailTransform.gameObject.SetActive(false);
             cutOn = false;
+            detectstick = null;
         }
         if (cutOn)
         {

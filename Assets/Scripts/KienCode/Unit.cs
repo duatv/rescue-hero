@@ -10,7 +10,8 @@ public class Unit : MonoBehaviour
     public SpriteRenderer sp;
     public Rigidbody2D rid;
     public bool activeChangeStone;
-    public GameObject stone, check, colliderBegin;
+    public GameObject stone, check ;
+    public Collider2D colliderBegin;
     public void DisableSprite()
     {
         if (spriteGem.Length > 0)
@@ -31,7 +32,8 @@ public class Unit : MonoBehaviour
     IEnumerator DelayChangeStone()
     {
         yield return new WaitForSeconds(0.1f);
-        colliderBegin.layer = 9;
+        colliderBegin.gameObject.layer = 9;
+        colliderBegin.sharedMaterial = null;
         if (check != null)
             check.SetActive(false);
         stone.SetActive(true);

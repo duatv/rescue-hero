@@ -398,7 +398,9 @@ MonoBehaviour:
   activeChangeStone: 0
   stone: {fileID: 20082227820871043}
   check: {fileID: 3820993830342602820}
-  colliderBegin: {fileID: 4704116021753299983}
+  colliderBegin: {fileID: 6947301235298133539}
+  isGravity: 0
+  timeFly: 0
 --- !u!1001 &2975455821910777706
 PrefabInstance:
   m_ObjectHideFlags: 0

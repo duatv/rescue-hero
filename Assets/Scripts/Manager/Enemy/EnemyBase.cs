@@ -348,6 +348,12 @@ public class EnemyBase : MonoBehaviour
             if (/*isContinueDetect && */collision.gameObject.tag == Utils.TAG_LAVA || collision.gameObject.tag == "Trap_Other")
             {
                 OnDie_();
+                if (collision.gameObject.tag == Utils.TAG_LAVA)
+                {
+                    GameObject destroyEffect = ObjectPoolerManager.Instance.effectDestroyPooler.GetPooledObject();
+                    destroyEffect.transform.position = transform.position;
+                    destroyEffect.SetActive(true);
+                }
             }
         }
     }
