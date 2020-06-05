@@ -1814,7 +1814,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effectWaterFirePooler: {fileID: 0}
+  effectDestroyPooler: {fileID: 0}
   effectWaterFirePrefab: {fileID: 5682739432146589048, guid: 01e3ebe8eb63a6e4bbf444567ccbef44,
+    type: 3}
+  effectDestroyPrefab: {fileID: 3709268193690404554, guid: f235648f1bd0f974688a1f0f0ed35143,
     type: 3}
   AllPool: []
 --- !u!4 &213295872
