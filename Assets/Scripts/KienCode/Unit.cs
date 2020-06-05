@@ -41,12 +41,12 @@ public class Unit : MonoBehaviour
         if (effect2 != null)
             effect2.SetActive(false);
         int randomeffect = Random.Range(0, 100);
-        //if (randomeffect < 10)
-        //{
-        //    GameObject g = ObjectPoolerManager.Instance.effectWaterFirePooler.GetPooledObject();
-        //    g.transform.position = transform.position;
-        //    g.SetActive(true);
-        //}
+        if (randomeffect < 10)
+        {
+            GameObject g = ObjectPoolerManager.Instance.effectWaterFirePooler.GetPooledObject();
+            g.transform.position = transform.position;
+            g.SetActive(true);
+        }
     }
     private void OnValidate()
     {

@@ -45,7 +45,12 @@ public class Chest : MonoBehaviour
                     if (GameManager.Instance.gameState != GameManager.GAMESTATE.WIN)
                     {
                         // PlayerManager.Instance.isContinueDetect = false;
+                        gameObject.SetActive(false);
                         PlayerManager.Instance.OnPlayerDie();
+
+                        GameObject destroyEffect = ObjectPoolerManager.Instance.effectDestroyPooler.GetPooledObject();
+                        destroyEffect.transform.position = collision.transform.position;
+                        destroyEffect.SetActive(true);
                     }
                 }
             }

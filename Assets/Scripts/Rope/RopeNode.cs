@@ -11,7 +11,13 @@ public class RopeNode : MonoBehaviour
 
     //public void OnMouseDown()
     //{
-
+    //    Debug.LogError("====wtf====");
+    //    hingeJoin2D.enabled = false;
+    //    if (SoundManager.Instance != null)
+    //    {
+    //        SoundManager.Instance.PlaySound(SoundManager.Instance.acCutRope);
+    //    }
+    //    RopeManager.Instance.UnUseRope(this);
     //}
     //public void OnMouseOver()
     //{
@@ -22,5 +28,6 @@ public class RopeNode : MonoBehaviour
     //        SoundManager.Instance.PlaySound(SoundManager.Instance.acCutRope);
     //    }
     //    RopeManager.Instance.UnUseRope(this);
+
     //}
 }

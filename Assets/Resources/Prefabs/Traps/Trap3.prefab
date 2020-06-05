@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4499537790924860922}
   m_Layer: 17
   m_Name: Trap3
-  m_TagString: Trap_Lava
+  m_TagString: Trap_Other
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

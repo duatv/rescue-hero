@@ -46,9 +46,12 @@ public class PlayerManager : MonoBehaviour
         Instance = this;
         //if (!string.IsNullOrEmpty(Utils.skinNormal))
         //{
+        if (DataController.instance != null)
+        {
             saPlayer.Skeleton.SetSkin(DataController.instance.heroData.infos[DataParam.currentHero].nameSkin);
             saPlayer.Skeleton.SetSlotsToSetupPose();
             saPlayer.LateUpdate();
+        }
         //}
     }
     private void Start()
@@ -216,7 +219,7 @@ public class PlayerManager : MonoBehaviour
         {
             if (pState != P_STATE.DIE)
             {
-                _rig2D.velocity = new Vector2(0,_rig2D.velocity.y);
+                _rig2D.velocity = new Vector2(0, _rig2D.velocity.y);
                 PlayAnim(str_idle, true);
             }
             return;
@@ -254,7 +257,7 @@ public class PlayerManager : MonoBehaviour
     }
     IEnumerator delayMove()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.25f);
         Debug.LogError("zoooooooooooooooo");
         if (pState != P_STATE.DIE && pState != P_STATE.WIN)
         {
@@ -398,26 +401,44 @@ public class PlayerManager : MonoBehaviour
             }
             else
             {
-               isMoveLeft = true;
-               isMoveRight = false;
+                isMoveLeft = true;
+                isMoveRight = false;
             }
-           saPlayer.skeleton.ScaleX = collision.gameObject.transform.localScale.x;
+            saPlayer.skeleton.ScaleX = collision.gameObject.transform.localScale.x;
             Debug.LogError("zo day");
+        }
+    }
+
+    IEnumerator delayWin()
+    {
+        yield return new WaitForSeconds(1f);
+
+        if (pState != P_STATE.DIE)
+        {
+            GameManager.Instance.gameState = GameManager.GAMESTATE.WIN;
+            pState = P_STATE.WIN;
+            GameManager.Instance.ShowWinPanel();
         }
     }
 
     public void OnWin()
     {
-        GameManager.Instance.gameState = GameManager.GAMESTATE.WIN;
-        pState = P_STATE.WIN;
         _rig2D.velocity = Vector2.zero;
-        _rig2D.constraints = RigidbodyConstraints2D.FreezePositionX;
         transform.rotation = Quaternion.identity;
         _rig2D.constraints = RigidbodyConstraints2D.FreezeRotation;
-
         beginMove = false;
         PlayAnim(isTakeSword ? str_OpenWithSword : str_OpenWithoutSword, false);
-        GameManager.Instance.ShowWinPanel();
+        StartCoroutine(delayWin());
+        //GameManager.Instance.gameState = GameManager.GAMESTATE.WIN;
+        //pState = P_STATE.WIN;
+        //_rig2D.velocity = Vector2.zero;
+        //_rig2D.constraints = RigidbodyConstraints2D.FreezePositionX;
+        //transform.rotation = Quaternion.identity;
+        //_rig2D.constraints = RigidbodyConstraints2D.FreezeRotation;
+
+        //beginMove = false;
+        //PlayAnim(isTakeSword ? str_OpenWithSword : str_OpenWithoutSword, false);
+        //GameManager.Instance.ShowWinPanel();
     }
 
     public void OnPlayAnimOpenChest()

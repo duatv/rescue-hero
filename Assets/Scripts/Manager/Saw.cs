@@ -8,7 +8,7 @@ public class Saw : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -19,20 +19,12 @@ public class Saw : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<EnemyBase>() != null) {
-            collision.gameObject.GetComponent<EnemyBase>().OnDie_();
-        }
-        if (collision.gameObject.GetComponent<PlayerManager>() != null) {
-            if (GameManager.Instance.gameState != GameManager.GAMESTATE.WIN)
-            {
-                collision.gameObject.GetComponent<PlayerManager>().OnPlayerDie();
-            }
-        }
-        if (collision.gameObject.GetComponent<HostageManager>() != null)
+
+        if (collision.gameObject.tag == "BodyPlayer")
         {
             if (GameManager.Instance.gameState != GameManager.GAMESTATE.WIN)
             {
-                collision.gameObject.GetComponent<HostageManager>().OnDie_();
+                PlayerManager.Instance.OnPlayerDie();
             }
         }
     }

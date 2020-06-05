@@ -5,8 +5,8 @@ using System.Collections.Generic;
 public class ObjectPoolerManager : MonoBehaviour
 {
     [HideInInspector]
-    public ObjectPooler effectWaterFirePooler;
-    public GameObject effectWaterFirePrefab;
+    public ObjectPooler effectWaterFirePooler,effectDestroyPooler;
+    public GameObject effectWaterFirePrefab, effectDestroyPrefab;
     [HideInInspector]
     public static ObjectPoolerManager Instance { get; private set; }
     public List<ObjectPooler> AllPool = new List<ObjectPooler>();
@@ -45,7 +45,15 @@ public class ObjectPoolerManager : MonoBehaviour
             effectWaterFirePooler.Initialize(30);
             AllPool.Add(effectWaterFirePooler);
         }
-
+        if (effectDestroyPooler == null)
+        {
+            go = new GameObject("effectDestroyPooler");
+            effectDestroyPooler = go.AddComponent<ObjectPooler>();
+            effectDestroyPooler.PooledObject = effectDestroyPrefab;
+            go.transform.parent = this.gameObject.transform;
+            effectDestroyPooler.Initialize(30);
+            AllPool.Add(effectDestroyPooler);
+        }
     }
     GameObject go;
 

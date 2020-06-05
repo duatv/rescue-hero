@@ -16,8 +16,12 @@ public class SpawnObject : MonoBehaviour
     {
         if (!loadObjectChild)
         {
+            loadObjectChild = true;
+            if (gInstantiate == null)
+                return;
             for (int i = gGems.Count; i < totalGems; i++)
             {
+                
                 Unit u = Instantiate(gInstantiate);
                 u.transform.parent = gameObject.transform;
                 u.transform.position = new Vector2(transform.position.x + Random.Range(-0.2f, 0.2f), transform.position.y + Random.Range(-0.2f, 0.2f));
@@ -67,7 +71,7 @@ public class SpawnObject : MonoBehaviour
                     gGems.Add(u);
                 }
             }
-            loadObjectChild = true;
+
         }
     }
 

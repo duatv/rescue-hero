@@ -35,33 +35,19 @@ public class TouchManager : MonoBehaviour
 
     void Update()
     {
-        mousePos = Input.mousePosition;
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButtonDown(0))
         {
-            Vector3 screenPos = Camera.main.ScreenToWorldPoint(mousePos);
-            RaycastHit2D hit2D = Physics2D.Raycast(screenPos, Vector2.zero, 1000, lmTouch);
+            cutOn = true;
+            oldMouse = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-            if (hit2D.collider != null)
+            Ray2D ray = new Ray2D(oldMouse, currentMouse - oldMouse);
+            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, (currentMouse - oldMouse).magnitude);
+
+            if (hit.collider != null)
             {
-                if (hit2D.collider.gameObject.GetComponent<RopeNode>() != null)
+                if (hit.collider.gameObject.tag == Utils.TAG_STICKBARRIE)
                 {
-                    var ropeNode = hit2D.collider.gameObject.GetComponent<RopeNode>();
-                    if (ropeNode)
-                    {
-                        ropeNode.hingeJoin2D.enabled = false;
-                        if (SoundManager.Instance != null)
-                        {
-                            SoundManager.Instance.PlaySound(SoundManager.Instance.acCutRope);
-                        }
-                        RopeManager.Instance.UnUseRope(ropeNode);
-                    }
-                }
-            }
-            if (hit2D.collider != null)
-            {
-                if (hit2D.collider.gameObject.tag == Utils.TAG_STICKBARRIE)
-                {
-                    StickBarrier sb = hit2D.collider.gameObject.GetComponent<StickBarrier>();
+                    StickBarrier sb = hit.collider.gameObject.GetComponent<StickBarrier>();
                     if (!sb.beginMove)
                     {
                         if (SoundManager.Instance != null)
@@ -78,57 +64,75 @@ public class TouchManager : MonoBehaviour
                     }
 
                     sb.beginMove = true;
-
                 }
-            }
-            //}
-            //RaycastHit2D[] hit = Physics2D.RaycastAll(screenPos, Vector2.zero, 1000);
-            //for (int i = 0; i < hit.Length; i++)
-            //{
-            //    if (hit[i].collider.gameObject.tag.Contains(Utils.TAG_STICKBARRIE))
-            //    {
-            //        if (!hit[i].collider.gameObject.GetComponent<StickBarrier>().beginMove)
-            //        {
-            //            if (SoundManager.Instance != null)
-            //            {
-            //                if (hit[i].collider.gameObject.GetComponent<StickBarrier>()._moveType == StickBarrier.MOVETYPE.FREE) {
-            //                    SoundManager.Instance.PlaySound(SoundManager.Instance.acMoveStickClick);
-            //                }
-            //                else
-            //                    SoundManager.Instance.PlaySound(SoundManager.Instance.acMoveStick);
-            //            }
-            //        }
-
-            //        hit[i].collider.gameObject.GetComponent<StickBarrier>().beginMove = true;
-            //    }
-            //    if (hit[i].collider.gameObject.GetComponent<RopeNode>() != null) {
-            //        var ropeNode = hit[i].collider.gameObject.GetComponent<RopeNode>();
-            //        if (ropeNode)
-            //        {
-            //            ropeNode.hingeJoin2D.enabled = false;
-            //            if (SoundManager.Instance != null) {
-            //                SoundManager.Instance.PlaySound(SoundManager.Instance.acCutRope);
-            //            }
-            //            RopeManager.Instance.UnUseRope(/*ropeNode.ropeIndex*/ropeNode);
-            //        }
-            //    }
-            //}
-
-
-            if (GameManager.Instance.canUseTrail)
-            {
-                trailTransform.gameObject.SetActive(true);
-                MoveTrailToCursor(mousePos);
             }
         }
         if (Input.GetMouseButtonUp(0))
         {
             if (GameManager.Instance.canUseTrail)
                 trailTransform.gameObject.SetActive(false);
+            cutOn = false;
         }
+        if (cutOn)
+        {
+            currentMouse = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Ray2D ray = new Ray2D(oldMouse, currentMouse - oldMouse);
+            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, (currentMouse - oldMouse).magnitude);
+            if (hit.collider != null)
+            {
+                if (hit.collider.gameObject.tag == "Rope")
+                {
+                    var ropeNode = hit.collider.gameObject.GetComponent<RopeNode>();
+                    if (ropeNode)
+                    {
+                        ropeNode.hingeJoin2D.enabled = false;
+                        if (SoundManager.Instance != null)
+                        {
+                            SoundManager.Instance.PlaySound(SoundManager.Instance.acCutRope);
+                        }
+                        RopeManager.Instance.UnUseRope(ropeNode);
+                    }
+                }
+                else if (hit.collider.gameObject.tag == Utils.TAG_STICKBARRIE)
+                {
+                    StickBarrier sb = hit.collider.gameObject.GetComponent<StickBarrier>();
+                    if (!sb.beginMove)
+                    {
+                        if (SoundManager.Instance != null)
+                        {
+                            if (sb._moveType == StickBarrier.MOVETYPE.FREE)
+                            {
+                                SoundManager.Instance.PlaySound(SoundManager.Instance.acMoveStickClick);
+                                if (GameManager.Instance.mapLevel.lstAllStick.Contains(sb))
+                                    GameManager.Instance.mapLevel.lstAllStick.Remove(sb);
+                            }
+                            else
+                                SoundManager.Instance.PlaySound(SoundManager.Instance.acMoveStick);
+                        }
+                    }
+
+                    sb.beginMove = true;
+                }
+            }
+
+            if (GameManager.Instance.canUseTrail)
+            {
+                trailTransform.gameObject.SetActive(true);
+                MoveTrailToCursor(Input.mousePosition);
+            }
+        }
+
     }
     void MoveTrailToCursor(Vector3 screenPosition)
     {
         trailTransform.position = thisCamera.ScreenToWorldPoint(new Vector3(screenPosition.x, screenPosition.y, distanceFromCamera));
     }
+
+
+
+    private bool cutOn;
+    private Vector3 oldMouse;
+    private Vector3 currentMouse;
+
+
 }

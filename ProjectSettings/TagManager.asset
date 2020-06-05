@@ -18,6 +18,8 @@ TagManager:
   - Chest
   - ChangeDir
   - Trap_Gas
+  - Rope
+  - Trap_Other
   layers:
   - Default
   - TransparentFX

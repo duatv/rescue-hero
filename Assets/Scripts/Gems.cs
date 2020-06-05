@@ -53,6 +53,14 @@ public class Gems : Unit
           //  }
             gameObject.layer = 0;
             gameObject.SetActive(false);
+
+            int randomEffect = Random.Range(0, 100);
+            if (randomEffect <= 10)
+            {
+                GameObject destroyEffect = ObjectPoolerManager.Instance.effectDestroyPooler.GetPooledObject();
+                destroyEffect.transform.position = collision.transform.position;
+                destroyEffect.SetActive(true);
+            }
         }
         if (collision.gameObject.tag == "BodyPlayer")
         {
