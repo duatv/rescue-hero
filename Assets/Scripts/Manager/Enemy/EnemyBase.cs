@@ -147,7 +147,7 @@ public class EnemyBase : MonoBehaviour
                     if (hit2D.collider != null)
                     {
                         Debug.LogError("checkhit1" + hit2D.collider.tag);
-                        if (hit2D.collider.gameObject.tag != Utils.TAG_STICKBARRIE || hit2D.collider.gameObject.tag != "Chan"/* && !isBeginAtt*/)
+                        if (hit2D.collider.gameObject.tag != Utils.TAG_STICKBARRIE && hit2D.collider.gameObject.tag != "Chan"/* && !isBeginAtt*/)
                         {
                             //if (hit2D.collider.gameObject.GetComponent<EnemyBase>() != null)
                             //{
@@ -184,7 +184,7 @@ public class EnemyBase : MonoBehaviour
                     if (hit2D_1.collider != null)
                     {
                         Debug.LogError("checkhit2" + hit2D_1.collider.tag);
-                        if (hit2D_1.collider.gameObject.tag != Utils.TAG_STICKBARRIE/* && !isBeginAtt*/|| hit2D.collider.gameObject.tag != "Chan")
+                        if (hit2D_1.collider.gameObject.tag != Utils.TAG_STICKBARRIE/* && !isBeginAtt*/&& hit2D_1.collider.gameObject.tag != "Chan")
                         {
                             //if (hit2D_1.collider.gameObject.GetComponent<EnemyBase>() != null)
                             //{
