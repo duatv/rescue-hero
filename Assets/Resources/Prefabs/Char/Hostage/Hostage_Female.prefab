@@ -153,7 +153,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 10
 --- !u!114 &3584803599024919363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -364,6 +364,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Heart
+      objectReference: {fileID: 0}
+    - target: {fileID: 3977266502814411925, guid: 48675fc6f143c95459ad9fb61b58a9a9,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3977266502814411927, guid: 48675fc6f143c95459ad9fb61b58a9a9,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3977266502814504245, guid: 48675fc6f143c95459ad9fb61b58a9a9,
         type: 3}

@@ -66,8 +66,9 @@ public class HostageManager : CharsBase
             if (GameManager.Instance.gameState != GameManager.GAMESTATE.LOSE)
             {
                 GameManager.Instance.gameState = GameManager.GAMESTATE.WIN;
-                PlayerManager.Instance.OnPlayAnimOpenChest();
-                PlayerManager.Instance._rig2D.constraints = RigidbodyConstraints2D.FreezePositionX;
+               // PlayerManager.Instance.OnPlayAnimOpenChest();
+                //PlayerManager.Instance._rig2D.constraints = RigidbodyConstraints2D.FreezePositionX;
+                PlayerManager.Instance.OnWin();
                 PlayWin();
             }
         }

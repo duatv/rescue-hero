@@ -261,7 +261,7 @@ public class PlayerManager : MonoBehaviour
     IEnumerator delayMove()
     {
         yield return new WaitForSeconds(0.25f);
-        Debug.LogError("zoooooooooooooooo");
+       // Debug.LogError("zoooooooooooooooo");
         if (pState != P_STATE.DIE && pState != P_STATE.WIN)
         {
             if (hitDown.collider != null)
@@ -353,6 +353,8 @@ public class PlayerManager : MonoBehaviour
             transform.rotation = Quaternion.identity;
             _rig2D.constraints = RigidbodyConstraints2D.FreezeRotation;
             PlayAnim(str_idle, true);
+            _rig2D.gravityScale = 0;
+            ground.gameObject.SetActive(false);
             StartCoroutine(IEWait());
         }
     }
@@ -429,26 +431,19 @@ public class PlayerManager : MonoBehaviour
         _rig2D.velocity = new Vector2(0, _rig2D.velocity.y);
         transform.rotation = Quaternion.identity;
         _rig2D.constraints = RigidbodyConstraints2D.FreezeRotation;
-        beginMove = false;
-        PlayAnim(isTakeSword ? str_OpenWithSword : str_OpenWithoutSword, true);
-        StartCoroutine(delayWin());
-        //GameManager.Instance.gameState = GameManager.GAMESTATE.WIN;
-        //pState = P_STATE.WIN;
-        //_rig2D.velocity = Vector2.zero;
-        //_rig2D.constraints = RigidbodyConstraints2D.FreezePositionX;
-        //transform.rotation = Quaternion.identity;
-        //_rig2D.constraints = RigidbodyConstraints2D.FreezeRotation;
-
-        //beginMove = false;
-        //PlayAnim(isTakeSword ? str_OpenWithSword : str_OpenWithoutSword, false);
-        //GameManager.Instance.ShowWinPanel();
-    }
-
-    public void OnPlayAnimOpenChest()
-    {
+      //  _rig2D.gravityScale = 0;
+      //  ground.gameObject.SetActive(false);
         beginMove = false;
         PlayAnim(isTakeSword ? str_OpenWithSword : str_OpenWithoutSword, false);
+        StartCoroutine(delayWin());
     }
+
+    //public void OnPlayAnimOpenChest()
+    //{
+    //    beginMove = false;
+    //    PlayAnim(isTakeSword ? str_OpenWithSword : str_OpenWithoutSword, false);
+    //    Debug.LogError("=======zooooooooooo====");
+    //}
 
     //private void OnCollisionExit2D(Collision2D collision)
     //{
