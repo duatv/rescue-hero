@@ -9,7 +9,7 @@ using UnityEditor;
 public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager Instance;
-
+    public GameObject effectDie;
     public enum P_STATE { PLAYING, DIE, WIN, RUNNING }
 
     [HideInInspector] public bool isReadOnly = true;
@@ -353,8 +353,8 @@ public class PlayerManager : MonoBehaviour
             transform.rotation = Quaternion.identity;
             _rig2D.constraints = RigidbodyConstraints2D.FreezeRotation;
             PlayAnim(str_idle, true);
-            _rig2D.gravityScale = 0;
-            ground.gameObject.SetActive(false);
+            //_rig2D.gravityScale = 0;
+            //ground.gameObject.SetActive(false);
             StartCoroutine(IEWait());
         }
     }
@@ -370,6 +370,7 @@ public class PlayerManager : MonoBehaviour
 
         saPlayer.AnimationState.SetEmptyAnimation(1, 0.2f);
         PlayAnim(str_Lose, false);
+        effectDie.SetActive(true);
     }
 
     #endregion

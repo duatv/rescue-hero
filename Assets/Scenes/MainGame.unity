@@ -75084,6 +75084,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effectCamera: {fileID: 321842524}
+  BtnReplay: {fileID: 539829137}
   matStone: {fileID: 6200000, guid: b0a58d042ab47e4459e8de12a0bf051f, type: 2}
   playerMove: 0
   counthatwater: 0
