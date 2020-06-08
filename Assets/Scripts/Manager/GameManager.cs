@@ -7,6 +7,7 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    public GameObject effectCamera,BtnReplay;
     public PhysicsMaterial2D matStone;
     public bool playerMove;
     public int counthatwater;
@@ -46,8 +47,7 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-
-
+        
         txtLevel.text = "LEVEL " + (Utils.LEVEL_INDEX + 1).ToString("00,#");
         OnUpdateCoin();
 

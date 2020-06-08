@@ -75083,6 +75083,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 861767d2f6362664486709c93996caf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effectCamera: {fileID: 321842524}
   matStone: {fileID: 6200000, guid: b0a58d042ab47e4459e8de12a0bf051f, type: 2}
   playerMove: 0
   counthatwater: 0

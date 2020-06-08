@@ -423,6 +423,8 @@ public class PlayerManager : MonoBehaviour
             GameManager.Instance.gameState = GameManager.GAMESTATE.WIN;
             pState = P_STATE.WIN;
             GameManager.Instance.ShowWinPanel();
+            GameManager.Instance.effectCamera.SetActive(false);
+            GameManager.Instance.BtnReplay.SetActive(false);
         }
     }
 

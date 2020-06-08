@@ -62,7 +62,7 @@ public class Chest : MonoBehaviour
             {
                 GameManager.Instance.gameState = GameManager.GAMESTATE.WIN;
                 //PlayerManager.Instance.OnPlayAnimOpenChest();
-                //PlayerManager.Instance._rig2D.constraints = RigidbodyConstraints2D.FreezePosition;
+                rig2d.constraints = RigidbodyConstraints2D.FreezePosition;
                 PlayerManager.Instance.OnWin();
                 if (SoundManager.Instance != null)
                 {
