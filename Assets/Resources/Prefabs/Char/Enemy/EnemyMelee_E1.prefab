@@ -100,7 +100,7 @@ MonoBehaviour:
   rig: {fileID: 447227860025940805}
   lmColl:
     serializedVersion: 2
-    m_Bits: 77824
+    m_Bits: 78848
   lmPlayer:
     serializedVersion: 2
     m_Bits: 73728
