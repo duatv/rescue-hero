@@ -81,13 +81,13 @@ public class EnemyBase : MonoBehaviour
                     //    isContinueDetect = false;
                     if (hitPlayer.collider.gameObject/*.GetComponent<PlayerManager>()*/.tag == "BodyPlayer")
                     {
-                        PlayerManager.Instance/*hitPlayer.collider.gameObject.GetComponent<PlayerManager>()*/.OnPlayerDie();
+                        PlayerManager.Instance/*hitPlayer.collider.gameObject.GetComponent<PlayerManager>()*/.OnPlayerDie(true);
                         GameManager.Instance.gameState = GameManager.GAMESTATE.LOSE;
                         Debug.LogError("chem chet player");
                     }
                     else if (hitPlayer.collider.gameObject.name == "Hostage_Female"/*.collider.gameObject.GetComponent<HostageManager>()*/)
                     {
-                        hitPlayer.collider.gameObject.GetComponent<HostageManager>().OnDie_();
+                        hitPlayer.collider.gameObject.GetComponent<HostageManager>().OnDie_(false);
                         GameManager.Instance.gameState = GameManager.GAMESTATE.LOSE;
                     }
 
@@ -147,7 +147,7 @@ public class EnemyBase : MonoBehaviour
                     if (hit2D.collider != null)
                     {
                         Debug.LogError("checkhit1" + hit2D.collider.tag);
-                        if (hit2D.collider.gameObject.tag != Utils.TAG_STICKBARRIE/* && !isBeginAtt*/)
+                        if (hit2D.collider.gameObject.tag != Utils.TAG_STICKBARRIE || hit2D.collider.gameObject.tag != "Chan"/* && !isBeginAtt*/)
                         {
                             //if (hit2D.collider.gameObject.GetComponent<EnemyBase>() != null)
                             //{
@@ -184,7 +184,7 @@ public class EnemyBase : MonoBehaviour
                     if (hit2D_1.collider != null)
                     {
                         Debug.LogError("checkhit2" + hit2D_1.collider.tag);
-                        if (hit2D_1.collider.gameObject.tag != Utils.TAG_STICKBARRIE/* && !isBeginAtt*/)
+                        if (hit2D_1.collider.gameObject.tag != Utils.TAG_STICKBARRIE/* && !isBeginAtt*/|| hit2D.collider.gameObject.tag != "Chan")
                         {
                             //if (hit2D_1.collider.gameObject.GetComponent<EnemyBase>() != null)
                             //{
@@ -326,7 +326,7 @@ public class EnemyBase : MonoBehaviour
 
             if (MapLevelManager.Instance.questType == MapLevelManager.QUEST_TYPE.KILL && MapLevelManager.Instance.lstAllEnemies.Count == 0)
             {
-                PlayerManager.Instance.OnWin();
+                PlayerManager.Instance.OnWin(false);
             }
         }
     }

@@ -11,14 +11,14 @@ public class HeadPlayer : MonoBehaviour
         {
             if (GameManager.Instance.gameState != GameManager.GAMESTATE.LOSE)
             {
-                    pPlayer.OnPlayerDie();
+                    pPlayer.OnPlayerDie(true);
             }
         }
         if (collision.gameObject.tag == Utils.TAG_LAVA)
         {
             if (GameManager.Instance.gameState != GameManager.GAMESTATE.LOSE)
             {
-                pPlayer.OnPlayerDie();
+                pPlayer.OnPlayerDie(true);
             }
         }
     }

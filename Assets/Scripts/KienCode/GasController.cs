@@ -12,7 +12,7 @@ public class GasController : Unit
             {
                 if (GameManager.Instance.gameState != GameManager.GAMESTATE.WIN)
                 {
-                    PlayerManager.Instance.OnPlayerDie();
+                    PlayerManager.Instance.OnPlayerDie(true);
                 }
             }
         }

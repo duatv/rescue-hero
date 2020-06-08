@@ -26,7 +26,7 @@ public class HostageManager : CharsBase
             if (saPlayer.AnimationName.Equals(str_Win))
             {
                 saPlayer.AnimationState.SetAnimation(0, str_Win2, true);
-                PlayerManager.Instance.OnWin();
+                PlayerManager.Instance.OnWin(true);
             }
         };
 
@@ -68,7 +68,7 @@ public class HostageManager : CharsBase
                 GameManager.Instance.gameState = GameManager.GAMESTATE.WIN;
                // PlayerManager.Instance.OnPlayAnimOpenChest();
                 //PlayerManager.Instance._rig2D.constraints = RigidbodyConstraints2D.FreezePositionX;
-                PlayerManager.Instance.OnWin();
+                PlayerManager.Instance.OnWin(true);
                 PlayWin();
             }
         }
@@ -80,7 +80,7 @@ public class HostageManager : CharsBase
                 if (GameManager.Instance.gameState != GameManager.GAMESTATE.WIN)
                 {
                     // PlayerManager.Instance.isContinueDetect = false;
-                    PlayerManager.Instance.OnPlayerDie();
+                    PlayerManager.Instance.OnPlayerDie(false);
                     PlayDie();
                 }
             }
@@ -94,7 +94,7 @@ public class HostageManager : CharsBase
                 if (GameManager.Instance.gameState != GameManager.GAMESTATE.WIN)
                 {
                     // PlayerManager.Instance.isContinueDetect = false;
-                    PlayerManager.Instance.OnPlayerDie();
+                    PlayerManager.Instance.OnPlayerDie(false);
                     PlayDie();
                 }
             }

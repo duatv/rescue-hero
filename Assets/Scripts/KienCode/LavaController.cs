@@ -21,7 +21,7 @@ public class LavaController : Unit
                 if (GameManager.Instance.gameState != GameManager.GAMESTATE.WIN)
                 {
                     // PlayerManager.Instance.isContinueDetect = false;
-                    PlayerManager.Instance.OnPlayerDie();
+                    PlayerManager.Instance.OnPlayerDie(true);
                 }
             }
         }

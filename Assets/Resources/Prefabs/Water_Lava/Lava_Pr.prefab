@@ -392,7 +392,7 @@ MonoBehaviour:
   spriteGem: []
   _spawnType: 1
   effect: {fileID: 71346121540083533}
-  effect2: {fileID: 0}
+  effect2: {fileID: 7389815732358153552}
   sp: {fileID: 7660081744622910377}
   rid: {fileID: 5976190729354532741}
   activeChangeStone: 0
@@ -746,6 +746,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9ae293a9b700f14c8ba4006acc8f08d, type: 3}
+--- !u!1 &7389815732358153552 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 535760678226372113, guid: e9ae293a9b700f14c8ba4006acc8f08d,
+    type: 3}
+  m_PrefabInstance: {fileID: 7053342073940026177}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7389815730586986283 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 535760679961363562, guid: e9ae293a9b700f14c8ba4006acc8f08d,

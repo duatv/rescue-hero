@@ -14,14 +14,14 @@ public class TouchManager : MonoBehaviour
     Transform trailTransform;
     public Camera thisCamera;
     #endregion
-
+    TrailRenderer trail;
     private Vector3 mousePos;
 
     void Start()
     {
         GameObject trailObj = new GameObject("Mouse Trail");
         trailTransform = trailObj.transform;
-        TrailRenderer trail = trailObj.AddComponent<TrailRenderer>();
+         trail = trailObj.AddComponent<TrailRenderer>();
         trail.time = -1f;
         MoveTrailToCursor(Input.mousePosition);
         trail.time = trailTime;
@@ -30,7 +30,9 @@ public class TouchManager : MonoBehaviour
         trail.numCapVertices = 2;
         trail.sharedMaterial = new Material(Shader.Find("Unlit/Color"));
         trail.sharedMaterial.color = trailColor;
+        trail.Clear();  
         trailTransform.gameObject.SetActive(false);
+
     }
     GameObject detectstick;
     void Update()
@@ -74,7 +76,10 @@ public class TouchManager : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             if (GameManager.Instance.canUseTrail)
+            {
+                trail.Clear();
                 trailTransform.gameObject.SetActive(false);
+            }
             cutOn = false;
             detectstick = null;
         }

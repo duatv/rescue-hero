@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Spine.Unity;
+using Spine;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -48,9 +49,19 @@ public class PlayerManager : MonoBehaviour
         //{
         if (DataController.instance != null)
         {
-            saPlayer.Skeleton.SetSkin(DataController.instance.heroData.infos[DataParam.currentHero].nameSkin);
-            saPlayer.Skeleton.SetSlotsToSetupPose();
-            saPlayer.LateUpdate();
+            //saPlayer.Skeleton.SetSkin(DataController.instance.heroData.infos[DataParam.currentHero].nameSkin);
+            //saPlayer.Skeleton.SetSlotsToSetupPose();
+            //saPlayer.LateUpdate();
+
+            var skeleton = saPlayer.Skeleton;
+            var skeletonData = skeleton.Data;
+            var newSkin = new Skin("new-skin");
+            newSkin.AddSkin(skeletonData.FindSkin(DataController.instance.heroData.infos[DataParam.currentHero].nameSkin));
+
+
+            skeleton.SetSkin(newSkin);
+            skeleton.SetSlotsToSetupPose();
+            saPlayer.AnimationState.Apply(skeleton);
         }
         //}
     }
@@ -105,20 +116,13 @@ public class PlayerManager : MonoBehaviour
         {
             if (!isJump)
             {
-                //vJumpHeigh = new Vector2(saPlayer.skeleton.ScaleX, 2);
-                //_rig2D.AddForce(vJumpHeigh, ForceMode2D.Impulse);
                 _rig2D.velocity = new Vector2(saPlayer.skeleton.ScaleX, 4);
                 isJump = true;
-                // Debug.LogError("jump:");
             }
         }
     }
     private void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.A))
-        //{
-        //    HeroJump();
-        //}
         if (saPlayer.AnimationName.Equals(str_idle))
         {
             HeroBlink();
@@ -261,7 +265,7 @@ public class PlayerManager : MonoBehaviour
     IEnumerator delayMove()
     {
         yield return new WaitForSeconds(0.25f);
-       // Debug.LogError("zoooooooooooooooo");
+        // Debug.LogError("zoooooooooooooooo");
         if (pState != P_STATE.DIE && pState != P_STATE.WIN)
         {
             if (hitDown.collider != null)
@@ -292,26 +296,6 @@ public class PlayerManager : MonoBehaviour
     #endregion
 
     #region Player action
-    //public void OnBeginRun()
-    //{
-    //    StartCoroutine(IEWaitToRun());
-    //}
-    //IEnumerator IEWaitToRun()
-    //{
-    //    yield return new WaitForSeconds(2.0f);
-    //    if (pState != P_STATE.DIE)
-    //    {
-    //        pState = P_STATE.RUNNING;
-    //        if (MapLevelManager.Instance != null)
-    //        {
-    //            if (MapLevelManager.Instance.trTarget != null && MapLevelManager.Instance.trTarget.gameObject.activeSelf)
-    //            {
-    //                PrepareRotate(MapLevelManager.Instance.trTarget, false);
-    //            }
-    //        }
-    //    }
-    //}
-
 
     public void OnIdleState()
     {
@@ -342,7 +326,7 @@ public class PlayerManager : MonoBehaviour
 
         OnIdleState();
     }
-    public void OnPlayerDie()
+    public void OnPlayerDie(bool effect)
     {
         if (GameManager.Instance.gameState != GameManager.GAMESTATE.WIN)
         {
@@ -353,12 +337,10 @@ public class PlayerManager : MonoBehaviour
             transform.rotation = Quaternion.identity;
             _rig2D.constraints = RigidbodyConstraints2D.FreezeRotation;
             PlayAnim(str_idle, true);
-            //_rig2D.gravityScale = 0;
-            //ground.gameObject.SetActive(false);
-            StartCoroutine(IEWait());
+            StartCoroutine(IEWait(effect));
         }
     }
-    IEnumerator IEWait()
+    IEnumerator IEWait(bool effect)
     {
         yield return new WaitForSeconds(0.2f);
         MapLevelManager.Instance.OnLose();
@@ -370,32 +352,11 @@ public class PlayerManager : MonoBehaviour
 
         saPlayer.AnimationState.SetEmptyAnimation(1, 0.2f);
         PlayAnim(str_Lose, false);
-        effectDie.SetActive(true);
+        effectDie.SetActive(effect);
     }
 
     #endregion
     #region Collision
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if (pState == P_STATE.PLAYING || pState == P_STATE.RUNNING)
-    //    {
-    //        if (isContinueDetect && collision.gameObject.tag == Utils.TAG_TRAP)
-    //        {
-    //            if (GameManager.Instance.gameState != GameManager.GAMESTATE.WIN)
-    //            {
-    //                isContinueDetect = false;
-    //                OnPlayerDie();
-    //            }
-    //        }
-    //        if (isContinueDetect && collision.gameObject.tag == Utils.TAG_WIN)
-    //        {
-    //            _rig2D.velocity = Vector2.zero;
-    //            beginMove = false;
-    //            if (GameManager.Instance.gameState != GameManager.GAMESTATE.LOSE)
-    //                OnWin();
-    //        }
-    //    }
-    //}
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "ChangeDir")
@@ -429,35 +390,21 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    public void OnWin()
+    public void OnWin(bool playcollect)
     {
         _rig2D.velocity = new Vector2(0, _rig2D.velocity.y);
         transform.rotation = Quaternion.identity;
         _rig2D.constraints = RigidbodyConstraints2D.FreezeRotation;
-      //  _rig2D.gravityScale = 0;
-      //  ground.gameObject.SetActive(false);
         beginMove = false;
-        PlayAnim(isTakeSword ? str_OpenWithSword : str_OpenWithoutSword, false);
-        StartCoroutine(delayWin());
+        if (playcollect)
+        {
+            PlayAnim(isTakeSword ? str_OpenWithSword : str_OpenWithoutSword, false);
+            StartCoroutine(delayWin());
+        }
+        else
+            StartCoroutine(ISShowWin());
+
     }
-
-    //public void OnPlayAnimOpenChest()
-    //{
-    //    beginMove = false;
-    //    PlayAnim(isTakeSword ? str_OpenWithSword : str_OpenWithoutSword, false);
-    //    Debug.LogError("=======zooooooooooo====");
-    //}
-
-    //private void OnCollisionExit2D(Collision2D collision)
-    //{
-    //    if (pState == P_STATE.PLAYING || pState == P_STATE.RUNNING)
-    //    {
-    //        if (collision.gameObject.tag == Utils.TAG_STICKBARRIE)
-    //        {
-    //            OnBeginRun();
-    //        }
-    //    }
-    //}
     #endregion
 
     public void ChoosePlayer(int i)

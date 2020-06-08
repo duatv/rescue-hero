@@ -29,7 +29,7 @@ public class Chest : MonoBehaviour
             if (saChest.AnimationName.Equals(animOpen))
             {
                 _pOpenChest.gameObject.SetActive(true);
-                PlayerManager.Instance.OnWin();
+                PlayerManager.Instance.OnWin(true);
             }
         };
     }
@@ -46,7 +46,7 @@ public class Chest : MonoBehaviour
                     {
                         // PlayerManager.Instance.isContinueDetect = false;
                         gameObject.SetActive(false);
-                        PlayerManager.Instance.OnPlayerDie();
+                        PlayerManager.Instance.OnPlayerDie(false);
 
                         GameObject destroyEffect = ObjectPoolerManager.Instance.effectDestroyPooler.GetPooledObject();
                         destroyEffect.transform.position = collision.transform.position;
@@ -63,7 +63,7 @@ public class Chest : MonoBehaviour
                 GameManager.Instance.gameState = GameManager.GAMESTATE.WIN;
                 //PlayerManager.Instance.OnPlayAnimOpenChest();
                 rig2d.constraints = RigidbodyConstraints2D.FreezePosition;
-                PlayerManager.Instance.OnWin();
+                PlayerManager.Instance.OnWin(true);
                 if (SoundManager.Instance != null)
                 {
                     SoundManager.Instance.PlaySound(SoundManager.Instance.acOpenChest);

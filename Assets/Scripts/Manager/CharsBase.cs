@@ -45,7 +45,7 @@ public class CharsBase : MonoBehaviour
         //}
         //else saPlayer.AnimationState.SetAnimation(0, anim_, isLoop);
     }
-    public void OnDie_() {
+    public void OnDie_(bool effect) {
 
         isContinueDetect = false;
         if (_charType == CHAR_TYPE.HOSTAGE)
@@ -56,7 +56,7 @@ public class CharsBase : MonoBehaviour
                 PlayAnim(str_Lose, false);
 
                 if (PlayerManager.Instance != null)
-                    PlayerManager.Instance.OnPlayerDie();
+                    PlayerManager.Instance.OnPlayerDie(effect);
                 MapLevelManager.Instance.OnLose();
             }
             if (SoundManager.Instance != null)
@@ -65,14 +65,14 @@ public class CharsBase : MonoBehaviour
             }
         }
     }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (isContinueDetect && collision.gameObject.name.Contains("Lava_Pr") && collision.gameObject.tag.Contains(Utils.TAG_LAVA))
-        {
-            OnDie_();
-        }
-        if (isContinueDetect && collision.gameObject.tag.Contains(Utils.TAG_STONE)) {
-            OnDie_();
-        }
-    }
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if (isContinueDetect && collision.gameObject.name.Contains("Lava_Pr") && collision.gameObject.tag.Contains(Utils.TAG_LAVA))
+    //    {
+    //        OnDie_(false);
+    //    }
+    //    if (isContinueDetect && collision.gameObject.tag.Contains(Utils.TAG_STONE)) {
+    //        OnDie_(false);
+    //    }
+    //}
 }

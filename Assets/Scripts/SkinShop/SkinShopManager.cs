@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Spine.Unity;
+using Spine;
+
 [System.Serializable]
 public class SpriteHero
 {
@@ -114,9 +116,20 @@ public class SkinShopManager : MonoBehaviour
     //}
     public void ChangeSkin(string skinName)
     {
-        saPlayer.Skeleton.SetSkin(skinName);
-        saPlayer.Skeleton.SetSlotsToSetupPose();
-        saPlayer.LateUpdate();
+     //   saPlayer.Skeleton.SetSkin(skinName);
+
+        //   saPlayer.Skeleton.SetSlotsToSetupPose();
+        // saPlayer.LateUpdate();
+
+        var skeleton = saPlayer.Skeleton;
+        var skeletonData = skeleton.Data;
+        var newSkin = new Skin("new-skin");
+        newSkin.AddSkin(skeletonData.FindSkin(skinName));
+
+
+        skeleton.SetSkin(newSkin);
+        skeleton.SetSlotsToSetupPose();
+        saPlayer.AnimationState.Apply(skeleton);
     }
     private void OnEnable()
     {

@@ -9,7 +9,7 @@ public class Sword : MonoBehaviour
 
     private RaycastHit2D hitDown;
 
-    private PlayerManager _pPLayer;
+ //   private PlayerManager _pPLayer;
     private HostageManager _hHostage;
     private EnemyBase _eEnemy;
     Vector3 _vStartHitDown, _vEndHitDown;
@@ -36,16 +36,17 @@ public class Sword : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<PlayerManager>() != null) {
-            _pPLayer = collision.gameObject.GetComponent<PlayerManager>();
+        if (/*collision.gameObject.GetComponent<PlayerManager>() != null*/collision.tag == "BodyPlayer") {
+         //   _pPLayer = collision.gameObject.GetComponent<PlayerManager>();
             if (IsCanKilling()) {
-                if(!_pPLayer.isTakeSword)
-                    _pPLayer.OnPlayerDie();
+                if(!/*_pPLayer*/PlayerManager.Instance.isTakeSword)
+                    /*_pPLayer*/
+                    PlayerManager.Instance.OnPlayerDie(true);
             }
             else
             {
                 rig2d.bodyType = RigidbodyType2D.Kinematic;
-                _pPLayer.OnTakeSword(transform);
+                /*_pPLayer*/PlayerManager.Instance.OnTakeSword(transform);
             }
         }
         if (collision.gameObject.GetComponent<HostageManager>() != null)
@@ -54,7 +55,7 @@ public class Sword : MonoBehaviour
             if (IsCanKilling())
             {
                 if(!PlayerManager.Instance.isTakeSword)
-                    _hHostage.OnDie_();
+                    _hHostage.OnDie_(false);
             }
         }
         if (collision.gameObject.GetComponent<EnemyBase>() != null)
