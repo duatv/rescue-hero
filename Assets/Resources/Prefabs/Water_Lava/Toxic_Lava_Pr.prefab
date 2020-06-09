@@ -104,7 +104,7 @@ MonoBehaviour:
   stone: {fileID: 0}
   check: {fileID: 0}
   colliderBegin: {fileID: 0}
-  isGravity: 0
+  isGravity: 1
   timeFly: 0
 --- !u!50 &8988015970931127521
 Rigidbody2D:
@@ -184,7 +184,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6529934984303047978}
   - component: {fileID: 5894597697660897735}
-  m_Layer: 14
+  m_Layer: 24
   m_Name: sp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
