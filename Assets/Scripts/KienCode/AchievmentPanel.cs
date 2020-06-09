@@ -15,6 +15,7 @@ public class AchievmentPanel : MonoBehaviour
         else
         {
             gameObject.SetActive(false);
+           
         }
     }
 }
