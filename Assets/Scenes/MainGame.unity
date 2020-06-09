@@ -1776,7 +1776,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 261943
+    m_Bits: 18612023
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -22855,7 +22855,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: -36.79982, y: 3.9}
+  m_AnchoredPosition: {x: -36.799805, y: 3.9}
   m_SizeDelta: {x: 136, y: 135}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &636209206
@@ -75119,6 +75119,7 @@ MonoBehaviour:
   gPanelWin: {fileID: 1336993875}
   gPanelLose: {fileID: 958619079}
   gTargetFollow: {fileID: 0}
+  enemyKill: 0
 --- !u!114 &2140005906
 MonoBehaviour:
   m_ObjectHideFlags: 0
