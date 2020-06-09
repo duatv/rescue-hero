@@ -15,6 +15,8 @@ public class CamFollow : MonoBehaviour
 
     public Image BG;
 
+    public GameObject PanelWin;
+
     void Update()
     {
         if (beginFollow)
@@ -27,9 +29,14 @@ public class CamFollow : MonoBehaviour
             //{
             interpolation = speed * Time.deltaTime;
             _myCam.orthographicSize = Mathf.Lerp(_myCam.orthographicSize, camSize, interpolation);
-            var tempColor = BG.color;
-            tempColor.a = Mathf.Lerp(tempColor.a, 1, interpolation);
-            BG.color = tempColor;
+            //var tempColor = BG.color;
+            //tempColor.a = Mathf.Lerp(tempColor.a, 1, interpolation);
+            //BG.color = tempColor;
+
+            var scale = PanelWin.transform.localScale;
+            scale.x = scale.y = Mathf.Lerp(scale.x, 1, interpolation * 3);
+            PanelWin.transform.localScale = scale;
+
             position = this.transform.position;
             position.y = Mathf.Lerp(this.transform.position.y, objectToFollow.transform.position.y, interpolation);
             position.x = Mathf.Lerp(this.transform.position.x, objectToFollow.transform.position.x, interpolation);

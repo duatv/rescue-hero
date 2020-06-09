@@ -133,7 +133,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 682a6e640a6b10b45ab8ecca235109cd, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: 55c47bf0bc5b3094bb94866d61186f85, type: 2}
+  skeletonDataAsset: {fileID: 0}
   initialSkinName: 
   initialFlipX: 0
   initialFlipY: 0
@@ -240,13 +240,16 @@ MonoBehaviour:
   _charStage: 0
   _charType: 1
   isReadOnly: 0
-  sdaP1: {fileID: 11400000, guid: 74110666b8412744f8a1ea3ea2a90a0c, type: 2}
-  sdaP2: {fileID: 11400000, guid: 55c47bf0bc5b3094bb94866d61186f85, type: 2}
+  sdaP1: {fileID: 0}
+  sdaP2: {fileID: 0}
   saPlayer: {fileID: 3584803599024919363}
   str_idle: idle
   str_Win: win 2
   str_Lose: die
   strAtt: shoot
+  str_Win2: 
+  pheart: {fileID: 0}
+  isMeetPlayer: 0
 --- !u!61 &3584803599321380106
 BoxCollider2D:
   m_ObjectHideFlags: 0

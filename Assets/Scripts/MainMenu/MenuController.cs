@@ -12,7 +12,9 @@ public class MenuController : MonoBehaviour
     public DailyGiftPanel _dailyGiftPanel;
     public SkinShopManager shopManager;
     public AchievmentPanel achievementPanel;
-
+    public GameObject loadingPanel;
+    public bool animLoading;
+    public Animator playAnimLoading;
     private void Awake()
     {
         if (instance == null)
@@ -36,14 +38,16 @@ public class MenuController : MonoBehaviour
 
     public void OpenAchievement(bool open)
     {
+        if (animLoading)
+            return;
         achievementPanel.OpenMe(open);
     }
 
     private void CheckShowDailyGift() {
         if (!Utils.IsClaimReward())
         {
-            _dailyGiftPanel.gameObject.SetActive(true);
-            _dailyGiftPanel.OnShowPanel();
+            //_dailyGiftPanel.gameObject.SetActive(true);
+            //_dailyGiftPanel.OnShowPanel();
         }
     }
     
@@ -55,27 +59,31 @@ public class MenuController : MonoBehaviour
     }
     public void ShowSetting() {
 
+        if (animLoading)
+            return;
         Debug.LogError("Show Setting Panel");
         _settingPanel.gameObject.SetActive(true);
     }
     public void LoadScenePlay() {
-        SceneManager.LoadSceneAsync("MainGame");
+        //  SceneManager.LoadSceneAsync("MainGame");
+        //loadingPanel.SetActive(true);
+        animLoading = true;
+        playAnimLoading.Play("loadingprocessAnim");
     }
 
-    public void ShowDailyReward() {
 
+
+    public void ShowDailyReward() {
+        if (animLoading)
+            return;
         _dailyGiftPanel.gameObject.SetActive(true);
         _dailyGiftPanel.OnShowPanel();
     }
     public void ShowSkinShop() {
-
+        if (animLoading)
+            return;
         shopManager.gameObject.SetActive(true);
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.A)) {
-            DataController.instance.DoAchievment(0, 100);
-        }
-    }
+
 }

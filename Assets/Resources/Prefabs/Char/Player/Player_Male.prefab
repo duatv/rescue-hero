@@ -359,10 +359,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   effectDie: {fileID: 8537353621010817902}
   isReadOnly: 0
-  sdaP1: {fileID: 11400000, guid: 7a4457f805c5b274aae94b9255f6a545, type: 2}
-  sdaP2: {fileID: 11400000, guid: 9c34bc50b6f872342aa6325acf5b18b8, type: 2}
+  sdaP1: {fileID: 0}
+  sdaP2: {fileID: 0}
   str_idle: idle
   str_Win: win
+  str_Win2: win
   str_Lose: die
   str_Move: run
   str_Att: attack (kiem)

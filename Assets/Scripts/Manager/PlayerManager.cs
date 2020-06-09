@@ -18,9 +18,9 @@ public class PlayerManager : MonoBehaviour
     [DrawIf("isReadOnly", true, ComparisonType.Equals, DisablingType.ReadOnly)]
     public SkeletonDataAsset sdaP1, sdaP2;
 
-    [DrawIf("isReadOnly", true, ComparisonType.Equals, DisablingType.ReadOnly)]
+   // [DrawIf("isReadOnly", true, ComparisonType.Equals, DisablingType.ReadOnly)]
     [SpineAnimation]
-    public string str_idle, str_Win, str_Lose, str_Move, str_Att, str_TakeSword, str_OpenWithoutSword, str_OpenWithSword, str_MoveWithSword, str_Blink;
+    public string str_idle, str_Win, str_Win2, str_Lose, str_Move, str_Att, str_TakeSword, str_OpenWithoutSword, str_OpenWithSword, str_MoveWithSword, str_Blink;
     [SpineSkin]
     public string skinDefault, skinSword;
     public Transform trSword, trSwordPos;
@@ -93,7 +93,10 @@ public class PlayerManager : MonoBehaviour
     IEnumerator ISShowWin()
     {
         yield return new WaitForSeconds(0.5f);
-        PlayAnim(str_Win, true);
+        if (GameManager.Instance.mapLevel.questType == MapLevelManager.QUEST_TYPE.SAVE_HOSTAGE)
+            PlayAnim(str_Win2, false);
+        else
+            PlayAnim(str_Win, true);
         yield return new WaitForSeconds(0.5f);
         MapLevelManager.Instance.OnWin();
     }
@@ -143,8 +146,10 @@ public class PlayerManager : MonoBehaviour
     {
         if (GameManager.Instance.gameState == GameManager.GAMESTATE.PLAYING)
         {
-            PlayAnim(isTakeSword ? str_MoveWithSword : str_Move, true);
             _rig2D.velocity = moveSpeed * (saPlayer.skeleton.ScaleX > 0 ? Vector2.right : Vector2.left);
+            if (saPlayer.AnimationName == str_OpenWithSword || saPlayer.AnimationName == str_OpenWithoutSword)
+                return;
+            PlayAnim(isTakeSword ? str_MoveWithSword : str_Move, true);
         }
     }
 
@@ -227,6 +232,8 @@ public class PlayerManager : MonoBehaviour
             if (pState != P_STATE.DIE)
             {
                 _rig2D.velocity = new Vector2(0, _rig2D.velocity.y);
+                if (saPlayer.AnimationName == str_OpenWithSword || saPlayer.AnimationName == str_OpenWithoutSword)
+                    return;
                 PlayAnim(str_idle, true);
             }
             return;
@@ -236,6 +243,8 @@ public class PlayerManager : MonoBehaviour
         {
             movement = Vector2.left * moveSpeed;
             _rig2D.velocity = new Vector2(movement.x, _rig2D.velocity.y);
+            if (saPlayer.AnimationName == str_OpenWithSword || saPlayer.AnimationName == str_OpenWithoutSword)
+                return;
             PlayAnim(isTakeSword ? str_MoveWithSword : str_Move, true);
         }
         else _rig2D.velocity = Vector2.zero;
@@ -249,6 +258,8 @@ public class PlayerManager : MonoBehaviour
             if (pState != P_STATE.DIE)
             {
                 _rig2D.velocity = new Vector2(0, _rig2D.velocity.y);
+                if (saPlayer.AnimationName == str_OpenWithSword || saPlayer.AnimationName == str_OpenWithoutSword)
+                    return;
                 PlayAnim(str_idle, true);
             }
             return;
@@ -257,6 +268,8 @@ public class PlayerManager : MonoBehaviour
         {
             movement = Vector2.right * moveSpeed;
             _rig2D.velocity = new Vector2(movement.x, _rig2D.velocity.y);
+            if (saPlayer.AnimationName == str_OpenWithSword || saPlayer.AnimationName == str_OpenWithoutSword)
+                return;
             PlayAnim(isTakeSword ? str_MoveWithSword : str_Move, true);
         }
         else _rig2D.velocity = Vector2.zero;
@@ -385,8 +398,6 @@ public class PlayerManager : MonoBehaviour
             GameManager.Instance.gameState = GameManager.GAMESTATE.WIN;
             pState = P_STATE.WIN;
             //GameManager.Instance.ShowWinPanel();
-            GameManager.Instance.effectCamera.SetActive(false);
-            GameManager.Instance.BtnReplay.SetActive(false);
         }
     }
     bool win = false;

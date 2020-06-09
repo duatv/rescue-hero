@@ -153,7 +153,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 9
 --- !u!114 &3584803599024919363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -242,7 +242,7 @@ MonoBehaviour:
   _charType: 1
   isReadOnly: 0
   sdaP1: {fileID: 11400000, guid: 1c71d877975c0b444b6967565dbc80ca, type: 2}
-  sdaP2: {fileID: 11400000, guid: 55c47bf0bc5b3094bb94866d61186f85, type: 2}
+  sdaP2: {fileID: 0}
   saPlayer: {fileID: 3584803599024919363}
   str_idle: idle
   str_Win: win

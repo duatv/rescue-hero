@@ -96,15 +96,15 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
+  m_UseAutoMass: 1
+  m_Mass: 0.011309734
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 1
-  m_Material: {fileID: 6200000, guid: 68ddb697a76638c4986f6ad960e37352, type: 2}
+  m_Material: {fileID: 6200000, guid: b0a58d042ab47e4459e8de12a0bf051f, type: 2}
   m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!114 &-6812811554415879656
 MonoBehaviour:
@@ -120,13 +120,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteGem:
   - {fileID: 21300000, guid: 2b4db9934a8189a48a16fad0a4c80612, type: 3}
-  - {fileID: 21300000, guid: 618859b8b3d24854f8e3b263fc61e9e7, type: 3}
   - {fileID: 21300000, guid: 98382a2147efc1a45837e18cb1253472, type: 3}
-  - {fileID: 21300000, guid: 2f135e697b302bc46a0528e8b3af3e4e, type: 3}
   - {fileID: 21300000, guid: 9e9d5d67b9cc5d545a86d38e4b3250b7, type: 3}
   - {fileID: 21300000, guid: 618859b8b3d24854f8e3b263fc61e9e7, type: 3}
   - {fileID: 21300000, guid: 2f135e697b302bc46a0528e8b3af3e4e, type: 3}
+  - {fileID: 21300000, guid: 2f135e697b302bc46a0528e8b3af3e4e, type: 3}
+  - {fileID: 21300000, guid: 2f135e697b302bc46a0528e8b3af3e4e, type: 3}
   - {fileID: 21300000, guid: 618859b8b3d24854f8e3b263fc61e9e7, type: 3}
+  - {fileID: 21300000, guid: 2f135e697b302bc46a0528e8b3af3e4e, type: 3}
+  - {fileID: 21300000, guid: 2f135e697b302bc46a0528e8b3af3e4e, type: 3}
+  - {fileID: 21300000, guid: 2f135e697b302bc46a0528e8b3af3e4e, type: 3}
+  - {fileID: 21300000, guid: 618859b8b3d24854f8e3b263fc61e9e7, type: 3}
+  - {fileID: 21300000, guid: 2f135e697b302bc46a0528e8b3af3e4e, type: 3}
   - {fileID: 21300000, guid: 2f135e697b302bc46a0528e8b3af3e4e, type: 3}
   - {fileID: 21300000, guid: 618859b8b3d24854f8e3b263fc61e9e7, type: 3}
   _spawnType: 3
@@ -149,7 +154,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 2136656365759674114}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 68ddb697a76638c4986f6ad960e37352, type: 2}
+  m_Material: {fileID: 6200000, guid: b0a58d042ab47e4459e8de12a0bf051f, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0

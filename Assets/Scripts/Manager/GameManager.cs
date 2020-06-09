@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public PhysicsMaterial2D matStone;
     public bool playerMove;
     public int counthatwater;
-    public enum GAMESTATE { PLAYING, WIN, LOSE }
+    public enum GAMESTATE {BEGIN, PLAYING, WIN, LOSE }
     public static GameManager Instance;
     //public List<MissionType> lstAllMission = new List<MissionType>();
     public MissionType mSavePrincess, mCollect, mOpenChest, mKill;
@@ -134,6 +134,8 @@ public class GameManager : MonoBehaviour
 
                 OnUpdateCoin();
                 gPanelWin.SetActive(true);
+                BtnReplay.SetActive(false);
+               effectCamera.SetActive(false);
                 if (SoundManager.Instance != null)
                 {
                     SoundManager.Instance.PlaySound(SoundManager.Instance.acWin);
