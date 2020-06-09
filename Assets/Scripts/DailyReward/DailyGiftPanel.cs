@@ -22,6 +22,7 @@ public class DailyGiftPanel : MonoBehaviour
         //}
     }
     public void OnClosePanel() {
+
         gameObject.SetActive(false);
 
         Utils.SaveCoin();

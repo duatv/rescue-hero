@@ -116,11 +116,10 @@ public class GameManager : MonoBehaviour
     {
         StartCoroutine(IEWaitToShowWinLose(true));
     }
-    bool win = false;
     public int enemyKill;
     private IEnumerator IEWaitToShowWinLose(bool isWin)
     {
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(0.5f);
         if (AdsManager.Instance != null)
         {
             AdsManager.Instance.HideBanner();
@@ -128,33 +127,39 @@ public class GameManager : MonoBehaviour
         if (isWin)
         {
             ActiveCamEff();
-            //if (!gPanelWin.activeSelf)
-            //{
-            if (!win)
+            if (!gPanelWin.activeSelf)
             {
+
                 Utils.currentCoin += Utils.BASE_COIN;
 
                 OnUpdateCoin();
-                // gPanelWin.SetActive(true);
+                gPanelWin.SetActive(true);
                 if (SoundManager.Instance != null)
                 {
                     SoundManager.Instance.PlaySound(SoundManager.Instance.acWin);
                 }
                 MyAnalytic.LogEventWin(Utils.LEVEL_INDEX + 1);
-                win = true;
-                DataController.instance.DoAchievment(0, 1);
+
+                if (DataController.instance != null)
+                    DataController.instance.DoAchievment(0, 1);
 
                 if (mapLevel.questType == MapLevelManager.QUEST_TYPE.SAVE_HOSTAGE)
-                    DataController.instance.DoAchievment(2, 1);
+                {
+                    if (DataController.instance != null)
+                        DataController.instance.DoAchievment(2, 1);
+                }
                 else if (mapLevel.questType == MapLevelManager.QUEST_TYPE.OPEN_CHEST)
                 {
-                    DataController.instance.DoAchievment(3, 1);
+                    if (DataController.instance != null)
+                        DataController.instance.DoAchievment(3, 1);
                 }
                 else if (mapLevel.questType == MapLevelManager.QUEST_TYPE.COLLECT)
                 {
-                    DataController.instance.DoAchievment(1, 1);
+                    if (DataController.instance != null)
+                        DataController.instance.DoAchievment(1, 1);
                 }
-                DataController.instance.DoAchievment(4, enemyKill);
+                if (DataController.instance != null)
+                    DataController.instance.DoAchievment(4, enemyKill);
                 Debug.LogError("=====win=====");
             }
             //}

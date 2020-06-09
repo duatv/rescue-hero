@@ -6,17 +6,13 @@ using UnityEngine.UI;
 
 public class MenuController : MonoBehaviour
 {
-    public static bool animPopup;
     public static MenuController instance;
     [SerializeField] public LevelConfig levelConfig;
     public SettingPanel _settingPanel;
     public DailyGiftPanel _dailyGiftPanel;
     public SkinShopManager shopManager;
     public AchievmentPanel achievementPanel;
-    public void EventAnimPopUp()
-    {
-        animPopup = false;
-    }
+
     private void Awake()
     {
         if (instance == null)
@@ -40,8 +36,6 @@ public class MenuController : MonoBehaviour
 
     public void OpenAchievement(bool open)
     {
-        //if (animPopup)
-        //    return;
         achievementPanel.OpenMe(open);
     }
 
@@ -60,8 +54,7 @@ public class MenuController : MonoBehaviour
         }
     }
     public void ShowSetting() {
-        //if (animPopup)
-        //    return;
+
         Debug.LogError("Show Setting Panel");
         _settingPanel.gameObject.SetActive(true);
     }
@@ -70,14 +63,12 @@ public class MenuController : MonoBehaviour
     }
 
     public void ShowDailyReward() {
-        //if (animPopup)
-        //    return;
+
         _dailyGiftPanel.gameObject.SetActive(true);
         _dailyGiftPanel.OnShowPanel();
     }
     public void ShowSkinShop() {
-        //if (animPopup)
-        //    return;
+
         shopManager.gameObject.SetActive(true);
     }
 

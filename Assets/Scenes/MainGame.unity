@@ -1805,6 +1805,7 @@ MonoBehaviour:
   speed: 4
   camSize: 2.7
   beginFollow: 0
+  BG: {fileID: 1336993877}
 --- !u!1 &96276394
 GameObject:
   m_ObjectHideFlags: 0
@@ -15637,7 +15638,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.354, y: 0.25300002}
   m_AnchorMax: {x: 0.64439607, y: 0.316}
-  m_AnchoredPosition: {x: -1.9000244, y: -395.8999}
+  m_AnchoredPosition: {x: -1.9000244, y: -395.89993}
   m_SizeDelta: {x: 395.7, y: 51.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &461021099
@@ -48648,7 +48649,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
