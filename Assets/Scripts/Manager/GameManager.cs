@@ -116,6 +116,7 @@ public class GameManager : MonoBehaviour
     {
         StartCoroutine(IEWaitToShowWinLose(true));
     }
+    bool win = false;
     private IEnumerator IEWaitToShowWinLose(bool isWin)
     {
         yield return new WaitForSeconds(1.0f);
@@ -126,17 +127,22 @@ public class GameManager : MonoBehaviour
         if (isWin)
         {
             ActiveCamEff();
-            if (!gPanelWin.activeSelf)
+            //if (!gPanelWin.activeSelf)
+            //{
+            if (!win)
             {
                 Utils.currentCoin += Utils.BASE_COIN;
                 OnUpdateCoin();
-                gPanelWin.SetActive(true);
+                // gPanelWin.SetActive(true);
                 if (SoundManager.Instance != null)
                 {
                     SoundManager.Instance.PlaySound(SoundManager.Instance.acWin);
                 }
                 MyAnalytic.LogEventWin(Utils.LEVEL_INDEX + 1);
+                win = true;
+                Debug.LogError("=====win=====");
             }
+            //}
         }
         else
         {

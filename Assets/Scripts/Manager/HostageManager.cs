@@ -9,6 +9,7 @@ public class HostageManager : CharsBase
 {
     public ParticleSystem pheart;
     public bool isMeetPlayer;
+    bool win = false;
     void Start()
     {
         if (SoundManager.Instance != null)
@@ -52,7 +53,11 @@ public class HostageManager : CharsBase
     }
     public void PlayWin()
     {
-        StartCoroutine(IEWaitToIdle());
+        if (!win)
+        {
+            StartCoroutine(IEWaitToIdle());
+            win = true;
+        }
         //saPlayer.AnimationState.SetAnimation(0, str_Win, false);
     }
     public void PlayDie()

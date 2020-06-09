@@ -92,9 +92,9 @@ public class PlayerManager : MonoBehaviour
     }
     IEnumerator ISShowWin()
     {
-        yield return new WaitForSeconds(1.2f);
+        yield return new WaitForSeconds(0.5f);
         PlayAnim(str_Win, true);
-        yield return new WaitForSeconds(1.2f);
+        yield return new WaitForSeconds(0.5f);
         MapLevelManager.Instance.OnWin();
     }
 
@@ -384,12 +384,12 @@ public class PlayerManager : MonoBehaviour
         {
             GameManager.Instance.gameState = GameManager.GAMESTATE.WIN;
             pState = P_STATE.WIN;
-            GameManager.Instance.ShowWinPanel();
+            //GameManager.Instance.ShowWinPanel();
             GameManager.Instance.effectCamera.SetActive(false);
             GameManager.Instance.BtnReplay.SetActive(false);
         }
     }
-
+    bool win = false;
     public void OnWin(bool playcollect)
     {
         _rig2D.velocity = new Vector2(0, _rig2D.velocity.y);
@@ -398,11 +398,19 @@ public class PlayerManager : MonoBehaviour
         beginMove = false;
         if (playcollect)
         {
-            PlayAnim(isTakeSword ? str_OpenWithSword : str_OpenWithoutSword, false);
+            if (!win)
+            {
+                PlayAnim(isTakeSword ? str_OpenWithSword : str_OpenWithoutSword, false);
+                win = true;
+            }
             StartCoroutine(delayWin());
+            Debug.LogError("zooooooooooooooo 1");
         }
         else
+        {
             StartCoroutine(ISShowWin());
+            Debug.LogError("zooooooooooooooo 2");
+        }
 
     }
     #endregion

@@ -1802,7 +1802,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectToFollow: {fileID: 0}
   _myCam: {fileID: 64204347}
-  speed: 3
+  speed: 4
   camSize: 2.7
   beginFollow: 0
 --- !u!1 &96276394
@@ -3730,7 +3730,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.054773066, y: 0}
   m_AnchorMax: {x: 0.989, y: 1}
-  m_AnchoredPosition: {x: -1.1000977, y: -0.000030517578}
+  m_AnchoredPosition: {x: -1.1001282, y: -0.000030517578}
   m_SizeDelta: {x: -0.5999756, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &121401106
@@ -22855,7 +22855,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: -36.799683, y: 3.9}
+  m_AnchoredPosition: {x: -36.79982, y: 3.9}
   m_SizeDelta: {x: 136, y: 135}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &636209206
