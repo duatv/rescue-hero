@@ -8,4 +8,5 @@ public class DataParam
     public const string CURRENTHERO = "currenthero";
 
     public const string SAVEHERO = "savehero";
+    public const string SAVEACHIEVEMENT = "saveachievement";
 }

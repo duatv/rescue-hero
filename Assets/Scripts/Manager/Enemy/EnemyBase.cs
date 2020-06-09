@@ -316,6 +316,7 @@ public class EnemyBase : MonoBehaviour
             rig.constraints = RigidbodyConstraints2D.FreezeRotation;
             body.SetActive(false);
             head.SetActive(false);
+            GameManager.Instance.enemyKill++;
             MapLevelManager.Instance.lstAllEnemies.Remove(this);
 
             if (SoundManager.Instance != null)

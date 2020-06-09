@@ -28,6 +28,7 @@ public class DailyGiftPanel : MonoBehaviour
         Utils.SaveDailyGift();
     }
     private void AddCoin(int _coinAdd) {
+
         Utils.currentCoin += _coinAdd;
         if (!Utils.cantakegiftdaily)
         {

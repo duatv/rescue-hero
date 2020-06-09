@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42ad6ff7f215c8344b02d15b1f242d17, type: 3}
+  m_Name: DataAchievement
+  m_EditorClassIdentifier: 
+  infos:
+  - des: Complete xx levels
+    name: SAVE THE WORLD
+    contents:
+    - numberReward: 500
+      numberRequire: 50
+    - numberReward: 1000
+      numberRequire: 100
+    - numberReward: 1000
+      numberRequire: 200
+    - numberReward: 1000
+      numberRequire: 300
+    - numberReward: 1000
+      numberRequire: 500
+  - des: Collect golds xx times
+    name: HAND OF MIDAS
+    contents:
+    - numberReward: 500
+      numberRequire: 20
+    - numberReward: 1000
+      numberRequire: 50
+    - numberReward: 1000
+      numberRequire: 100
+    - numberReward: 1000
+      numberRequire: 200
+  - des: Save princess xx times
+    name: LIFE STORY
+    contents:
+    - numberReward: 500
+      numberRequire: 20
+    - numberReward: 1000
+      numberRequire: 50
+    - numberReward: 1000
+      numberRequire: 100
+    - numberReward: 1000
+      numberRequire: 200
+  - des: Loot treasures xx times
+    name: TREASURE HUNTER
+    contents:
+    - numberReward: 500
+      numberRequire: 20
+    - numberReward: 1000
+      numberRequire: 50
+    - numberReward: 1000
+      numberRequire: 100
+    - numberReward: 1000
+      numberRequire: 200
+  - des: Kill all monster xx times
+    name: THANKS A KILLION
+    contents:
+    - numberReward: 500
+      numberRequire: 20
+    - numberReward: 1000
+      numberRequire: 50
+    - numberReward: 1000
+      numberRequire: 100
+    - numberReward: 1000
+      numberRequire: 200

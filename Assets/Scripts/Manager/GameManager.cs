@@ -7,7 +7,7 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject effectCamera,BtnReplay;
+    public GameObject effectCamera, BtnReplay;
     public PhysicsMaterial2D matStone;
     public bool playerMove;
     public int counthatwater;
@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-        
+
         txtLevel.text = "LEVEL " + (Utils.LEVEL_INDEX + 1).ToString("00,#");
         OnUpdateCoin();
 
@@ -117,6 +117,7 @@ public class GameManager : MonoBehaviour
         StartCoroutine(IEWaitToShowWinLose(true));
     }
     bool win = false;
+    public int enemyKill;
     private IEnumerator IEWaitToShowWinLose(bool isWin)
     {
         yield return new WaitForSeconds(1.0f);
@@ -132,6 +133,7 @@ public class GameManager : MonoBehaviour
             if (!win)
             {
                 Utils.currentCoin += Utils.BASE_COIN;
+
                 OnUpdateCoin();
                 // gPanelWin.SetActive(true);
                 if (SoundManager.Instance != null)
@@ -140,6 +142,19 @@ public class GameManager : MonoBehaviour
                 }
                 MyAnalytic.LogEventWin(Utils.LEVEL_INDEX + 1);
                 win = true;
+                DataController.instance.DoAchievment(0, 1);
+
+                if (mapLevel.questType == MapLevelManager.QUEST_TYPE.SAVE_HOSTAGE)
+                    DataController.instance.DoAchievment(2, 1);
+                else if (mapLevel.questType == MapLevelManager.QUEST_TYPE.OPEN_CHEST)
+                {
+                    DataController.instance.DoAchievment(3, 1);
+                }
+                else if (mapLevel.questType == MapLevelManager.QUEST_TYPE.COLLECT)
+                {
+                    DataController.instance.DoAchievment(1, 1);
+                }
+                DataController.instance.DoAchievment(4, enemyKill);
                 Debug.LogError("=====win=====");
             }
             //}

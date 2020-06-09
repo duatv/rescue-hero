@@ -11,6 +11,7 @@ public class MenuController : MonoBehaviour
     public SettingPanel _settingPanel;
     public DailyGiftPanel _dailyGiftPanel;
     public SkinShopManager shopManager;
+    public AchievmentPanel achievementPanel;
     private void Awake()
     {
         if (instance == null)
@@ -32,6 +33,11 @@ public class MenuController : MonoBehaviour
         shopManager.DisplayBegin();
     }
 
+    public void OpenAchievement(bool open)
+    {
+        achievementPanel.OpenMe(open);
+    }
+
     private void CheckShowDailyGift() {
         if (!Utils.IsClaimReward())
         {
@@ -39,7 +45,7 @@ public class MenuController : MonoBehaviour
             _dailyGiftPanel.OnShowPanel();
         }
     }
-
+    
     public void SoundClickButton() {
         if (SoundManager.Instance != null)
         {
@@ -65,8 +71,7 @@ public class MenuController : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.A)) {
-            _dailyGiftPanel.gameObject.SetActive(true);
-            _dailyGiftPanel.OnShowPanel();
+            DataController.instance.DoAchievment(0, 100);
         }
     }
 }
