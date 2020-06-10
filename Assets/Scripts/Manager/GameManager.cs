@@ -7,19 +7,19 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    
-    public GameObject effectCamera, BtnReplay,bouderCoinFly,btnx3Coin,btnTabNext,phaohoa,btnReplay2,btnSkipLevelLose;
+
+    public GameObject effectCamera, BtnReplay, bouderCoinFly, btnx3Coin, btnTabNext, phaohoa, btnReplay2, btnSkipLevelLose, warningAchievment;
     public Sprite winSp, loseSp;
     public PhysicsMaterial2D matStone;
     public bool playerMove;
     public int counthatwater;
-    public enum GAMESTATE {BEGIN, PLAYING, WIN, LOSE }
+    public enum GAMESTATE { BEGIN, PLAYING, WIN, LOSE }
     public static GameManager Instance;
     //public List<MissionType> lstAllMission = new List<MissionType>();
     public MissionType mSavePrincess, mCollect, mOpenChest, mKill;
     public Image imgQuestImage;
     public TextMeshProUGUI txtQuestText;
-  
+
     public Text txtLevel;
     public Text txtCoin;
     public Text txtCoinWin;
@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
     //  public bool isNotEnoughGems;
     public CamFollow _camFollow;
     public Image gPanelWin;
-  //  public GameObject gPanelLose;
+    //  public GameObject gPanelLose;
 
     [HideInInspector] public GameObject gTargetFollow;
     public void LoseDisplay()
@@ -45,6 +45,10 @@ public class GameManager : MonoBehaviour
         btnSkipLevelLose.SetActive(true);
         gPanelWin.sprite = loseSp;
     }
+    public void CheckDisplayWarningAchievement()
+    {
+        warningAchievment.SetActive(DataController.instance.CheckWarningAchievement());
+    }
     private void Awake()
     {
         Instance = this;
@@ -52,7 +56,7 @@ public class GameManager : MonoBehaviour
     private void OnUpdateCoin()
     {
         txtCoin.text = Utils.currentCoin.ToString(/*"00,#"*/);
-      //  txtCoinWin.text = Utils.currentCoin.ToString("00,#");
+        //  txtCoinWin.text = Utils.currentCoin.ToString("00,#");
         Utils.SaveCoin();
     }
     public int coinTemp;
@@ -77,6 +81,9 @@ public class GameManager : MonoBehaviour
         {
             AdsManager.Instance.ShowBanner();
         }
+        CheckDisplayWarningAchievement();
+
+
     }
     private void OnChange(Sprite _spr, string _text)
     {
@@ -148,7 +155,7 @@ public class GameManager : MonoBehaviour
                 OnUpdateCoin();
                 gPanelWin.gameObject.SetActive(true);
                 BtnReplay.SetActive(false);
-               effectCamera.SetActive(false);
+                effectCamera.SetActive(false);
                 if (SoundManager.Instance != null)
                 {
                     SoundManager.Instance.PlaySound(SoundManager.Instance.acWin);
@@ -299,6 +306,16 @@ public class GameManager : MonoBehaviour
     public void GoToMenu()
     {
         //  ObjectPoolManagerHaveScript.Instance.ClearAllPool();
+        SceneManager.LoadSceneAsync("MainMenu");
+    }
+    public void BtnAchievement()
+    {
+        MenuController.openAchievement = true;
+        SceneManager.LoadSceneAsync("MainMenu");
+    }
+    public void BtnCastle()
+    {
+        MenuController.openCastle = true;
         SceneManager.LoadSceneAsync("MainMenu");
     }
     public void BuyRemoveAds()

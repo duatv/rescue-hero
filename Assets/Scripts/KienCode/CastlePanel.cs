@@ -74,7 +74,7 @@ public class CastlePanel : MonoBehaviour
                 if (!DataController.instance.saveCastle[randomCastle].unlock)
                 {
                     findout = true;
-                    countChangeImg = Random.Range(5, 10);
+                    countChangeImg = 10;
                     Debug.LogError("random castle:" + randomCastle);
                     AnimPlay();
                 }

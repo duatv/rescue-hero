@@ -37,10 +37,12 @@ public class TouchManager : MonoBehaviour
     GameObject detectstick;
     void Update()
     {
+        if (GameManager.Instance.gameState != GameManager.GAMESTATE.PLAYING)
+            return;
         if (Input.GetMouseButtonDown(0))
         {
             cutOn = true;
-            oldMouse = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            currentMouse = oldMouse = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
             Ray2D ray = new Ray2D(oldMouse, currentMouse - oldMouse);
             RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, (currentMouse - oldMouse).magnitude);

@@ -29,7 +29,7 @@ public class GasController : Unit
                     rid.AddForce(transform.up * speed);
             }
             if (timeFly <= 0)
-                timeFly = Random.Range(2, 4);
+                timeFly = Random.Range(1, 2);
         }
         else
         {
@@ -41,7 +41,7 @@ public class GasController : Unit
                     transform.rotation = Quaternion.Euler(new Vector3(0, 0, Random.Range(0, 360)));
             }
             if (timeFly <= 0)
-                timeFly = Random.Range(2, 4);
+                timeFly = Random.Range(1, 2);
         }
     }
 }

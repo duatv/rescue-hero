@@ -37,6 +37,7 @@ public class DailyGiftPanel : MonoBehaviour
         anim.Play("PopUpAnimClose");
         Utils.SaveCoin();
         Utils.SaveDailyGift();
+        MenuController.instance.CheckShowDailyGift();
     }
     private void AddCoin(int _coinAdd) {
 

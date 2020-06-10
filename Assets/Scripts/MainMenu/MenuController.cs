@@ -16,6 +16,8 @@ public class MenuController : MonoBehaviour
     public bool animLoading;
     public Animator playAnimLoading;
     public CastlePanel castlePanel;
+    public GameObject warningAchievement, warningDailyReward;
+    public static bool openAchievement, openCastle;
     private void Awake()
     {
         if (instance == null)
@@ -26,70 +28,95 @@ public class MenuController : MonoBehaviour
     {
         Utils.LoadGameData();
         txtCurLevel.text = "LEVEL " + (Utils.LEVEL_INDEX + 1);
-        if (SoundManager.Instance != null) {
+        if (SoundManager.Instance != null)
+        {
             SoundManager.Instance.PlayBackgroundMusic();
         }
 
         MyAnalytic.LogEventOpenByDay();
 
         CheckShowDailyGift();
+        CheckDisplayWarningAchievement();
 
         shopManager.DisplayBegin();
 
-       castlePanel.DisplayBegin();
+        castlePanel.DisplayBegin();
 
-      //  Utils.currentCoin = 100000;
+        if(openAchievement)
+        {
+            OpenAchievement(true);
+            openAchievement = false;
+        }
+        if(openCastle)
+        {
+            BtnShowCastle();
+            openCastle = false;
+        }
+
+        //  Utils.currentCoin = 100000;
     }
 
     public void OpenAchievement(bool open)
     {
         if (animLoading)
             return;
-
+        warningAchievement.SetActive(false);
         achievementPanel.OpenMe(open);
+
     }
     public void BtnShowCastle()
     {
-       castlePanel.gameObject.SetActive(true);
+        castlePanel.gameObject.SetActive(true);
     }
 
-    private void CheckShowDailyGift() {
+    public void CheckShowDailyGift()
+    {
         if (!Utils.IsClaimReward())
         {
+            warningDailyReward.SetActive(true);
             //_dailyGiftPanel.gameObject.SetActive(true);
             //_dailyGiftPanel.OnShowPanel();
         }
     }
-    
-    public void SoundClickButton() {
+
+    public void SoundClickButton()
+    {
         if (SoundManager.Instance != null)
         {
             SoundManager.Instance.PlaySound(SoundManager.Instance.acClick);
         }
     }
-    public void ShowSetting() {
+    public void ShowSetting()
+    {
 
         if (animLoading)
             return;
         Debug.LogError("Show Setting Panel");
         _settingPanel.gameObject.SetActive(true);
     }
-    public void LoadScenePlay() {
+    public void LoadScenePlay()
+    {
         //  SceneManager.LoadSceneAsync("MainGame");
         //loadingPanel.SetActive(true);
         animLoading = true;
         playAnimLoading.Play("loadingprocessAnim");
     }
 
+    public void CheckDisplayWarningAchievement()
+    {
+        warningAchievement.SetActive(DataController.instance.CheckWarningAchievement());
+    }
 
-
-    public void ShowDailyReward() {
+    public void ShowDailyReward()
+    {
         if (animLoading)
             return;
         _dailyGiftPanel.gameObject.SetActive(true);
         _dailyGiftPanel.OnShowPanel();
+        warningDailyReward.SetActive(false);
     }
-    public void ShowSkinShop() {
+    public void ShowSkinShop()
+    {
         if (animLoading)
             return;
         shopManager.gameObject.SetActive(true);

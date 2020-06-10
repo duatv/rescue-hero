@@ -425,7 +425,8 @@ public class PlayerManager : MonoBehaviour
                 isMoveLeft = true;
                 isMoveRight = false;
             }
-            beginMove = true;
+            if (isTakeSword)
+                beginMove = true;
             saPlayer.skeleton.ScaleX = collision.gameObject.transform.localScale.x;
             Debug.LogError("zo day");
         }

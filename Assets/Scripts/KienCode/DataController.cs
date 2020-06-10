@@ -28,7 +28,7 @@ public class DataController : MonoBehaviour
     {
         if (instance == null)
         {
-             //  Debug.unityLogger.logEnabled = false;
+             Debug.unityLogger.logEnabled = false;
             instance = this;
             DontDestroyOnLoad(gameObject);
             LoadData();
@@ -141,6 +141,20 @@ public class DataController : MonoBehaviour
 
         if (saveDataAchievement[index].currentNumber >= dataAchievement.infos[index].contents[currentLevel].numberRequire)
             saveDataAchievement[index].pass = true;
+    }
+    bool checkAchi;
+    public bool CheckWarningAchievement()
+    {
+        checkAchi = false;
+        for (int i = 0; i < saveDataAchievement.Count; i++)
+        {
+            if (saveDataAchievement[i].pass)
+            {
+                checkAchi = true;
+                break;
+            }
+        }
+        return checkAchi;
     }
     private void OnApplicationFocus(bool focus)
     {
