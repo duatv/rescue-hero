@@ -3207,6 +3207,11 @@ PrefabInstance:
       propertyPath: key
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2720310868365002843, guid: 8eea6eff2c4b9b34dbfe6f3070739266,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 4.3353043
+      objectReference: {fileID: 0}
     - target: {fileID: 2792697067004873771, guid: 8eea6eff2c4b9b34dbfe6f3070739266,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3231,6 +3236,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: StickBarrie (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7678980956083671126, guid: 8eea6eff2c4b9b34dbfe6f3070739266,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 4.3353043
       objectReference: {fileID: 0}
     - target: {fileID: 7917187945325412198, guid: 8eea6eff2c4b9b34dbfe6f3070739266,
         type: 3}
@@ -3914,6 +3924,11 @@ PrefabInstance:
       propertyPath: key
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2720310868365002843, guid: 8eea6eff2c4b9b34dbfe6f3070739266,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 4.249571
+      objectReference: {fileID: 0}
     - target: {fileID: 2792697067004873771, guid: 8eea6eff2c4b9b34dbfe6f3070739266,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3938,6 +3953,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: StickBarrie (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7678980956083671126, guid: 8eea6eff2c4b9b34dbfe6f3070739266,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 4.249571
       objectReference: {fileID: 0}
     - target: {fileID: 7917187945325412198, guid: 8eea6eff2c4b9b34dbfe6f3070739266,
         type: 3}
@@ -4124,6 +4144,11 @@ PrefabInstance:
       propertyPath: key
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2720310868365002843, guid: 8eea6eff2c4b9b34dbfe6f3070739266,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 4.5328565
+      objectReference: {fileID: 0}
     - target: {fileID: 2792697067004873771, guid: 8eea6eff2c4b9b34dbfe6f3070739266,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4149,6 +4174,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: StickBarrie (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 7678980956083671126, guid: 8eea6eff2c4b9b34dbfe6f3070739266,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 4.5328565
+      objectReference: {fileID: 0}
     - target: {fileID: 7917187945325412198, guid: 8eea6eff2c4b9b34dbfe6f3070739266,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4157,7 +4187,7 @@ PrefabInstance:
     - target: {fileID: 7917187945325412198, guid: 8eea6eff2c4b9b34dbfe6f3070739266,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.05
+      value: 2.134
       objectReference: {fileID: 0}
     - target: {fileID: 7917187945325412198, guid: 8eea6eff2c4b9b34dbfe6f3070739266,
         type: 3}
@@ -4383,7 +4413,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 5bacb781a7602fa49942a1a0158fd0ef, type: 2}
+      objectReference: {fileID: 2100000, guid: e050f0bb044fa184d91c14affb858e9e, type: 2}
     - target: {fileID: 4785156957416898563, guid: 71fda4c35e75926449050e53ebde1a78,
         type: 3}
       propertyPath: m_Mesh
@@ -4424,6 +4454,11 @@ PrefabInstance:
       propertyPath: key
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2720310868365002843, guid: 8eea6eff2c4b9b34dbfe6f3070739266,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 4.5328565
+      objectReference: {fileID: 0}
     - target: {fileID: 2792697067004873771, guid: 8eea6eff2c4b9b34dbfe6f3070739266,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4448,6 +4483,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: StickBarrie (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7678980956083671126, guid: 8eea6eff2c4b9b34dbfe6f3070739266,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 4.5328565
       objectReference: {fileID: 0}
     - target: {fileID: 7917187945325412198, guid: 8eea6eff2c4b9b34dbfe6f3070739266,
         type: 3}
