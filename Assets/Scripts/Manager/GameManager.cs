@@ -7,7 +7,9 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject effectCamera, BtnReplay,bouderCoinFly;
+    
+    public GameObject effectCamera, BtnReplay,bouderCoinFly,btnx3Coin,btnTabNext,phaohoa,btnReplay2,btnSkipLevelLose;
+    public Sprite winSp, loseSp;
     public PhysicsMaterial2D matStone;
     public bool playerMove;
     public int counthatwater;
@@ -30,11 +32,19 @@ public class GameManager : MonoBehaviour
     //  public List<Unit> lstAllGems = new List<Unit>();
     //  public bool isNotEnoughGems;
     public CamFollow _camFollow;
-    public GameObject gPanelWin;
-    public GameObject gPanelLose;
+    public Image gPanelWin;
+  //  public GameObject gPanelLose;
 
     [HideInInspector] public GameObject gTargetFollow;
-
+    public void LoseDisplay()
+    {
+        btnTabNext.SetActive(false);
+        btnx3Coin.SetActive(false);
+        phaohoa.SetActive(false);
+        btnReplay2.SetActive(true);
+        btnSkipLevelLose.SetActive(true);
+        gPanelWin.sprite = loseSp;
+    }
     private void Awake()
     {
         Instance = this;
@@ -129,14 +139,14 @@ public class GameManager : MonoBehaviour
         }
         if (isWin)
         {
-            ActiveCamEff();
-            if (!gPanelWin.activeSelf)
-            {
 
+            if (!gPanelWin.gameObject.activeSelf)
+            {
+                ActiveCamEff();
                 Utils.currentCoin += Utils.BASE_COIN;
 
                 OnUpdateCoin();
-                gPanelWin.SetActive(true);
+                gPanelWin.gameObject.SetActive(true);
                 BtnReplay.SetActive(false);
                effectCamera.SetActive(false);
                 if (SoundManager.Instance != null)
@@ -171,7 +181,17 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            OnReplay();
+
+            if (!gPanelWin.gameObject.activeSelf)
+            {
+                ActiveCamEff();
+                gPanelWin.gameObject.SetActive(true);
+                effectCamera.SetActive(false);
+                LoseDisplay();
+                MyAnalytic.LogEventLose(Utils.LEVEL_INDEX + 1);
+            }
+            //  OnReplay();
+
             //ActiveCamEff();
             //if (!gPanelLose.activeSelf)
             //{

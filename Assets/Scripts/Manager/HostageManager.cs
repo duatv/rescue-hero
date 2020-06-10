@@ -108,7 +108,7 @@ public class HostageManager : CharsBase
     IEnumerator IEWaitToIdle()
     {
         yield return new WaitForSeconds(0.3f);
-        pheart.Play();
+        pheart.gameObject.SetActive(true);
         saPlayer.AnimationState.SetAnimation(0, str_Win, false);
     }
 }
