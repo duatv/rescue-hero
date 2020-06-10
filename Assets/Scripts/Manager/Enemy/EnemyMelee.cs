@@ -15,5 +15,6 @@ public class EnemyMelee : EnemyBase
     {
         base.OnDie_();
         pBlood.Play();
+        skull.SetActive(true);
     }
 }

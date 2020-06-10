@@ -1,677 +1,684 @@
 
 Hero.png
-size: 1988,1988
+size: 1972,1972
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-144073_preview copy
-  rotate: false
-  xy: 219, 316
-  size: 313, 322
-  orig: 313, 322
-  offset: 0, 0
-  index: -1
 Ao choang
   rotate: false
-  xy: 846, 1499
+  xy: 846, 1483
   size: 421, 487
   orig: 421, 487
   offset: 0, 0
   index: -1
 Athur/1
   rotate: true
-  xy: 746, 807
+  xy: 746, 791
   size: 283, 119
   orig: 283, 119
   offset: 0, 0
   index: -1
 Athur/2
   rotate: true
-  xy: 1083, 1299
+  xy: 1084, 1283
   size: 198, 175
   orig: 198, 175
   offset: 0, 0
   index: -1
 Athur/Group 6 copy
   rotate: false
-  xy: 2, 1488
+  xy: 2, 1472
   size: 420, 498
   orig: 420, 498
   offset: 0, 0
   index: -1
 Athur/Group 6 copy 10
   rotate: false
-  xy: 1789, 396
+  xy: 1602, 1094
   size: 158, 114
   orig: 158, 114
   offset: 0, 0
   index: -1
 Athur/Group 6 copy 9
   rotate: true
-  xy: 1785, 151
+  xy: 1514, 465
   size: 112, 135
   orig: 112, 135
   offset: 0, 0
   index: -1
 Athur/Layer 125
-  rotate: false
-  xy: 1266, 1064
+  rotate: true
+  xy: 713, 635
   size: 154, 202
   orig: 154, 202
   offset: 0, 0
   index: -1
 Athur/Layer 126
   rotate: true
-  xy: 219, 640
+  xy: 219, 624
   size: 346, 254
   orig: 346, 254
   offset: 0, 0
   index: -1
 Athur/Layer 127
-  rotate: false
-  xy: 1690, 1708
+  rotate: true
+  xy: 1690, 1685
   size: 285, 278
   orig: 285, 278
   offset: 0, 0
   index: -1
 Athur/Layer 128
   rotate: false
-  xy: 1136, 833
+  xy: 1117, 872
   size: 126, 207
   orig: 126, 207
   offset: 0, 0
   index: -1
 Athur/Layer 129
   rotate: true
-  xy: 1836, 1060
+  xy: 1231, 104
   size: 158, 150
   orig: 158, 150
   offset: 0, 0
   index: -1
 Group 1 copy
-  rotate: false
-  xy: 1285, 6
+  rotate: true
+  xy: 1651, 456
   size: 134, 124
   orig: 134, 124
   offset: 0, 0
   index: -1
 Group 2 copy
-  rotate: false
-  xy: 1177, 491
+  rotate: true
+  xy: 1237, 1093
   size: 126, 207
   orig: 126, 207
   offset: 0, 0
   index: -1
 Group 3 copy
   rotate: true
-  xy: 970, 287
+  xy: 1629, 316
   size: 138, 146
   orig: 138, 146
   offset: 0, 0
   index: -1
 Group 5 copy 2
   rotate: false
-  xy: 1886, 1256
+  xy: 1151, 513
   size: 100, 178
   orig: 100, 178
   offset: 0, 0
   index: -1
 Group 6 copy 2
-  rotate: false
-  xy: 1618, 103
+  rotate: true
+  xy: 1760, 194
   size: 112, 135
   orig: 112, 135
   offset: 0, 0
   index: -1
 Group 6 copy 3
   rotate: false
-  xy: 1627, 358
+  xy: 1762, 1103
   size: 158, 114
   orig: 158, 114
   offset: 0, 0
   index: -1
 Group 7 copy
   rotate: false
-  xy: 1421, 10
+  xy: 1489, 36
   size: 102, 82
   orig: 102, 82
   offset: 0, 0
   index: -1
 Group 8 copy
   rotate: false
-  xy: 1504, 901
+  xy: 1256, 739
   size: 125, 164
   orig: 125, 164
   offset: 0, 0
   index: -1
 Group 9 copy
   rotate: false
-  xy: 1629, 626
+  xy: 1777, 618
   size: 158, 150
   orig: 158, 150
   offset: 0, 0
   index: -1
 Head copy
-  rotate: false
-  xy: 743, 427
+  rotate: true
+  xy: 1261, 1221
   size: 240, 258
   orig: 240, 258
   offset: 0, 0
   index: -1
 Hercules/Group 7 copy 4
   rotate: false
-  xy: 1803, 82
+  xy: 1593, 21
   size: 102, 67
   orig: 102, 67
   offset: 0, 0
   index: -1
 Hercules/Group 7 copy 5
-  rotate: false
-  xy: 1803, 13
+  rotate: true
+  xy: 1857, 90
   size: 102, 67
   orig: 102, 67
   offset: 0, 0
   index: -1
 Hercules/Layer 130
   rotate: false
-  xy: 424, 1092
+  xy: 424, 1076
   size: 392, 394
   orig: 392, 394
   offset: 0, 0
   index: -1
 Hercules/Layer 131
   rotate: false
-  xy: 1133, 1042
+  xy: 1089, 220
   size: 131, 211
   orig: 131, 211
   offset: 0, 0
   index: -1
 Hercules/Layer 133
-  rotate: false
-  xy: 1803, 812
+  rotate: true
+  xy: 1767, 936
   size: 165, 158
   orig: 165, 158
   offset: 0, 0
   index: -1
 Hercules/Layer 134
-  rotate: false
-  xy: 1510, 240
+  rotate: true
+  xy: 1446, 1093
   size: 115, 154
   orig: 115, 154
   offset: 0, 0
   index: -1
 Hercules/Layer 134 copy
   rotate: false
-  xy: 1264, 863
+  xy: 1120, 693
   size: 134, 177
   orig: 134, 177
   offset: 0, 0
   index: -1
 Hercules/Layer 135
   rotate: false
-  xy: 1493, 102
+  xy: 1495, 196
   size: 123, 136
   orig: 123, 136
   offset: 0, 0
   index: -1
 Hercules/Layer 135 copy
-  rotate: false
-  xy: 1524, 633
+  rotate: true
+  xy: 1354, 481
   size: 103, 158
   orig: 103, 158
   offset: 0, 0
   index: -1
 Hercules/Layer 47 copy
   rotate: false
-  xy: 475, 823
+  xy: 475, 807
   size: 269, 267
   orig: 269, 267
   offset: 0, 0
   index: -1
 Hercules/Layer 63
   rotate: false
-  xy: 1400, 863
+  xy: 1543, 579
   size: 102, 155
   orig: 102, 155
   offset: 0, 0
   index: -1
 Hercules/Layer 64
-  rotate: true
-  xy: 1322, 702
+  rotate: false
+  xy: 1383, 738
   size: 159, 163
   orig: 159, 163
   offset: 0, 0
   index: -1
 Hercules/Layer 66
-  rotate: false
-  xy: 1633, 1220
+  rotate: true
+  xy: 1521, 1210
   size: 251, 214
   orig: 251, 214
   offset: 0, 0
   index: -1
 Hip copy
   rotate: true
-  xy: 985, 441
+  xy: 1737, 1219
   size: 255, 190
   orig: 255, 190
   offset: 0, 0
   index: -1
 Layer 45
   rotate: true
-  xy: 867, 948
+  xy: 818, 1203
   size: 267, 264
   orig: 267, 264
   offset: 0, 0
   index: -1
 Layer 46
   rotate: true
-  xy: 1170, 2
+  xy: 1388, 27
   size: 97, 99
   orig: 97, 99
   offset: 0, 0
   index: -1
 Layer 47
-  rotate: true
-  xy: 713, 687
+  rotate: false
+  xy: 1777, 308
   size: 118, 152
   orig: 118, 152
   offset: 0, 0
   index: -1
 Layer 52
-  rotate: true
-  xy: 1305, 411
+  rotate: false
+  xy: 1697, 16
   size: 98, 72
   orig: 98, 72
   offset: 0, 0
   index: -1
 Layer 54
-  rotate: true
-  xy: 1421, 94
+  rotate: false
+  xy: 1231, 32
   size: 155, 70
   orig: 155, 70
   offset: 0, 0
   index: -1
 Layer 57
   rotate: false
-  xy: 1422, 1037
+  xy: 1897, 301
   size: 60, 59
   orig: 60, 59
   offset: 0, 0
   index: -1
 Layer 7
   rotate: true
-  xy: 475, 650
+  xy: 475, 634
   size: 171, 236
   orig: 171, 236
   offset: 0, 0
   index: -1
 dragon Knight/Layer 105
-  rotate: false
-  xy: 1808, 972
+  rotate: true
+  xy: 1544, 736
   size: 168, 86
   orig: 168, 86
   offset: 0, 0
   index: -1
 dragon Knight/Layer 108
-  rotate: false
-  xy: 867, 698
+  rotate: true
+  xy: 867, 812
   size: 267, 248
   orig: 267, 248
   offset: 0, 0
   index: -1
 dragon Knight/Layer 109
   rotate: false
-  xy: 1030, 99
+  xy: 1245, 905
   size: 138, 186
   orig: 138, 186
   offset: 0, 0
   index: -1
 dragon Knight/Layer 110
   rotate: false
-  xy: 1170, 101
+  xy: 1497, 906
   size: 113, 185
   orig: 113, 185
   offset: 0, 0
   index: -1
 dragon Knight/Layer 111
-  rotate: false
-  xy: 1118, 288
+  rotate: true
+  xy: 1084, 1081
   size: 156, 151
   orig: 156, 151
   offset: 0, 0
   index: -1
 dragon Knight/Layer 112
-  rotate: true
-  xy: 1136, 700
+  rotate: false
+  xy: 939, 2
   size: 131, 184
   orig: 131, 184
   offset: 0, 0
   index: -1
 dragon Knight/Layer 113
   rotate: false
-  xy: 1379, 528
+  xy: 1632, 748
   size: 143, 172
   orig: 143, 172
   offset: 0, 0
   index: -1
 dragon Knight/Layer 114
-  rotate: false
-  xy: 1276, 288
+  rotate: true
+  xy: 1647, 592
   size: 154, 117
   orig: 154, 117
   offset: 0, 0
   index: -1
 dragon Knight/Layer 114 copy 2
   rotate: false
-  xy: 1379, 407
+  xy: 1620, 195
   size: 138, 119
   orig: 138, 119
   offset: 0, 0
   index: -1
 dragon Knight/Layer 139
   rotate: false
-  xy: 818, 1217
+  xy: 491, 363
   size: 263, 269
   orig: 263, 269
   offset: 0, 0
   index: -1
 dragon Knight/Layer 143
   rotate: true
-  xy: 880, 62
+  xy: 939, 188
   size: 223, 148
   orig: 223, 148
   offset: 0, 0
   index: -1
 dragon Knight/Layer 94
   rotate: false
-  xy: 1269, 1715
+  xy: 1269, 1699
   size: 419, 271
   orig: 419, 271
   offset: 0, 0
   index: -1
 dragon Knight/Layer 99
-  rotate: true
-  xy: 1627, 246
+  rotate: false
+  xy: 1383, 126
   size: 110, 156
   orig: 110, 156
   offset: 0, 0
   index: -1
 dragon Knight/hipD
-  rotate: true
-  xy: 1305, 511
+  rotate: false
+  xy: 728, 19
   size: 187, 72
   orig: 187, 72
   offset: 0, 0
   index: -1
 dragon Knight/hong L
   rotate: false
-  xy: 1504, 793
+  xy: 1256, 631
   size: 125, 106
   orig: 125, 106
   offset: 0, 0
   index: -1
 dragon Knight/hong R
-  rotate: true
-  xy: 1519, 396
+  rotate: false
+  xy: 1253, 523
   size: 99, 106
   orig: 99, 106
   offset: 0, 0
   index: -1
 eye
-  rotate: true
-  xy: 1432, 251
+  rotate: false
+  xy: 1151, 435
   size: 154, 76
   orig: 154, 76
   offset: 0, 0
   index: -1
 feelHero/Layer 10
   rotate: false
-  xy: 1633, 1020
+  xy: 756, 363
   size: 173, 46
   orig: 173, 46
   offset: 0, 0
   index: -1
 feelHero/Layer 11
-  rotate: true
-  xy: 1968, 740
+  rotate: false
+  xy: 1011, 413
   size: 70, 18
   orig: 70, 18
   offset: 0, 0
   index: -1
 feelHero/Layer 7
   rotate: true
-  xy: 424, 1009
+  xy: 424, 993
   size: 81, 44
   orig: 81, 44
   offset: 0, 0
   index: -1
+feelHero/Layer 7 - Copy
+  rotate: false
+  xy: 1897, 265
+  size: 34, 34
+  orig: 34, 34
+  offset: 0, 0
+  index: -1
 feelHero/Layer 8
   rotate: false
-  xy: 1083, 1255
+  xy: 1084, 1239
   size: 175, 42
   orig: 175, 42
   offset: 0, 0
   index: -1
 feelHero/long may de
   rotate: false
-  xy: 900, 9
+  xy: 1309, 284
   size: 126, 51
   orig: 126, 51
   offset: 0, 0
   index: -1
 hair
   rotate: true
-  xy: 536, 19
+  xy: 536, 23
   size: 338, 190
   orig: 338, 190
   offset: 0, 0
   index: -1
 images Holy/Ao choang
   rotate: false
-  xy: 2, 988
+  xy: 2, 972
   size: 420, 498
   orig: 420, 498
   offset: 0, 0
   index: -1
 images Holy/Group 1 copy
-  rotate: false
-  xy: 1631, 865
+  rotate: true
+  xy: 1612, 922
   size: 170, 153
   orig: 170, 153
   offset: 0, 0
   index: -1
 images Holy/Group 2 copy
   rotate: false
-  xy: 728, 63
+  xy: 756, 411
   size: 150, 222
   orig: 150, 222
   offset: 0, 0
   index: -1
 images Holy/Group 6 copy 2
   rotate: false
-  xy: 1285, 132
+  xy: 1777, 462
   size: 134, 154
   orig: 134, 154
   offset: 0, 0
   index: -1
 images Holy/Group 6 copy 3
   rotate: true
-  xy: 1521, 1067
+  xy: 1385, 903
   size: 188, 110
   orig: 188, 110
   offset: 0, 0
   index: -1
 images Holy/Group 7 copy - Copy
   rotate: false
-  xy: 1699, 19
+  xy: 1797, 6
   size: 102, 82
   orig: 102, 82
   offset: 0, 0
   index: -1
 images Holy/Layer 84
   rotate: true
-  xy: 257, 33
+  xy: 257, 24
   size: 281, 277
   orig: 281, 277
   offset: 0, 0
   index: -1
 images Holy/Layer 85
-  rotate: true
-  xy: 743, 287
+  rotate: false
+  xy: 1011, 433
   size: 138, 225
   orig: 138, 225
   offset: 0, 0
   index: -1
 images Holy/Layer 87
-  rotate: false
-  xy: 1260, 1268
+  rotate: true
+  xy: 728, 93
   size: 268, 209
   orig: 268, 209
   offset: 0, 0
   index: -1
 images Holy/Layer 89
   rotate: false
-  xy: 1629, 474
+  xy: 1383, 586
   size: 158, 150
   orig: 158, 150
   offset: 0, 0
   index: -1
 images Holy/hair
   rotate: false
-  xy: 1269, 1479
+  xy: 1269, 1463
   size: 367, 234
   orig: 367, 234
   offset: 0, 0
   index: -1
 kiem
   rotate: false
-  xy: 2, 314
+  xy: 2, 298
   size: 215, 672
   orig: 215, 672
   offset: 0, 0
   index: -1
 long may L
   rotate: true
-  xy: 1525, 2
+  xy: 1897, 362
   size: 98, 60
   orig: 98, 60
   offset: 0, 0
   index: -1
 long may R
   rotate: false
-  xy: 818, 1181
+  xy: 491, 327
   size: 43, 34
   orig: 43, 34
   offset: 0, 0
   index: -1
 mouth
-  rotate: false
-  xy: 1886, 1220
+  rotate: true
+  xy: 1929, 1605
   size: 78, 34
   orig: 78, 34
   offset: 0, 0
   index: -1
+rose4
+  rotate: true
+  xy: 818, 1081
+  size: 120, 250
+  orig: 120, 250
+  offset: 0, 0
+  index: -1
 superman/Layer 145
   rotate: false
-  xy: 424, 1488
+  xy: 424, 1472
   size: 420, 498
   orig: 420, 498
   offset: 0, 0
   index: -1
 superman/Layer 146
   rotate: false
-  xy: 1587, 6
+  xy: 1745, 98
   size: 110, 94
   orig: 110, 94
   offset: 0, 0
   index: -1
 superman/Layer 147
-  rotate: false
-  xy: 728, 2
+  rotate: true
+  xy: 1072, 16
   size: 170, 58
   orig: 170, 58
   offset: 0, 0
   index: -1
 superman/Layer 68
   rotate: false
-  xy: 2, 26
+  xy: 2, 10
   size: 253, 286
   orig: 253, 286
   offset: 0, 0
   index: -1
 superman/Layer 69
-  rotate: true
-  xy: 1802, 656
+  rotate: false
+  xy: 1777, 770
   size: 154, 164
   orig: 154, 164
   offset: 0, 0
   index: -1
 superman/Layer 70
   rotate: false
-  xy: 1530, 1257
+  xy: 908, 413
   size: 101, 220
   orig: 101, 220
   offset: 0, 0
   index: -1
 superman/Layer 74
-  rotate: false
-  xy: 1524, 497
+  rotate: true
+  xy: 1609, 90
   size: 103, 134
   orig: 103, 134
   offset: 0, 0
   index: -1
 superman/Layer 74 copy
   rotate: true
-  xy: 1787, 265
+  xy: 1469, 334
   size: 129, 158
   orig: 129, 158
   offset: 0, 0
   index: -1
 superman/Layer 75
   rotate: false
-  xy: 1030, 23
+  xy: 1495, 120
   size: 112, 74
   orig: 112, 74
   offset: 0, 0
   index: -1
 superman/Layer 76
   rotate: false
-  xy: 1422, 1098
+  xy: 1132, 50
   size: 97, 168
   orig: 97, 168
   offset: 0, 0
   index: -1
 superman/Layer 77
   rotate: false
-  xy: 1789, 512
+  xy: 1309, 337
   size: 158, 142
   orig: 158, 142
   offset: 0, 0
   index: -1
 superman/Layer 78
-  rotate: false
-  xy: 1631, 778
+  rotate: true
+  xy: 1222, 264
   size: 169, 85
   orig: 169, 85
   offset: 0, 0
   index: -1
 superman/Layer 80
-  rotate: false
-  xy: 534, 359
+  rotate: true
+  xy: 1638, 1476
   size: 207, 289
   orig: 207, 289
   offset: 0, 0
   index: -1
 superman/Layer 81
   rotate: true
-  xy: 1633, 1068
+  xy: 917, 660
   size: 150, 201
   orig: 150, 201
   offset: 0, 0
   index: -1
 vet
-  rotate: false
-  xy: 1638, 1436
+  rotate: true
+  xy: 219, 307
   size: 315, 270
   orig: 315, 270
   offset: 0, 0

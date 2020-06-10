@@ -7,7 +7,7 @@ public class EnemyBase : MonoBehaviour
 {
     public enum ENEMY_TYPE { MELEE, RANGE, MONSTER }
     public enum CHAR_STATE { PLAYING, DIE, WIN, RUNNING }
-
+    public GameObject skull;
     [SerializeField]
     public ENEMY_TYPE enemyType;
     [SerializeField]

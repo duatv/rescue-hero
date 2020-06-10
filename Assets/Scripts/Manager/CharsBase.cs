@@ -5,6 +5,7 @@ using Spine.Unity;
 
 public class CharsBase : MonoBehaviour
 {
+    public GameObject skull;
     public enum CHAR_TYPE { ENEMY, HOSTAGE }
     public enum CHAR_STATE { PLAYING, DIE, WIN, RUNNING }
     public CHAR_STATE _charStage;

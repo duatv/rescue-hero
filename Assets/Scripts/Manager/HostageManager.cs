@@ -63,6 +63,7 @@ public class HostageManager : CharsBase
     public void PlayDie()
     {
         saPlayer.AnimationState.SetAnimation(0, str_Lose, false);
+        skull.SetActive(true);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

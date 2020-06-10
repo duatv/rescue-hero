@@ -25,7 +25,7 @@ public class DataController : MonoBehaviour
     {
         if (instance == null)
         {
-               Debug.unityLogger.logEnabled = false;
+             //  Debug.unityLogger.logEnabled = false;
             instance = this;
             DontDestroyOnLoad(gameObject);
             LoadData();

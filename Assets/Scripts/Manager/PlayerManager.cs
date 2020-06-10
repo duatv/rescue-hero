@@ -9,6 +9,7 @@ using UnityEditor;
 
 public class PlayerManager : MonoBehaviour
 {
+    public GameObject skull;
     public static PlayerManager Instance;
     public GameObject effectDie;
     public enum P_STATE { PLAYING, DIE, WIN, RUNNING }
@@ -185,7 +186,7 @@ public class PlayerManager : MonoBehaviour
 
         if (!GameManager.Instance.playerMove)
             return;
-        if (saPlayer.AnimationName == str_Win || saPlayer.AnimationName == str_Win)
+        if (saPlayer.AnimationName == str_Win || saPlayer.AnimationName == str_Win2 || saPlayer.AnimationName == str_OpenWithSword || saPlayer.AnimationName == str_OpenWithoutSword)
         {
             Debug.LogError("Animation Name:" + saPlayer.AnimationName);
             return;
@@ -241,7 +242,7 @@ public class PlayerManager : MonoBehaviour
             if (pState != P_STATE.DIE)
             {
                 _rig2D.velocity = new Vector2(0, _rig2D.velocity.y);
-                if (saPlayer.AnimationName == str_Win || saPlayer.AnimationName == str_Win)
+                if (saPlayer.AnimationName == str_Win || saPlayer.AnimationName == str_Win2 || saPlayer.AnimationName == str_OpenWithSword || saPlayer.AnimationName == str_OpenWithoutSword)
                     return;
                 PlayAnim(str_idle, true);
             }
@@ -252,7 +253,7 @@ public class PlayerManager : MonoBehaviour
         {
             movement = Vector2.left * moveSpeed;
             _rig2D.velocity = new Vector2(movement.x, _rig2D.velocity.y);
-            if (saPlayer.AnimationName == str_Win || saPlayer.AnimationName == str_Win)
+            if (saPlayer.AnimationName == str_Win || saPlayer.AnimationName == str_Win2 || saPlayer.AnimationName == str_OpenWithSword || saPlayer.AnimationName == str_OpenWithoutSword)
                 return;
             PlayAnim(isTakeSword ? str_MoveWithSword : str_Move, true);
             Debug.LogError("====move left====");
@@ -268,7 +269,7 @@ public class PlayerManager : MonoBehaviour
             if (pState != P_STATE.DIE)
             {
                 _rig2D.velocity = new Vector2(0, _rig2D.velocity.y);
-                if (saPlayer.AnimationName == str_Win || saPlayer.AnimationName == str_Win)
+                if (saPlayer.AnimationName == str_Win || saPlayer.AnimationName == str_Win2 || saPlayer.AnimationName == str_OpenWithSword || saPlayer.AnimationName == str_OpenWithoutSword)
                     return;
                 PlayAnim(str_idle, true);
             }
@@ -278,7 +279,7 @@ public class PlayerManager : MonoBehaviour
         {
             movement = Vector2.right * moveSpeed;
             _rig2D.velocity = new Vector2(movement.x, _rig2D.velocity.y);
-            if (saPlayer.AnimationName == str_Win || saPlayer.AnimationName == str_Win)
+            if (saPlayer.AnimationName == str_Win || saPlayer.AnimationName == str_Win2 || saPlayer.AnimationName == str_OpenWithSword || saPlayer.AnimationName == str_OpenWithoutSword)
                 return;
             PlayAnim(isTakeSword ? str_MoveWithSword : str_Move, true);
             Debug.LogError("====move right====");
@@ -290,23 +291,26 @@ public class PlayerManager : MonoBehaviour
     {
         yield return new WaitForSeconds(0.25f);
 
-        // Debug.LogError("zoooooooooooooooo");
-        if (pState != P_STATE.DIE && pState != P_STATE.WIN)
+        if (saPlayer.AnimationName != str_Win && saPlayer.AnimationName != str_Win2 && saPlayer.AnimationName != str_OpenWithSword && saPlayer.AnimationName != str_OpenWithoutSword)
         {
-            if (hitDown.collider != null)
+
+            if (pState != P_STATE.DIE && pState != P_STATE.WIN)
             {
-                beginMove = true;
-                if (saPlayer.skeleton.ScaleX < 0)
+                if (hitDown.collider != null)
                 {
-                    isMoveLeft = true;
-                    isMoveRight = false;
-                    Debug.LogError("=====dectect left");
-                }
-                else
-                {
-                    isMoveLeft = false;
-                    isMoveRight = true;
-                    Debug.LogError("=====dectect right");
+                    beginMove = true;
+                    if (saPlayer.skeleton.ScaleX < 0)
+                    {
+                        isMoveLeft = true;
+                        isMoveRight = false;
+                        Debug.LogError("=====dectect left");
+                    }
+                    else
+                    {
+                        isMoveLeft = false;
+                        isMoveRight = true;
+                        Debug.LogError("=====dectect right");
+                    }
                 }
             }
         }
@@ -317,8 +321,7 @@ public class PlayerManager : MonoBehaviour
     {
         if (!GameManager.Instance.playerMove)
             return;
-        if (saPlayer.AnimationName == str_Win || saPlayer.AnimationName == str_Win || saPlayer.AnimationName == str_OpenWithSword || saPlayer.AnimationName == str_OpenWithoutSword)
-            return;
+
         StartCoroutine(delayMove());
     }
     #endregion
@@ -381,6 +384,7 @@ public class PlayerManager : MonoBehaviour
         saPlayer.AnimationState.SetEmptyAnimation(1, 0.2f);
         PlayAnim(str_Lose, false);
         effectDie.SetActive(effect);
+        skull.SetActive(effect);
     }
 
     #endregion
@@ -412,7 +416,7 @@ public class PlayerManager : MonoBehaviour
         {
             GameManager.Instance.gameState = GameManager.GAMESTATE.WIN;
             pState = P_STATE.WIN;
-            //GameManager.Instance.ShowWinPanel();
+           // GameManager.Instance.ShowWinPanel();
         }
     }
     bool win = false;
@@ -428,7 +432,10 @@ public class PlayerManager : MonoBehaviour
             {
                 PlayAnim(isTakeSword ? str_OpenWithSword : str_OpenWithoutSword, false);
                 win = true;
+                isMoveLeft = false;
+                isMoveRight = false;
                 StartCoroutine(delayWin());
+                Debug.LogError("win đi");
             }
 
             // Debug.LogError("zooooooooooooooo 1");

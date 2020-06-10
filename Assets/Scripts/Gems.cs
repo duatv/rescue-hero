@@ -57,6 +57,8 @@ public class Gems : Unit
             int randomEffect = Random.Range(0, 100);
             if (randomEffect <= 10)
             {
+                if (ObjectPoolerManager.Instance == null)
+                    return;
                 GameObject destroyEffect = ObjectPoolerManager.Instance.effectDestroyPooler.GetPooledObject();
                 destroyEffect.transform.position = collision.transform.position;
                 destroyEffect.SetActive(true);
