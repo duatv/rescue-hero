@@ -7,7 +7,7 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject effectCamera, BtnReplay;
+    public GameObject effectCamera, BtnReplay,bouderCoinFly;
     public PhysicsMaterial2D matStone;
     public bool playerMove;
     public int counthatwater;
@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     public MissionType mSavePrincess, mCollect, mOpenChest, mKill;
     public Image imgQuestImage;
     public TextMeshProUGUI txtQuestText;
-
+  
     public Text txtLevel;
     public Text txtCoin;
     public Text txtCoinWin;
@@ -42,13 +42,16 @@ public class GameManager : MonoBehaviour
     private void OnUpdateCoin()
     {
         txtCoin.text = Utils.currentCoin.ToString("00,#");
-        txtCoinWin.text = Utils.currentCoin.ToString("00,#");
+      //  txtCoinWin.text = Utils.currentCoin.ToString("00,#");
         Utils.SaveCoin();
     }
+    public int coinTemp;
     void Start()
     {
 
         txtLevel.text = "LEVEL " + (Utils.LEVEL_INDEX + 1).ToString("00,#");
+        txtCoinWin.text = Utils.currentCoin.ToString("00,#");
+        coinTemp = Utils.currentCoin;
         OnUpdateCoin();
 
         MyAnalytic.LogEventPlayLevel(Utils.LEVEL_INDEX + 1);
@@ -223,20 +226,28 @@ public class GameManager : MonoBehaviour
     }
     public void OnX2Coin()
     {
-        Debug.LogError("X2 Coin");
-        if (AdsManager.Instance != null)
+#if UNITY_EDITOR
+        MyAnalytic.LogEventRewarded("x3_coin");
+        Utils.currentCoin *= 3 /** Utils.BASE_COIN*/;
+        OnUpdateCoin();
+        OnNextLevel();
+#else
+                if (AdsManager.Instance != null)
         {
             AdsManager.Instance.ShowRewardedVideo((b) =>
             {
                 if (b)
                 {
-                    MyAnalytic.LogEventRewarded("x2_coin");
+                    MyAnalytic.LogEventRewarded("x3_coin");
                     Utils.currentCoin += 3 * Utils.BASE_COIN;
                     OnUpdateCoin();
                     OnNextLevel();
                 }
             });
         }
+#endif
+        //    Debug.LogError("X2 Coin");
+
     }
     public void OnSkipByVideo()
     {

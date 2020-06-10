@@ -351,6 +351,8 @@ public class EnemyBase : MonoBehaviour
                 OnDie_();
                 if (collision.gameObject.tag == Utils.TAG_LAVA)
                 {
+                    if (ObjectPoolerManager.Instance == null)
+                        return;
                     GameObject destroyEffect = ObjectPoolerManager.Instance.effectDestroyPooler.GetPooledObject();
                     destroyEffect.transform.position = transform.position;
                     destroyEffect.SetActive(true);

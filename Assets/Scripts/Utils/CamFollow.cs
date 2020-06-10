@@ -41,13 +41,13 @@ public class CamFollow : MonoBehaviour
             position.y = Mathf.Lerp(this.transform.position.y, objectToFollow.transform.position.y, interpolation);
             position.x = Mathf.Lerp(this.transform.position.x, objectToFollow.transform.position.x, interpolation);
             this.transform.position = position;
-           // Debug.LogError(Vector2.Distance(transform.position, objectToFollow.transform.position));
-            //if (group.activeSelf)
-            //    return;
-            //if (Vector2.Distance(transform.position, objectToFollow.transform.position) < 0.5f)
-            //{
-            //    group.SetActive(true);
-            //}
+            // Debug.LogError(Vector2.Distance(transform.position, objectToFollow.transform.position));
+            if (GameManager.Instance.bouderCoinFly.activeSelf)
+                return;
+            if (PanelWin.transform.localScale.x <= 1.1f)
+            {
+                GameManager.Instance.bouderCoinFly.SetActive(true);
+            }
         }
     }
 

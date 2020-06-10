@@ -43,10 +43,11 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: 46860f24712c41642aef98a59c04f8e7, type: 3}
-    totalSpriteSurfaceArea: 16237600
+    totalSpriteSurfaceArea: 16149700
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 21300000, guid: 8f7e9900e7901694ebf0e440f4127f4a, type: 3}
   - {fileID: 21300000, guid: f5471610cecdba244ad2edb7179712fb, type: 3}
   - {fileID: 21300000, guid: 03cabe40e30f33240a0862018d0abb2b, type: 3}
   - {fileID: 21300000, guid: 65b9d460c6e4f034f8633c129ba9b141, type: 3}
@@ -57,7 +58,9 @@ SpriteAtlas:
   - {fileID: 21300000, guid: b7cfdd713cf3e304992ba739cf6efcb7, type: 3}
   - {fileID: 21300000, guid: ddeb208148335fe45b5a2c6d913a2853, type: 3}
   - {fileID: 21300000, guid: 5fc691b1e29eff140bce0cb49c5471f5, type: 3}
+  - {fileID: 21300000, guid: 7eb213e10daa0ff4c9bbe881dcf05308, type: 3}
   - {fileID: 21300000, guid: bba4d252732f0244db9f98f7fbe65b24, type: 3}
+  - {fileID: 21300000, guid: dcd817726797f0249883510625ceffd4, type: 3}
   - {fileID: 21300000, guid: 3ec00db2dd80f6c45a7450c9aab64f8a, type: 3}
   - {fileID: 21300000, guid: 5b1f65f23680ca54e881097cce84f4b7, type: 3}
   - {fileID: 21300000, guid: 849626f2eb0635e4084795ec555e1798, type: 3}
@@ -66,29 +69,33 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 465769833eab1924ead74316bfb5872e, type: 3}
   - {fileID: 21300000, guid: 1fbe20a3188571d4faf3cc87c92ecc02, type: 3}
   - {fileID: 21300000, guid: 9ba093b3884f65742a5ffef2fa6b143b, type: 3}
+  - {fileID: 21300000, guid: 756b06b3c1b8abc4dbdd78d3d3691a5c, type: 3}
   - {fileID: 21300000, guid: c38ea1640801f0c4ab79367632a2c537, type: 3}
   - {fileID: 21300000, guid: aac19684a237c244bbc2d8a6abd6dc7b, type: 3}
   - {fileID: 21300000, guid: edfe41c4866d17946bd6a90005f8b2ca, type: 3}
   - {fileID: 21300000, guid: c40229d490b41eb40afdb77f739266ec, type: 3}
   - {fileID: 21300000, guid: 507d0fe4020a9b34db8142e9fa927b6c, type: 3}
   - {fileID: 21300000, guid: c27bf405e367b27439890765816b7ecc, type: 3}
+  - {fileID: 21300000, guid: ed79de059711c964e90fc6c967020f6d, type: 3}
+  - {fileID: 21300000, guid: 571bb0653d9b31c40b8cac66d407cad4, type: 3}
   - {fileID: 21300000, guid: 945dbe65a399ae745b2302f6c268c58b, type: 3}
+  - {fileID: 21300000, guid: 5c51ae06cb061334795b107f8038459e, type: 3}
   - {fileID: 21300000, guid: fd742f2692f058a449724d3dd32af57c, type: 3}
   - {fileID: 21300000, guid: c32456b692b2f8e41adf276622447571, type: 3}
   - {fileID: 21300000, guid: c18ba717cd4e5954181c1a7171084e64, type: 3}
   - {fileID: 21300000, guid: 7fd86b27fc20919468f3f352aeaba939, type: 3}
-  - {fileID: 21300000, guid: 193724a7aa7521a43acc5213cfff6dba, type: 3}
   - {fileID: 21300000, guid: 7a78c9d797ac243428ce1af883cf3e17, type: 3}
   - {fileID: 21300000, guid: cc528738a50584e4c9e435bfc4a75003, type: 3}
   - {fileID: 21300000, guid: 3a042068e9affe64ba4e90487540813d, type: 3}
+  - {fileID: 21300000, guid: 826bb78809f9a8b4cafcbf7aa64d1b82, type: 3}
   - {fileID: 21300000, guid: 0f4ae0a8e3618d441bd07758a990e0af, type: 3}
   - {fileID: 21300000, guid: be5258c8e0a10004789babf8ab5ba8b4, type: 3}
   - {fileID: 21300000, guid: d7f8533995eefd44399a0b02c0a72e47, type: 3}
   - {fileID: 21300000, guid: c3ccc1d970e52274e967ffc9568f23ba, type: 3}
   - {fileID: 21300000, guid: 49f0ffe96fda9bc428e7285abb55b11d, type: 3}
+  - {fileID: 21300000, guid: 6ea2f21ae7895ed479655f5ed96265b7, type: 3}
   - {fileID: 21300000, guid: 9eabe52aafdea9644bf5b33cadb6192f, type: 3}
   - {fileID: 21300000, guid: 6686a14a26370734d9396e20de26a6ea, type: 3}
-  - {fileID: 21300000, guid: b7d4ca4ab19414743b57560f28f68aa6, type: 3}
   - {fileID: 21300000, guid: e73d280b1d2b86e4dbd95886409e2258, type: 3}
   - {fileID: 21300000, guid: ac0fdbdbdf54bb747a4ce0714aa8113e, type: 3}
   - {fileID: 21300000, guid: a62a25eb2ad5ddb46be98e9c098fe334, type: 3}
@@ -96,12 +103,16 @@ SpriteAtlas:
   - {fileID: 21300000, guid: bb5daacc0333b074986291698f2a10a8, type: 3}
   - {fileID: 21300000, guid: 09febacc1c08a7941a233765d772959d, type: 3}
   - {fileID: 21300000, guid: 76f87c6d930131a4b879c563222e21d7, type: 3}
+  - {fileID: 21300000, guid: da83349d0e9fd2747b48cc5ea7002b32, type: 3}
   - {fileID: 21300000, guid: f302c37ed7ac9e94095f785e1230d06a, type: 3}
   - {fileID: 21300000, guid: 6c19b4de47335b74ba56dc3ae70c5cde, type: 3}
+  - {fileID: 21300000, guid: 4a9265de4c59cf34591d9a71c5c0b833, type: 3}
   - {fileID: 21300000, guid: 563ce5ee45bad73478785937df045a0d, type: 3}
   - {fileID: 21300000, guid: 9166bdaf90868894ea13e0d78d557c37, type: 3}
+  - {fileID: 21300000, guid: f01efcbf3d704514bb0bd5a25d3b200b, type: 3}
   - {fileID: 21300000, guid: 724e70cfbd74948498ff629c6d4b8ac7, type: 3}
   m_PackedSpriteNamesToIndex:
+  - Life Story  copy
   - Btn_Skin
   - Henry1
   - Demo
@@ -112,7 +123,9 @@ SpriteAtlas:
   - locked
   - On
   - demo
+  - Btn
   - Big_Popup
+  - Layer 27
   - Dragon
   - Asset 181
   - BtnChung
@@ -121,29 +134,33 @@ SpriteAtlas:
   - Item_Day7_selected
   - Restore_Btn
   - Btn_Setting
+  - Board
   - Demo (1)
   - Claim
   - Superman2
   - Setting Button_Close #1538
   - Arthur2
   - Hercules2
+  - Squa Button copy
+  - Thanks A Killion 3 copy
   - SoundIcon
+  - Hand Of Midas copy
   - Off
   - Popup Board
   - Gabriel2
   - Hercules1
-  - background 2
   - BigCoin
   - Setting Button_ON2
   - Logo
+  - Treasure Hunter  copy
   - Item_Day_Disable
   - Item_Day7
   - Btn_Back
   - Arthur1
   - Setting Button_OFF2
+  - Rounded Rectangle 1
   - Item_Day_selected
   - Logo_shadow
-  - gold
   - MusicIcon
   - background_hero
   - VibrationIcon
@@ -151,10 +168,13 @@ SpriteAtlas:
   - Btn_Start_shadow
   - Claim-X3
   - Gabriel1
+  - Achievement
   - Dragon2
   - Play Bar_Coin
+  - Save The World  copy
   - Btn_Daily
   - Tick
+  - Layer 35
   - Superman1
   m_Tag: Menu
   m_IsVariant: 0

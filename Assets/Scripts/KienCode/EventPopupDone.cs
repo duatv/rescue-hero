@@ -13,9 +13,15 @@ public class EventPopupDone : MonoBehaviour
     {
         SceneManager.LoadSceneAsync("MainGame");
     }
-   public void EventDisableLoading()
+    public void EventDisableLoading()
     {
         gameObject.SetActive(false);
         GameManager.Instance.gameState = GameManager.GAMESTATE.PLAYING;
+    }
+    int coinTemp = 100;
+    public void EventCoinFly()
+    {
+        GameManager.Instance.coinTemp += 20;
+        GameManager.Instance.txtCoinWin.text = GameManager.Instance.coinTemp.ToString("00,#");
     }
 }

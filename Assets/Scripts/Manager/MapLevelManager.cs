@@ -66,6 +66,7 @@ public class MapLevelManager : MonoBehaviour
         {
             if (GameManager.Instance.isTest)
             {
+                GameManager.Instance.gameState = GameManager.GAMESTATE.PLAYING;
                 GameManager.Instance.mapLevel = this;
                 if (lstAllStick.Count > 0)
                     GameManager.Instance.playerMove = true;
