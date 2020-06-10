@@ -12,7 +12,7 @@ public class WaterCollison : Unit
             _current.myUnit.ChangeStone();
             ChangeStone();
         }
-        else if(collision.tag == "Tag_Stone")
+        else if(collision.tag == "Tag_Stone" && collision.gameObject.name != "FallingStone")
         {
             ChangeStone();
           //  Debug.LogError("utwwtwtaf");

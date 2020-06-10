@@ -22,10 +22,19 @@ public class EventPopupDone : MonoBehaviour
     public void EventCoinFly()
     {
         GameManager.Instance.coinTemp += 20;
-        GameManager.Instance.txtCoinWin.text = GameManager.Instance.coinTemp.ToString("00,#");
+        GameManager.Instance.txtCoinWin.text = GameManager.Instance.coinTemp.ToString(/*"00,#"*/);
     }
     public void EventClosePopUp()
     {
         gameObject.SetActive(false);
+    }
+
+    public void EventChangeImage()
+    {
+        MenuController.instance.castlePanel.EventChangeImg();
+    }
+    public void EventDisableAnimCastle()
+    {
+        MenuController.instance.castlePanel.EventDisableAnim();
     }
 }

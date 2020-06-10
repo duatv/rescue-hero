@@ -95,15 +95,20 @@ public class PlayerManager : MonoBehaviour
     IEnumerator ISShowWin()
     {
         yield return new WaitForSeconds(0.5f);
-        if (GameManager.Instance.mapLevel.questType == MapLevelManager.QUEST_TYPE.SAVE_HOSTAGE)
-            PlayAnim(str_Win2, false);
-        else
+        if (!saPlayer.AnimationName.Equals(str_Lose))
         {
-            PlayAnim(str_Win, true);
-            Debug.LogError("====sdkahfjkd=====");
+
+            if (GameManager.Instance.mapLevel.questType == MapLevelManager.QUEST_TYPE.SAVE_HOSTAGE)
+                PlayAnim(str_Win2, false);
+            else
+            {
+                PlayAnim(str_Win, true);
+                Debug.LogError("====sdkahfjkd=====");
+            }
         }
         yield return new WaitForSeconds(0.5f);
         MapLevelManager.Instance.OnWin();
+
     }
 
     const float timeConst = 2;
@@ -201,8 +206,12 @@ public class PlayerManager : MonoBehaviour
 
             if (!beginMove)
             {
-                if (GameManager.Instance.mapLevel.lstAllStick.Count <= 0)
-                    PrepareRotate();
+                if (!isTakeSword)
+                {
+                    if (GameManager.Instance.mapLevel.lstAllStick.Count <= 0)
+                        PrepareRotate();
+                }
+
             }
         }
 
@@ -213,6 +222,11 @@ public class PlayerManager : MonoBehaviour
                 if (hitForward.collider.gameObject.tag == "Tag_Stone" || hitForward.collider.gameObject.tag == "Chan")
                     HeroJump();
             }
+        }
+
+        if (isTakeSword)
+        {
+            Debug.LogError("move:" + beginMove + ":" + isMoveLeft + ":" + isMoveRight);
         }
 
         if (!IsCanMove()) _rig2D.velocity = Vector2.zero;
@@ -237,7 +251,7 @@ public class PlayerManager : MonoBehaviour
     private void MoveLeft()
     {
 
-        if (hit2D.collider != null)
+        if (hit2D.collider != null && !isTakeSword)
         {
             if (pState != P_STATE.DIE)
             {
@@ -264,7 +278,7 @@ public class PlayerManager : MonoBehaviour
     }
     public void MoveRight()
     {
-        if (hit2D.collider != null)
+        if (hit2D.collider != null && !isTakeSword)
         {
             if (pState != P_STATE.DIE)
             {
@@ -293,23 +307,25 @@ public class PlayerManager : MonoBehaviour
 
         if (saPlayer.AnimationName != str_Win && saPlayer.AnimationName != str_Win2 && saPlayer.AnimationName != str_OpenWithSword && saPlayer.AnimationName != str_OpenWithoutSword)
         {
-
-            if (pState != P_STATE.DIE && pState != P_STATE.WIN)
+            if (!isTakeSword)
             {
-                if (hitDown.collider != null)
+                if (pState != P_STATE.DIE && pState != P_STATE.WIN)
                 {
-                    beginMove = true;
-                    if (saPlayer.skeleton.ScaleX < 0)
+                    if (hitDown.collider != null)
                     {
-                        isMoveLeft = true;
-                        isMoveRight = false;
-                        Debug.LogError("=====dectect left");
-                    }
-                    else
-                    {
-                        isMoveLeft = false;
-                        isMoveRight = true;
-                        Debug.LogError("=====dectect right");
+                        beginMove = true;
+                        if (saPlayer.skeleton.ScaleX < 0)
+                        {
+                            isMoveLeft = true;
+                            isMoveRight = false;
+                            Debug.LogError("=====dectect left");
+                        }
+                        else
+                        {
+                            isMoveLeft = false;
+                            isMoveRight = true;
+                            Debug.LogError("=====dectect right");
+                        }
                     }
                 }
             }
@@ -341,6 +357,11 @@ public class PlayerManager : MonoBehaviour
         enBase = _enBase;
         PlayAnim(str_Att, false);
         MapLevelManager.Instance.trTarget = null;
+        beginMove = false;
+        isMoveLeft = false;
+        isMoveRight = false;
+        _rig2D.velocity = Vector2.zero;
+        Debug.LogError("wtfkkkkkk");
     }
     public void OnTakeSword(Transform _tr)
     {
@@ -354,7 +375,8 @@ public class PlayerManager : MonoBehaviour
         {
             SoundManager.Instance.PlaySound(SoundManager.Instance.acTakeSword);
         }
-
+        isMoveRight = false;
+        isMoveLeft = false;
         OnIdleState();
     }
     public void OnPlayerDie(bool effect)
@@ -403,8 +425,21 @@ public class PlayerManager : MonoBehaviour
                 isMoveLeft = true;
                 isMoveRight = false;
             }
+            beginMove = true;
             saPlayer.skeleton.ScaleX = collision.gameObject.transform.localScale.x;
             Debug.LogError("zo day");
+        }
+        else if (collision.gameObject.tag == "Trap_Other")
+        {
+            if (pState == P_STATE.PLAYING || pState == P_STATE.RUNNING)
+            {
+                //  Debug.LogError("zoooooooooooooooooooo");
+                if (GameManager.Instance.gameState != GameManager.GAMESTATE.WIN)
+                {
+                    // PlayerManager.Instance.isContinueDetect = false;
+                    OnPlayerDie(true);
+                }
+            }
         }
     }
 
@@ -416,7 +451,7 @@ public class PlayerManager : MonoBehaviour
         {
             GameManager.Instance.gameState = GameManager.GAMESTATE.WIN;
             pState = P_STATE.WIN;
-           // GameManager.Instance.ShowWinPanel();
+            // GameManager.Instance.ShowWinPanel();
         }
     }
     bool win = false;

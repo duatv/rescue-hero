@@ -111,7 +111,7 @@ public class EnemyBase : MonoBehaviour
 
         Debug.DrawLine(_vStartHitDown, _vEndHitDown, Color.red);
     }
-
+    public GameObject target;
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(ground.position, 0.05f);
@@ -146,7 +146,7 @@ public class EnemyBase : MonoBehaviour
                 {
                     if (hit2D.collider != null)
                     {
-                        Debug.LogError("checkhit1" + hit2D.collider.tag);
+                    //    Debug.LogError("checkhit1" + hit2D.collider.tag);
                         if (hit2D.collider.gameObject.tag != Utils.TAG_STICKBARRIE && hit2D.collider.gameObject.tag != "Chan"/* && !isBeginAtt*/)
                         {
                             //if (hit2D.collider.gameObject.GetComponent<EnemyBase>() != null)
@@ -161,12 +161,15 @@ public class EnemyBase : MonoBehaviour
                             if (/*hit2D.collider.gameObject.GetComponent<HostageManager>() != null*/hit2D.collider.gameObject.name == "Hostage_Female")
                             {
                                 _isCanMoveToTarget = hit2D.collider.gameObject.GetComponent<HostageManager>()._charStage == CharsBase.CHAR_STATE.DIE ? false : true;
+                                target = hit2D.collider.gameObject;
                             //    trTargetAttack = hit2D.collider.gameObject.transform;
                             }
-                            else if (/*hit2D.collider.gameObject.GetComponent<PlayerManager>() != null*/hit2D.collider.gameObject.tag == "BodyPlayer")
+                            else if (/*hit2D.collider.gameObject.GetComponent<PlayerManager>() != null*/hit2D.collider.gameObject.tag == "BodyPlayer" && !PlayerManager.Instance.isTakeSword)
                             {
                                 _isCanMoveToTarget = /*hit2D.collider.gameObject.GetComponent<PlayerManager>()*/PlayerManager.Instance.pState == PlayerManager.P_STATE.DIE ? false : true;
-                              //  trTargetAttack = hit2D.collider.gameObject.transform;
+                            
+                                //  trTargetAttack = hit2D.collider.gameObject.transform;
+                                target = hit2D.collider.gameObject;
                             }
                             else
                             {
@@ -183,7 +186,7 @@ public class EnemyBase : MonoBehaviour
                     }
                     if (hit2D_1.collider != null)
                     {
-                        Debug.LogError("checkhit2" + hit2D_1.collider.tag);
+                     //   Debug.LogError("checkhit2" + hit2D_1.collider.tag);
                         if (hit2D_1.collider.gameObject.tag != Utils.TAG_STICKBARRIE/* && !isBeginAtt*/&& hit2D_1.collider.gameObject.tag != "Chan")
                         {
                             //if (hit2D_1.collider.gameObject.GetComponent<EnemyBase>() != null)
@@ -199,14 +202,16 @@ public class EnemyBase : MonoBehaviour
                             if (/*hit2D_1.collider.gameObject.GetComponent<HostageManager>() != null*/hit2D_1.collider.gameObject.name == "Hostage_Female")
                             {
                                 _isCanMoveToTarget = hit2D_1.collider.gameObject.GetComponent<HostageManager>()._charStage == CharsBase.CHAR_STATE.DIE ? false : true;
-                             //   trTargetAttack = hit2D_1.collider.gameObject.transform;
-                            //    PrepareRotate_(trTargetAttack);
+                                //   trTargetAttack = hit2D_1.collider.gameObject.transform;
+                                //    PrepareRotate_(trTargetAttack);
+                                target = hit2D_1.collider.gameObject;
                             }
                             else if (/*hit2D_1.collider.gameObject.GetComponent<PlayerManager>() != null*/hit2D_1.collider.gameObject.tag == "BodyPlayer")
                             {
                                 _isCanMoveToTarget =/* hit2D_1.collider.gameObject.GetComponent<PlayerManager>()*/PlayerManager.Instance.pState == PlayerManager.P_STATE.DIE ? false : true;
-                             //   trTargetAttack = hit2D_1.collider.gameObject.transform;
-                              //  PrepareRotate_(trTargetAttack);
+                                //   trTargetAttack = hit2D_1.collider.gameObject.transform;
+                                //  PrepareRotate_(trTargetAttack);
+                                target = hit2D_1.collider.gameObject;
                             }
                             else
                             {
@@ -233,6 +238,7 @@ public class EnemyBase : MonoBehaviour
                 Debug.DrawLine(_vStart, _vEnd, Color.yellow);
                 if (hitPlayer.collider != null)
                 {
+                    Debug.LogError("phath ien player");
                     OnPrepareAttack();
                 }
                 #endregion
@@ -269,6 +275,18 @@ public class EnemyBase : MonoBehaviour
                 PlayAnim(str_Att, true);
                 break;
         }
+        if (target != null)
+        {
+            if (transform.position.x > target.transform.position.x)
+            {
+                saPlayer.skeleton.ScaleX = 1;
+            }
+            else
+            {
+                saPlayer.skeleton.ScaleX = -1;
+            }
+        }
+
         rig.velocity = moveSpeed * (saPlayer.skeleton.ScaleX > 0 ? Vector2.left : Vector2.right);
     }
     public virtual void OnPrepareAttack()

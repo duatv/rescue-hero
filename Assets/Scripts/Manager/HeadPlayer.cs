@@ -7,7 +7,7 @@ public class HeadPlayer : MonoBehaviour
     public PlayerManager pPlayer;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == Utils.TAG_STONE)
+        if (collision.gameObject.tag == Utils.TAG_STONE || collision.gameObject.name == "Sword")
         {
             if (GameManager.Instance.gameState != GameManager.GAMESTATE.LOSE)
             {

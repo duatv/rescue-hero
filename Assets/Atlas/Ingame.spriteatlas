@@ -43,7 +43,7 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: ba7db8637d60ee64ab5f85487a780b62, type: 3}
-    totalSpriteSurfaceArea: 8130304
+    totalSpriteSurfaceArea: 10188824
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
@@ -61,6 +61,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: be534ac1782787a469ed657017689bbc, type: 3}
   - {fileID: 21300000, guid: 00773bd109a8d064486a2c5a59695cb8, type: 3}
   - {fileID: 21300000, guid: 44c47612ab5311746ae13e54f0320240, type: 3}
+  - {fileID: 21300000, guid: c834e3224c2a501489d2de59184cb5f1, type: 3}
   - {fileID: 21300000, guid: 46b595523af8a964aa586aed2a15d799, type: 3}
   - {fileID: 21300000, guid: 422f3072663b84e4e9b243e22ef8bc62, type: 3}
   - {fileID: 21300000, guid: 2c6d877261a848e4a837bfa877645ca3, type: 3}
@@ -108,7 +109,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 807a263e6a9ed54449ebfbc55cf5aede, type: 3}
   - {fileID: 21300000, guid: f8eb1f5e54d1eb7489bfdfc36f609979, type: 3}
   - {fileID: 21300000, guid: 5c42ef7e626fc74439f4d361e3bad8a1, type: 3}
-  - {fileID: 21300000, guid: 096c1b1f8ecb87c4a8b24d24ac128ecd, type: 3}
   - {fileID: 21300000, guid: e0a2f72f0b158cd4a91b11e6d19babce, type: 3}
   - {fileID: 21300000, guid: 2d11de2f610cc804c88c23a84db76b6e, type: 3}
   - {fileID: 21300000, guid: 244cbd4fa02cd3040b70477fe5eb3a53, type: 3}
@@ -128,6 +128,7 @@ SpriteAtlas:
   - Play Moc4
   - 7
   - Endgame Banner_Win
+  - lose
   - Btn_Home
   - Treasure_quest
   - Endgame Button_Yellow_S
@@ -175,7 +176,6 @@ SpriteAtlas:
   - Play Sword
   - Play Wall Round2
   - Endgame Banner_Loss
-  - video_icon
   - Play WallX1
   - Play Button_ADS2
   - Play Moc1

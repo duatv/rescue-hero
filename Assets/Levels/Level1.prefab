@@ -1700,7 +1700,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 5bacb781a7602fa49942a1a0158fd0ef, type: 2}
+      objectReference: {fileID: 2100000, guid: e050f0bb044fa184d91c14affb858e9e, type: 2}
     - target: {fileID: 4785156957416898563, guid: 71fda4c35e75926449050e53ebde1a78,
         type: 3}
       propertyPath: m_Mesh
@@ -3499,7 +3499,7 @@ PrefabInstance:
     - target: {fileID: 1344032502895720504, guid: be9b178affd1c2542b9d8f71d565bf2d,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.16
+      value: 0.13
       objectReference: {fileID: 0}
     - target: {fileID: 1344032502895720504, guid: be9b178affd1c2542b9d8f71d565bf2d,
         type: 3}
@@ -3549,12 +3549,22 @@ PrefabInstance:
     - target: {fileID: 3580600929575691664, guid: be9b178affd1c2542b9d8f71d565bf2d,
         type: 3}
       propertyPath: m_text
-      value: Swipe or Touch pipe to move
+      value: Pull  or touch the pin to move
       objectReference: {fileID: 0}
     - target: {fileID: 3580600929575691664, guid: be9b178affd1c2542b9d8f71d565bf2d,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 27
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3580600929575691664, guid: be9b178affd1c2542b9d8f71d565bf2d,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3580600929575691664, guid: be9b178affd1c2542b9d8f71d565bf2d,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6959936324322798325, guid: be9b178affd1c2542b9d8f71d565bf2d,
         type: 3}

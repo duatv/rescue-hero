@@ -25,6 +25,7 @@ public class AchievmentPanel : MonoBehaviour
             //    gameObject.SetActive(false);
             anim.Play("PopUpAnimClose");
         }
+        MenuController.instance.SoundClickButton();
     }
 
 }

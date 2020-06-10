@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
     }
     private void OnUpdateCoin()
     {
-        txtCoin.text = Utils.currentCoin.ToString("00,#");
+        txtCoin.text = Utils.currentCoin.ToString(/*"00,#"*/);
       //  txtCoinWin.text = Utils.currentCoin.ToString("00,#");
         Utils.SaveCoin();
     }
@@ -59,8 +59,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
 
-        txtLevel.text = "LEVEL " + (Utils.LEVEL_INDEX + 1).ToString("00,#");
-        txtCoinWin.text = Utils.currentCoin.ToString("00,#");
+        txtLevel.text = "LEVEL " + (Utils.LEVEL_INDEX + 1).ToString(/*"00,#"*/);
+        txtCoinWin.text = Utils.currentCoin.ToString(/*"00,#"*/);
         coinTemp = Utils.currentCoin;
         OnUpdateCoin();
 

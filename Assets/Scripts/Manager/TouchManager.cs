@@ -88,6 +88,7 @@ public class TouchManager : MonoBehaviour
             currentMouse = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Ray2D ray = new Ray2D(oldMouse, currentMouse - oldMouse);
             RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, (currentMouse - oldMouse).magnitude);
+            oldMouse = currentMouse;
             if (hit.collider != null)
             {
                 if (hit.collider.gameObject.tag == "Rope")

@@ -106,6 +106,7 @@ MonoBehaviour:
   colliderBegin: {fileID: 0}
   isGravity: 1
   timeFly: 0
+  speed: 0.6
 --- !u!50 &8988015970931127521
 Rigidbody2D:
   serializedVersion: 4

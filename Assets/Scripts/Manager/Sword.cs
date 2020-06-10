@@ -38,16 +38,17 @@ public class Sword : MonoBehaviour
     {
         if (/*collision.gameObject.GetComponent<PlayerManager>() != null*/collision.tag == "BodyPlayer") {
          //   _pPLayer = collision.gameObject.GetComponent<PlayerManager>();
-            if (IsCanKilling()) {
-                if(!/*_pPLayer*/PlayerManager.Instance.isTakeSword)
-                    /*_pPLayer*/
-                    PlayerManager.Instance.OnPlayerDie(true);
-            }
-            else
-            {
+            //if (IsCanKilling()) {
+            //    if(!/*_pPLayer*/PlayerManager.Instance.isTakeSword)
+            //        /*_pPLayer*/
+            //        PlayerManager.Instance.OnPlayerDie(true);
+            //}
+            //else
+            //{
                 rig2d.bodyType = RigidbodyType2D.Kinematic;
+
                 /*_pPLayer*/PlayerManager.Instance.OnTakeSword(transform);
-            }
+            //}
         }
         if (collision.gameObject.GetComponent<HostageManager>() != null)
         {

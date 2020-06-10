@@ -15,6 +15,7 @@ public class MenuController : MonoBehaviour
     public GameObject loadingPanel;
     public bool animLoading;
     public Animator playAnimLoading;
+    public CastlePanel castlePanel;
     private void Awake()
     {
         if (instance == null)
@@ -35,6 +36,8 @@ public class MenuController : MonoBehaviour
 
         shopManager.DisplayBegin();
 
+       castlePanel.DisplayBegin();
+
       //  Utils.currentCoin = 100000;
     }
 
@@ -42,7 +45,12 @@ public class MenuController : MonoBehaviour
     {
         if (animLoading)
             return;
+
         achievementPanel.OpenMe(open);
+    }
+    public void BtnShowCastle()
+    {
+       castlePanel.gameObject.SetActive(true);
     }
 
     private void CheckShowDailyGift() {

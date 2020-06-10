@@ -7,7 +7,7 @@ public class LavaController : Unit
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Tag_Stone")
+        if (collision.tag == "Tag_Stone" && collision.gameObject.name != "FallingStone")
         {
             ChangeStone();
         }

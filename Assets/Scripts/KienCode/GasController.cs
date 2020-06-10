@@ -17,6 +17,7 @@ public class GasController : Unit
             }
         }
     }
+    public float speed;
     void Update()
     {
         if (!isGravity)
@@ -25,14 +26,14 @@ public class GasController : Unit
             {
                 timeFly -= Time.deltaTime;
                 if (timeFly <= 2)
-                    rid.AddForce(transform.up * 0.3f);
+                    rid.AddForce(transform.up * speed);
             }
             if (timeFly <= 0)
-                timeFly = Random.Range(3, 8);
+                timeFly = Random.Range(2, 4);
         }
         else
         {
-            rid.AddForce(transform.up * 0.3f);
+            rid.AddForce(transform.up * speed);
             if (timeFly > 0)
             {
                 timeFly -= Time.deltaTime;
@@ -40,7 +41,7 @@ public class GasController : Unit
                     transform.rotation = Quaternion.Euler(new Vector3(0, 0, Random.Range(0, 360)));
             }
             if (timeFly <= 0)
-                timeFly = Random.Range(3, 8);
+                timeFly = Random.Range(2, 4);
         }
     }
 }

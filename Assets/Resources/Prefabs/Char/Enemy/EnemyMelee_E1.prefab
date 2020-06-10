@@ -119,6 +119,7 @@ MonoBehaviour:
   ground: {fileID: 12872194746334490}
   leftAttack: {fileID: 4700512545162854236}
   rightAttack: {fileID: 8560174892546297900}
+  target: {fileID: 0}
   pBlood: {fileID: 1107672149821629326}
 --- !u!50 &447227860025940805
 Rigidbody2D:
@@ -693,7 +694,7 @@ PrefabInstance:
     - target: {fileID: 1555878455919250856, guid: f12e1bd8896cd234da1b421418c1275d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.465
+      value: 0.684
       objectReference: {fileID: 0}
     - target: {fileID: 1555878455919250856, guid: f12e1bd8896cd234da1b421418c1275d,
         type: 3}

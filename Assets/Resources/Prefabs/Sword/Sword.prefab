@@ -203,7 +203,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lmMapObject:
     serializedVersion: 2
-    m_Bits: 5120
+    m_Bits: 5632
   rig2d: {fileID: 4141338549085079450}
 --- !u!50 &4141338549085079450
 Rigidbody2D:

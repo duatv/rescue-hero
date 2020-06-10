@@ -11,15 +11,18 @@ public class SaveDataAchievement
     public int currentLevel = 0, currentNumber = 0;
     public bool pass = false;
 }
+public class SaveCastle
+{
+    public bool unlock;
+}
 public class DataController : MonoBehaviour
 {
     public List<SaveDataAchievement> saveDataAchievement = new List<SaveDataAchievement>();
     public DataAchievement dataAchievement;
     public HeroData heroData;
     public List<SaveHero> savehero = new List<SaveHero>();
+    public List<SaveCastle> saveCastle = new List<SaveCastle>();
     public static DataController instance;
-
-
 
     private void Awake()
     {
@@ -37,13 +40,35 @@ public class DataController : MonoBehaviour
 
     TextAsset _ta;
     JsonData jData;
-    string strHero,strAchievement;
+    string strHero,strAchievement,strCastle;
     void LoadData()
     {
         DataParam.currentHero = PlayerPrefs.GetInt(DataParam.CURRENTHERO);
 
         LoadHero();
         LoadAchievment();
+        LoadCastle();
+    }
+    void LoadCastle()
+    {
+        DataParam.currentLevelCastle = PlayerPrefs.GetInt(DataParam.CURRENTLEVELCASTLE);
+        for (int i = 0; i < 27; i++)
+        {
+            SaveCastle _saveCastle = new SaveCastle();
+            saveCastle.Add(_saveCastle);
+        }
+        strCastle = PlayerPrefs.GetString(DataParam.SAVECASTLE);
+        if (!string.IsNullOrEmpty(strCastle))
+        {
+            jData = JsonMapper.ToObject(strCastle);
+            for (int i = 0; i < jData.Count; i++)
+            {
+                if (jData[i] != null)
+                {
+                    saveCastle[i] = JsonMapper.ToObject<SaveCastle>(jData[i].ToJson());
+                }
+            }
+        }
     }
     void LoadAchievment()
     {
@@ -96,6 +121,8 @@ public class DataController : MonoBehaviour
         PlayerPrefs.SetString(DataParam.SAVEHERO, JsonMapper.ToJson(savehero));
         PlayerPrefs.SetString(DataParam.SAVEACHIEVEMENT, JsonMapper.ToJson(saveDataAchievement));
         PlayerPrefs.SetInt(DataParam.CURRENTHERO, DataParam.currentHero);
+        PlayerPrefs.SetString(DataParam.SAVECASTLE, JsonMapper.ToJson(saveCastle));
+        PlayerPrefs.SetInt(DataParam.CURRENTLEVELCASTLE, DataParam.currentLevelCastle);
     }
     int currentLevel;
     public void DoAchievment(int index, int add)

@@ -7,7 +7,7 @@ using UnityEditor;
 #endif
 public class HostageManager : CharsBase
 {
-    public ParticleSystem pheart;
+    public ParticleSystem pheart,bloodeffect;
     public bool isMeetPlayer;
     bool win = false;
     void Start()
@@ -64,6 +64,7 @@ public class HostageManager : CharsBase
     {
         saPlayer.AnimationState.SetAnimation(0, str_Lose, false);
         skull.SetActive(true);
+        bloodeffect.gameObject.SetActive(true);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -110,6 +111,7 @@ public class HostageManager : CharsBase
     {
         yield return new WaitForSeconds(0.3f);
         pheart.gameObject.SetActive(true);
+
         saPlayer.AnimationState.SetAnimation(0, str_Win, false);
     }
 }
