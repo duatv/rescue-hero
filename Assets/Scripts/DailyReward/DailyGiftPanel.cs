@@ -9,6 +9,12 @@ public class DailyGiftPanel : MonoBehaviour
     public Button[] gAllGift;
     public RewardItem[] _allRewardItems;
     public int _dayIndex = 1;
+    public Animator anim;
+    private void OnValidate()
+    {
+        if (anim == null)
+            anim = GetComponent<Animator>();
+    }
 
     public void OnShowPanel() {
         //for (int i = 0; i < gAllGift.Length; i++) {
@@ -21,10 +27,14 @@ public class DailyGiftPanel : MonoBehaviour
         //    }
         //}
     }
+    private void OnEnable()
+    {
+        anim.Play("PopupAnim");
+    }
     public void OnClosePanel() {
 
-        gameObject.SetActive(false);
-
+        //  gameObject.SetActive(false);
+        anim.Play("PopUpAnimClose");
         Utils.SaveCoin();
         Utils.SaveDailyGift();
     }

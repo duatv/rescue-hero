@@ -17,6 +17,7 @@ public class SpriteHero
 }
 public class SkinShopManager : MonoBehaviour
 {
+    public Animator anim;
     public SpriteHero[] spriteHero;
     public MenuController menuController;
     public SkeletonGraphic saPlayer;
@@ -30,7 +31,11 @@ public class SkinShopManager : MonoBehaviour
     public Button btnBuyNow, btnDailyReward;
     //  [SerializeField] public SkinShopItem shopItem;
     //  public Dictionary<string, SkinShopItem> dicAllSkin = new Dictionary<string, SkinShopItem>();
-
+    private void OnValidate()
+    {
+        if (anim == null)
+            anim = GetComponent<Animator>();
+    }
     public int currentClickHero;
     public void DisplayBegin()
     {
@@ -136,6 +141,7 @@ public class SkinShopManager : MonoBehaviour
     private void OnEnable()
     {
         txtCurCoin.text = Utils.currentCoin.ToString("#,##0");
+        anim.Play("PopupAnim");
     }
     public void OnHideShop()
     {
@@ -143,7 +149,8 @@ public class SkinShopManager : MonoBehaviour
         //  Utils.SavePlayerSkin(Utils.heroSelected/*shopItem.skinName*//*, shopItem.skinWithSword*/);
         //btnDailyReward.gameObject.SetActive(false);
         //btnBuyNow.gameObject.SetActive(false);
-        gameObject.SetActive(false);
+        //   gameObject.SetActive(false);
+        anim.Play("PopUpAnimClose");
     }
     private void OnDisable()
     {

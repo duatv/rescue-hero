@@ -9,7 +9,14 @@ public class SettingPanel : MonoBehaviour
     public GameObject gQualityOn, gQualityOff, gSoundOn, gSoundOff, gMusicOn, gMusicOff, gVibrateOn, gVibrateOff;
     private void OnEnable()
     {
+        anim.Play("PopupAnim");
         ChangeSprite();
+    }
+    public Animator anim;
+    private void OnValidate()
+    {
+        if (anim == null)
+            anim = GetComponent<Animator>();
     }
     private void Start()
     {
@@ -47,7 +54,8 @@ public class SettingPanel : MonoBehaviour
         {
             SoundManager.Instance.PlayBackgroundMusic();
         }
-        gameObject.SetActive(false);
+        anim.Play("PopUpAnimClose");
+        //   gameObject.SetActive(false);
     }
     public void OnRestorePurchase() {
     }

@@ -24,4 +24,8 @@ public class EventPopupDone : MonoBehaviour
         GameManager.Instance.coinTemp += 20;
         GameManager.Instance.txtCoinWin.text = GameManager.Instance.coinTemp.ToString("00,#");
     }
+    public void EventClosePopUp()
+    {
+        gameObject.SetActive(false);
+    }
 }
