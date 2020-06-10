@@ -53,7 +53,7 @@ public class MenuController : MonoBehaviour
             openCastle = false;
         }
 
-        //  Utils.currentCoin = 100000;
+          Utils.currentCoin = 1000000;
     }
 
     public void OpenAchievement(bool open)
@@ -112,7 +112,7 @@ public class MenuController : MonoBehaviour
         if (animLoading)
             return;
         _dailyGiftPanel.gameObject.SetActive(true);
-        _dailyGiftPanel.OnShowPanel();
+       // _dailyGiftPanel.OnShowPanel();
         warningDailyReward.SetActive(false);
     }
     public void ShowSkinShop()

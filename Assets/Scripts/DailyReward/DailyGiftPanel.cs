@@ -31,6 +31,13 @@ public class DailyGiftPanel : MonoBehaviour
     {
         anim.Play("PopupAnim");
     }
+    public void DisplayAgain()
+    {
+        for(int i = 0; i < _allRewardItems.Length; i ++)
+        {
+            _allRewardItems[i].DisplayAgain();
+        }
+    }
     public void OnClosePanel() {
 
         //  gameObject.SetActive(false);
@@ -44,8 +51,10 @@ public class DailyGiftPanel : MonoBehaviour
         Utils.currentCoin += _coinAdd;
         if (!Utils.cantakegiftdaily)
         {
+
             Utils.curDailyGift++;
             Utils.cantakegiftdaily = true;
+
         }
     }
     public void TakeGift(int _index) {
@@ -75,11 +84,15 @@ public class DailyGiftPanel : MonoBehaviour
         //OnClosePanel();
     }
     public void TakeX2Gift(int _index) {
+
+
         AdsManager.Instance.ShowRewardedVideo((b) =>
         {
             if (b) {
                 MyAnalytic.TakeDailyGiftX2();
+
                 Utils.HasClaimReward();
+
                 switch (_index)
                 {
                     case 1:
@@ -102,22 +115,30 @@ public class DailyGiftPanel : MonoBehaviour
                         break;
                 }
             }
+            Utils.SaveCoin();
+            Utils.SaveDailyGift();
+            DisplayAgain();
         });
-        OnClosePanel();
+      //  OnClosePanel();
     }
     public void TakeSpecialGift() {
         if (!Utils.cantakegiftdaily && Utils.curDailyGift == 7)
         {
+
             Utils.HasClaimReward();
             Utils.curDailyGift++;
 
             Debug.LogError("take hero");
         }
         MenuController.instance.shopManager.skinShopItem[5].Unlock();
-        OnClosePanel();
+        Utils.SaveCoin();
+        Utils.SaveDailyGift();
+        DisplayAgain();
+        //   OnClosePanel();
     }
 
     public void OnClaim() {
+
         MyAnalytic.TakeDailyGift();
         Utils.HasClaimReward();
         Debug.LogError("day index:" +  _dayIndex);
@@ -145,7 +166,10 @@ public class DailyGiftPanel : MonoBehaviour
                 TakeSpecialGift();
                 break;
         }
-        OnClosePanel();
+        Utils.SaveCoin();
+        Utils.SaveDailyGift();
+        DisplayAgain();
+        //  OnClosePanel();
     }
     public void OnX3Claim() {
         TakeX2Gift(_dayIndex);

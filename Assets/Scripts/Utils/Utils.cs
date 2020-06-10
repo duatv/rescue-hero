@@ -64,8 +64,8 @@ public class Utils
         LEVEL_INDEX = PlayerPrefs.GetInt(LEVEL_KEY, 0);
         currentCoin = PlayerPrefs.GetInt(COIN_KEY, 1000000);
         useMediumImage = PlayerPrefs.GetInt(QUALITY_IMAGE, 0) == 0 ? false : true;
-        isSoundOn = PlayerPrefs.GetInt(CHANGE_SOUND, 0) == 0 ? false : true;
-        isMusicOn = PlayerPrefs.GetInt(CHANGE_MUSIC, 0) == 0 ? false : true;
+        isSoundOn = PlayerPrefs.GetInt(CHANGE_SOUND, 1) == 0 ? false : true;
+        isMusicOn = PlayerPrefs.GetInt(CHANGE_MUSIC, 1) == 0 ? false : true;
         isVibrateOn = PlayerPrefs.GetInt(CHANGE_VIBRATE, 0) == 0 ? false : true;
         isRemoveAds = PlayerPrefs.GetInt(HAS_REMOVE_ADS, 0) == 0 ? false : true;
 

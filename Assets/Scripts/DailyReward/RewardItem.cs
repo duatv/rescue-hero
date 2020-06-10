@@ -15,7 +15,7 @@ public class RewardItem : MonoBehaviour
     {
 
     }
-    private void OnEnable()
+    public void DisplayAgain()
     {
         if (dayIndex == Utils.curDailyGift && !Utils.cantakegiftdaily && !Utils.IsClaimReward())
         {
@@ -27,11 +27,16 @@ public class RewardItem : MonoBehaviour
                 _dailyGift.btnClaimX3.interactable = false;
             }
             else _dailyGift.btnClaimX3.interactable = true;
+
+            
         }
-        else if (dayIndex == Utils.curDailyGift && Utils.cantakegiftdaily) {
+        else if (dayIndex == Utils.curDailyGift && Utils.cantakegiftdaily)
+        {
             _dailyGift.btnClaimX3.interactable = false;
             _dailyGift.btnClaim.interactable = false;
-        } else if (dayIndex == Utils.curDailyGift-1 &&!Utils.cantakegiftdaily && Utils.IsClaimReward()) {
+        }
+        else if (dayIndex == Utils.curDailyGift - 1 && !Utils.cantakegiftdaily && Utils.IsClaimReward())
+        {
             _dailyGift.btnClaimX3.interactable = false;
             _dailyGift.btnClaim.interactable = false;
             imgPreview.sprite = sprHasClaim;
@@ -46,5 +51,10 @@ public class RewardItem : MonoBehaviour
             imgPreview.sprite = sprDisable;
             gTick.SetActive(false);
         }
+        Debug.LogError("dis play again");
+    }
+    private void OnEnable()
+    {
+        DisplayAgain();
     }
 }
