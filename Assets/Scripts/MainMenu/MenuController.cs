@@ -34,6 +34,8 @@ public class MenuController : MonoBehaviour
         CheckShowDailyGift();
 
         shopManager.DisplayBegin();
+
+      //  Utils.currentCoin = 100000;
     }
 
     public void OpenAchievement(bool open)

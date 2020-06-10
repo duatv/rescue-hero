@@ -30803,73 +30803,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1001 &823676841
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1341071656, guid: 1b16239da98e5934ea9c02b0f18308ca, type: 3}
-      propertyPath: m_Name
-      value: Level14
-      objectReference: {fileID: 0}
-    - target: {fileID: 1341071658, guid: 1b16239da98e5934ea9c02b0f18308ca, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1341071658, guid: 1b16239da98e5934ea9c02b0f18308ca, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1341071658, guid: 1b16239da98e5934ea9c02b0f18308ca, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1341071658, guid: 1b16239da98e5934ea9c02b0f18308ca, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1341071658, guid: 1b16239da98e5934ea9c02b0f18308ca, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1341071658, guid: 1b16239da98e5934ea9c02b0f18308ca, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1341071658, guid: 1b16239da98e5934ea9c02b0f18308ca, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1341071658, guid: 1b16239da98e5934ea9c02b0f18308ca, type: 3}
-      propertyPath: m_RootOrder
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 1341071658, guid: 1b16239da98e5934ea9c02b0f18308ca, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1341071658, guid: 1b16239da98e5934ea9c02b0f18308ca, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1341071658, guid: 1b16239da98e5934ea9c02b0f18308ca, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4785156957235055028, guid: 1b16239da98e5934ea9c02b0f18308ca,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4785156957235055031, guid: 1b16239da98e5934ea9c02b0f18308ca,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: e050f0bb044fa184d91c14affb858e9e, type: 2}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 1b16239da98e5934ea9c02b0f18308ca, type: 3}
 --- !u!1 &827238411
 GameObject:
   m_ObjectHideFlags: 0
@@ -75618,7 +75551,7 @@ MonoBehaviour:
   txtLevel: {fileID: 1519425866}
   txtCoin: {fileID: 1184841995}
   txtCoinWin: {fileID: 255562569}
-  isTest: 1
+  isTest: 0
   canUseTrail: 0
   gameState: 0
   levelConfig: {fileID: 11400000, guid: 545dfe20f6a848048be655bb1e39f1ee, type: 2}

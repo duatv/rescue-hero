@@ -21,23 +21,24 @@ public class SkinShopItem : MonoBehaviour
         if (!DataController.instance.savehero[index].unlock)
         {
             icon.sprite = MenuController.instance.shopManager.spriteHero[index].info.avatar[0];
-            if (DataController.instance.heroData.infos[index].typeUnlock == HeroData.TypeUnlock.COIN)
-            {
-                MenuController.instance.shopManager.btnBuyNow.gameObject.SetActive(true);
-                MenuController.instance.shopManager.btnDailyReward.gameObject.SetActive(false);
-            }
-            else
-            {
-                MenuController.instance.shopManager.btnBuyNow.gameObject.SetActive(false);
-                MenuController.instance.shopManager.btnDailyReward.gameObject.SetActive(true);
-            }
+            //if (DataController.instance.heroData.infos[index].typeUnlock == HeroData.TypeUnlock.COIN)
+            //{
+            //    MenuController.instance.shopManager.btnBuyNow.gameObject.SetActive(true);
+            //    MenuController.instance.shopManager.btnDailyReward.gameObject.SetActive(false);
+            //}
+            //else
+            //{
+            //    MenuController.instance.shopManager.btnBuyNow.gameObject.SetActive(false);
+            //    MenuController.instance.shopManager.btnDailyReward.gameObject.SetActive(true);
+            //}
         }
         else
         {
             icon.sprite = MenuController.instance.shopManager.spriteHero[index].info.avatar[1];
-            MenuController.instance.shopManager.btnBuyNow.gameObject.SetActive(false);
-            MenuController.instance.shopManager.btnDailyReward.gameObject.SetActive(false);
+            //MenuController.instance.shopManager.btnBuyNow.gameObject.SetActive(false);
+            //MenuController.instance.shopManager.btnDailyReward.gameObject.SetActive(false);
         }
+
         nameText.text = DataController.instance.heroData.infos[index].itemName;
         lockObj.SetActive(!DataController.instance.savehero[index].unlock);
     }

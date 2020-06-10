@@ -40,6 +40,8 @@ public class SkinShopManager : MonoBehaviour
         }
         DisplaySelect();
         ChangeSkin(DataController.instance.heroData.infos[DataParam.currentHero].nameSkin);
+        MenuController.instance.shopManager.btnBuyNow.gameObject.SetActive(false);
+        MenuController.instance.shopManager.btnDailyReward.gameObject.SetActive(false);
     }
     public void DisplaySelect()
     {
