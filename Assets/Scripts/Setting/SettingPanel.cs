@@ -52,7 +52,7 @@ public class SettingPanel : MonoBehaviour
     public void OnClose() {
         if (SoundManager.Instance != null)
         {
-            SoundManager.Instance.PlayBackgroundMusic();
+            SoundManager.Instance.CheckBGMusic();
         }
         anim.Play("PopUpAnimClose");
         //   gameObject.SetActive(false);

@@ -37,15 +37,21 @@ public class CastlePanel : MonoBehaviour
         }
         sk.AnimationState.Event += Event;
     }
+    private void OnDisable()
+    {
+        sk.AnimationState.Event -= Event;
+    }
     private void Event(TrackEntry trackEntry, Spine.Event e)
     {
         if (trackEntry.Animation.Name.Equals("Bua dap"))
         {
             effectsmokebua.SetActive(true);
+            Debug.LogError("======= Bua dap ========");
         }
     }
     public void DisplayBegin()
     {
+        sk.Initialize(true);
         for (int i = 0; i < DataController.instance.saveCastle.Count; i++)
         {
             castle[i].gameObject.SetActive(DataController.instance.saveCastle[i].unlock);
@@ -86,7 +92,8 @@ public class CastlePanel : MonoBehaviour
     {
         displayImg.sprite = castle[Random.Range(0, castle.Count)].sprite;
         AnimPanel.gameObject.SetActive(true);
-        AnimPanel.enabled = true;
+         AnimPanel.enabled = true;
+
     }
     void UnlockCastle()
     {
@@ -135,10 +142,14 @@ public class CastlePanel : MonoBehaviour
         if (countChangeImg == 0)
         {
             // displayImg.sprite = castle[randomCastle].sprite;
-            AnimPanel.enabled = false;
+          //  AnimPanel.enabled = false;
             UnlockCastle();
             btnClose.SetActive(true);
             effectTake.SetActive(true);
+
+            //   AnimPanel.Play("AnimEffect", -1, 0f);
+            AnimPanel.enabled = false;
+            displayImg.transform.position = new Vector2(0,displayImg.transform.position.y);
         }
     }
     public void CloseANimPanel()

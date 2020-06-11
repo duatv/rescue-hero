@@ -45,4 +45,15 @@ public class SoundManager : MonoBehaviour
             audioSource.mute = true;
         }
     }
+    public void CheckBGMusic()
+    {
+        if (Utils.isMusicOn)
+        {
+            audioSource.mute = false;
+        }
+        else
+        {
+            audioSource.mute = true;
+        }
+    }
 }

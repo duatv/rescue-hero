@@ -41,6 +41,7 @@ public class MenuController : MonoBehaviour
         shopManager.DisplayBegin();
 
         castlePanel.DisplayBegin();
+
         shopManager.Init();
         if(openAchievement)
         {
@@ -57,7 +58,7 @@ public class MenuController : MonoBehaviour
             Debug.LogError("=zoooooooooo= open castle");
         }
 
-       //   Utils.currentCoin = 1000000;
+          Utils.currentCoin = 1000000;
     }
     IEnumerator OpenAchievement()
     {
