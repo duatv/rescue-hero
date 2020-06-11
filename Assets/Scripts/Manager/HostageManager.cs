@@ -79,7 +79,7 @@ public class HostageManager : CharsBase
                 PlayWin();
             }
         }
-        else if(collision.gameObject.tag == Utils.TAG_LAVA || collision.gameObject.tag == "Trap_Other")
+        else if(collision.gameObject.tag == Utils.TAG_LAVA || collision.gameObject.tag == "Trap_Other" || collision.gameObject.name == "arrow")
         {
             if (PlayerManager.Instance.pState == PlayerManager.P_STATE.PLAYING || PlayerManager.Instance.pState == PlayerManager.P_STATE.RUNNING)
             {

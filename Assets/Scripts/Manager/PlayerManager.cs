@@ -494,7 +494,6 @@ public class PlayerManager : MonoBehaviour
     IEnumerator delayWin()
     {
         yield return new WaitForSeconds(1f);
-
         if (pState != P_STATE.DIE)
         {
             GameManager.Instance.gameState = GameManager.GAMESTATE.WIN;

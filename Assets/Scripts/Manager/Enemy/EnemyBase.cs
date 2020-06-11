@@ -386,7 +386,7 @@ public class EnemyBase : MonoBehaviour
     {
         if (_charStage == CHAR_STATE.PLAYING)
         {
-            if (/*isContinueDetect && */collision.gameObject.tag == Utils.TAG_LAVA || collision.gameObject.tag == "Trap_Other" || collision.gameObject.tag == Utils.TAG_GAS)
+            if (/*isContinueDetect && */collision.gameObject.tag == Utils.TAG_LAVA || collision.gameObject.tag == "Trap_Other" || collision.gameObject.tag == Utils.TAG_GAS || collision.gameObject.name == "arrow")
             {
                 OnDie_();
                 if (collision.gameObject.tag == Utils.TAG_LAVA)
