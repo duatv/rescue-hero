@@ -444,9 +444,11 @@ public class PlayerManager : MonoBehaviour
     #region Collision
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "ChangeDir")
+      //  Debug.LogError("zo day");
+        if (collision.gameObject.tag == "ChangeDir" /*|| collision.gameObject.tag == ""*/)
         {
-            if (collision.gameObject.transform.localScale.x == 1)
+            Debug.LogError("zo day");
+            if (collision.gameObject.transform.localScale.x > 0)
             {
                 isMoveLeft = false;
                 isMoveRight = true;
@@ -458,11 +460,25 @@ public class PlayerManager : MonoBehaviour
             }
             if (isTakeSword)
                 beginMove = true;
-            saPlayer.skeleton.ScaleX = collision.gameObject.transform.localScale.x;
+            saPlayer.skeleton.ScaleX = collision.gameObject.transform.localScale.x > 0 ? 1 : -1;
             Debug.LogError("zo day");
         }
-        else if (collision.gameObject.tag == "Trap_Other")
+        else
+        if (collision.gameObject.tag == "Trap_Other")
         {
+            if (pState == P_STATE.PLAYING || pState == P_STATE.RUNNING)
+            {
+                //  Debug.LogError("zoooooooooooooooooooo");
+                if (GameManager.Instance.gameState != GameManager.GAMESTATE.WIN)
+                {
+                    // PlayerManager.Instance.isContinueDetect = false;
+                    OnPlayerDie(true);
+                }
+            }
+        }
+        else if(collision.gameObject.name == "arrow")
+        {
+            collision.gameObject.SetActive(false);
             if (pState == P_STATE.PLAYING || pState == P_STATE.RUNNING)
             {
                 //  Debug.LogError("zoooooooooooooooooooo");

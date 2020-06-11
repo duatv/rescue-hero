@@ -6,7 +6,7 @@ using UnityEditor;
 #endif
 public class EnemyMelee : EnemyBase
 {
-    public ParticleSystem pBlood;
+
     override public void OnPrepareAttack()
     {
         base.OnPrepareAttack();

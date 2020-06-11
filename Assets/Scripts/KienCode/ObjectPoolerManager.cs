@@ -5,8 +5,8 @@ using System.Collections.Generic;
 public class ObjectPoolerManager : MonoBehaviour
 {
     [HideInInspector]
-    public ObjectPooler effectWaterFirePooler,effectDestroyPooler;
-    public GameObject effectWaterFirePrefab, effectDestroyPrefab;
+    public ObjectPooler effectWaterFirePooler,effectDestroyPooler,arrowPooler;
+    public GameObject effectWaterFirePrefab, effectDestroyPrefab, arrowPrefab;
     [HideInInspector]
     public static ObjectPoolerManager Instance { get; private set; }
     public List<ObjectPooler> AllPool = new List<ObjectPooler>();
@@ -53,6 +53,15 @@ public class ObjectPoolerManager : MonoBehaviour
             go.transform.parent = this.gameObject.transform;
             effectDestroyPooler.Initialize(30);
             AllPool.Add(effectDestroyPooler);
+        }
+        if (arrowPooler == null)
+        {
+            go = new GameObject("arrowPooler");
+            arrowPooler = go.AddComponent<ObjectPooler>();
+            arrowPooler.PooledObject = arrowPrefab;
+            go.transform.parent = this.gameObject.transform;
+            arrowPooler.Initialize(5);
+            AllPool.Add(arrowPooler);
         }
     }
     GameObject go;

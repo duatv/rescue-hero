@@ -8,6 +8,7 @@ public class EnemyBase : MonoBehaviour
     public enum ENEMY_TYPE { MELEE, RANGE, MONSTER }
     public enum CHAR_STATE { PLAYING, DIE, WIN, RUNNING }
     public GameObject skull;
+    public ParticleSystem pBlood;
     [SerializeField]
     public ENEMY_TYPE enemyType;
     [SerializeField]
@@ -17,14 +18,14 @@ public class EnemyBase : MonoBehaviour
     [DrawIf("isReadOnly", true, ComparisonType.Equals, DisablingType.ReadOnly)]
     public SkeletonDataAsset sdaP1, sdaP2;
     public SkeletonAnimation saPlayer;
-    [DrawIf("isReadOnly", true, ComparisonType.Equals, DisablingType.ReadOnly)]
+    //  [DrawIf("isReadOnly", true, ComparisonType.Equals, DisablingType.ReadOnly)]
     [SpineAnimation]
     public string str_idle, str_Win, str_Lose, str_Att, str_Run;
     public float moveSpeed;
     [SerializeField] public Rigidbody2D rig;
     public LayerMask lmColl, lmPlayer, lmMapObject;
     public bool isRangerAtt;
-    public GameObject gGround,body,head;
+    public GameObject gGround, body, head;
 
     [SerializeField]
     private RaycastHit2D hit2D, hit2D_1, hitPlayer;
@@ -35,7 +36,7 @@ public class EnemyBase : MonoBehaviour
     private EnemyBase ebTarget;
     private HostageManager hmTarget;
     private PlayerManager pmTarget;
-  //  private Transform trTargetAttack;
+    //  private Transform trTargetAttack;
 
     public void ChoosePlayer(int i)
     {
@@ -72,23 +73,34 @@ public class EnemyBase : MonoBehaviour
         {
             if (saPlayer.AnimationName.Equals(str_Lose))
             {
-               // gGround.layer = 0;
+                // gGround.layer = 0;
             }
             if (saPlayer.AnimationName.Equals(str_Att))
             {
                 if (hitPlayer.collider != null)
                 {
-                    //    isContinueDetect = false;
-                    if (hitPlayer.collider.gameObject/*.GetComponent<PlayerManager>()*/.tag == "BodyPlayer")
+                    if (enemyType == ENEMY_TYPE.MELEE)
                     {
-                        PlayerManager.Instance/*hitPlayer.collider.gameObject.GetComponent<PlayerManager>()*/.OnPlayerDie(true);
-                        GameManager.Instance.gameState = GameManager.GAMESTATE.LOSE;
-                        Debug.LogError("chem chet player");
+                        if (hitPlayer.collider.gameObject/*.GetComponent<PlayerManager>()*/.tag == "BodyPlayer")
+                        {
+                            PlayerManager.Instance/*hitPlayer.collider.gameObject.GetComponent<PlayerManager>()*/.OnPlayerDie(true);
+                            GameManager.Instance.gameState = GameManager.GAMESTATE.LOSE;
+                            Debug.LogError("chem chet player");
+                        }
+                        else if (hitPlayer.collider.gameObject.name == "Hostage_Female"/*.collider.gameObject.GetComponent<HostageManager>()*/)
+                        {
+                            hitPlayer.collider.gameObject.GetComponent<HostageManager>().OnDie_(true);
+                            GameManager.Instance.gameState = GameManager.GAMESTATE.LOSE;
+                        }
                     }
-                    else if (hitPlayer.collider.gameObject.name == "Hostage_Female"/*.collider.gameObject.GetComponent<HostageManager>()*/)
+                    else if (enemyType == ENEMY_TYPE.RANGE)
                     {
-                        hitPlayer.collider.gameObject.GetComponent<HostageManager>().OnDie_(true);
-                        GameManager.Instance.gameState = GameManager.GAMESTATE.LOSE;
+                        GameObject arrow = ObjectPoolerManager.Instance.arrowPooler.GetPooledObject();
+                        arrow.transform.position = saPlayer.skeleton.ScaleX > 0 ? leftAttack.transform.position : rightAttack.transform.position;
+                        arrow.transform.localScale = new Vector2(saPlayer.skeleton.ScaleX, arrow.transform.localScale.y);
+                        arrow.SetActive(true);
+                        arrow.GetComponent<Rigidbody2D>().velocity = saPlayer.skeleton.ScaleX > 0 ? Vector2.left : Vector2.right;
+
                     }
 
                     if (SoundManager.Instance != null)
@@ -107,7 +119,7 @@ public class EnemyBase : MonoBehaviour
     {
         _vStartHitDown = center.position;
         _vEndHitDown = ground.position;
-        hitDown = Physics2D.OverlapCircle(ground.position,0.05f,lmMapObject);
+        hitDown = Physics2D.OverlapCircle(ground.position, 0.05f, lmMapObject);
 
         Debug.DrawLine(_vStartHitDown, _vEndHitDown, Color.red);
     }
@@ -146,7 +158,7 @@ public class EnemyBase : MonoBehaviour
                 {
                     if (hit2D.collider != null)
                     {
-                    //    Debug.LogError("checkhit1" + hit2D.collider.tag);
+                        //    Debug.LogError("checkhit1" + hit2D.collider.tag);
                         if (hit2D.collider.gameObject.tag != Utils.TAG_STICKBARRIE && hit2D.collider.gameObject.tag != "Chan"/* && !isBeginAtt*/)
                         {
                             //if (hit2D.collider.gameObject.GetComponent<EnemyBase>() != null)
@@ -162,12 +174,12 @@ public class EnemyBase : MonoBehaviour
                             {
                                 _isCanMoveToTarget = hit2D.collider.gameObject.GetComponent<HostageManager>()._charStage == CharsBase.CHAR_STATE.DIE ? false : true;
                                 target = hit2D.collider.gameObject;
-                            //    trTargetAttack = hit2D.collider.gameObject.transform;
+                                //    trTargetAttack = hit2D.collider.gameObject.transform;
                             }
                             else if (/*hit2D.collider.gameObject.GetComponent<PlayerManager>() != null*/hit2D.collider.gameObject.tag == "BodyPlayer" && !PlayerManager.Instance.isTakeSword)
                             {
                                 _isCanMoveToTarget = /*hit2D.collider.gameObject.GetComponent<PlayerManager>()*/PlayerManager.Instance.pState == PlayerManager.P_STATE.DIE ? false : true;
-                            
+
                                 //  trTargetAttack = hit2D.collider.gameObject.transform;
                                 target = hit2D.collider.gameObject;
                             }
@@ -186,7 +198,7 @@ public class EnemyBase : MonoBehaviour
                     }
                     if (hit2D_1.collider != null)
                     {
-                     //   Debug.LogError("checkhit2" + hit2D_1.collider.tag);
+                        //   Debug.LogError("checkhit2" + hit2D_1.collider.tag);
                         if (hit2D_1.collider.gameObject.tag != Utils.TAG_STICKBARRIE/* && !isBeginAtt*/&& hit2D_1.collider.gameObject.tag != "Chan")
                         {
                             //if (hit2D_1.collider.gameObject.GetComponent<EnemyBase>() != null)
@@ -206,7 +218,7 @@ public class EnemyBase : MonoBehaviour
                                 //    PrepareRotate_(trTargetAttack);
                                 target = hit2D_1.collider.gameObject;
                             }
-                            else if (/*hit2D_1.collider.gameObject.GetComponent<PlayerManager>() != null*/hit2D_1.collider.gameObject.tag == "BodyPlayer")
+                            else if (/*hit2D_1.collider.gameObject.GetComponent<PlayerManager>() != null*/hit2D_1.collider.gameObject.tag == "BodyPlayer" && !PlayerManager.Instance.isTakeSword)
                             {
                                 _isCanMoveToTarget =/* hit2D_1.collider.gameObject.GetComponent<PlayerManager>()*/PlayerManager.Instance.pState == PlayerManager.P_STATE.DIE ? false : true;
                                 //   trTargetAttack = hit2D_1.collider.gameObject.transform;
@@ -266,6 +278,7 @@ public class EnemyBase : MonoBehaviour
         switch (enemyType)
         {
             case ENEMY_TYPE.MELEE:
+                rig.velocity = moveSpeed * (saPlayer.skeleton.ScaleX > 0 ? Vector2.left : Vector2.right);
                 PlayAnim(str_Run, true);
                 break;
             case ENEMY_TYPE.MONSTER:
@@ -287,7 +300,7 @@ public class EnemyBase : MonoBehaviour
             }
         }
 
-        rig.velocity = moveSpeed * (saPlayer.skeleton.ScaleX > 0 ? Vector2.left : Vector2.right);
+
     }
     public virtual void OnPrepareAttack()
     {
@@ -296,7 +309,11 @@ public class EnemyBase : MonoBehaviour
         rig.velocity = Vector2.zero;
         if (enemyType == ENEMY_TYPE.RANGE)
         {
-            PlayAnim(str_Att, false);
+            if (hitPlayer.collider != null)
+            {
+                if (/*hitPlayer.collider.gameObject.GetComponent<PlayerManager>()*/PlayerManager.Instance.isTakeSword)
+                    PlayAnim(str_Att, false);
+            }
         }
         else
         {
