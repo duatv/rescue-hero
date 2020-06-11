@@ -69,7 +69,7 @@ public class Unit : MonoBehaviour
     int randomDisplayEffect;
 
 
-    private float speedMove;
+    public float speedMove;
     public bool isGravity;
     public float timeFly = 0;
     private float ranGas;
@@ -80,9 +80,9 @@ public class Unit : MonoBehaviour
         if (isGravity)
             rid.gravityScale = 0;
         else
-            rid.gravityScale = Random.Range(0.05f, 0.15f);
+            rid.gravityScale = 0.1f;
         transform.localScale = new Vector3(ranGas, ranGas, ranGas);
-        speedMove = Random.Range(40, 75);
+        speedMove = Random.Range(1f, 1.5f);
     }
     public virtual void OnUpdate(float deltaTime)
     {

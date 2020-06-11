@@ -63,8 +63,15 @@ public class SpawnObject : MonoBehaviour
                 }
                 else if(u._spawnType == MapLevelManager.SPAWNTYPE.GAS)
                 {
+
+                    // u.transform.rotation = Quaternion.Euler(new Vector3(0, 0, Random.Range(0, 360)));
+                   // randomDisplayEffect = Random.Range(0, 100);
+
+                    if (/*randomDisplayEffect <= 50*/i % 2 == 0)
+                    {
+                        u.isGravity = false;
+                    }
                     u.BeginCreateGas();
-                    u.transform.rotation = Quaternion.Euler(new Vector3(0, 0, Random.Range(0, 360)));
                 }
                 if (!gGems.Contains(u))
                 {

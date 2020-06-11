@@ -22,17 +22,20 @@ public class GasController : Unit
     //    //        rid.AddForce(transform.up * speed);
 
     //}
-    public float speed;
     public override void OnUpdate(float deltaTime)
     {
         base.OnUpdate(deltaTime);
-        timeFly -= deltaTime;
 
-        if (timeFly <= 0)
-        {
-            rid.velocity = transform.up * speed;
-            transform.rotation = Quaternion.Euler(new Vector3(0, 0, Random.Range(-360, 360)));
-            timeFly = 1f;
-        }
+        //if (isGravity)
+        //{
+            timeFly -= deltaTime;
+
+            if (timeFly <= 0)
+            {
+                rid.velocity = transform.up * speedMove;
+                transform.rotation = Quaternion.Euler(new Vector3(0, 0, Random.Range(-360, 360)));
+                timeFly = 1f;
+            }
+        //}
     }
 }
