@@ -2598,9 +2598,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   effectWaterFirePooler: {fileID: 0}
   effectDestroyPooler: {fileID: 0}
+  arrowPooler: {fileID: 0}
   effectWaterFirePrefab: {fileID: 5682739432146589048, guid: 01e3ebe8eb63a6e4bbf444567ccbef44,
     type: 3}
   effectDestroyPrefab: {fileID: 3709268193690404554, guid: f235648f1bd0f974688a1f0f0ed35143,
+    type: 3}
+  arrowPrefab: {fileID: 615174917885758943, guid: 439f4a59c237d344da8facc1cc1ba6db,
     type: 3}
   AllPool: []
 --- !u!4 &213295872
@@ -12854,7 +12857,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.16512357, y: 0.77367616}
   m_AnchorMax: {x: 0.89400005, y: 0.87600005}
-  m_AnchoredPosition: {x: -316.99988, y: 7}
+  m_AnchoredPosition: {x: -316.9999, y: 7}
   m_SizeDelta: {x: -637, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1179714785
@@ -19525,7 +19528,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.14951687, y: 0.606}
   m_AnchorMax: {x: 0.90800005, y: 0.7062459}
-  m_AnchoredPosition: {x: -335.6999, y: 7.5}
+  m_AnchoredPosition: {x: -335.69986, y: 7.5}
   m_SizeDelta: {x: -670, y: -15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1840321489
