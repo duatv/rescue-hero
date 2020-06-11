@@ -29,6 +29,8 @@ MonoBehaviour:
   - fall 2
   - fall 1
   - fall 2
+  - run (kiem)
+  - idle
   toAnimation:
   - win
   - win
@@ -41,7 +43,11 @@ MonoBehaviour:
   - run
   - run (kiem)
   - run (kiem)
+  - attack (kiem)
+  - attack (kiem)
   duration:
+  - 0
+  - 0
   - 0
   - 0
   - 0

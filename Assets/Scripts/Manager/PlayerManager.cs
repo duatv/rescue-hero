@@ -226,11 +226,14 @@ public class PlayerManager : MonoBehaviour
 
         if (hitForward.collider != null)
         {
-            if (hitForward.collider.gameObject.tag != "Wall_Bottom")
-            {
-                if ((hitForward.collider.gameObject.tag == "Tag_Stone" && hitForward.collider.gameObject.name != "Falling Stone") || hitForward.collider.gameObject.tag == "Chan")
-                    HeroJump();
-            }
+            //if (_rig2D.velocity.y == 0)
+            //{
+                if (hitForward.collider.gameObject.tag != "Wall_Bottom")
+                {
+                    if ((hitForward.collider.gameObject.tag == "Tag_Stone" && hitForward.collider.gameObject.name != "FallingStone") || hitForward.collider.gameObject.tag == "Chan")
+                        HeroJump();
+                }
+            //}
         }
 
         //if (isTakeSword)
@@ -365,7 +368,7 @@ public class PlayerManager : MonoBehaviour
     {
         //if (beginMove)
         //{
-       // saPlayer.AnimationState.SetEmptyAnimation(0, 0);
+        // saPlayer.AnimationState.SetEmptyAnimation(0, 0);
         enBase = _enBase;
         PlayAnim(str_Att, false);
         MapLevelManager.Instance.trTarget = null;
@@ -389,8 +392,11 @@ public class PlayerManager : MonoBehaviour
         var skeleton = saPlayer.Skeleton;
         var skeletonData = skeleton.Data;
         var newSkin = new Skin("new-skin");
-        Debug.LogError(DataController.instance.heroData.infos[DataParam.currentHero].nameSkin);
-        newSkin.AddSkin(skeletonData.FindSkin(DataController.instance.heroData.infos[DataParam.currentHero].nameSkinSword));
+        //    Debug.LogError(DataController.instance.heroData.infos[DataParam.currentHero].nameSkin);
+        if (GameManager.Instance.isTest)
+            newSkin.AddSkin(skeletonData.FindSkin("kiem"));
+        else
+            newSkin.AddSkin(skeletonData.FindSkin(DataController.instance.heroData.infos[DataParam.currentHero].nameSkinSword));
 
         skeleton.SetSkin(newSkin);
         skeleton.SetSlotsToSetupPose();
