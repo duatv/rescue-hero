@@ -28,6 +28,7 @@ public class DataController : MonoBehaviour
     {
         if (instance == null)
         {
+            Application.targetFrameRate = 80;
              Debug.unityLogger.logEnabled = false;
             instance = this;
             DontDestroyOnLoad(gameObject);

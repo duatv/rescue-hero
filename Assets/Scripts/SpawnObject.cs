@@ -64,7 +64,7 @@ public class SpawnObject : MonoBehaviour
                 else if(u._spawnType == MapLevelManager.SPAWNTYPE.GAS)
                 {
                     u.BeginCreateGas();
-
+                    u.transform.rotation = Quaternion.Euler(new Vector3(0, 0, Random.Range(0, 360)));
                 }
                 if (!gGems.Contains(u))
                 {
@@ -92,6 +92,15 @@ public class SpawnObject : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         SoundManager.Instance.PlaySound(SoundManager.Instance.acLavaApear);
+    }
+
+    private void Update()
+    {
+        if (_spawnType != MapLevelManager.SPAWNTYPE.GAS)
+            return;
+        var deltaTime = Time.deltaTime;
+        for (int i = 0; i < gGems.Count; i++)
+            gGems[i].OnUpdate(deltaTime);
     }
 
 }

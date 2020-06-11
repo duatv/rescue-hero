@@ -84,5 +84,8 @@ public class Unit : MonoBehaviour
         transform.localScale = new Vector3(ranGas, ranGas, ranGas);
         speedMove = Random.Range(40, 75);
     }
+    public virtual void OnUpdate(float deltaTime)
+    {
 
+    }
 }

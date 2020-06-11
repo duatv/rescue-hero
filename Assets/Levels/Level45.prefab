@@ -2970,6 +2970,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: StickBarrie (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 7678980956083671126, guid: 8eea6eff2c4b9b34dbfe6f3070739266,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 4.5578575
+      objectReference: {fileID: 0}
     - target: {fileID: 7917187945325412198, guid: 8eea6eff2c4b9b34dbfe6f3070739266,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3420,6 +3425,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: StickBarrie (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7678980956083671126, guid: 8eea6eff2c4b9b34dbfe6f3070739266,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 7.543811
+      objectReference: {fileID: 0}
     - target: {fileID: 7917187945325412198, guid: 8eea6eff2c4b9b34dbfe6f3070739266,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3592,6 +3602,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1091176161}
     m_Modifications:
+    - target: {fileID: 2800725489945902424, guid: a45c120e5be09084d84e271c0c76c9dd,
+        type: 3}
+      propertyPath: totalGems
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 2800725489945902425, guid: a45c120e5be09084d84e271c0c76c9dd,
         type: 3}
       propertyPath: m_LocalPosition.x

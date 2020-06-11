@@ -17,31 +17,22 @@ public class GasController : Unit
             }
         }
     }
+    //private void Start()
+    //{
+    //    //        rid.AddForce(transform.up * speed);
+
+    //}
     public float speed;
-    void Update()
+    public override void OnUpdate(float deltaTime)
     {
-        if (!isGravity)
+        base.OnUpdate(deltaTime);
+        timeFly -= deltaTime;
+
+        if (timeFly <= 0)
         {
-            if (timeFly > 0)
-            {
-                timeFly -= Time.deltaTime;
-                if (timeFly <= 2)
-                    rid.AddForce(transform.up * speed);
-            }
-            if (timeFly <= 0)
-                timeFly = Random.Range(1, 2);
-        }
-        else
-        {
-            rid.AddForce(transform.up * speed);
-            if (timeFly > 0)
-            {
-                timeFly -= Time.deltaTime;
-                if (timeFly <= 2)
-                    transform.rotation = Quaternion.Euler(new Vector3(0, 0, Random.Range(0, 360)));
-            }
-            if (timeFly <= 0)
-                timeFly = Random.Range(1, 2);
+            rid.velocity = transform.up * speed;
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, Random.Range(-360, 360)));
+            timeFly = 1f;
         }
     }
 }

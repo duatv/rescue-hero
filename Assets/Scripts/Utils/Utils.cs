@@ -62,7 +62,7 @@ public class Utils
     public static void LoadGameData()
     {
         LEVEL_INDEX = PlayerPrefs.GetInt(LEVEL_KEY, 0);
-        currentCoin = PlayerPrefs.GetInt(COIN_KEY, 1000000);
+        currentCoin = PlayerPrefs.GetInt(COIN_KEY, 0);
         useMediumImage = PlayerPrefs.GetInt(QUALITY_IMAGE, 0) == 0 ? false : true;
         isSoundOn = PlayerPrefs.GetInt(CHANGE_SOUND, 1) == 0 ? false : true;
         isMusicOn = PlayerPrefs.GetInt(CHANGE_MUSIC, 1) == 0 ? false : true;

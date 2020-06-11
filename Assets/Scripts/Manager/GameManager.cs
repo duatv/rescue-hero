@@ -47,7 +47,8 @@ public class GameManager : MonoBehaviour
     }
     public void CheckDisplayWarningAchievement()
     {
-        warningAchievment.SetActive(DataController.instance.CheckWarningAchievement());
+        if (DataController.instance != null)
+            warningAchievment.SetActive(DataController.instance.CheckWarningAchievement());
     }
     private void Awake()
     {

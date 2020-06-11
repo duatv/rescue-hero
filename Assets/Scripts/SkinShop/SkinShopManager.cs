@@ -36,6 +36,10 @@ public class SkinShopManager : MonoBehaviour
         if (anim == null)
             anim = GetComponent<Animator>();
     }
+    public void Init()
+    {
+        saPlayer.Initialize(true);
+    }
     public int currentClickHero;
     public void DisplayBegin()
     {
@@ -44,7 +48,6 @@ public class SkinShopManager : MonoBehaviour
             skinShopItem[i].DisplayBegin();
         }
         DisplaySelect();
-        ChangeSkin(DataController.instance.heroData.infos[DataParam.currentHero].nameSkin);
         MenuController.instance.shopManager.btnBuyNow.gameObject.SetActive(false);
         MenuController.instance.shopManager.btnDailyReward.gameObject.SetActive(false);
     }
@@ -75,52 +78,7 @@ public class SkinShopManager : MonoBehaviour
         }
 
     }
-    //
-    //private void Start()
-    //{
-    //    //btnBuyNow.onClick.AddListener(() =>
-    //    //{
-    //    //    if (Utils.currentCoin >= shopItem.priceValue)
-    //    //    {
-    //    //        Utils.currentCoin -= shopItem.priceValue;
-    //    //        Utils.UnlockHero(shopItem.txtName.text);
-    //    //        RefreshShop();
-    //    //    }
-    //    //    else
-    //    //    {
-    //    //        if (Utils.isVibrateOn)
-    //    //        {
-    //    //            Handheld.Vibrate();
-    //    //        }
-    //    //    }
-    //    //});
 
-    //    //btnDailyReward.onClick.AddListener(() =>
-    //    //{
-    //    //    gameObject.SetActive(false);
-    //    //    menuController.ShowDailyReward();
-    //    //});
-    //}
-
-    //private void RefreshShop() {
-    //    foreach (SkinShopItem ssItem in dicAllSkin.Values)
-    //    {
-    //        if (ssItem.txtName.text.Equals(shopItem.txtName.text))
-    //        {
-    //            ssItem.txtName.color = clSelect;
-    //            ssItem.imgSelect.enabled = true;
-    //            shopItem.imgLock.enabled = false;
-    //            shopItem.imgPreview.sprite = shopItem.sprSelect;
-    //            btnBuyNow.gameObject.SetActive(false);
-    //            shopItem = ssItem;
-    //        }
-    //        else
-    //        {
-    //            ssItem.txtName.color = clNormal;
-    //            ssItem.imgSelect.enabled = false;
-    //        }
-    //    }
-    //}
     public void ChangeSkin(string skinName)
     {
      //   saPlayer.Skeleton.SetSkin(skinName);
@@ -142,6 +100,7 @@ public class SkinShopManager : MonoBehaviour
     {
         txtCurCoin.text = Utils.currentCoin.ToString("#,##0");
         anim.Play("PopupAnim");
+
     }
     public void OnHideShop()
     {

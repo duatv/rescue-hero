@@ -41,6 +41,7 @@ public class TouchManager : MonoBehaviour
             return;
         if (Input.GetMouseButtonDown(0))
         {
+            trail.Clear();
             cutOn = true;
             currentMouse = oldMouse = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
 

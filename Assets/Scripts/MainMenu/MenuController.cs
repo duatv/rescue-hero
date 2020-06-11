@@ -41,21 +41,38 @@ public class MenuController : MonoBehaviour
         shopManager.DisplayBegin();
 
         castlePanel.DisplayBegin();
-
+        shopManager.Init();
         if(openAchievement)
         {
+         //   StartCoroutine(OpenAchievement());
             OpenAchievement(true);
             openAchievement = false;
+            Debug.LogError("=zoooooooooo= open achievment");
         }
         if(openCastle)
         {
+         //   StartCoroutine(OpenCastle());
             BtnShowCastle();
             openCastle = false;
+            Debug.LogError("=zoooooooooo= open castle");
         }
 
-          Utils.currentCoin = 1000000;
+       //   Utils.currentCoin = 1000000;
     }
-
+    IEnumerator OpenAchievement()
+    {
+        yield return new WaitForSeconds(0.3f);
+        OpenAchievement(true);
+        openAchievement = false;
+        Debug.LogError("=zoooooooooo= open achievment");
+    }
+    IEnumerator OpenCastle()
+    {
+        yield return new WaitForSeconds(0.3f);
+        BtnShowCastle();
+        openCastle = false;
+        Debug.LogError("=zoooooooooo= open castle");
+    }
     public void OpenAchievement(bool open)
     {
         if (animLoading)
@@ -120,6 +137,7 @@ public class MenuController : MonoBehaviour
         if (animLoading)
             return;
         shopManager.gameObject.SetActive(true);
+        shopManager.ChangeSkin(DataController.instance.heroData.infos[DataParam.currentHero].nameSkin);
     }
 
 
