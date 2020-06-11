@@ -39,7 +39,7 @@ public class BouderAchievment : MonoBehaviour
         DataController.instance.saveDataAchievement[index].currentLevel++;
         DataController.instance.saveDataAchievement[index].currentNumber = 0;
         DataController.instance.saveDataAchievement[index].pass = false;
-
+        MenuController.instance.achievementPanel.coinText.text = Utils.currentCoin.ToString();
         DisplayContent();
     }
 }

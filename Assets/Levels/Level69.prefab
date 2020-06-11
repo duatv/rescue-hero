@@ -308,7 +308,7 @@ MonoBehaviour:
   isReadOnly: 0
   trHostage: {fileID: 0}
   trGems: {fileID: 0}
-  questType: 3
+  questType: 2
   trTarget: {fileID: 0}
   trChest: {fileID: 0}
   lstAllStick:

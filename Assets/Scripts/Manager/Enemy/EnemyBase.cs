@@ -111,7 +111,7 @@ public class EnemyBase : MonoBehaviour
                     arrow.transform.position = saPlayer.skeleton.ScaleX > 0 ? leftAttack.transform.position : rightAttack.transform.position;
                     arrow.transform.localScale = new Vector2(saPlayer.skeleton.ScaleX, arrow.transform.localScale.y);
                     arrow.SetActive(true);
-                    arrow.GetComponent<Rigidbody2D>().velocity = saPlayer.skeleton.ScaleX > 0 ? Vector2.left * 2 : Vector2.right * 2;
+                    arrow.GetComponent<Rigidbody2D>().velocity = saPlayer.skeleton.ScaleX > 0 ? Vector2.left * 4 : Vector2.right * 4;
                     if (SoundManager.Instance != null)
                     {
                         SoundManager.Instance.PlaySound(SoundManager.Instance.acMeleeAttack);

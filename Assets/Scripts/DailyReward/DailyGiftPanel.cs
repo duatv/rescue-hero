@@ -10,6 +10,7 @@ public class DailyGiftPanel : MonoBehaviour
     public RewardItem[] _allRewardItems;
     public int _dayIndex = 1;
     public Animator anim;
+    public Text coinText;
     private void OnValidate()
     {
         if (anim == null)
@@ -30,6 +31,7 @@ public class DailyGiftPanel : MonoBehaviour
     private void OnEnable()
     {
         anim.Play("PopupAnim");
+        coinText.text = Utils.currentCoin.ToString();
     }
     public void DisplayAgain()
     {
@@ -56,6 +58,7 @@ public class DailyGiftPanel : MonoBehaviour
             Utils.cantakegiftdaily = true;
 
         }
+        coinText.text = Utils.currentCoin.ToString();
     }
     public void TakeGift(int _index) {
         //MyAnalytic.TakeDailyGift();

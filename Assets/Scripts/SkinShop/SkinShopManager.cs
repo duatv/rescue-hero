@@ -58,7 +58,7 @@ public class SkinShopManager : MonoBehaviour
             skinShopItem[i].bouder.enabled = false;
         }
         skinShopItem[DataParam.currentHero].bouder.enabled = true;
-        txtPrice.text = DataController.instance.heroData.infos[currentClickHero].price.ToString("#,##0");
+        txtPrice.text = DataController.instance.heroData.infos[currentClickHero].price.ToString(/*"#,##0"*/);
     }
     public void BtnUnlock()
     {
@@ -68,7 +68,7 @@ public class SkinShopManager : MonoBehaviour
             {
                 skinShopItem[currentClickHero].Unlock();
                 Utils.currentCoin -= DataController.instance.heroData.infos[currentClickHero].price;
-                txtCurCoin.text = Utils.currentCoin.ToString("#,##0");
+                txtCurCoin.text = Utils.currentCoin.ToString(/*"#,##0"*/);
             }
         }
         else
@@ -98,7 +98,7 @@ public class SkinShopManager : MonoBehaviour
     }
     private void OnEnable()
     {
-        txtCurCoin.text = Utils.currentCoin.ToString("#,##0");
+        txtCurCoin.text = Utils.currentCoin.ToString(/*"#,##0"*/);
         anim.Play("PopupAnim");
 
     }

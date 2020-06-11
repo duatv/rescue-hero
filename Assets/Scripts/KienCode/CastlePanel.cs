@@ -11,7 +11,7 @@ public class CastlePanel : MonoBehaviour
     public GameObject BG, btnCloseAnimPanel,effectTake,btnBuy,effectsmokehouse,effectsmokebua,btnClose;
     public SkeletonGraphic sk;
     public bool load;
-    public Text priceText, coinText;
+    public Text priceText, coinText,coinallText;
     public Image displayImg;
     public int countChangeImg;
     public Animator AnimPanel;
@@ -31,6 +31,7 @@ public class CastlePanel : MonoBehaviour
     private void OnEnable()
     {
         coinText.text = Utils.currentCoin.ToString(/*"00,#"*/);
+
         if(DataParam.currentLevelCastle >= castle.Count)
         {
             btnBuy.SetActive(false);

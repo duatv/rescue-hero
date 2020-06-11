@@ -6,6 +6,7 @@ public class AchievmentPanel : MonoBehaviour
 {
     public ScrollRect sc;
     public Animator anim;
+    public Text coinText;
     private void OnValidate()
     {
         if (anim == null)
@@ -16,6 +17,7 @@ public class AchievmentPanel : MonoBehaviour
 
         if (open)
         {
+            coinText.text = Utils.currentCoin.ToString();
             gameObject.SetActive(true);
             anim.Play("PopupAnim");
             sc.verticalNormalizedPosition = 0;

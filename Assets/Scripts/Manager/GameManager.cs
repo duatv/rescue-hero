@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     public Image imgQuestImage;
     public TextMeshProUGUI txtQuestText;
 
-    public Text txtLevel;
+    public Text txtLevel, levelTextGameOver;
     public Text txtCoin;
     public Text txtCoinWin;
     public bool isTest;
@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
 
-        txtLevel.text = "LEVEL " + (Utils.LEVEL_INDEX + 1).ToString(/*"00,#"*/);
+        levelTextGameOver.text = txtLevel.text = "LEVEL " + (Utils.LEVEL_INDEX + 1).ToString(/*"00,#"*/);
         txtCoinWin.text = Utils.currentCoin.ToString(/*"00,#"*/);
         coinTemp = Utils.currentCoin;
         OnUpdateCoin();

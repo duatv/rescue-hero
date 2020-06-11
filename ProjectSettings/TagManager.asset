@@ -20,6 +20,7 @@ TagManager:
   - Trap_Gas
   - Rope
   - Trap_Other
+  - arrow
   layers:
   - Default
   - TransparentFX
