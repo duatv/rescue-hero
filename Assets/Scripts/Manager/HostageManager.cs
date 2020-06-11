@@ -7,7 +7,7 @@ using UnityEditor;
 #endif
 public class HostageManager : CharsBase
 {
-    public ParticleSystem pheart,bloodeffect;
+    public ParticleSystem pheart, bloodeffect;
     public bool isMeetPlayer;
     bool win = false;
     void Start()
@@ -73,13 +73,13 @@ public class HostageManager : CharsBase
             if (GameManager.Instance.gameState != GameManager.GAMESTATE.LOSE)
             {
                 GameManager.Instance.gameState = GameManager.GAMESTATE.WIN;
-               // PlayerManager.Instance.OnPlayAnimOpenChest();
+                // PlayerManager.Instance.OnPlayAnimOpenChest();
                 //PlayerManager.Instance._rig2D.constraints = RigidbodyConstraints2D.FreezePositionX;
                 PlayerManager.Instance.OnWin(true);
                 PlayWin();
             }
         }
-        else if(collision.gameObject.tag == Utils.TAG_LAVA || collision.gameObject.tag == "Trap_Other" || collision.gameObject.name == "arrow")
+        else if (collision.gameObject.tag == Utils.TAG_LAVA || collision.gameObject.tag == "Trap_Other" || collision.gameObject.name == "arrow")
         {
             if (PlayerManager.Instance.pState == PlayerManager.P_STATE.PLAYING || PlayerManager.Instance.pState == PlayerManager.P_STATE.RUNNING)
             {
@@ -89,6 +89,10 @@ public class HostageManager : CharsBase
                     // PlayerManager.Instance.isContinueDetect = false;
                     PlayerManager.Instance.OnPlayerDie(false);
                     PlayDie();
+                    if (collision.gameObject.tag == "arrow")
+                    {
+                        collision.gameObject.SetActive(false);
+                    }
                 }
             }
         }

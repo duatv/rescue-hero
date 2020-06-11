@@ -476,7 +476,7 @@ public class PlayerManager : MonoBehaviour
                 }
             }
         }
-        else if(collision.gameObject.name == "arrow")
+        else if(collision.gameObject.tag == "arrow")
         {
             collision.gameObject.SetActive(false);
             if (pState == P_STATE.PLAYING || pState == P_STATE.RUNNING)

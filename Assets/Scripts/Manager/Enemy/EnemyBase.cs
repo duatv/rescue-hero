@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Spine.Unity;
+using Spine;
+using System;
 
 public class EnemyBase : MonoBehaviour
 {
+    bool shoot;
     public enum ENEMY_TYPE { MELEE, RANGE, MONSTER }
     public enum CHAR_STATE { PLAYING, DIE, WIN, RUNNING }
     public GameObject skull;
@@ -68,9 +71,10 @@ public class EnemyBase : MonoBehaviour
         {
             MapLevelManager.Instance.lstAllEnemies.Add(this);
         }
-
+       // saPlayer.AnimationState.Complete += OnComplete;
         saPlayer.AnimationState.Event += delegate
         {
+          //  Debug.LogError(str_Att);
             if (saPlayer.AnimationName.Equals(str_Lose))
             {
                 // gGround.layer = 0;
@@ -93,23 +97,51 @@ public class EnemyBase : MonoBehaviour
                             GameManager.Instance.gameState = GameManager.GAMESTATE.LOSE;
                         }
                     }
-                    else if (enemyType == ENEMY_TYPE.RANGE)
-                    {
-                        GameObject arrow = ObjectPoolerManager.Instance.arrowPooler.GetPooledObject();
-                        arrow.transform.position = saPlayer.skeleton.ScaleX > 0 ? leftAttack.transform.position : rightAttack.transform.position;
-                        arrow.transform.localScale = new Vector2(saPlayer.skeleton.ScaleX, arrow.transform.localScale.y);
-                        arrow.SetActive(true);
-                        arrow.GetComponent<Rigidbody2D>().velocity = saPlayer.skeleton.ScaleX > 0 ? Vector2.left : Vector2.right;
 
-                    }
 
                     if (SoundManager.Instance != null)
                     {
                         SoundManager.Instance.PlaySound(SoundManager.Instance.acMeleeAttack);
                     }
                 }
+              //  Debug.LogError(str_Att);
+                if (enemyType == ENEMY_TYPE.RANGE)
+                {
+                    GameObject arrow = ObjectPoolerManager.Instance.arrowPooler.GetPooledObject();
+                    arrow.transform.position = saPlayer.skeleton.ScaleX > 0 ? leftAttack.transform.position : rightAttack.transform.position;
+                    arrow.transform.localScale = new Vector2(saPlayer.skeleton.ScaleX, arrow.transform.localScale.y);
+                    arrow.SetActive(true);
+                    arrow.GetComponent<Rigidbody2D>().velocity = saPlayer.skeleton.ScaleX > 0 ? Vector2.left * 2 : Vector2.right * 2;
+                    if (SoundManager.Instance != null)
+                    {
+                        SoundManager.Instance.PlaySound(SoundManager.Instance.acMeleeAttack);
+                    }
+                   // Debug.LogError("zoooooooooooo");
+                }
             }
         };
+    }
+
+    private void OnComplete(TrackEntry trackEntry)
+    {
+        Debug.LogError(str_Att);
+        if (trackEntry.Animation.Name.Equals(str_Att))
+        {
+            Debug.LogError(str_Att);
+            if (enemyType == ENEMY_TYPE.RANGE)
+            {
+                GameObject arrow = ObjectPoolerManager.Instance.arrowPooler.GetPooledObject();
+                arrow.transform.position = saPlayer.skeleton.ScaleX > 0 ? leftAttack.transform.position : rightAttack.transform.position;
+                arrow.transform.localScale = new Vector2(saPlayer.skeleton.ScaleX, arrow.transform.localScale.y);
+                arrow.SetActive(true);
+                arrow.GetComponent<Rigidbody2D>().velocity = saPlayer.skeleton.ScaleX > 0 ? Vector2.left : Vector2.right;
+                if (SoundManager.Instance != null)
+                {
+                    SoundManager.Instance.PlaySound(SoundManager.Instance.acMeleeAttack);
+                }
+                Debug.LogError("wtf");
+            }
+        }
     }
 
     private bool _isCanMoveToTarget;
@@ -285,7 +317,7 @@ public class EnemyBase : MonoBehaviour
                 PlayAnim(str_Run, true);
                 break;
             case ENEMY_TYPE.RANGE:
-                PlayAnim(str_Att, true);
+                PlayAnim(str_Att, false);
                 break;
         }
         if (target != null)
@@ -356,6 +388,8 @@ public class EnemyBase : MonoBehaviour
             rig.constraints = RigidbodyConstraints2D.FreezeRotation;
             body.SetActive(false);
             head.SetActive(false);
+            pBlood.Play();
+            skull.SetActive(true);
             GameManager.Instance.enemyKill++;
             MapLevelManager.Instance.lstAllEnemies.Remove(this);
 
@@ -386,7 +420,7 @@ public class EnemyBase : MonoBehaviour
     {
         if (_charStage == CHAR_STATE.PLAYING)
         {
-            if (/*isContinueDetect && */collision.gameObject.tag == Utils.TAG_LAVA || collision.gameObject.tag == "Trap_Other" || collision.gameObject.tag == Utils.TAG_GAS || collision.gameObject.name == "arrow")
+            if (/*isContinueDetect && */collision.gameObject.tag == Utils.TAG_LAVA || collision.gameObject.tag == "Trap_Other" || collision.gameObject.tag == Utils.TAG_GAS || collision.gameObject.tag == "arrow")
             {
                 OnDie_();
                 if (collision.gameObject.tag == Utils.TAG_LAVA)
@@ -396,6 +430,10 @@ public class EnemyBase : MonoBehaviour
                     GameObject destroyEffect = ObjectPoolerManager.Instance.effectDestroyPooler.GetPooledObject();
                     destroyEffect.transform.position = transform.position;
                     destroyEffect.SetActive(true);
+                }
+                else if (collision.gameObject.tag == "arrow")
+                {
+                    collision.gameObject.SetActive(false);
                 }
             }
         }

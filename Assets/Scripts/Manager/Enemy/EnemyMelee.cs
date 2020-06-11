@@ -14,7 +14,7 @@ public class EnemyMelee : EnemyBase
     public override void OnDie_()
     {
         base.OnDie_();
-        pBlood.Play();
-        skull.SetActive(true);
+     //   pBlood.Play();
+    //    skull.SetActive(true);
     }
 }
