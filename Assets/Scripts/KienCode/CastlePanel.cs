@@ -8,7 +8,7 @@ public class CastlePanel : MonoBehaviour
 {
     public int[] prices;
     public List<Image> castle;
-    public GameObject BG, btnClose,effectTake,btnBuy,effectsmokehouse,effectsmokebua;
+    public GameObject BG, btnCloseAnimPanel,effectTake,btnBuy,effectsmokehouse,effectsmokebua,btnClose;
     public SkeletonGraphic sk;
     public bool load;
     public Text priceText, coinText;
@@ -86,6 +86,8 @@ public class CastlePanel : MonoBehaviour
                 }
             }
             MenuController.instance.SoundClickButton();
+            btnBuy.SetActive(false);
+            btnClose.SetActive(false);
         }
     }
     void AnimPlay()
@@ -108,10 +110,8 @@ public class CastlePanel : MonoBehaviour
         else
             DataParam.currentLevelCastle = castle.Count - 1;
         priceText.text = prices[DataParam.currentLevelCastle].ToString(/*"00,#"*/);
-        if (DataParam.currentLevelCastle >= castle.Count)
-        {
-            btnBuy.SetActive(false);
-        }
+
+
 
     }
     IEnumerator delayActive()
@@ -122,6 +122,18 @@ public class CastlePanel : MonoBehaviour
         effectsmokehouse.SetActive(true);
         effectsmokebua.SetActive(false);
         castle[randomCastle].gameObject.SetActive(true);
+
+
+
+        if (DataParam.currentLevelCastle >= castle.Count)
+        {
+            btnBuy.SetActive(false);
+        }
+        else
+        {
+            btnBuy.SetActive(true);
+        }
+        btnClose.SetActive(true);
     }
     public void EventChangeImg()
     {
@@ -144,7 +156,7 @@ public class CastlePanel : MonoBehaviour
             // displayImg.sprite = castle[randomCastle].sprite;
           //  AnimPanel.enabled = false;
             UnlockCastle();
-            btnClose.SetActive(true);
+            btnCloseAnimPanel.SetActive(true);
             effectTake.SetActive(true);
 
             //   AnimPanel.Play("AnimEffect", -1, 0f);
@@ -156,7 +168,7 @@ public class CastlePanel : MonoBehaviour
     {
         if (AnimPanel.enabled)
             return;
-        btnClose.SetActive(false);
+        btnCloseAnimPanel.SetActive(false);
         AnimPanel.gameObject.SetActive(false);
         effectTake.SetActive(false);
         MenuController.instance.castlePanel.DisplayEffectBua(castle[randomCastle].gameObject);

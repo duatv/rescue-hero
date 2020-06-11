@@ -239,7 +239,7 @@ GameObject:
   - component: {fileID: 1341071658}
   - component: {fileID: 1341071657}
   m_Layer: 0
-  m_Name: Level22
+  m_Name: Level23
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3470,7 +3470,7 @@ PrefabInstance:
     - target: {fileID: 7917187945325412198, guid: 8eea6eff2c4b9b34dbfe6f3070739266,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.44
+      value: 1.538
       objectReference: {fileID: 0}
     - target: {fileID: 7917187945325412198, guid: 8eea6eff2c4b9b34dbfe6f3070739266,
         type: 3}

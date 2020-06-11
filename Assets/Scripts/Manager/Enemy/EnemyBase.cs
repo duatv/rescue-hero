@@ -87,7 +87,7 @@ public class EnemyBase : MonoBehaviour
                     }
                     else if (hitPlayer.collider.gameObject.name == "Hostage_Female"/*.collider.gameObject.GetComponent<HostageManager>()*/)
                     {
-                        hitPlayer.collider.gameObject.GetComponent<HostageManager>().OnDie_(false);
+                        hitPlayer.collider.gameObject.GetComponent<HostageManager>().OnDie_(true);
                         GameManager.Instance.gameState = GameManager.GAMESTATE.LOSE;
                     }
 
@@ -309,8 +309,13 @@ public class EnemyBase : MonoBehaviour
                     /*hitPlayer.collider.gameObject.GetComponent<PlayerManager>()*/
                     PlayerManager.Instance.OnAttackEnemy(this);
                     PlayAnim(str_idle, true);
+                    Debug.LogError("chem");
                 }
-                else PlayAnim(str_Att, false);
+                else
+                {
+                    PlayAnim(str_Att, false);
+                    Debug.LogError("ko chem");
+                }
                 // }
                 //else PlayAnim(str_Att, false);
             }

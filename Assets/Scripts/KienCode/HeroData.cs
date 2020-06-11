@@ -8,7 +8,7 @@ public class HeroData : ScriptableObject
     [System.Serializable]
     public struct Info
     {
-        public string itemName, nameSkin;
+        public string itemName, nameSkin,nameSkinSword;
         public TypeUnlock typeUnlock;
         public int price;
     }

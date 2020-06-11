@@ -36,6 +36,8 @@ public class Sword : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (PlayerManager.Instance.pState == PlayerManager.P_STATE.DIE)
+            return;
         if (/*collision.gameObject.GetComponent<PlayerManager>() != null*/collision.tag == "BodyPlayer") {
          //   _pPLayer = collision.gameObject.GetComponent<PlayerManager>();
             //if (IsCanKilling()) {

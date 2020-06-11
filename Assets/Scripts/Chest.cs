@@ -41,16 +41,19 @@ public class Chest : MonoBehaviour
             {
                 if (PlayerManager.Instance.pState == PlayerManager.P_STATE.PLAYING /*|| PlayerManager.Instance.pState == PlayerManager.P_STATE.RUNNING*/)
                 {
-                    Debug.LogError("huy hom");
+                   // Debug.LogError("huy hom");
                     if (GameManager.Instance.gameState != GameManager.GAMESTATE.WIN)
                     {
                         // PlayerManager.Instance.isContinueDetect = false;
                         gameObject.SetActive(false);
                         PlayerManager.Instance.OnPlayerDie(false);
 
-                        GameObject destroyEffect = ObjectPoolerManager.Instance.effectDestroyPooler.GetPooledObject();
-                        destroyEffect.transform.position = collision.transform.position;
-                        destroyEffect.SetActive(true);
+                        if (ObjectPoolerManager.Instance != null)
+                        {
+                            GameObject destroyEffect = ObjectPoolerManager.Instance.effectDestroyPooler.GetPooledObject();
+                            destroyEffect.transform.position = collision.transform.position;
+                            destroyEffect.SetActive(true);
+                        }
                     }
                 }
             }
@@ -72,27 +75,6 @@ public class Chest : MonoBehaviour
             }
         }
     }
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    if (collision.gameObject.GetComponent<PlayerManager>() != null)
-    //    {
-    //        if ((int)rig2d.velocity.y == 0)
-    //        {
-    //            if (GameManager.Instance.gameState != GameManager.GAMESTATE.LOSE)
-    //            {
-    //                GameManager.Instance.gameState = GameManager.GAMESTATE.WIN;
-    //                PlayerManager.Instance.OnPlayAnimOpenChest();
-    //                PlayerManager.Instance._rig2D.constraints = RigidbodyConstraints2D.FreezePosition;
-    //                if (SoundManager.Instance != null)
-    //                {
-    //                    SoundManager.Instance.PlaySound(SoundManager.Instance.acOpenChest);
-    //                }
-    //                StartCoroutine(IEOpenChest());
-    //            }
-    //        }
-    //    }
-    //}
-
     IEnumerator IEOpenChest()
     {
         yield return new WaitForSeconds(0.2f);

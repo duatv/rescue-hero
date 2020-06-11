@@ -66,6 +66,14 @@ public class PlayerManager : MonoBehaviour
         }
         //}
     }
+    private void Event(TrackEntry trackEntry, Spine.Event e)
+    {
+        if (trackEntry.Animation.Name.Equals(str_Att))
+        {
+            //    Debug.LogError("======= Bua dap ========");
+            enBase.OnDie_();
+        }
+    }
     private void Start()
     {
         GameManager.Instance.gTargetFollow = gameObject;
@@ -73,18 +81,19 @@ public class PlayerManager : MonoBehaviour
         OnIdleState();
         saPlayer.AnimationState.Complete += delegate
         {
-            if (saPlayer.AnimationName.Equals(str_Att))
-            {
-                enBase.OnDie_();
-                OnIdleState();
-                //StartCoroutine(IEWaitToIdle());
-            }
+            //if (saPlayer.AnimationName.Equals(str_Att))
+            //{
+            //    enBase.OnDie_();
+            //    //   OnIdleState();
+            //    //StartCoroutine(IEWaitToIdle());
+            //}
             if (saPlayer.AnimationName.Equals(str_OpenWithSword) || saPlayer.AnimationName.Equals(str_OpenWithoutSword))
             {
                 StartCoroutine(ISShowWin());
                 Debug.LogError("wwwwwtttttttffffffff");
             }
         };
+        saPlayer.AnimationState.Event += Event;
     }
     IEnumerator IEWaitToIdle()
     {
@@ -219,15 +228,15 @@ public class PlayerManager : MonoBehaviour
         {
             if (hitForward.collider.gameObject.tag != "Wall_Bottom")
             {
-                if (hitForward.collider.gameObject.tag == "Tag_Stone" || hitForward.collider.gameObject.tag == "Chan")
+                if ((hitForward.collider.gameObject.tag == "Tag_Stone" && hitForward.collider.gameObject.name != "Falling Stone") || hitForward.collider.gameObject.tag == "Chan")
                     HeroJump();
             }
         }
 
-        if (isTakeSword)
-        {
-            Debug.LogError("move:" + beginMove + ":" + isMoveLeft + ":" + isMoveRight);
-        }
+        //if (isTakeSword)
+        //{
+        //    Debug.LogError("move:" + beginMove + ":" + isMoveLeft + ":" + isMoveRight);
+        //}
 
         if (!IsCanMove()) _rig2D.velocity = Vector2.zero;
         else
@@ -272,7 +281,7 @@ public class PlayerManager : MonoBehaviour
             PlayAnim(isTakeSword ? str_MoveWithSword : str_Move, true);
             Debug.LogError("====move left====");
         }
-        else _rig2D.velocity = Vector2.zero;
+        else _rig2D.velocity = new Vector2(0, _rig2D.velocity.y);
 
 
     }
@@ -298,7 +307,7 @@ public class PlayerManager : MonoBehaviour
             PlayAnim(isTakeSword ? str_MoveWithSword : str_Move, true);
             Debug.LogError("====move right====");
         }
-        else _rig2D.velocity = Vector2.zero;
+        else _rig2D.velocity = new Vector2(0, _rig2D.velocity.y);
 
     }
     IEnumerator delayMove()
@@ -354,6 +363,9 @@ public class PlayerManager : MonoBehaviour
     }
     public void OnAttackEnemy(EnemyBase _enBase)
     {
+        //if (beginMove)
+        //{
+       // saPlayer.AnimationState.SetEmptyAnimation(0, 0);
         enBase = _enBase;
         PlayAnim(str_Att, false);
         MapLevelManager.Instance.trTarget = null;
@@ -362,14 +374,27 @@ public class PlayerManager : MonoBehaviour
         isMoveRight = false;
         _rig2D.velocity = Vector2.zero;
         Debug.LogError("wtfkkkkkk");
+        //}
     }
     public void OnTakeSword(Transform _tr)
     {
         isTakeSword = true;
         _tr.gameObject.SetActive(false);
-        if (!string.IsNullOrEmpty(Utils.skinSword))
-            saPlayer.Skeleton.SetSkin(Utils.skinSword);
-        else saPlayer.Skeleton.SetSkin(skinSword);
+
+        //if (!string.IsNullOrEmpty(Utils.skinSword))
+        //    saPlayer.Skeleton.SetSkin(Utils.skinSword);
+
+        //else saPlayer.Skeleton.SetSkin(skinSword);
+
+        var skeleton = saPlayer.Skeleton;
+        var skeletonData = skeleton.Data;
+        var newSkin = new Skin("new-skin");
+        Debug.LogError(DataController.instance.heroData.infos[DataParam.currentHero].nameSkin);
+        newSkin.AddSkin(skeletonData.FindSkin(DataController.instance.heroData.infos[DataParam.currentHero].nameSkinSword));
+
+        skeleton.SetSkin(newSkin);
+        skeleton.SetSlotsToSetupPose();
+        saPlayer.AnimationState.Apply(skeleton);
 
         if (SoundManager.Instance != null)
         {
@@ -390,23 +415,23 @@ public class PlayerManager : MonoBehaviour
             transform.rotation = Quaternion.identity;
             _rig2D.constraints = RigidbodyConstraints2D.FreezeRotation;
             PlayAnim(str_idle, true);
+            effectDie.SetActive(effect);
+            skull.SetActive(effect);
+            if (SoundManager.Instance != null)
+            {
+                SoundManager.Instance.PlaySound(SoundManager.Instance.acHeroDie);
+            }
+
+            saPlayer.AnimationState.SetEmptyAnimation(1, 0.2f);
+            PlayAnim(str_Lose, false);
             StartCoroutine(IEWait(effect));
         }
     }
     IEnumerator IEWait(bool effect)
     {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.1f);
         MapLevelManager.Instance.OnLose();
 
-        if (SoundManager.Instance != null)
-        {
-            SoundManager.Instance.PlaySound(SoundManager.Instance.acHeroDie);
-        }
-
-        saPlayer.AnimationState.SetEmptyAnimation(1, 0.2f);
-        PlayAnim(str_Lose, false);
-        effectDie.SetActive(effect);
-        skull.SetActive(effect);
     }
 
     #endregion
