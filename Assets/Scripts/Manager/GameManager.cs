@@ -137,6 +137,7 @@ public class GameManager : MonoBehaviour
         StartCoroutine(IEWaitToShowWinLose(true));
     }
     public int enemyKill;
+    int countpasslevel;
     private IEnumerator IEWaitToShowWinLose(bool isWin)
     {
         yield return new WaitForSeconds(0.5f);
@@ -154,6 +155,7 @@ public class GameManager : MonoBehaviour
 
                 OnUpdateCoin();
                 gPanelWin.gameObject.SetActive(true);
+
                 BtnReplay.SetActive(false);
                 effectCamera.SetActive(false);
                 if (SoundManager.Instance != null)
@@ -181,9 +183,25 @@ public class GameManager : MonoBehaviour
                 }
                 if (DataController.instance != null)
                     DataController.instance.DoAchievment(4, enemyKill);
-                Debug.LogError("=====win=====");
+                if (DataParam.firsttime == 0)
+                {
+                    if (Utils.LEVEL_INDEX >= DataParam.firsttimelevelshowads)
+                    {
+                        AdsManager.Instance.ShowInterstitial(null);
+                        DataParam.firsttime = 1;
+                    }
+                }
+                else
+                {
+                    countpasslevel++;
+                    if (countpasslevel >= DataParam.delayshowAds && (System.DateTime.Now - DataParam.oldTimeShowAds).TotalSeconds >= DataParam.timedelayShowAds)
+                    {
+                        countpasslevel = 0;
+                        DataParam.oldTimeShowAds = System.DateTime.Now;
+                        AdsManager.Instance.ShowInterstitial(null);
+                    }
+                }
             }
-            //}
         }
         else
         {
@@ -195,25 +213,6 @@ public class GameManager : MonoBehaviour
                 effectCamera.SetActive(false);
                 LoseDisplay();
             }
-            //  OnReplay();
-
-            //ActiveCamEff();
-            //if (!gPanelLose.activeSelf)
-            //{
-            //    if (SoundManager.Instance != null)
-            //    {
-            //        SoundManager.Instance.PlaySound(SoundManager.Instance.acLose);
-            //    }
-            //    gPanelLose.SetActive(true);
-            //    MyAnalytic.LogEventLose(Utils.LEVEL_INDEX + 1);
-            //    if (AdsManager.Instance != null)
-            //    {
-            //        if (Random.Range(0, 10) <= 5)
-            //        {
-            //            AdsManager.Instance.ShowInterstitial(null);
-            //        }
-            //    }
-            //}
         }
     }
     private bool playingSoundLava = false;
