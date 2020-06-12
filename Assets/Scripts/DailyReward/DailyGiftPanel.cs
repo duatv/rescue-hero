@@ -92,8 +92,6 @@ public class DailyGiftPanel : MonoBehaviour
         AdsManager.Instance.ShowRewardedVideo((b) =>
         {
             if (b) {
-                MyAnalytic.TakeDailyGiftX2();
-
                 Utils.HasClaimReward();
 
                 switch (_index)
@@ -142,7 +140,7 @@ public class DailyGiftPanel : MonoBehaviour
 
     public void OnClaim() {
 
-        MyAnalytic.TakeDailyGift();
+
         Utils.HasClaimReward();
         Debug.LogError("day index:" +  _dayIndex);
         switch (_dayIndex)

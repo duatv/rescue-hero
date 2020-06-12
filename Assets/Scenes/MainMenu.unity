@@ -7537,7 +7537,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 2.9000244, y: -103.5}
+  m_AnchoredPosition: {x: 2.9000244, y: -103.50001}
   m_SizeDelta: {x: -71.52, y: -197.73}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &747612496
@@ -13086,7 +13086,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.16512357, y: 0.77367616}
   m_AnchorMax: {x: 0.89400005, y: 0.87600005}
-  m_AnchoredPosition: {x: -316.9999, y: 7}
+  m_AnchoredPosition: {x: -316.99988, y: 7}
   m_SizeDelta: {x: -637, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1179714785
@@ -14756,6 +14756,7 @@ MonoBehaviour:
   load: 1
   priceText: {fileID: 478888844}
   coinText: {fileID: 1488736963}
+  coinallText: {fileID: 0}
   displayImg: {fileID: 1698923948}
   countChangeImg: 0
   AnimPanel: {fileID: 1641589293}

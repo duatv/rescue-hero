@@ -69,7 +69,6 @@ public class GameManager : MonoBehaviour
         coinTemp = Utils.currentCoin;
         OnUpdateCoin();
 
-        MyAnalytic.LogEventPlayLevel(Utils.LEVEL_INDEX + 1);
         if (!isTest)
         {
             LoadLevelToPlay(Utils.LEVEL_INDEX);
@@ -161,7 +160,6 @@ public class GameManager : MonoBehaviour
                 {
                     SoundManager.Instance.PlaySound(SoundManager.Instance.acWin);
                 }
-                MyAnalytic.LogEventWin(Utils.LEVEL_INDEX + 1);
 
                 if (DataController.instance != null)
                     DataController.instance.DoAchievment(0, 1);
@@ -196,7 +194,6 @@ public class GameManager : MonoBehaviour
                 gPanelWin.gameObject.SetActive(true);
                 effectCamera.SetActive(false);
                 LoseDisplay();
-                MyAnalytic.LogEventLose(Utils.LEVEL_INDEX + 1);
             }
             //  OnReplay();
 
@@ -255,7 +252,6 @@ public class GameManager : MonoBehaviour
     public void OnX2Coin()
     {
 #if UNITY_EDITOR
-        MyAnalytic.LogEventRewarded("x3_coin");
         Utils.currentCoin *= 3 /** Utils.BASE_COIN*/;
         OnUpdateCoin();
         OnNextLevel();
@@ -300,7 +296,6 @@ public class GameManager : MonoBehaviour
     }
     public void OnReplay()
     {
-        MyAnalytic.LogEventReplay(Utils.LEVEL_INDEX + 1);
         //  ObjectPoolManagerHaveScript.Instance.ClearAllPool();
         SceneManager.LoadSceneAsync("MainGame");
     }

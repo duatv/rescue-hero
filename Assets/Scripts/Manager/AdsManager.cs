@@ -85,7 +85,7 @@ public class AdsManager : MonoBehaviour
             {
                 acInterClosed = _ac;
                 interstitial.Show();
-                MyAnalytic.LogEventShowInters();
+
             }
             else
             {
@@ -103,7 +103,7 @@ public class AdsManager : MonoBehaviour
         {
             acRewarded = _ac;
             rewardedAd.Show();
-            MyAnalytic.LogEventShowVideo();
+
         }
         else
         {
@@ -129,7 +129,7 @@ public class AdsManager : MonoBehaviour
 
     private void Interstitial_OnAdOpening(object sender, EventArgs e)
     {
-        MyAnalytic.LogEventAdClick();
+
     }
 
     void InitRewarded()

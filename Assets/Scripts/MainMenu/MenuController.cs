@@ -33,7 +33,7 @@ public class MenuController : MonoBehaviour
             SoundManager.Instance.PlayBackgroundMusic();
         }
 
-        MyAnalytic.LogEventOpenByDay();
+
 
         CheckShowDailyGift();
         CheckDisplayWarningAchievement();

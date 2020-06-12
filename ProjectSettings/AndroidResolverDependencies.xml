@@ -2,15 +2,8 @@
   <packages>
     <package>com.google.ads.mediation:unity:3.4.0.0</package>
     <package>com.google.android.gms:play-services-ads:18.3.0</package>
-    <package>com.google.firebase:firebase-analytics:17.2.1</package>
-    <package>com.google.firebase:firebase-analytics-unity:6.9.0</package>
-    <package>com.google.firebase:firebase-app-unity:6.9.0</package>
-    <package>com.google.firebase:firebase-common:19.3.0</package>
   </packages>
-  <files>
-    <file>Assets/Firebase/m2repository/com/google/firebase/firebase-analytics-unity/6.9.0/firebase-analytics-unity-6.9.0.aar</file>
-    <file>Assets/Firebase/m2repository/com/google/firebase/firebase-app-unity/6.9.0/firebase-app-unity-6.9.0.aar</file>
-  </files>
+  <files />
   <settings>
     <setting name="androidAbis" value="arm64-v8a,armeabi-v7a" />
     <setting name="bundleId" value="com.ohzegame.rescuehero" />
