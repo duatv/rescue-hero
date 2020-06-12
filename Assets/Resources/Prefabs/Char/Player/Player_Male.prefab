@@ -574,7 +574,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skeletonDataAsset: {fileID: 11400000, guid: 25e37ca615df27d44b84beb473c398ab, type: 2}
-  initialSkinName: kiem
+  initialSkinName: 1
   initialFlipX: 0
   initialFlipY: 0
   separatorSlotNames: []

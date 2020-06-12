@@ -10,7 +10,7 @@ public class Unit : MonoBehaviour
     public SpriteRenderer sp;
     public Rigidbody2D rid;
     public bool activeChangeStone;
-    public GameObject stone, check ;
+    public GameObject stone, check;
     public Collider2D colliderBegin;
     public void DisableSprite()
     {
@@ -28,6 +28,7 @@ public class Unit : MonoBehaviour
             rid.sharedMaterial = GameManager.Instance.matStone;
             colliderBegin.sharedMaterial = GameManager.Instance.matStone;
             activeChangeStone = true;
+            GameManager.Instance.PlaySoundLavaOnWater();
             StartCoroutine(DelayChangeStone());
         }
         //    Debug.LogError("zooooooooooooo");
