@@ -213,6 +213,10 @@ public class GameManager : MonoBehaviour
                 gPanelWin.gameObject.SetActive(true);
                 effectCamera.SetActive(false);
                 LoseDisplay();
+                if (SoundManager.Instance != null)
+                {
+                    SoundManager.Instance.PlaySound(SoundManager.Instance.acLose);
+                }
                 MyAnalytic.EventLevelFailed(Utils.LEVEL_INDEX + 1);
             }
         }
@@ -263,7 +267,6 @@ public class GameManager : MonoBehaviour
             {
                 if (b)
                 {
-                    MyAnalytic.LogEventRewarded("x3_coin");
                     Utils.currentCoin += 3 * Utils.BASE_COIN;
                     OnUpdateCoin();
                     OnNextLevel();
@@ -288,8 +291,6 @@ public class GameManager : MonoBehaviour
             {
                 if (b)
                 {
-                    MyAnalytic.LogEventRewarded("skip_level");
-                    MyAnalytic.LogEventSkipLevel(Utils.LEVEL_INDEX + 1);
                     OnNextLevel();
           MyAnalytic.EventReward("skip_level_" + (Utils.LEVEL_INDEX + 1));
                 }
