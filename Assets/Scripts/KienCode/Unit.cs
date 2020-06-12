@@ -28,7 +28,7 @@ public class Unit : MonoBehaviour
             rid.sharedMaterial = GameManager.Instance.matStone;
             colliderBegin.sharedMaterial = GameManager.Instance.matStone;
             activeChangeStone = true;
-            GameManager.Instance.PlaySoundLavaOnWater();
+
             StartCoroutine(DelayChangeStone());
         }
         //    Debug.LogError("zooooooooooooo");
@@ -50,7 +50,7 @@ public class Unit : MonoBehaviour
         {
             if (ObjectPoolerManager.Instance != null)
             {
-
+                GameManager.Instance.PlaySoundLavaOnWater();
                 GameObject g = ObjectPoolerManager.Instance.effectWaterFirePooler.GetPooledObject();
                 g.transform.position = transform.position;
                 g.SetActive(true);

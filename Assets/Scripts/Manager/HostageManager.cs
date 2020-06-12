@@ -57,6 +57,11 @@ public class HostageManager : CharsBase
         {
             StartCoroutine(IEWaitToIdle());
             win = true;
+            if (transform.position.x > PlayerManager.Instance.transform.position.x)
+            {
+                saPlayer.skeleton.ScaleX = -1;
+            }
+            else saPlayer.skeleton.ScaleX = 1;
         }
         //saPlayer.AnimationState.SetAnimation(0, str_Win, false);
     }
@@ -65,6 +70,7 @@ public class HostageManager : CharsBase
         saPlayer.AnimationState.SetAnimation(0, str_Lose, false);
         skull.SetActive(true);
         bloodeffect.gameObject.SetActive(true);
+
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
