@@ -119,6 +119,7 @@ public class DailyGiftPanel : MonoBehaviour
             Utils.SaveCoin();
             Utils.SaveDailyGift();
             DisplayAgain();
+            MyAnalytic.EventReward("x2_dailygift");
         });
       //  OnClosePanel();
     }

@@ -129,7 +129,7 @@ public class AdsManager : MonoBehaviour
 
     private void Interstitial_OnAdOpening(object sender, EventArgs e)
     {
-
+        MyAnalytic.EventShowInter();
     }
 
     void InitRewarded()

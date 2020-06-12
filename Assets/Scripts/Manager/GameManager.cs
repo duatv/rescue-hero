@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviour
         }
         CheckDisplayWarningAchievement();
 
-
+        MyAnalytic.EventLevelStart(Utils.LEVEL_INDEX + 1);
     }
     private void OnChange(Sprite _spr, string _text)
     {
@@ -185,7 +185,7 @@ public class GameManager : MonoBehaviour
                     DataController.instance.DoAchievment(4, enemyKill);
                 if (DataParam.firsttime == 0)
                 {
-                    if (Utils.LEVEL_INDEX >= DataParam.firsttimelevelshowads)
+                    if (Utils.LEVEL_INDEX >= DataParam.levelpassshowad)
                     {
                         AdsManager.Instance.ShowInterstitial(null);
                         DataParam.firsttime = 1;
@@ -201,6 +201,7 @@ public class GameManager : MonoBehaviour
                         AdsManager.Instance.ShowInterstitial(null);
                     }
                 }
+                MyAnalytic.EventLevelCompleted(Utils.LEVEL_INDEX + 1);
             }
         }
         else
@@ -212,6 +213,7 @@ public class GameManager : MonoBehaviour
                 gPanelWin.gameObject.SetActive(true);
                 effectCamera.SetActive(false);
                 LoseDisplay();
+                MyAnalytic.EventLevelFailed(Utils.LEVEL_INDEX + 1);
             }
         }
     }
@@ -265,6 +267,7 @@ public class GameManager : MonoBehaviour
                     Utils.currentCoin += 3 * Utils.BASE_COIN;
                     OnUpdateCoin();
                     OnNextLevel();
+                    MyAnalytic.EventReward("x3_reward_win");
                 }
             });
         }
@@ -288,10 +291,12 @@ public class GameManager : MonoBehaviour
                     MyAnalytic.LogEventRewarded("skip_level");
                     MyAnalytic.LogEventSkipLevel(Utils.LEVEL_INDEX + 1);
                     OnNextLevel();
+          MyAnalytic.EventReward("skip_level_" + (Utils.LEVEL_INDEX + 1));
                 }
             });
         }
 #endif
+
     }
     public void OnReplay()
     {

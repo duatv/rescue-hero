@@ -15,7 +15,7 @@ public class DataParam
 
     public const string TOTALCOIN = "totalcoin";
 
-    public static int firsttime = 0,firsttimelevelshowads = 5,delayshowAds = 2;
+    public static int firsttime = 0,levelpassshowad = 5,delayshowAds = 2;
     public static float timedelayShowAds = 30;
     public const string FIRSTTIME = "firsttime";
 

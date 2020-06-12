@@ -49,6 +49,7 @@ public class SkinShopItem : MonoBehaviour
         MenuController.instance.shopManager.btnDailyReward.gameObject.SetActive(false);
         DataController.instance.savehero[index].unlock = true;
         lockObj.SetActive(false);
+        MyAnalytic.EventUnlockHero(DataController.instance.heroData.infos[index].itemName);
     }
     public void Click()
     {
