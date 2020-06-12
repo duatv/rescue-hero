@@ -282,7 +282,7 @@ MonoBehaviour:
   trTarget: {fileID: 0}
   trChest: {fileID: 0}
   lstAllStick:
-  - {fileID: 0}
+  - {fileID: 4279817688292830150}
   lstAllEnemies: []
 --- !u!1 &1396916701
 GameObject:
@@ -19623,6 +19623,7 @@ MonoBehaviour:
   stone: {fileID: 4076878698882007967}
   check: {fileID: 1129131931279608251}
   colliderBegin: {fileID: 2025118434143592645}
+  speedMove: 0
   isGravity: 0
   timeFly: 0
 --- !u!1 &1129131931279608251
@@ -43874,6 +43875,7 @@ MonoBehaviour:
   stone: {fileID: 7746311606366696313}
   check: {fileID: 772971853622233853}
   colliderBegin: {fileID: 8498142005874778766}
+  speedMove: 0
   isGravity: 0
   timeFly: 0
 --- !u!1 &2670555548371900765
@@ -58476,6 +58478,7 @@ MonoBehaviour:
   stone: {fileID: 2129181371341620977}
   check: {fileID: 3398284555975882087}
   colliderBegin: {fileID: 6504170909189147096}
+  speedMove: 0
   isGravity: 0
   timeFly: 0
 --- !u!1 &3602662997651999510
@@ -77759,6 +77762,7 @@ MonoBehaviour:
   stone: {fileID: 6779558452000369516}
   check: {fileID: 7529836700805210755}
   colliderBegin: {fileID: 2350606298267075730}
+  speedMove: 0
   isGravity: 0
   timeFly: 0
 --- !u!1 &5152648260041675774
@@ -77842,6 +77846,7 @@ MonoBehaviour:
   stone: {fileID: 5517872819917140558}
   check: {fileID: 4837842900180791640}
   colliderBegin: {fileID: 3244527925876223802}
+  speedMove: 0
   isGravity: 0
   timeFly: 0
 --- !u!1 &5182223738377171910
@@ -78006,6 +78011,7 @@ MonoBehaviour:
   stone: {fileID: 6075987340428602792}
   check: {fileID: 6414743188169689038}
   colliderBegin: {fileID: 2740461796073654159}
+  speedMove: 0
   isGravity: 0
   timeFly: 0
 --- !u!1 &5307093896513081898
@@ -87457,6 +87463,7 @@ MonoBehaviour:
   stone: {fileID: 7901680216942442750}
   check: {fileID: 174713424390056377}
   colliderBegin: {fileID: 6989587675764164991}
+  speedMove: 0
   isGravity: 0
   timeFly: 0
 --- !u!1 &5637539635093286698
@@ -87540,6 +87547,7 @@ MonoBehaviour:
   stone: {fileID: 4537784809020117508}
   check: {fileID: 4834987772356218302}
   colliderBegin: {fileID: 8651794979109086850}
+  speedMove: 0
   isGravity: 0
   timeFly: 0
 --- !u!1 &5660573374228997772
@@ -107279,6 +107287,7 @@ MonoBehaviour:
   stone: {fileID: 1693660188024036105}
   check: {fileID: 3418602721040674024}
   colliderBegin: {fileID: 973860897749148112}
+  speedMove: 0
   isGravity: 0
   timeFly: 0
 --- !u!1 &6836102208922073868
@@ -140908,6 +140917,7 @@ MonoBehaviour:
   stone: {fileID: 4651504771276415341}
   check: {fileID: 6140412824940046079}
   colliderBegin: {fileID: 179192607124042045}
+  speedMove: 0
   isGravity: 0
   timeFly: 0
 --- !u!1 &9015334737350590086
@@ -148851,20 +148861,25 @@ PrefabInstance:
       propertyPath: vEndPos.x
       value: 10.16
       objectReference: {fileID: 0}
+    - target: {fileID: 360150832557463478, guid: 8eea6eff2c4b9b34dbfe6f3070739266,
+        type: 3}
+      propertyPath: key
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2720310868365002843, guid: 8eea6eff2c4b9b34dbfe6f3070739266,
         type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.y
-      value: 7.4062066
+      value: 6.7312627
       objectReference: {fileID: 0}
     - target: {fileID: 2792697067004873771, guid: 8eea6eff2c4b9b34dbfe6f3070739266,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.408
+      value: -2.071
       objectReference: {fileID: 0}
     - target: {fileID: 2792697067004873771, guid: 8eea6eff2c4b9b34dbfe6f3070739266,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2792697067004873771, guid: 8eea6eff2c4b9b34dbfe6f3070739266,
         type: 3}
@@ -148879,7 +148894,7 @@ PrefabInstance:
     - target: {fileID: 6555511519871192306, guid: 8eea6eff2c4b9b34dbfe6f3070739266,
         type: 3}
       propertyPath: m_Size.y
-      value: 7.4062066
+      value: 6.7312627
       objectReference: {fileID: 0}
     - target: {fileID: 6946110268828160182, guid: 8eea6eff2c4b9b34dbfe6f3070739266,
         type: 3}
@@ -148889,7 +148904,7 @@ PrefabInstance:
     - target: {fileID: 7678980956083671126, guid: 8eea6eff2c4b9b34dbfe6f3070739266,
         type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.y
-      value: 7.4062066
+      value: 6.7312627
       objectReference: {fileID: 0}
     - target: {fileID: 7917187945325412198, guid: 8eea6eff2c4b9b34dbfe6f3070739266,
         type: 3}
@@ -148964,6 +148979,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4583385436277619824}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4279817688292830150 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 360150832557463478, guid: 8eea6eff2c4b9b34dbfe6f3070739266,
+    type: 3}
+  m_PrefabInstance: {fileID: 4583385436277619824}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db75b6c7a7d2daa48b022d29c415d3e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4618223507620236704
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -148984,7 +149011,7 @@ PrefabInstance:
     - target: {fileID: 360150832557463478, guid: 8eea6eff2c4b9b34dbfe6f3070739266,
         type: 3}
       propertyPath: vEndPos.x
-      value: 4.17
+      value: 9.23
       objectReference: {fileID: 0}
     - target: {fileID: 360150832557463478, guid: 8eea6eff2c4b9b34dbfe6f3070739266,
         type: 3}
@@ -149868,6 +149895,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d84b0446e06d3fe41aef0684dd658a16, type: 3}
+--- !u!4 &170878227059110407 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8688539321358041613, guid: d84b0446e06d3fe41aef0684dd658a16,
+    type: 3}
+  m_PrefabInstance: {fileID: 8848711993918205962}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &170878227059110406 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8688539321358041612, guid: d84b0446e06d3fe41aef0684dd658a16,
@@ -149880,9 +149913,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abf3414abe8b04d44bf032db0c4f93d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &170878227059110407 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8688539321358041613, guid: d84b0446e06d3fe41aef0684dd658a16,
-    type: 3}
-  m_PrefabInstance: {fileID: 8848711993918205962}
-  m_PrefabAsset: {fileID: 0}
