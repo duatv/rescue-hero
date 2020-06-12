@@ -34,11 +34,11 @@ public class HostageManager : CharsBase
 
         if (PlayerManager.Instance != null)
         {
-            //if (transform.localPosition.x > PlayerManager.Instance.transform.localPosition.x)
-            //{
-            //    saPlayer.skeleton.ScaleX = -1;
-            //}
-            //else saPlayer.skeleton.ScaleX = 1;
+            if (transform.position.x > PlayerManager.Instance.transform.position.x)
+            {
+                saPlayer.skeleton.ScaleX = -1;
+            }
+            else saPlayer.skeleton.ScaleX = 1;
         }
         else
         {

@@ -208,7 +208,7 @@ public class EnemyBase : MonoBehaviour
                                 target = hit2D.collider.gameObject;
                                 //    trTargetAttack = hit2D.collider.gameObject.transform;
                             }
-                            else if (/*hit2D.collider.gameObject.GetComponent<PlayerManager>() != null*/hit2D.collider.gameObject.tag == "BodyPlayer" && !PlayerManager.Instance.isTakeSword)
+                            else if (/*hit2D.collider.gameObject.GetComponent<PlayerManager>() != null*/hit2D.collider.gameObject.tag == "BodyPlayer" /*&& !PlayerManager.Instance.isTakeSword*/)
                             {
                                 _isCanMoveToTarget = /*hit2D.collider.gameObject.GetComponent<PlayerManager>()*/PlayerManager.Instance.pState == PlayerManager.P_STATE.DIE ? false : true;
 
@@ -250,7 +250,7 @@ public class EnemyBase : MonoBehaviour
                                 //    PrepareRotate_(trTargetAttack);
                                 target = hit2D_1.collider.gameObject;
                             }
-                            else if (/*hit2D_1.collider.gameObject.GetComponent<PlayerManager>() != null*/hit2D_1.collider.gameObject.tag == "BodyPlayer" && !PlayerManager.Instance.isTakeSword)
+                            else if (/*hit2D_1.collider.gameObject.GetComponent<PlayerManager>() != null*/hit2D_1.collider.gameObject.tag == "BodyPlayer" /*&& !PlayerManager.Instance.isTakeSword*/)
                             {
                                 _isCanMoveToTarget =/* hit2D_1.collider.gameObject.GetComponent<PlayerManager>()*/PlayerManager.Instance.pState == PlayerManager.P_STATE.DIE ? false : true;
                                 //   trTargetAttack = hit2D_1.collider.gameObject.transform;
@@ -358,12 +358,12 @@ public class EnemyBase : MonoBehaviour
                     /*hitPlayer.collider.gameObject.GetComponent<PlayerManager>()*/
                     PlayerManager.Instance.OnAttackEnemy(this);
                     PlayAnim(str_idle, true);
-                    Debug.LogError("chem");
+                 //   Debug.LogError("chem");
                 }
                 else
                 {
                     PlayAnim(str_Att, false);
-                    Debug.LogError("ko chem");
+                 //   Debug.LogError("ko chem");
                 }
                 // }
                 //else PlayAnim(str_Att, false);

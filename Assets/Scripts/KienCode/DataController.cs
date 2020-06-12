@@ -45,7 +45,7 @@ public class DataController : MonoBehaviour
     void LoadData()
     {
         DataParam.currentHero = PlayerPrefs.GetInt(DataParam.CURRENTHERO);
-
+        Utils.currentCoin = PlayerPrefs.GetInt(DataParam.TOTALCOIN);
         LoadHero();
         LoadAchievment();
         LoadCastle();
@@ -124,6 +124,7 @@ public class DataController : MonoBehaviour
         PlayerPrefs.SetInt(DataParam.CURRENTHERO, DataParam.currentHero);
         PlayerPrefs.SetString(DataParam.SAVECASTLE, JsonMapper.ToJson(saveCastle));
         PlayerPrefs.SetInt(DataParam.CURRENTLEVELCASTLE, DataParam.currentLevelCastle);
+        PlayerPrefs.SetInt(DataParam.TOTALCOIN, Utils.currentCoin);
     }
     int currentLevel;
     public void DoAchievment(int index, int add)

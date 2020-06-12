@@ -104,9 +104,9 @@ MonoBehaviour:
   stone: {fileID: 0}
   check: {fileID: 0}
   colliderBegin: {fileID: 0}
+  speedMove: 0
   isGravity: 1
   timeFly: 0.5
-  speed: 1
 --- !u!50 &8988015970931127521
 Rigidbody2D:
   serializedVersion: 4
@@ -174,7 +174,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.55
+  m_Radius: 0.25
 --- !u!1 &6245881258929068543
 GameObject:
   m_ObjectHideFlags: 0
@@ -201,7 +201,7 @@ Transform:
   m_GameObject: {fileID: 6245881258929068543}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 1}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 1}
   m_Children: []
   m_Father: {fileID: 5976190729354532740}
   m_RootOrder: 0

@@ -13,4 +13,6 @@ public class DataParam
     public const string SAVECASTLE = "savecastle";
     public const string CURRENTLEVELCASTLE = "currentlevelcastle";
 
+    public const string TOTALCOIN = "totalcoin";
+
 }

@@ -87,10 +87,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skull: {fileID: 5274256717954633806}
+  pBlood: {fileID: 1107672149821629326}
   enemyType: 0
   _charStage: 0
   isReadOnly: 0
-  sdaP1: {fileID: 11400000, guid: 367a6157c124f074cbbd7b812667df7a, type: 2}
+  sdaP1: {fileID: 0}
   sdaP2: {fileID: 0}
   saPlayer: {fileID: 447227862102556838}
   str_idle: idle
@@ -120,7 +121,6 @@ MonoBehaviour:
   leftAttack: {fileID: 4700512545162854236}
   rightAttack: {fileID: 8560174892546297900}
   target: {fileID: 0}
-  pBlood: {fileID: 1107672149821629326}
 --- !u!50 &447227860025940805
 Rigidbody2D:
   serializedVersion: 4
@@ -258,7 +258,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: cf1c665181a3b714c86803b27b33e339, type: 2}
+  - {fileID: 2100000, guid: 321923e58c9db264e95fb4df7499833a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -291,8 +291,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: 367a6157c124f074cbbd7b812667df7a, type: 2}
-  initialSkinName: 
+  skeletonDataAsset: {fileID: 11400000, guid: 332276379f3cb8944a2129854de6614f, type: 2}
+  initialSkinName: kiem
   initialFlipX: 0
   initialFlipY: 0
   separatorSlotNames: []

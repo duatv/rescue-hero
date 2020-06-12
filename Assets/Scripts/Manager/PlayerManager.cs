@@ -104,7 +104,7 @@ public class PlayerManager : MonoBehaviour
     IEnumerator ISShowWin()
     {
         yield return new WaitForSeconds(0.5f);
-        if (!saPlayer.AnimationName.Equals(str_Lose))
+        if (!saPlayer.AnimationName.Equals(str_Lose) || pState != P_STATE.DIE)
         {
 
             if (GameManager.Instance.mapLevel.questType == MapLevelManager.QUEST_TYPE.SAVE_HOSTAGE)
@@ -396,7 +396,10 @@ public class PlayerManager : MonoBehaviour
         if (GameManager.Instance.isTest)
             newSkin.AddSkin(skeletonData.FindSkin("kiem"));
         else
+        {
             newSkin.AddSkin(skeletonData.FindSkin(DataController.instance.heroData.infos[DataParam.currentHero].nameSkinSword));
+            Debug.LogError(DataController.instance.heroData.infos[DataParam.currentHero].nameSkinSword);
+        }
 
         skeleton.SetSkin(newSkin);
         skeleton.SetSlotsToSetupPose();

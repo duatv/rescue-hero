@@ -20,10 +20,25 @@ MonoBehaviour:
   fromAnimation:
   - idle
   - idle
+  - run
+  - idle
+  - run
+  - attack
+  - attack
   toAnimation:
   - die
   - attack (cung)
+  - attack
+  - run
+  - idle
+  - die
+  - run
   duration:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
   - 0
   - 0
   defaultMix: 0.2
