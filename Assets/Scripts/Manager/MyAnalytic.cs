@@ -33,9 +33,9 @@ public class MyAnalytic : MonoBehaviour
         });
     }
     protected bool isFirebaseInittialized = false;
-    string DELAYSHOWAD = "Level delay";
-    string TIMEDELAYSHOWAD = "Time delay";
-    string LEVELPASSSHOWAD = "First Open Delay";
+    string DELAYSHOWAD = "LevelDelay";
+    string TIMEDELAYSHOWAD = "TimeDelay";
+    string LEVELPASSSHOWAD = "FirstOpenDelay";
     void InitalizeFirebase()
     {
         defauls.Add(DELAYSHOWAD, 2);
