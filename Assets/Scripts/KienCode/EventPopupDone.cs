@@ -11,6 +11,7 @@ public class EventPopupDone : MonoBehaviour
     }
     public void EventLoadScene()
     {
+      //  ObjectPoolerManager.Instance.ClearAllPool();
         SceneManager.LoadSceneAsync("MainGame");
     }
     public void EventDisableLoading()

@@ -251,7 +251,7 @@ public class GameManager : MonoBehaviour
             Utils.LEVEL_INDEX = 0;
             Utils.SaveLevel();
         }
-        //  ObjectPoolManagerHaveScript.Instance.ClearAllPool();
+        ObjectPoolerManager.Instance.ClearAllPool();
         SceneManager.LoadSceneAsync("MainGame");
     }
     public void OnX2Coin()
@@ -301,21 +301,23 @@ public class GameManager : MonoBehaviour
     }
     public void OnReplay()
     {
-        //  ObjectPoolManagerHaveScript.Instance.ClearAllPool();
+        ObjectPoolerManager.Instance.ClearAllPool();
         SceneManager.LoadSceneAsync("MainGame");
     }
     public void GoToMenu()
     {
-        //  ObjectPoolManagerHaveScript.Instance.ClearAllPool();
+        ObjectPoolerManager.Instance.ClearAllPool();
         SceneManager.LoadSceneAsync("MainMenu");
     }
     public void BtnAchievement()
     {
+        ObjectPoolerManager.Instance.ClearAllPool();
         MenuController.openAchievement = true;
         SceneManager.LoadSceneAsync("MainMenu");
     }
     public void BtnCastle()
     {
+        ObjectPoolerManager.Instance.ClearAllPool();
         MenuController.openCastle = true;
         SceneManager.LoadSceneAsync("MainMenu");
     }

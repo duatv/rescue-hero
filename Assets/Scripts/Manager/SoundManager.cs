@@ -7,11 +7,11 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance;
     public AudioClip acMainMenuMusic, acGamePlayMusic;
-    public AudioClip acClick, acWin, acLose, acHeroDie, acTakeSword, acOpenChest, acEnemyDie, acMoveStick, acMeleeAttack, acPrincessApear, acPrincessHurt, acLavaOnWater, acLavaApear, acStoneApear,
-                     acMoveStickClick, acFoundOtherStick, acCutRope;
+    public AudioClip acClick, acWin, acLose, acHeroDie, acTakeSword, acOpenChest, acEnemyDie, acMoveStick, acMeleeAttack, acPrincessApear, acLavaOnWater, acLavaApear, acStoneApear,btnStart,
+                     acMoveStickClick, acFoundOtherStick, acCutRope,acPrincessSave,acPrincessDie;
     public AudioClip[] acCoinApear;
     public AudioSource audioSource;
-
+    public AudioSource audioSouceBG;
     private void Awake()
     {
         if (Instance == null)
@@ -35,19 +35,30 @@ public class SoundManager : MonoBehaviour
         bool isMainMenu = Application.loadedLevelName.Equals("MainMenu") ? true : false;
         if (Utils.isMusicOn)
         {
-            audioSource.mute = false;
+            audioSouceBG.mute = false;
             AudioClip _acPlay = isMainMenu ? acMainMenuMusic : acGamePlayMusic;
-            audioSource.clip = _acPlay;
-            audioSource.Play();
+            audioSouceBG.clip = _acPlay;
+            audioSouceBG.Play();
         }
         else
         {
-            audioSource.mute = true;
+            audioSouceBG.mute = true;
         }
     }
     public void CheckBGMusic()
     {
         if (Utils.isMusicOn)
+        {
+            audioSouceBG.mute = false;
+        }
+        else
+        {
+            audioSouceBG.mute = true;
+        }
+    }
+    public void CheckSound()
+    {
+        if (Utils.isSoundOn)
         {
             audioSource.mute = false;
         }
