@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources tools:keep="@string/firebase_database_url,@string/gcm_defaultSenderId,@string/google_storage_bucket,@string/project_id,@string/google_api_key,@string/google_crash_reporting_api_key,@string/google_app_id,@string/default_web_client_id" xmlns:tools="http://schemas.android.com/tools">
+  <string name="firebase_database_url" translatable="false">https://rescue-hero-eb50b.firebaseio.com</string>
+  <string name="gcm_defaultSenderId" translatable="false">1083746164606</string>
+  <string name="google_storage_bucket" translatable="false">rescue-hero-eb50b.appspot.com</string>
+  <string name="project_id" translatable="false">rescue-hero-eb50b</string>
+  <string name="google_api_key" translatable="false">AIzaSyAXnEIdDBKpyjd56dYf6uMbx6uo2qhcvvE</string>
+  <string name="google_crash_reporting_api_key" translatable="false">AIzaSyAXnEIdDBKpyjd56dYf6uMbx6uo2qhcvvE</string>
+  <string name="google_app_id" translatable="false">1:1083746164606:android:8d8fabaf9a8563cfb3dd2f</string>
+  <string name="default_web_client_id" translatable="false">1083746164606-o9c9911avk537vi7fdso20n79v3fd9p6.apps.googleusercontent.com</string>
+</resources>
