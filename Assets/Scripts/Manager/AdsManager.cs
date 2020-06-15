@@ -101,12 +101,13 @@ public class AdsManager : MonoBehaviour
     {
         if (IsRewardLoaded())
         {
+            Debug.Log("[Ads] Manager realy loaded");
             acRewarded = _ac;
             rewardedAd.Show();
-
         }
         else
         {
+            Debug.Log("[Ads] Manager request");
             rewardedAd.LoadAd(CreateRequest());
             acRewarded(false);
         }

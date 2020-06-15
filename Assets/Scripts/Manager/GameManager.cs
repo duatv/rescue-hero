@@ -287,6 +287,7 @@ public class GameManager : MonoBehaviour
 
         if (AdsManager.Instance != null)
         {
+            Debug.Log("[Ads] Manager diffirent null");
             AdsManager.Instance.ShowRewardedVideo((b) =>
             {
                 if (b)
