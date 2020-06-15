@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-//using GoogleMobileAds.Api.Mediation.UnityAds;
+using GoogleMobileAds.Api.Mediation.UnityAds;
 using GoogleMobileAds.Api;
 
 public class AdsManager : MonoBehaviour
@@ -32,7 +32,7 @@ public class AdsManager : MonoBehaviour
         InitInterstitial();
         InitRewarded();
         InitBanner();
-        //    UnityAds.SetGDPRConsentMetaData(true);
+        UnityAds.SetGDPRConsentMetaData(true);
     }
 
     private void InitBanner()
@@ -101,12 +101,13 @@ public class AdsManager : MonoBehaviour
     {
         if (IsRewardLoaded())
         {
+            Debug.Log("[Ads] Manager realy loaded");
             acRewarded = _ac;
             rewardedAd.Show();
-
         }
         else
         {
+            Debug.Log("[Ads] Manager request");
             rewardedAd.LoadAd(CreateRequest());
             acRewarded(false);
         }

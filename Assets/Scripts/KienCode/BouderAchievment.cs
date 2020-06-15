@@ -41,5 +41,7 @@ public class BouderAchievment : MonoBehaviour
         DataController.instance.saveDataAchievement[index].pass = false;
         MenuController.instance.achievementPanel.coinText.text = Utils.currentCoin.ToString();
         DisplayContent();
+
+        MenuController.instance.SoundClickButton();
     }
 }

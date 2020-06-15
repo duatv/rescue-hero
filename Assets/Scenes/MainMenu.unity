@@ -214,6 +214,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 672568322}
+        m_MethodName: SoundClickButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &697488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -406,6 +417,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1084999296}
         m_MethodName: OnClose
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 672568322}
+        m_MethodName: SoundClickButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2520,17 +2542,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 672568322}
-        m_MethodName: SoundClickButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &204974826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3147,7 +3158,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1875582907}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3163,11 +3175,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e9212e2bc919004a86b41116bc3b02b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acMainMenuMusic: {fileID: 8300000, guid: 397987ee452130740af082c812111b3f, type: 3}
-  acGamePlayMusic: {fileID: 8300000, guid: b5337d0e318e86546881a44ee6275472, type: 3}
+  acMainMenuMusic: {fileID: 8300000, guid: 55a8ec0e9ba62304db2b83175482f851, type: 3}
+  acGamePlayMusic: {fileID: 8300000, guid: 60338abbaf7481646b256f106529a03f, type: 3}
   acClick: {fileID: 8300000, guid: 296328109f89d124b8d2276dff23cd86, type: 3}
-  acWin: {fileID: 8300000, guid: 4f669f004a5cb314681c1954ca0f567e, type: 3}
-  acLose: {fileID: 8300000, guid: 8b7026a966e873e4690b930798e6ba72, type: 3}
+  acWin: {fileID: 8300000, guid: 8b09ded9e1abab4429bfc8ffc8227e9f, type: 3}
+  acLose: {fileID: 8300000, guid: b57ac6d3eb020de439dc391d8c679129, type: 3}
   acHeroDie: {fileID: 8300000, guid: 0259b3e1ccbfcd74a8c11fd671851860, type: 3}
   acTakeSword: {fileID: 8300000, guid: 0b157d097b820574fbeb8a3d4ab39def, type: 3}
   acOpenChest: {fileID: 8300000, guid: 16e20009cf608614d9aea42e8ca041e2, type: 3}
@@ -3175,13 +3187,15 @@ MonoBehaviour:
   acMoveStick: {fileID: 8300000, guid: 7c66655782e8bca48997db113d86a925, type: 3}
   acMeleeAttack: {fileID: 8300000, guid: 2e420fccc8289d1488b7dabc520b254e, type: 3}
   acPrincessApear: {fileID: 8300000, guid: c00dddf65b1397943b3e65423e00359f, type: 3}
-  acPrincessHurt: {fileID: 8300000, guid: ca55f8283ce67214ab43310bb0f06f84, type: 3}
   acLavaOnWater: {fileID: 8300000, guid: 8896f6f826238b3429d89707db94efc9, type: 3}
   acLavaApear: {fileID: 8300000, guid: 205508a02b4cc9d4e9d92dc083a1fd82, type: 3}
   acStoneApear: {fileID: 8300000, guid: 27ebfbbc67b9e9a44b9fbaff0ff6b7ee, type: 3}
+  btnStart: {fileID: 8300000, guid: d4a96db500898904cb9cd290cc70740d, type: 3}
   acMoveStickClick: {fileID: 8300000, guid: 1f3744c76eb69dd41a38c5be30f42d31, type: 3}
   acFoundOtherStick: {fileID: 8300000, guid: d730afb793cd8a541a39323c509d4640, type: 3}
   acCutRope: {fileID: 8300000, guid: a65a115dc75b7cc40a57c197f4bb4345, type: 3}
+  acPrincessSave: {fileID: 8300000, guid: c00dddf65b1397943b3e65423e00359f, type: 3}
+  acPrincessDie: {fileID: 8300000, guid: ca55f8283ce67214ab43310bb0f06f84, type: 3}
   acCoinApear:
   - {fileID: 8300000, guid: d03f683d23d76f74987212a69467cb9a, type: 3}
   - {fileID: 8300000, guid: 79939273fcf312446a7df815860d134c, type: 3}
@@ -3195,6 +3209,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6ee72d23d89078f43940e712d9360e02, type: 3}
   - {fileID: 8300000, guid: e4e24c162d200694b90085f1b4212480, type: 3}
   audioSource: {fileID: 273683916}
+  audioSouceBG: {fileID: 1875582906}
 --- !u!82 &273683916
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5881,7 +5896,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.731, y: 0.10160067}
   m_AnchorMax: {x: 0.915682, y: 0.9399}
-  m_AnchoredPosition: {x: -0.19995117, y: -23.567959}
+  m_AnchoredPosition: {x: -0.19995117, y: -23.567955}
   m_SizeDelta: {x: -1.2399902, y: -44.78}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &536224336
@@ -13014,6 +13029,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 672568322}
+        m_MethodName: SoundClickButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1177715250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14915,6 +14941,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 672568322}
+        m_MethodName: SoundClickButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1448832144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16130,6 +16167,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 672568322}
+        m_MethodName: SoundClickButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1544737669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17202,6 +17250,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1824271028}
         m_MethodName: BtnUnlock
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 672568322}
+        m_MethodName: SoundClickButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -19103,7 +19162,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.13970786, y: 0.43730733}
   m_AnchorMax: {x: 0.91600007, y: 0.5365532}
-  m_AnchoredPosition: {x: -329.09988, y: -3}
+  m_AnchoredPosition: {x: -329.0999, y: -3}
   m_SizeDelta: {x: -670, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1790520207
@@ -19833,7 +19892,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.14951687, y: 0.606}
   m_AnchorMax: {x: 0.90800005, y: 0.7062459}
-  m_AnchoredPosition: {x: -335.6999, y: 7.5}
+  m_AnchoredPosition: {x: -335.69992, y: 7.5}
   m_SizeDelta: {x: -670, y: -15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1840321489
@@ -20194,6 +20253,133 @@ MonoBehaviour:
   gTick: {fileID: 509910238}
   imgPreview: {fileID: 1866973526}
   dayIndex: 4
+--- !u!1 &1875582905
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1875582907}
+  - component: {fileID: 1875582906}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &1875582906
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1875582905}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &1875582907
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1875582905}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 273683914}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1896803436
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20870,6 +21056,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2062350883}
         m_MethodName: OnClosePanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 672568322}
+        m_MethodName: SoundClickButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

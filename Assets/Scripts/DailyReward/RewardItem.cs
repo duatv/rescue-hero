@@ -24,21 +24,21 @@ public class RewardItem : MonoBehaviour
             gTick.SetActive(false);
             if (dayIndex == 7)
             {
-                _dailyGift.btnClaimX3.interactable = false;
+                _dailyGift.btnClaimX3.gameObject.SetActive(false);
             }
-            else _dailyGift.btnClaimX3.interactable = true;
+            else _dailyGift.btnClaimX3.gameObject.SetActive(true);
 
-            
+
         }
         else if (dayIndex == Utils.curDailyGift && Utils.cantakegiftdaily)
         {
-            _dailyGift.btnClaimX3.interactable = false;
-            _dailyGift.btnClaim.interactable = false;
+            _dailyGift.btnClaimX3.gameObject.SetActive(false);
+            _dailyGift.btnClaim.gameObject.SetActive(false);
         }
         else if (dayIndex == Utils.curDailyGift - 1 && !Utils.cantakegiftdaily && Utils.IsClaimReward())
         {
-            _dailyGift.btnClaimX3.interactable = false;
-            _dailyGift.btnClaim.interactable = false;
+            _dailyGift.btnClaimX3.gameObject.SetActive(false);
+            _dailyGift.btnClaim.gameObject.SetActive(false);
             imgPreview.sprite = sprHasClaim;
         }
         else if (dayIndex < Utils.curDailyGift)

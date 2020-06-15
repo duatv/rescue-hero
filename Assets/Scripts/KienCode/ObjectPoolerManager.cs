@@ -27,8 +27,8 @@ public class ObjectPoolerManager : MonoBehaviour
         {
             for (int j = 0; j < AllPool[i].transform.childCount; j++)
             {
-                if (!AllPool[i].transform.GetChild(j).gameObject.activeSelf)
-                    continue;
+                //if (!AllPool[i].transform.GetChild(j).gameObject.activeSelf)
+                //    continue;
 
                 AllPool[i].transform.GetChild(j).gameObject.SetActive(false);
             }
