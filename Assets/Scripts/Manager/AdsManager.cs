@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using GoogleMobileAds.Api.Mediation.UnityAds;
+//using GoogleMobileAds.Api.Mediation.UnityAds;
 using GoogleMobileAds.Api;
 
 public class AdsManager : MonoBehaviour
@@ -32,7 +32,7 @@ public class AdsManager : MonoBehaviour
         InitInterstitial();
         InitRewarded();
         InitBanner();
-       UnityAds.SetGDPRConsentMetaData(true);
+    //   UnityAds.SetGDPRConsentMetaData(true);
     }
 
     private void InitBanner()
@@ -67,6 +67,8 @@ public class AdsManager : MonoBehaviour
     private void Banner_OnAdLoaded(object sender, EventArgs e)
     {
         HideBanner();
+
+        Debug.LogError("====== load banner ====");
     }
 
     private bool IsIntersLoaded()
@@ -125,7 +127,13 @@ public class AdsManager : MonoBehaviour
         interstitial = new InterstitialAd(Application.platform == RuntimePlatform.Android ? Utils.INTERS_ID : Utils.INTERS_ID);
         interstitial.OnAdOpening += Interstitial_OnAdOpening;
         interstitial.OnAdClosed += HandleOnAdClosed;
+        interstitial.OnAdFailedToLoad += HandleLoadFail;
         interstitial.LoadAd(CreateRequest());
+    }
+
+    private void HandleLoadFail(object sender, AdFailedToLoadEventArgs e)
+    {
+        Debug.LogError("========load fail ads=======");
     }
 
     private void Interstitial_OnAdOpening(object sender, EventArgs e)
@@ -156,6 +164,7 @@ public class AdsManager : MonoBehaviour
 
     private void RewardedAd_OnAdLoaded(object sender, EventArgs e)
     {
+        Debug.LogError("====== load video ====");
     }
 
     public void HandleRewardedAdClosed(object sender, EventArgs args)
