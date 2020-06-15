@@ -70,7 +70,10 @@ public class HostageManager : CharsBase
         saPlayer.AnimationState.SetAnimation(0, str_Lose, false);
         skull.SetActive(true);
         bloodeffect.gameObject.SetActive(true);
-
+        if (SoundManager.Instance != null)
+        {
+            SoundManager.Instance.PlaySound(SoundManager.Instance.acPrincessDie);
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -120,9 +123,14 @@ public class HostageManager : CharsBase
     IEnumerator IEWaitToIdle()
     {
         yield return new WaitForSeconds(0.3f);
-        pheart.gameObject.SetActive(true);
 
-        saPlayer.AnimationState.SetAnimation(0, str_Win, false);
+        if (!pheart.gameObject.activeSelf)
+        {
+            pheart.gameObject.SetActive(true);
+
+            saPlayer.AnimationState.SetAnimation(0, str_Win, false);
+            SoundManager.Instance.PlaySound(SoundManager.Instance.acPrincessSave);
+        }
     }
 }
 #region Editor Mode

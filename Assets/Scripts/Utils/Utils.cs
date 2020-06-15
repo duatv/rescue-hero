@@ -12,10 +12,10 @@ public class Utils
     public const string QUAL_LOW = "Low";
 
     public const string INAPP_REMOVE_ADS = "com.ohze.game.rescuehero";
-    public const string APP_ID = "ca-app-pub-3940256099942544~3347511713";
-    public const string BANNER_ID = "ca-app-pub-3940256099942544/6300978111";
-    public const string INTERS_ID = "ca-app-pub-3940256099942544/1033173712";
-    public const string VIDEO_ID = "ca-app-pub-3940256099942544/5224354917";
+    public const string APP_ID = "ca-app-pub-8566745611252640~7605802011";
+    public const string BANNER_ID = "ca-app-pub-8566745611252640/1972231762";
+    public const string INTERS_ID = "ca-app-pub-8566745611252640/7031086948";
+    public const string VIDEO_ID = "ca-app-pub-8566745611252640/7507946707";
     public const int BASE_COIN = 100;
     private const string GAME_KEY = "ohze.rescue.hero";
     public const string COIN_KEY = GAME_KEY + ".coin";

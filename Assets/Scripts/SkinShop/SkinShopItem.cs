@@ -77,5 +77,7 @@ public class SkinShopItem : MonoBehaviour
 
         MenuController.instance.shopManager.ChangeSkin(DataController.instance.heroData.infos[index].nameSkin);
 
+        MenuController.instance.SoundClickButton();
+
     }
 }

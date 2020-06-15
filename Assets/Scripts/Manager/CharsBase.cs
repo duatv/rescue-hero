@@ -62,7 +62,7 @@ public class CharsBase : MonoBehaviour
             }
             if (SoundManager.Instance != null)
             {
-                SoundManager.Instance.PlaySound(SoundManager.Instance.acPrincessHurt);
+                SoundManager.Instance.PlaySound(SoundManager.Instance.acPrincessDie);
             }
         }
     }

@@ -118,6 +118,7 @@ public class MenuController : MonoBehaviour
         //loadingPanel.SetActive(true);
         animLoading = true;
         playAnimLoading.Play("loadingprocessAnim");
+        SoundManager.Instance.PlaySound(SoundManager.Instance.btnStart);
     }
 
     public void CheckDisplayWarningAchievement()

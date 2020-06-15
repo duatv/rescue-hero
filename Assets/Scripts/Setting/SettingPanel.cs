@@ -38,11 +38,22 @@ public class SettingPanel : MonoBehaviour
         Utils.isSoundOn = !Utils.isSoundOn;
         ChangeSoundSprite();
         Utils.ChangeSound();
+
+
+        if (SoundManager.Instance != null)
+        {
+            SoundManager.Instance.CheckSound();
+        }
     }
     public void ChangeMusic() {
         Utils.isMusicOn = !Utils.isMusicOn;
         ChangeMusicSprite();
         Utils.ChangeMusic();
+
+        if (SoundManager.Instance != null)
+        {
+            SoundManager.Instance.CheckBGMusic();
+        }
     }
     public void ChangeVibrate() {
         Utils.isVibrateOn = !Utils.isVibrateOn;
@@ -50,10 +61,7 @@ public class SettingPanel : MonoBehaviour
         Utils.ChangeVibrate();
     }
     public void OnClose() {
-        if (SoundManager.Instance != null)
-        {
-            SoundManager.Instance.CheckBGMusic();
-        }
+
         anim.Play("PopUpAnimClose");
         //   gameObject.SetActive(false);
     }
