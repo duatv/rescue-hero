@@ -9,6 +9,7 @@ public class EnemyMelee : EnemyBase
 
     override public void OnPrepareAttack()
     {
+        Debug.Log("Pre attack");
         base.OnPrepareAttack();
     }
     public override void OnDie_()

@@ -6,4 +6,6 @@ using UnityEngine;
 public class LevelConfig : ScriptableObject
 {
     public List<MapLevelManager> lstAllLevel;
+
+    public List<int> levelSkips;
 }

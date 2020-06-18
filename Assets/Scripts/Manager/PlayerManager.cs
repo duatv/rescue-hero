@@ -101,6 +101,14 @@ public class PlayerManager : MonoBehaviour
         enBase.OnDie_();
         OnIdleState();
     }
+
+    IEnumerator IEWaitToIdleAfterAttack()
+    {
+        yield return new WaitForSeconds(1f);
+        OnIdleState();
+    }
+
+
     IEnumerator ISShowWin()
     {
         yield return new WaitForSeconds(0.5f);
@@ -377,6 +385,8 @@ public class PlayerManager : MonoBehaviour
         isMoveRight = false;
         _rig2D.velocity = Vector2.zero;
         Debug.LogError("wtfkkkkkk");
+
+        StartCoroutine(nameof(IEWaitToIdleAfterAttack));
         //}
     }
     public void OnTakeSword(Transform _tr)

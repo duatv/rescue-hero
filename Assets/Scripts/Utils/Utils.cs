@@ -12,10 +12,10 @@ public class Utils
     public const string QUAL_LOW = "Low";
 
     public const string INAPP_REMOVE_ADS = "com.ohze.game.rescuehero";
-    public const string APP_ID = "ca-app-pub-3940256099942544~3347511713";
-    public const string BANNER_ID = "ca-app-pub-3940256099942544/6300978111";
-    public const string INTERS_ID = "ca-app-pub-3940256099942544/1033173712";
-    public const string VIDEO_ID = "ca-app-pub-3940256099942544/5224354917";
+    public const string APP_ID = "ca-app-pub-8566745611252640~6170725017";
+    public const string BANNER_ID = "ca-app-pub-8566745611252640/6830228231";
+    public const string INTERS_ID = "ca-app-pub-8566745611252640/4474499962";
+    public const string VIDEO_ID = "ca-app-pub-8566745611252640/6717519925";
     public const int BASE_COIN = 100;
     private const string GAME_KEY = "ohze.rescue.hero";
     public const string COIN_KEY = GAME_KEY + ".coin";
@@ -44,6 +44,14 @@ public class Utils
     public static int LEVEL_INDEX = 0;
     public static int currentCoin = 0;
 
+    public const string REAL_INDEX_LEVEL_PLAY = "real_index_level_play";
+
+    public static int RealLevelIndex 
+    { 
+        get => PlayerPrefs.GetInt(REAL_INDEX_LEVEL_PLAY, 0);
+        set => PlayerPrefs.SetInt(REAL_INDEX_LEVEL_PLAY, value);
+    }
+      
     public static void SaveCoin()
     {
      //   PlayerPrefs.SetInt(COIN_KEY, currentCoin);
@@ -199,3 +207,4 @@ public class Utils
     //}
     #endregion
 }
+

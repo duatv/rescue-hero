@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
@@ -63,7 +64,6 @@ public class GameManager : MonoBehaviour
     public int coinTemp;
     void Start()
     {
-
         levelTextGameOver.text = txtLevel.text = "LEVEL " + (Utils.LEVEL_INDEX + 1).ToString(/*"00,#"*/);
         txtCoinWin.text = Utils.currentCoin.ToString(/*"00,#"*/);
         coinTemp = Utils.currentCoin;
@@ -71,7 +71,14 @@ public class GameManager : MonoBehaviour
 
         if (!isTest)
         {
-            LoadLevelToPlay(Utils.LEVEL_INDEX);
+            if (Utils.RealLevelIndex != 0)
+            {
+                LoadLevelToPlay(Utils.RealLevelIndex);
+            }
+            else
+            {
+                LoadLevelToPlay(Utils.LEVEL_INDEX);
+            }
         }
         if (SoundManager.Instance != null)
         {
@@ -116,10 +123,12 @@ public class GameManager : MonoBehaviour
             AdsManager.Instance.HideBanner();
         }
     }
-    private void LoadLevelToPlay(int levelIndex)
-    {
 
-        mapLevel = Instantiate(levelConfig.lstAllLevel[levelIndex], Vector3.zero, Quaternion.identity);
+    private void LoadLevelToPlay(int realLevelIndex)
+    {
+        MapLevelManager mapInstall = mapInstall = levelConfig.lstAllLevel[realLevelIndex];
+      
+        mapLevel = Instantiate(mapInstall, Vector3.zero, Quaternion.identity);
         Debug.LogError("wtf:" + mapLevel.loadListStick);
         if (mapLevel.lstAllStick.Count > 0)
             playerMove = true;
@@ -240,17 +249,39 @@ public class GameManager : MonoBehaviour
     }
     public void OnNextLevel()
     {
-        //  Debug.LogError(Utils.LEVEL_INDEX + " vs " + levelConfig.lstAllLevel.Count);
-        if (Utils.LEVEL_INDEX < levelConfig.lstAllLevel.Count - 1)
+        Utils.LEVEL_INDEX += 1;
+        Utils.SaveLevel();
+
+        int levelIndex = Utils.LEVEL_INDEX;
+        if (levelIndex > levelConfig.lstAllLevel.Count - 1)
         {
-            Utils.LEVEL_INDEX += 1;
-            Utils.SaveLevel();
+            List<int> tempResult = new List<int>();
+            for (int i = 0; i < levelConfig.lstAllLevel.Count; i++)
+            {
+                if (!levelConfig.levelSkips.Contains(i))
+                {
+                    tempResult.Add(i);
+                }
+            }
+            var index = Random.Range(0, tempResult.Count);
+            Utils.RealLevelIndex = tempResult[index];
         }
         else
         {
-            Utils.LEVEL_INDEX = 0;
-            Utils.SaveLevel();
+            Utils.RealLevelIndex = levelIndex;
         }
+
+        /*        if (Utils.LEVEL_INDEX < levelConfig.lstAllLevel.Count - 1)
+                {
+                    Utils.LEVEL_INDEX += 1;
+                    Utils.SaveLevel();
+                }
+                else
+                {
+                    Utils.LEVEL_INDEX = 0;
+                    Utils.SaveLevel();
+                }*/
+
         ObjectPoolerManager.Instance.ClearAllPool();
         SceneManager.LoadSceneAsync("MainGame");
     }
@@ -302,23 +333,36 @@ public class GameManager : MonoBehaviour
     }
     public void OnReplay()
     {
-        ObjectPoolerManager.Instance.ClearAllPool();
+        if (ObjectPoolerManager.Instance != null)
+        {
+            ObjectPoolerManager.Instance.ClearAllPool();
+        }
+
         SceneManager.LoadSceneAsync("MainGame");
     }
     public void GoToMenu()
     {
-        ObjectPoolerManager.Instance.ClearAllPool();
+        if (ObjectPoolerManager.Instance != null)
+        {
+            ObjectPoolerManager.Instance.ClearAllPool();
+        }
         SceneManager.LoadSceneAsync("MainMenu");
     }
     public void BtnAchievement()
     {
-        ObjectPoolerManager.Instance.ClearAllPool();
+        if (ObjectPoolerManager.Instance != null)
+        {
+            ObjectPoolerManager.Instance.ClearAllPool();
+        }
         MenuController.openAchievement = true;
         SceneManager.LoadSceneAsync("MainMenu");
     }
     public void BtnCastle()
     {
-        ObjectPoolerManager.Instance.ClearAllPool();
+        if (ObjectPoolerManager.Instance != null)
+        {
+            ObjectPoolerManager.Instance.ClearAllPool();
+        }
         MenuController.openCastle = true;
         SceneManager.LoadSceneAsync("MainMenu");
     }

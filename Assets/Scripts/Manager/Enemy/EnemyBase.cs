@@ -171,7 +171,6 @@ public class EnemyBase : MonoBehaviour
             #endregion
             if (hitDown)
             {
-
                 #region Check Hit Ahead
 
                 vStart = center.position;

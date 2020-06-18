@@ -4390,12 +4390,12 @@ PrefabInstance:
     - target: {fileID: 3580600929575691664, guid: be9b178affd1c2542b9d8f71d565bf2d,
         type: 3}
       propertyPath: m_textInfo.spaceCount
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3580600929575691664, guid: be9b178affd1c2542b9d8f71d565bf2d,
         type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3580600929575691664, guid: be9b178affd1c2542b9d8f71d565bf2d,
         type: 3}
