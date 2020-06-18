@@ -97,13 +97,17 @@ public class DailyGiftPanel : MonoBehaviour
         {
             Utils.HasClaimReward();
             Utils.curDailyGift++;
+
+            Debug.LogError("take hero");
         }
+        MenuController.instance.shopManager.skinShopItem[5].Unlock();
         OnClosePanel();
     }
 
     public void OnClaim() {
         MyAnalytic.TakeDailyGift();
         Utils.HasClaimReward();
+        Debug.LogError("day index:" +  _dayIndex);
         switch (_dayIndex)
         {
             case 1:
