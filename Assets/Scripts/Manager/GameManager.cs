@@ -146,7 +146,7 @@ public class GameManager : MonoBehaviour
         StartCoroutine(IEWaitToShowWinLose(true));
     }
     public int enemyKill;
-    int countpasslevel;
+    static int countpasslevel;
     private IEnumerator IEWaitToShowWinLose(bool isWin)
     {
         yield return new WaitForSeconds(0.5f);
@@ -192,12 +192,14 @@ public class GameManager : MonoBehaviour
                 }
                 if (DataController.instance != null)
                     DataController.instance.DoAchievment(4, enemyKill);
+
                 if (DataParam.firsttime == 0)
                 {
                     if (Utils.LEVEL_INDEX >= DataParam.levelpassshowad)
                     {
                         AdsManager.Instance.ShowInterstitial(null);
                         DataParam.firsttime = 1;
+                        Debug.LogError("========show ads TH 1");
                     }
                 }
                 else
@@ -209,6 +211,7 @@ public class GameManager : MonoBehaviour
                         DataParam.oldTimeShowAds = System.DateTime.Now;
                         AdsManager.Instance.ShowInterstitial(null);
                     }
+                    Debug.LogError("========show ads TH 2");
                 }
                 MyAnalytic.EventLevelCompleted(Utils.LEVEL_INDEX + 1);
             }
@@ -222,6 +225,7 @@ public class GameManager : MonoBehaviour
                 gPanelWin.gameObject.SetActive(true);
                 effectCamera.SetActive(false);
                 LoseDisplay();
+             //   countpasslevel = 0;
                 if (SoundManager.Instance != null)
                 {
                     SoundManager.Instance.PlaySound(SoundManager.Instance.acLose);

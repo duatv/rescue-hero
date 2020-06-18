@@ -93,7 +93,7 @@ public class MyAnalytic : MonoBehaviour
         DataParam.timedelayShowAds = int.Parse(Firebase.RemoteConfig.FirebaseRemoteConfig.GetValue(TIMEDELAYSHOWAD).StringValue);
         DataParam.levelpassshowad = int.Parse(Firebase.RemoteConfig.FirebaseRemoteConfig.GetValue(LEVELPASSSHOWAD).StringValue);
 
-        Debug.LogError(DataParam.delayshowAds + ":" + DataParam.timedelayShowAds + ":" + DataParam.levelpassshowad);
+        Debug.LogError("Delay show ad:" + DataParam.delayshowAds + ": time delay show ad" + DataParam.timedelayShowAds + ": level pass show ad" + DataParam.levelpassshowad);
     }
     public static void EventLevelCompleted(int level)
     {
